@@ -1,0 +1,213 @@
+fileFormatVersion: 2
+guid: 96c9bf7ec54443b4ea50e2e71b81e9e1
+timeCreated: 1440666940
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: _
+    100002: ACOTA_curve_
+    100004: AQ-CARIMBO_curve_
+    100006: Arch28_001_Arch28_007_Arch28_012_Arch28_017
+    100008: ARROW3_002
+    100010: BL_ARROW3_004
+    100012: BL_ARROW3_005
+    100014: //RootNode
+    100016: Circle_001
+    100018: Perila
+    100020: Perila01
+    100022: Plane
+    100024: Plane_014
+    100026: Plane_015
+    100028: Plane_016
+    100030: Plane_017
+    100032: Plane_019
+    100034: Plane_020
+    100036: Plane_021
+    100038: Plane_022
+    100040: Plane_023
+    100042: Plane_024
+    100044: Plane_025
+    100046: Plane_026
+    100048: Plane_040
+    100050: Rectangl10_Rectangl11
+    100052: Rectangle1
+    100054: Rectangle2
+    100056: Rectangle4
+    400000: _
+    400002: ACOTA_curve_
+    400004: AQ-CARIMBO_curve_
+    400006: Arch28_001_Arch28_007_Arch28_012_Arch28_017
+    400008: ARROW3_002
+    400010: BL_ARROW3_004
+    400012: BL_ARROW3_005
+    400014: //RootNode
+    400016: Circle_001
+    400018: Perila
+    400020: Perila01
+    400022: Plane
+    400024: Plane_014
+    400026: Plane_015
+    400028: Plane_016
+    400030: Plane_017
+    400032: Plane_019
+    400034: Plane_020
+    400036: Plane_021
+    400038: Plane_022
+    400040: Plane_023
+    400042: Plane_024
+    400044: Plane_025
+    400046: Plane_026
+    400048: Plane_040
+    400050: Rectangl10_Rectangl11
+    400052: Rectangle1
+    400054: Rectangle2
+    400056: Rectangle4
+    2300000: _
+    2300002: ACOTA_curve_
+    2300004: AQ-CARIMBO_curve_
+    2300006: Arch28_001_Arch28_007_Arch28_012_Arch28_017
+    2300008: ARROW3_002
+    2300010: BL_ARROW3_004
+    2300012: BL_ARROW3_005
+    2300014: Circle_001
+    2300016: Perila
+    2300018: Perila01
+    2300020: Plane
+    2300022: Plane_014
+    2300024: Plane_015
+    2300026: Plane_016
+    2300028: Plane_017
+    2300030: Plane_019
+    2300032: Plane_020
+    2300034: Plane_021
+    2300036: Plane_022
+    2300038: Plane_023
+    2300040: Plane_024
+    2300042: Plane_025
+    2300044: Plane_026
+    2300046: Plane_040
+    2300048: Rectangl10_Rectangl11
+    2300050: Rectangle1
+    2300052: Rectangle2
+    2300054: Rectangle4
+    3300000: _
+    3300002: ACOTA_curve_
+    3300004: AQ-CARIMBO_curve_
+    3300006: Arch28_001_Arch28_007_Arch28_012_Arch28_017
+    3300008: ARROW3_002
+    3300010: BL_ARROW3_004
+    3300012: BL_ARROW3_005
+    3300014: Circle_001
+    3300016: Perila
+    3300018: Perila01
+    3300020: Plane
+    3300022: Plane_014
+    3300024: Plane_015
+    3300026: Plane_016
+    3300028: Plane_017
+    3300030: Plane_019
+    3300032: Plane_020
+    3300034: Plane_021
+    3300036: Plane_022
+    3300038: Plane_023
+    3300040: Plane_024
+    3300042: Plane_025
+    3300044: Plane_026
+    3300046: Plane_040
+    3300048: Rectangl10_Rectangl11
+    3300050: Rectangle1
+    3300052: Rectangle2
+    3300054: Rectangle4
+    4300000: Rectangl10_Rectangl11
+    4300002: Rectangle4
+    4300004: Rectangle2
+    4300006: Perila
+    4300008: Perila01
+    4300010: Rectangle1
+    4300012: Arch28_001_Arch28_007_Arch28_012_Arch28_017
+    4300014: Plane
+    4300016: _
+    4300018: ACOTA_curve_
+    4300020: AQ-CARIMBO_curve_
+    4300022: ARROW3_002
+    4300024: BL_ARROW3_004
+    4300026: BL_ARROW3_005
+    4300028: Circle_001
+    4300030: Plane_015
+    4300032: Plane_016
+    4300034: Plane_017
+    4300036: Plane_019
+    4300038: Plane_020
+    4300040: Plane_021
+    4300042: Plane_022
+    4300044: Plane_023
+    4300046: Plane_024
+    4300048: Plane_025
+    4300050: Plane_026
+    4300052: Plane_040
+    4300054: Plane_014
+    7400000: Default Take
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,128 @@
+fileFormatVersion: 2
+guid: 39a237d7a20b69949951655f375d97ca
+timeCreated: 1442053093
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: block5_4Ground
+    100004: COBERTUR
+    100006: Plane_018
+    100008: Plane_019
+    100010: Plane_020
+    100012: Plane_021
+    100014: Plane_022
+    100016: Plane_023
+    100018: Plane_024
+    100020: Plane_025
+    100022: PLANTA_B_002
+    400000: //RootNode
+    400002: block5_4Ground
+    400004: COBERTUR
+    400006: Plane_018
+    400008: Plane_019
+    400010: Plane_020
+    400012: Plane_021
+    400014: Plane_022
+    400016: Plane_023
+    400018: Plane_024
+    400020: Plane_025
+    400022: PLANTA_B_002
+    2300000: block5_4Ground
+    2300002: COBERTUR
+    2300004: Plane_018
+    2300006: Plane_019
+    2300008: Plane_020
+    2300010: Plane_021
+    2300012: Plane_022
+    2300014: Plane_023
+    2300016: Plane_024
+    2300018: Plane_025
+    2300020: PLANTA_B_002
+    3300000: block5_4Ground
+    3300002: COBERTUR
+    3300004: Plane_018
+    3300006: Plane_019
+    3300008: Plane_020
+    3300010: Plane_021
+    3300012: Plane_022
+    3300014: Plane_023
+    3300016: Plane_024
+    3300018: Plane_025
+    3300020: PLANTA_B_002
+    4300000: COBERTUR
+    4300002: Plane_018
+    4300004: Plane_019
+    4300006: Plane_020
+    4300008: Plane_021
+    4300010: Plane_022
+    4300012: Plane_023
+    4300014: Plane_024
+    4300016: Plane_025
+    4300018: block5_4Ground
+    4300020: PLANTA_B_002
+    7400000: Default Take
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
