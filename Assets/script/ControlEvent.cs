@@ -933,19 +933,19 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		if (namefloor == "block8_2") {
 
 			//Debug.Log (name);
-			if(isHandicapMode)
+			if (isHandicapMode)
 				list = block8_2Infohandicap.dictionary [name];
 			else
 				list = block8_2Info.dictionary [name];
 
 			
-			if(list[0] == Point8_2.evalator1)
+			if (list [0] == Point8_2.evalator1)
 				list2 = block8_1Info.dictionary ["thangmay1"];
-			else if(list[0] == Point8_2.evalator2)
+			else if (list [0] == Point8_2.evalator2)
 				list2 = block8_1Info.dictionary ["thangmay2"];
-			else if(list[0] == Point8_2.evalator3)
+			else if (list [0] == Point8_2.evalator3)
 				list2 = block8_1Info.dictionary ["thangmay3"];
-			else if(list[0] == Point8_2.evalator4)
+			else if (list [0] == Point8_2.evalator4)
 				list2 = block8_1Info.dictionary ["thangmay4"];
 			else 
 				list2 = block8_1Info.dictionary ["cauthang"];
@@ -963,13 +963,17 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 			cameraPostion = block8_2Info.PositnCamera [name];
 		} else if (namefloor == "block8_1") {
+			heightCenter = 0f;
 			list = block8_1Info.dictionary [name];
 			listpoint = new Vector3[list.Length];
 			orgP = GameObject.Find (namefloor).transform.position;
 
 			cameraPostion = block8_1Info.PositnCamera [name];
-			lkk = block8_1Info.LookatCamera[name];
-			usedefaultlookat = false;
+
+			if (block8_1Info.LookatCamera.ContainsKey (name)) {
+				lkk = block8_1Info.LookatCamera [name];
+				usedefaultlookat = false;
+			}
 
 		} else if (namefloor == "block8_3") {
 			h=1f;
