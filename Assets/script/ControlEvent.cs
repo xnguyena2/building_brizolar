@@ -1456,7 +1456,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		Vector3 start =listpoint [0]; 
 		Vector3 trg = start;
 		for (int i=1; i<listpoint.Length; i++) {
-			create_vessel (start, listpoint [i]);
+			create_vessel (start, listpoint [i], i);
 			start = listpoint [i];
 			trg += start;
 		}
@@ -2011,7 +2011,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 	// Update is called once per frame
 	
-	int countdown = 20;
+	int countdown = 0;
 	
 	public void showLine(){
 		showSearch = true;
@@ -2031,9 +2031,30 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		charKeyboard.enabled = true;
 	}
 	
-	
-	void create_vessel(Vector3 p1, Vector3 p2) {
-		Vector3 pos = Vector3.Lerp(p1,p2,(float)0.5);
+	float distance = 4f,deltad = 0f;
+
+	void create_vessel(Vector3 p1, Vector3 p2, int index) {
+
+		float d = Vector3.Distance (p1, p2);
+		Vector3 v = p2 - p1;
+		int num = (int)((d + deltad) / distance);
+		for (int i = 1; i<=num; i++) {
+
+			Vector3 start = p1 + (i * distance / (d + deltad)) * v;
+
+			GameObject ar = GameObject.Instantiate (arrow)as GameObject;
+			ar.name = "arrowsssss";
+			arrow scri = ar.GetComponent<arrow> ();
+			//scri.beginMove(new Vector3(380.287f,0.15f, 80.62f),new Vector3(373.287f, 0.2788003f, 64.50918f));
+			scri.beginMove (listpoint, start, index);
+
+			//Destroy (ar, 30);
+		}
+		deltad = (deltad + d) % distance;
+		
+
+
+		Vector3 pos = Vector3.Lerp (p1, p2, (float)0.5);
 		GameObject segObj = GameObject.Instantiate (Cylinder)as GameObject;
 		segObj.name = "lineDirection";
 		Vector3 newScale = segObj.transform.localScale;
@@ -2042,7 +2063,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		newScale.z = 0.1051401f;
 		segObj.transform.localScale = newScale;
 		segObj.transform.position = pos;       
-		segObj.transform.up = p2-p1;
+		segObj.transform.up = p2 - p1;
 	}
 
 	bool uppress=false,downpress=false,leftpress=false,rightpress=false;

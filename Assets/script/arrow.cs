@@ -23,16 +23,25 @@ public class arrow : MonoBehaviour {
 		currentTarget = en;
 		listPoint = LV;
 	}
+
+	public void beginMove(Vector3[] LV,Vector3 start, int index){
+		Vector3 end = LV [index];
+		beginMove (start, end);
+		currentTarget = end;
+		listPoint = LV;
+		this.index = index + 1;
+	}
 	
 
 	public void moveNext(){
-		if(listPoint!=null)
-		if (listPoint.Length > index) {
-			Vector3 end = listPoint[index];
-			beginMove (currentTarget, end);
-			currentTarget = end;
-			index++;
-		}
+		if (listPoint != null) {
+			if (listPoint.Length > index) {
+				Vector3 end = listPoint [index];
+				beginMove (currentTarget, end);
+				currentTarget = end;
+				index++;
+			}else Destroy(this.gameObject);
+		}else Destroy(this.gameObject);
 	}
 
 	public void beginMove(Vector3 start , Vector3 end){
@@ -62,7 +71,7 @@ public class arrow : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		float dis = Vector3.Distance (this.transform.position, currentTarget);
-		if (dis > oldD) {
+		if (dis > oldD || dis == 0.0f) {
 			moveNext ();
 			oldD = 100000f;
 		} else {
