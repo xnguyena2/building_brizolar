@@ -978,18 +978,18 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			}
 
 			orgP = GameObject.Find (namefloor).transform.position;
+			cameraPostion = block8_2Info.PositnCamera [name];
 
 
-			cameraPostion = block8_1Info.PositnCamera ["office1"];
+			/*cameraPostion = block8_1Info.PositnCamera ["office1"];
 			lkk = block8_1Info.LookatCamera ["office1"];
-			usedefaultlookat = false;
+			usedefaultlookat = false;*/
 			
 			if (block8_2Info.LookatCamera.ContainsKey (name)) {
-				
-				posss = block8_2Info.PositnCamera [name];
-				lattt = block8_2Info.LookatCamera [name];
-				havenextcamera = true;
-				//usedefaultlookat = false;
+
+				lkk = block8_2Info.LookatCamera [name];
+				//havenextcamera = true;
+				usedefaultlookat = false;
 			}
 
 		} else if (namefloor == "block8_1") {
