@@ -255,6 +255,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	
 	private System.Timers.Timer aTimer;
 	private System.Timers.Timer carouselTimer;
+	private System.Timers.Timer moveNextCamera;
 	
 	public string IP = "http://localhost:8080/";
 	
@@ -391,6 +392,13 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		
 		aTimer.Start ();
 
+		moveNextCamera = new System.Timers.Timer(2000);
+		
+		// Hook up the Elapsed event for the timer. 
+		moveNextCamera.Elapsed += move2NextCamera;
+		
+		moveNextCamera.Stop ();
+
 
 		videoOffice.enabled = false;
 		
@@ -398,6 +406,15 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		StartCoroutine(sysServer());
 		
 		
+	}
+
+	bool beginmovetonextcamera = false;
+	Vector3 lattt,posss;
+	private void move2NextCamera(object o, System.Timers.ElapsedEventArgs e)
+	{
+		//Debug.Log("update sence");
+		beginmovetonextcamera = true;
+		moveNextCamera.Stop ();
 	}
 	
 	public void cancleRangeNumber(){
@@ -913,10 +930,11 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 	List<string> listNameCurrentBlock = new List<string> ();
 	float heightCenter = 50f;
-	bool isHandicapMode = false;
+	bool isHandicapMode = false,havenextcamera = false;
 
 	public void getRoute(string name){
 
+		havenextcamera = false;
 		float h = 0.5f;
 
 		usedefaultlookat = true;
@@ -961,7 +979,19 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 			orgP = GameObject.Find (namefloor).transform.position;
 
-			cameraPostion = block8_2Info.PositnCamera [name];
+
+			cameraPostion = block8_1Info.PositnCamera ["office1"];
+			lkk = block8_1Info.LookatCamera ["office1"];
+			usedefaultlookat = false;
+			
+			if (block8_2Info.LookatCamera.ContainsKey (name)) {
+				
+				posss = block8_2Info.PositnCamera [name];
+				lattt = block8_2Info.LookatCamera [name];
+				havenextcamera = true;
+				//usedefaultlookat = false;
+			}
+
 		} else if (namefloor == "block8_1") {
 			heightCenter = 0f;
 			list = block8_1Info.dictionary [name];
@@ -970,10 +1000,8 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 			cameraPostion = block8_1Info.PositnCamera [name];
 
-			if (block8_1Info.LookatCamera.ContainsKey (name)) {
-				lkk = block8_1Info.LookatCamera [name];
-				usedefaultlookat = false;
-			}
+			lkk = block8_1Info.LookatCamera [name];
+			usedefaultlookat = false;
 
 		} else if (namefloor == "block8_3") {
 			h=1f;
@@ -1465,6 +1493,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		if (usedefaultlookat)
 			setCamera (cameraPostion, trg / listpoint.Length);
 		else setCamera (cameraPostion, lkk);
+		countdown = 0;
 	}
 	
 	void showTransparent(string name, float height){
@@ -2132,6 +2161,10 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			
 			yield return 0;
 		}
+		if (havenextcamera) {
+			moveNextCamera.Start();
+			havenextcamera = false;
+		}
 	}
 
 
@@ -2286,6 +2319,11 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		{
 			target += new Vector3(0,4* Time.deltaTime,0);
 			Camera.main.transform.Translate(new Vector3(0,4* Time.deltaTime,0));
+		}
+
+		if (beginmovetonextcamera) {
+			setCamera(posss,lattt);
+			beginmovetonextcamera = false;
 		}
 
 		if (showSearch) {
