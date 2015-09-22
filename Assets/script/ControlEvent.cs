@@ -929,7 +929,6 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	}
 
 	List<string> listNameCurrentBlock = new List<string> ();
-	float heightCenter = 50f;
 	bool isHandicapMode = false,havenextcamera = false;
 
 	public void getRoute(string name){
@@ -937,7 +936,6 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		havenextcamera = false;
 		float h = 0.5f;
 
-		usedefaultlookat = true;
 		Vector3 lkk = Vector3.zero;
 
 		nameCameraPostion = name.Replace ("office", null);
@@ -957,16 +955,27 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 				list = block8_2Info.dictionary [name];
 
 			
-			if (list [0] == Point8_2.evalator1)
+			if (list [0] == Point8_2.evalator1) {
 				list2 = block8_1Info.dictionary ["thangmay1"];
-			else if (list [0] == Point8_2.evalator2)
+				cameraPostion = block8_1Info.PositnCamera ["office70"];
+				lkk = block8_1Info.LookatCamera ["office70"];
+			} else if (list [0] == Point8_2.evalator2) {
 				list2 = block8_1Info.dictionary ["thangmay2"];
-			else if (list [0] == Point8_2.evalator3)
+				cameraPostion = block8_1Info.PositnCamera ["office55"];
+				lkk = block8_1Info.LookatCamera ["office55"];
+			} else if (list [0] == Point8_2.evalator3) {
 				list2 = block8_1Info.dictionary ["thangmay3"];
-			else if (list [0] == Point8_2.evalator4)
+				cameraPostion = block8_1Info.PositnCamera ["office164"];
+				lkk = block8_1Info.LookatCamera ["office164"];
+			} else if (list [0] == Point8_2.evalator4) {
 				list2 = block8_1Info.dictionary ["thangmay4"];
-			else 
+				cameraPostion = block8_1Info.PositnCamera ["office179"];
+				lkk = block8_1Info.LookatCamera ["office179"];
+			} else {
 				list2 = block8_1Info.dictionary ["cauthang"];
+				cameraPostion = block8_1Info.PositnCamera ["office1"];
+				lkk = block8_1Info.LookatCamera ["office1"];
+			}
 
 
 			listpoint = new Vector3[list.Length + list2.Length];
@@ -978,22 +987,13 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			}
 
 			orgP = GameObject.Find (namefloor).transform.position;
-			cameraPostion = block8_2Info.PositnCamera [name];
 
+			posss = block8_2Info.PositnCamera [name];
+			lattt = block8_2Info.LookatCamera [name];
+			havenextcamera = true;
 
-			/*cameraPostion = block8_1Info.PositnCamera ["office1"];
-			lkk = block8_1Info.LookatCamera ["office1"];
-			usedefaultlookat = false;*/
-			
-			if (block8_2Info.LookatCamera.ContainsKey (name)) {
-
-				lkk = block8_2Info.LookatCamera [name];
-				//havenextcamera = true;
-				usedefaultlookat = false;
-			}
 
 		} else if (namefloor == "block8_1") {
-			heightCenter = 0f;
 			list = block8_1Info.dictionary [name];
 			listpoint = new Vector3[list.Length];
 			orgP = GameObject.Find (namefloor).transform.position;
@@ -1001,26 +1001,36 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			cameraPostion = block8_1Info.PositnCamera [name];
 
 			lkk = block8_1Info.LookatCamera [name];
-			usedefaultlookat = false;
 
 		} else if (namefloor == "block8_3") {
-			h=1f;
+			h = 1f;
 
-			if(isHandicapMode)
+			if (isHandicapMode)
 				list = block8_3Infohandicap.dictionary [name];
 			else
 				list = block8_3Info.dictionary [name];
 
-			if(list[0] == Point8_3.evalator1)
+			if (list [0] == Point8_3.evalator1) {
 				list2 = block8_1Info.dictionary ["thangmay1"];
-			else if(list[0] == Point8_3.evalator2)
+				cameraPostion = block8_1Info.PositnCamera ["office70"];
+				lkk = block8_1Info.LookatCamera ["office70"];
+			} else if (list [0] == Point8_3.evalator2) {
 				list2 = block8_1Info.dictionary ["thangmay2"];
-			else if(list[0] == Point8_3.evalator3)
+				cameraPostion = block8_1Info.PositnCamera ["office55"];
+				lkk = block8_1Info.LookatCamera ["office55"];
+			} else if (list [0] == Point8_3.evalator3) {
 				list2 = block8_1Info.dictionary ["thangmay3"];
-			else if(list[0] == Point8_3.evalator4)
+				cameraPostion = block8_1Info.PositnCamera ["office164"];
+				lkk = block8_1Info.LookatCamera ["office164"];
+			} else if (list [0] == Point8_3.evalator4) {
 				list2 = block8_1Info.dictionary ["thangmay4"];
-			else 
+				cameraPostion = block8_1Info.PositnCamera ["office179"];
+				lkk = block8_1Info.LookatCamera ["office179"];
+			} else {
 				list2 = block8_1Info.dictionary ["cauthang"];
+				cameraPostion = block8_1Info.PositnCamera ["office1"];
+				lkk = block8_1Info.LookatCamera ["office1"];
+			}
 
 			listpoint = new Vector3[list.Length + list2.Length];
 			orgP = GameObject.Find ("block8_1").transform.position;
@@ -1031,36 +1041,50 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			
 			orgP = GameObject.Find (namefloor).transform.position;
 			
-			cameraPostion = block8_2Info.PositnCamera [name];
-		}
-		else if (namefloor == "block9_1")
-        {
+			//if (block8_2Info.LookatCamera.ContainsKey (name)) {
+			
+			posss = block8_3Info.PositnCamera [name];
+			lattt = block8_3Info.LookatCamera [name];
+			havenextcamera = true;
+		} else if (namefloor == "block9_1") {
 
-			list = block9_1Info.dictionary[name];
-            listpoint = new Vector3[list.Length];
-			cameraPostion = block9_1Info.PositnCamera[name];
-			orgP = GameObject.Find(namefloor).transform.position;
+			list = block9_1Info.dictionary [name];
+			listpoint = new Vector3[list.Length];
 			cameraPostion = block9_1Info.PositnCamera [name];
-			lkk = block9_1Info.LookatCamera[name];
-			usedefaultlookat = false;
+			orgP = GameObject.Find (namefloor).transform.position;
+			cameraPostion = block9_1Info.PositnCamera [name];
+			lkk = block9_1Info.LookatCamera [name];
+
 		} else if (namefloor == "block7_1") {
 			list = block7_1Info.dictionary [name];
 			listpoint = new Vector3[list.Length];
-			cameraPostion = block7_1Info.PositnCamera [name];
 
 			orgP = GameObject.Find (namefloor).transform.position;
-		}
-		else if (namefloor == "block7_2") {
+			cameraPostion = block7_1Info.PositnCamera [name];
+			lkk = block7_1Info.LookatCamera [name];
+		} else if (namefloor == "block7_2") {
 			list = block7_2Info.dictionary [name];
 
-			if(list[0] == Point7_2.f1)
+			if (list [0] == Point7_2.f1){
 				list2 = block7_1Info.dictionary ["thangmay1"];
-			else if(list[0] == Point7_2.f2)
+				cameraPostion = block7_1Info.PositnCamera ["office1"];
+				lkk = block7_1Info.LookatCamera ["office1"];
+			}
+			else if (list [0] == Point7_2.f2){
 				list2 = block7_1Info.dictionary ["thangmay2"];
-			else if(list[0] == Point7_2.f3)
+				cameraPostion = block7_1Info.PositnCamera ["office2"];
+				lkk = block7_1Info.LookatCamera ["office2"];
+			}
+			else if (list [0] == Point7_2.f3){
 				list2 = block7_1Info.dictionary ["thangmay3"];
-			else 
+				cameraPostion = block7_1Info.PositnCamera ["office3"];
+				lkk = block7_1Info.LookatCamera ["office3"];
+			}
+			else {
 				list2 = block7_1Info.dictionary ["thangmay4"];
+				cameraPostion = block7_1Info.PositnCamera ["office4"];
+				lkk = block7_1Info.LookatCamera ["office4"];
+			}
 
 			listpoint = new Vector3[list.Length + list2.Length];
 			orgP = GameObject.Find ("block7_1").transform.position;
@@ -1069,29 +1093,41 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 				listpoint [i] = ratetio * (new Vector3 (list2 [i].x, h, list2 [i].z)) + orgP;
 			}
 
-			cameraPostion = block7_2Info.PositnCamera [name];
-			
 			orgP = GameObject.Find (namefloor).transform.position;
-		}
-		else if(namefloor == "block6_4"){
-			heightCenter = -30f;
+			
+			posss = block7_2Info.PositnCamera [name];
+			lattt = block7_2Info.LookatCamera [name];
+			havenextcamera = true;
+
+		} else if (namefloor == "block6_4") {
 			h = 0.5f;
 			
-			if(!isHandicapMode)
+			if (!isHandicapMode)
 				list = block6_4Infohandicap.dictionary [name];
 			else
-				list = block6_4Info.dictionary[name];
+				list = block6_4Info.dictionary [name];
 
-			if(list[0] == Point6_4.evalator1)
+			if (list [0] == Point6_4.evalator1) {
 				list2 = block6_1Info.dictionary ["thangmay1"];
-			else if(list[0] == Point6_4.evalator2)
+				cameraPostion = block6_1Info.PositnCamera ["thangmay1"];
+				lkk = block6_1Info.LookatCamera ["thangmay1"];
+			} else if (list [0] == Point6_4.evalator2) {
 				list2 = block6_1Info.dictionary ["thangmay2"];
-			else if(list[0] == Point6_4handicap.evalator1)
+				cameraPostion = block6_1Info.PositnCamera ["thangmay2"];
+				lkk = block6_1Info.LookatCamera ["thangmay2"];
+			} else if (list [0] == Point6_4handicap.evalator1) {
 				list2 = block6_1Info.dictionary ["thangkeo1"];
-			else if(list[0] == Point6_4handicap.evalator2)
+				cameraPostion = block6_1Info.PositnCamera ["thangkeo1"];
+				lkk = block6_1Info.LookatCamera ["thangkeo1"];
+			} else if (list [0] == Point6_4handicap.evalator2) {
 				list2 = block6_1Info.dictionary ["thangkeo2"];
-			else if(list[0] == Point6_4handicap.evalator3)
+				cameraPostion = block6_1Info.PositnCamera ["thangkeo2"];
+				lkk = block6_1Info.LookatCamera ["thangkeo2"];
+			} else if (list [0] == Point6_4handicap.evalator3) {
 				list2 = block6_1Info.dictionary ["thangkeo3"];
+				cameraPostion = block6_1Info.PositnCamera ["thangkeo3"];
+				lkk = block6_1Info.LookatCamera ["thangkeo3"];
+			}
 
 			listpoint = new Vector3[list.Length + list2.Length];
 
@@ -1103,25 +1139,42 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			
 			orgP = GameObject.Find (namefloor).transform.position;
 
-			cameraPostion = block6_4Info.PositnCamera [name];
-		} 
-		else if(namefloor == "block6_3"){
-			h = 1.5f;
-			if(!isHandicapMode)
+			posss = block6_4Info.PositnCamera [name];
+			lattt = block6_4Info.LookatCamera [name];
+			havenextcamera = true;
+
+		} else if (namefloor == "block6_3") {
+			h = 1f;
+			if (!isHandicapMode)
 				list = block6_3Infohandicap.dictionary [name];
 			else
-			list = block6_3Info.dictionary[name];//
+				list = block6_3Info.dictionary [name];//
 			
-			if(list[0] == Point6_3.evalator1)//
+			if (list [0] == Point6_3.evalator1){
 				list2 = block6_1Info.dictionary ["thangmay1"];
-			else if(list[0] == Point6_3.evalator2)
+				cameraPostion = block6_1Info.PositnCamera ["thangmay1"];
+				lkk = block6_1Info.LookatCamera ["thangmay1"];
+			} else if (list [0] == Point6_3.evalator2) {
 				list2 = block6_1Info.dictionary ["thangmay2"];
+				cameraPostion = block6_1Info.PositnCamera ["thangmay2"];
+				lkk = block6_1Info.LookatCamera ["thangmay2"];
+			}
 			else if(list[0] == Point6_3handicap.evalator1)
+			{
 				list2 = block6_1Info.dictionary ["thangkeo1"];
-			else if(list[0] == Point6_3handicap.evalator2)
+				cameraPostion = block6_1Info.PositnCamera ["thangkeo1"];
+				lkk = block6_1Info.LookatCamera ["thangkeo1"];
+			}
+			else if(list[0] == Point6_3handicap.evalator2){
 				list2 = block6_1Info.dictionary ["thangkeo2"];
-			else if(list[0] == Point6_3handicap.evalator3)
+				cameraPostion = block6_1Info.PositnCamera ["thangkeo2"];
+				lkk = block6_1Info.LookatCamera ["thangkeo2"];
+			}
+			else if(list[0] == Point6_3handicap.evalator3){
 				list2 = block6_1Info.dictionary ["thangkeo3"];
+				cameraPostion = block6_1Info.PositnCamera ["thangkeo3"];
+				lkk = block6_1Info.LookatCamera ["thangkeo3"];
+			}
 			
 			listpoint = new Vector3[list.Length + list2.Length];
 			
@@ -1132,26 +1185,46 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			}
 			
 			orgP = GameObject.Find (namefloor).transform.position;
-			
-			cameraPostion = block6_3Info.PositnCamera [name];
+
+			posss = block6_3Info.PositnCamera [name];
+			lattt = block6_3Info.LookatCamera [name];
+			havenextcamera = true;
+
 		}
 		else if(namefloor == "block6_2"){
 			h = 0.5f;
 			if(!isHandicapMode)
 				list = block6_2Infohandicap.dictionary [name];
 			else
-			list = block6_2Info.dictionary[name];//
+				list = block6_2Info.dictionary[name];//
 			
-			if(list[0] == Point6_2.evalator1)//
+			
+			if (list [0] == Point6_2.evalator1){
 				list2 = block6_1Info.dictionary ["thangmay1"];
-			else if(list[0] == Point6_2.evalator2)
+				cameraPostion = block6_1Info.PositnCamera ["thangmay1"];
+				lkk = block6_1Info.LookatCamera ["thangmay1"];
+			} else if (list [0] == Point6_2.evalator2) {
 				list2 = block6_1Info.dictionary ["thangmay2"];
+				cameraPostion = block6_1Info.PositnCamera ["thangmay2"];
+				lkk = block6_1Info.LookatCamera ["thangmay2"];
+			}
 			else if(list[0] == Point6_2handicap.evalator1)
+			{
 				list2 = block6_1Info.dictionary ["thangkeo1"];
-			else if(list[0] == Point6_2handicap.evalator2)
+				cameraPostion = block6_1Info.PositnCamera ["thangkeo1"];
+				lkk = block6_1Info.LookatCamera ["thangkeo1"];
+			}
+			else if(list[0] == Point6_2handicap.evalator2){
 				list2 = block6_1Info.dictionary ["thangkeo2"];
-			else if(list[0] == Point6_2handicap.evalator3)
+				cameraPostion = block6_1Info.PositnCamera ["thangkeo2"];
+				lkk = block6_1Info.LookatCamera ["thangkeo2"];
+			}
+			else if(list[0] == Point6_2handicap.evalator3){
 				list2 = block6_1Info.dictionary ["thangkeo3"];
+				cameraPostion = block6_1Info.PositnCamera ["thangkeo3"];
+				lkk = block6_1Info.LookatCamera ["thangkeo3"];
+			}
+
 			
 			listpoint = new Vector3[list.Length + list2.Length];
 			
@@ -1163,7 +1236,10 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			
 			orgP = GameObject.Find (namefloor).transform.position;
 			
-			cameraPostion = block6_2Info.PositnCamera [name];
+			posss = block6_2Info.PositnCamera [name];
+			lattt = block6_2Info.LookatCamera [name];
+			havenextcamera = true;
+
 		}
 		else if(namefloor == "block5_4"){
 			h = 0.5f;
@@ -1172,13 +1248,22 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			else
 				list = block5_4Info.dictionary[name];
 
-			if(list[0] == Point5_4handicap.evalator1)
+			if(list[0] == Point5_4handicap.evalator1){
 				list2 = block5_1Info.dictionary ["thangkeo1"];
-			else if(list[0] == Point5_4handicap.evalator2)
+				cameraPostion = block5_1Info.PositnCamera ["thangkeo1"];
+				lkk = block5_1Info.LookatCamera ["thangkeo1"];
+			}
+			else if(list[0] == Point5_4handicap.evalator2){
 				list2 = block5_1Info.dictionary ["thangkeo2"];
-			else
+				cameraPostion = block5_1Info.PositnCamera ["thangkeo2"];
+				lkk = block5_1Info.LookatCamera ["thangkeo2"];
+			}
+			else{
 				list2 = block5_1Info.dictionary ["thangmay"];
-			
+				cameraPostion = block5_1Info.PositnCamera ["thangmay"];
+				lkk = block5_1Info.LookatCamera ["thangmay"];
+			}
+
 			listpoint = new Vector3[list.Length + list2.Length];
 			
 			orgP = GameObject.Find ("block5_1").transform.position;
@@ -1189,7 +1274,10 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			
 			orgP = GameObject.Find (namefloor).transform.position;
 			
-			cameraPostion = block5_4Info.PositnCamera [name];
+			posss = block5_4Info.PositnCamera [name];
+			lattt = block5_4Info.LookatCamera [name];
+			havenextcamera = true;
+
 		}
 		else if(namefloor == "block5_3"){
 			h = 0.5f;
@@ -1198,12 +1286,21 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			else
 				list = block5_3Info.dictionary[name];//
 			
-			if(list[0] == Point5_3handicap.evalator1)
+			if(list[0] == Point5_3handicap.evalator1){
 				list2 = block5_1Info.dictionary ["thangkeo1"];
-			else if(list[0] == Point5_3handicap.evalator2)
+				cameraPostion = block5_1Info.PositnCamera ["thangkeo1"];
+				lkk = block5_1Info.LookatCamera ["thangkeo1"];
+			}
+			else if(list[0] == Point5_3handicap.evalator2){
 				list2 = block5_1Info.dictionary ["thangkeo2"];
-			else
+				cameraPostion = block5_1Info.PositnCamera ["thangkeo2"];
+				lkk = block5_1Info.LookatCamera ["thangkeo2"];
+			}
+			else{
 				list2 = block5_1Info.dictionary ["thangmay"];
+				cameraPostion = block5_1Info.PositnCamera ["thangmay"];
+				lkk = block5_1Info.LookatCamera ["thangmay"];
+			}
 			
 			listpoint = new Vector3[list.Length + list2.Length];
 			
@@ -1215,7 +1312,11 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			
 			orgP = GameObject.Find (namefloor).transform.position;
 			
-			cameraPostion = block5_3Info.PositnCamera [name];
+			
+			posss = block5_3Info.PositnCamera [name];
+			lattt = block5_3Info.LookatCamera [name];
+			havenextcamera = true;
+
 		}
 		else if(namefloor == "block5_2"){
 			h = 0.5f;
@@ -1224,12 +1325,21 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			else
 				list = block5_2Info.dictionary[name];//
 			
-			if(list[0] == Point5_2handicap.evalator1)
+			if(list[0] == Point5_2handicap.evalator1){
 				list2 = block5_1Info.dictionary ["thangkeo1"];
-			else if(list[0] == Point5_2handicap.evalator2)
+				cameraPostion = block5_1Info.PositnCamera ["thangkeo1"];
+				lkk = block5_1Info.LookatCamera ["thangkeo1"];
+			}
+			else if(list[0] == Point5_2handicap.evalator2){
 				list2 = block5_1Info.dictionary ["thangkeo2"];
-			else
+				cameraPostion = block5_1Info.PositnCamera ["thangkeo2"];
+				lkk = block5_1Info.LookatCamera ["thangkeo2"];
+			}
+			else{
 				list2 = block5_1Info.dictionary ["thangmay"];
+				cameraPostion = block5_1Info.PositnCamera ["thangmay"];
+				lkk = block5_1Info.LookatCamera ["thangmay"];
+			}
 			
 			listpoint = new Vector3[list.Length + list2.Length];
 			
@@ -1241,7 +1351,10 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			
 			orgP = GameObject.Find (namefloor).transform.position;			
 			
-			cameraPostion = block5_2Info.PositnCamera [name];
+			posss = block5_2Info.PositnCamera [name];
+			lattt = block5_2Info.LookatCamera [name];
+			havenextcamera = true;
+
 		}
 		else if(namefloor == "block4_4"){
 			h = 0.5f;
@@ -1250,12 +1363,22 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			else
 				list = block4_4Info.dictionary[name];//
 			
-			if(list[0] == Point4_4handicap.evalator1)
+			if(list[0] == Point4_4handicap.evalator1){
 				list2 = block4_1Info.dictionary ["thangkeo1"];
+				cameraPostion = block5_1Info.PositnCamera ["thangkeo1"];
+				lkk = block5_1Info.LookatCamera ["thangkeo1"];
+			}
 			else if(list[0] == Point4_4handicap.evalator2)
+			{
 				list2 = block4_1Info.dictionary ["thangkeo2"];
-			else
+				cameraPostion = block5_1Info.PositnCamera ["thangkeo2"];
+				lkk = block5_1Info.LookatCamera ["thangkeo2"];
+			}
+			else{
 				list2 = block4_1Info.dictionary ["thangmay"];
+				cameraPostion = block5_1Info.PositnCamera ["thangmay"];
+				lkk = block5_1Info.LookatCamera ["thangmay"];
+			}
 			
 			listpoint = new Vector3[list.Length + list2.Length];
 			
@@ -1266,9 +1389,11 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			}
 			
 			orgP = GameObject.Find (namefloor).transform.position;
-
-			cameraPostion = block4_4Info.PositnCamera [name];
 			
+			posss = block4_4Info.PositnCamera [name];
+			lattt = block4_4Info.LookatCamera [name];
+			havenextcamera = true;
+
 		}
 		else if(namefloor == "block4_3"){
 			h = 0.5f;
@@ -1277,12 +1402,23 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			else
 				list = block4_3Info.dictionary[name];//
 			
-			if(list[0] == Point4_3handicap.evalator1)
-				list2 = block4_1Info.dictionary ["thangkeo1"];
+			
+			if(list[0] == Point4_3handicap.evalator1){
+				list2 = block4_3Info.dictionary ["thangkeo1"];
+				cameraPostion = block5_1Info.PositnCamera ["thangkeo1"];
+				lkk = block5_1Info.LookatCamera ["thangkeo1"];
+			}
 			else if(list[0] == Point4_3handicap.evalator2)
-				list2 = block4_1Info.dictionary ["thangkeo2"];
-			else
-				list2 = block4_1Info.dictionary ["thangmay"];
+			{
+				list2 = block4_3Info.dictionary ["thangkeo2"];
+				cameraPostion = block5_1Info.PositnCamera ["thangkeo2"];
+				lkk = block5_1Info.LookatCamera ["thangkeo2"];
+			}
+			else{
+				list2 = block4_3Info.dictionary ["thangmay"];
+				cameraPostion = block5_1Info.PositnCamera ["thangmay"];
+				lkk = block5_1Info.LookatCamera ["thangmay"];
+			}
 			
 			listpoint = new Vector3[list.Length + list2.Length];
 			
@@ -1293,8 +1429,11 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			}
 			
 			orgP = GameObject.Find (namefloor).transform.position;
-			cameraPostion = block4_3Info.PositnCamera [name];
 			
+			posss = block4_3Info.PositnCamera [name];
+			lattt = block4_3Info.LookatCamera [name];
+			havenextcamera = true;
+
 		}
 		else if(namefloor == "block4_2"){
 			h = 0.5f;
@@ -1304,12 +1443,22 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			else
 				list = block4_2Info.dictionary[name];//
 			
-			if(list[0] == Point4_2handicap.evalator1)
-				list2 = block4_1Info.dictionary ["thangkeo1"];
+			if(list[0] == Point4_2handicap.evalator1){
+				list2 = block4_2Info.dictionary ["thangkeo1"];
+				cameraPostion = block5_1Info.PositnCamera ["thangkeo1"];
+				lkk = block5_1Info.LookatCamera ["thangkeo1"];
+			}
 			else if(list[0] == Point4_2handicap.evalator2)
-				list2 = block4_1Info.dictionary ["thangkeo2"];
-			else
-				list2 = block4_1Info.dictionary ["thangmay"];
+			{
+				list2 = block4_2Info.dictionary ["thangkeo2"];
+				cameraPostion = block5_1Info.PositnCamera ["thangkeo2"];
+				lkk = block5_1Info.LookatCamera ["thangkeo2"];
+			}
+			else{
+				list2 = block4_2Info.dictionary ["thangmay"];
+				cameraPostion = block5_1Info.PositnCamera ["thangmay"];
+				lkk = block5_1Info.LookatCamera ["thangmay"];
+			}
 			
 			listpoint = new Vector3[list.Length + list2.Length];
 			
@@ -1320,7 +1469,10 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			}
 			
 			orgP = GameObject.Find (namefloor).transform.position;
-			cameraPostion = block4_2Info.PositnCamera [name];
+			posss = block4_2Info.PositnCamera [name];
+			lattt = block4_2Info.LookatCamera [name];
+			havenextcamera = true;
+
 			
 		}
 		else if(namefloor == "block3_4" || namefloor == "block1_4"){
@@ -1331,12 +1483,21 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			else
 				list = block3_4Info.dictionary[name];//
 			
-			if(list[0] == Point3_4handicap.evalator1)
+			if(list[0] == Point3_4handicap.evalator1){
 				list2 = block3_1Info.dictionary ["thangkeo1"];
-			else if(list[0] == Point3_4handicap.evalator2)
+				cameraPostion = block5_1Info.PositnCamera ["thangkeo1"];
+				lkk = block5_1Info.LookatCamera ["thangkeo1"];
+			}
+			else if(list[0] == Point3_4handicap.evalator2){
 				list2 = block3_1Info.dictionary ["thangkeo2"];
-			else
+				cameraPostion = block5_1Info.PositnCamera ["thangkeo2"];
+				lkk = block5_1Info.LookatCamera ["thangkeo2"];
+			}
+			else{
 				list2 = block3_1Info.dictionary ["thangmay"];
+				cameraPostion = block5_1Info.PositnCamera ["thangmay"];
+				lkk = block5_1Info.LookatCamera ["thangmay"];
+			}
 			
 			listpoint = new Vector3[list.Length + list2.Length];
 			
@@ -1347,9 +1508,11 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			}
 			
 			orgP = GameObject.Find (namefloor).transform.position;
-			cameraPostion = block3_4Info.PositnCamera [name];
-			lkk = block3_4Info.LookatCamera[name];
-			usedefaultlookat = false;
+
+			posss = block3_4Info.PositnCamera [name];
+			lattt = block3_4Info.LookatCamera [name];
+			havenextcamera = true;
+
 			
 		}
 		else if(namefloor == "block3_3" || namefloor == "block1_3"){
@@ -1360,12 +1523,21 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			else
 				list = block3_3Info.dictionary[name];//
 			
-			if(list[0] == Point3_3handicap.evalator1)
+			if(list[0] == Point3_3handicap.evalator1){
 				list2 = block3_1Info.dictionary ["thangkeo1"];
-			else if(list[0] == Point3_3handicap.evalator2)
+				cameraPostion = block5_1Info.PositnCamera ["thangkeo1"];
+				lkk = block5_1Info.LookatCamera ["thangkeo1"];
+			}
+			else if(list[0] == Point3_3handicap.evalator2){
 				list2 = block3_1Info.dictionary ["thangkeo2"];
-			else
+				cameraPostion = block5_1Info.PositnCamera ["thangkeo2"];
+				lkk = block5_1Info.LookatCamera ["thangkeo2"];
+			}
+			else{
 				list2 = block3_1Info.dictionary ["thangmay"];
+				cameraPostion = block5_1Info.PositnCamera ["thangmay"];
+				lkk = block5_1Info.LookatCamera ["thangmay"];
+			}
 			
 			listpoint = new Vector3[list.Length + list2.Length];
 			
@@ -1376,9 +1548,10 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			}
 			
 			orgP = GameObject.Find (namefloor).transform.position;
-			cameraPostion = block3_3Info.PositnCamera [name];
-			lkk = block3_3Info.LookatCamera[name];
-			usedefaultlookat = false;
+			posss = block3_3Info.PositnCamera [name];
+			lattt = block3_3Info.LookatCamera [name];
+			havenextcamera = true;
+
 		}
 		else if(namefloor == "block3_2" || namefloor == "block2_2" || namefloor == "block1_2"){
 
@@ -1389,12 +1562,21 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			else
 				list = block3_2Info.dictionary[name];//
 			
-			if(list[0] == Point3_2handicap.evalator1)
+			if(list[0] == Point3_2handicap.evalator1){
 				list2 = block3_1Info.dictionary ["thangkeo1"];
-			else if(list[0] == Point3_2handicap.evalator2)
+				cameraPostion = block5_1Info.PositnCamera ["thangkeo1"];
+				lkk = block5_1Info.LookatCamera ["thangkeo1"];
+			}
+			else if(list[0] == Point3_2handicap.evalator2){
 				list2 = block3_1Info.dictionary ["thangkeo2"];
-			else
+				cameraPostion = block5_1Info.PositnCamera ["thangkeo2"];
+				lkk = block5_1Info.LookatCamera ["thangkeo2"];
+			}
+			else{
 				list2 = block3_1Info.dictionary ["thangmay"];
+				cameraPostion = block5_1Info.PositnCamera ["thangmay"];
+				lkk = block5_1Info.LookatCamera ["thangmay"];
+			}
 			
 			listpoint = new Vector3[list.Length + list2.Length];
 			
@@ -1406,10 +1588,10 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			
 			orgP = GameObject.Find (namefloor).transform.position;
 
-			cameraPostion = block3_2Info.PositnCamera [name];
-			
-			lkk = block3_2Info.LookatCamera[name];
-			usedefaultlookat = false;
+			posss = block3_2Info.PositnCamera [name];
+			lattt = block3_2Info.LookatCamera [name];
+			havenextcamera = true;
+
 		}
 		else if(namefloor == "block2_4"){
 			h = 0.5f;
@@ -1419,12 +1601,21 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 				list = block2_4Info.dictionary[name];//
 
 
-			if(list[0] == Point2_4handicap.evalator1)
+			if(list[0] == Point2_4handicap.evalator1){
 				list2 = block3_1Info.dictionary ["thangkeo1"];
-			else if(list[0] == Point2_4handicap.evalator2)
+				cameraPostion = block5_1Info.PositnCamera ["thangkeo1"];
+				lkk = block5_1Info.LookatCamera ["thangkeo1"];
+			}
+			else if(list[0] == Point2_4handicap.evalator2){
 				list2 = block3_1Info.dictionary ["thangkeo2"];
-			else
+				cameraPostion = block5_1Info.PositnCamera ["thangkeo2"];
+				lkk = block5_1Info.LookatCamera ["thangkeo2"];
+			}
+			else{
 				list2 = block3_1Info.dictionary ["thangmay"];
+				cameraPostion = block5_1Info.PositnCamera ["thangmay"];
+				lkk = block5_1Info.LookatCamera ["thangmay"];
+			}
 			
 			listpoint = new Vector3[list.Length + list2.Length];
 			
@@ -1436,10 +1627,10 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			
 			orgP = GameObject.Find (namefloor).transform.position;
 			
-			cameraPostion = block2_4Info.PositnCamera [name];
-			
-			lkk = block2_4Info.LookatCamera[name];
-			usedefaultlookat = false;
+			posss = block2_4Info.PositnCamera [name];
+			lattt = block2_4Info.LookatCamera [name];
+			havenextcamera = true;
+
 		}
 		else if(namefloor == "block2_3"){
 			h = 0.5f;
@@ -1449,12 +1640,21 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 				list = block2_3Info.dictionary[name];//
 			
 			
-			if(list[0] == Point2_3handicap.evalator1)
+			if(list[0] == Point2_3handicap.evalator1){
 				list2 = block3_1Info.dictionary ["thangkeo1"];
-			else if(list[0] == Point2_3handicap.evalator2)
+				cameraPostion = block5_1Info.PositnCamera ["thangkeo1"];
+				lkk = block5_1Info.LookatCamera ["thangkeo1"];
+			}
+			else if(list[0] == Point2_3handicap.evalator2){
 				list2 = block3_1Info.dictionary ["thangkeo2"];
-			else
+				cameraPostion = block5_1Info.PositnCamera ["thangkeo2"];
+				lkk = block5_1Info.LookatCamera ["thangkeo2"];
+			}
+			else{
 				list2 = block3_1Info.dictionary ["thangmay"];
+				cameraPostion = block5_1Info.PositnCamera ["thangmay"];
+				lkk = block5_1Info.LookatCamera ["thangmay"];
+			}
 			
 			listpoint = new Vector3[list.Length + list2.Length];
 			
@@ -1468,7 +1668,8 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			
 			cameraPostion = block2_3Info.PositnCamera [name];
 			lkk = block2_3Info.LookatCamera[name];
-			usedefaultlookat = false;
+			havenextcamera = true;
+
 		}
 
 
@@ -1482,17 +1683,11 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		endpoint.transform.position = new Vector3 (listpoint [listpoint.Length - 1].x, listpoint [listpoint.Length - 1].y, listpoint [listpoint.Length - 1].z);
 
 		Vector3 start =listpoint [0]; 
-		Vector3 trg = start;
 		for (int i=1; i<listpoint.Length; i++) {
 			create_vessel (start, listpoint [i], i);
 			start = listpoint [i];
-			trg += start;
 		}
-		trg.y = trg.y + heightCenter;
-		//Debug.Log (trg / listpoint.Length);
-		if (usedefaultlookat)
-			setCamera (cameraPostion, trg / listpoint.Length);
-		else setCamera (cameraPostion, lkk);
+		setCamera (cameraPostion, lkk);
 		countdown = 0;
 	}
 	
@@ -2132,19 +2327,23 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		rightpress = false;
 	}
 	public float transitionDuration = 3.0f;
+	bool havenewcameraanimation = false, stillanimation = false;
+
 
 	IEnumerator LerpToPosition(float lerpSpeed, Vector3 newPosition, Vector3 lookat)
 	{   
+		if (stillanimation)
+			havenewcameraanimation = true;
+		while (havenewcameraanimation) {
+			yield return 0;
+		}
+		stillanimation = true;
+
 		float t = 0.0f;
 		Vector3 startingPos = Camera.main.transform.position;
-		while (t < 1.0f)
+		while (t < 1.0f && !havenewcameraanimation)
 		{
 			t += Time.deltaTime * (Time.timeScale / lerpSpeed);
-
-
-
-			//Camera.main.transform.position = Vector3.Lerp(startingPos, newPosition, t);
-			//Camera.main.transform.LookAt(lookat);
 
 			var targetRotation = Quaternion.LookRotation(lookat - Camera.main.transform.position, Vector3.up);
 			Camera.main.transform.rotation = Quaternion.Slerp(Camera.main.transform.rotation, targetRotation, t); 
@@ -2152,7 +2351,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			yield return 0;
 		}
 		t = 0.0f;
-		while (t < 1.0f)
+		while (t < 1.0f && !havenewcameraanimation)
 		{
 			t += Time.deltaTime * (Time.timeScale / lerpSpeed);			
 			
@@ -2165,6 +2364,8 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			moveNextCamera.Start();
 			havenextcamera = false;
 		}
+		havenewcameraanimation = false;
+		stillanimation = false;
 	}
 
 
@@ -2175,7 +2376,6 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	string result = "",resultPostion = "",frontPoints = "";
 	int index = 1,blckk=7,flor=1;
 	string nameCameraPostion;
-	bool usedefaultlookat = true;
 
 
 	void Update () {
@@ -2219,25 +2419,25 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		
 		if (Input.GetKey (KeyCode.X)) {
 			/*
-			for(int i = 1;i<5;i++){
-				GameObject x = GameObject.Find("b71"+i);
-				if(x!=null){
-					
-					resultPostion +="\nstatic Vector3 o"+i+" = new Vector3 "+ (x.transform.position - GameObject.Find("block7_1").transform.position).ToString () + ";";
+			for(int i = 1;i<175;i++){
+				GameObject x = GameObject.Find("b83"+i);
+				if(x!=null){					
+					resultPostion +="\nstatic Vector3 f"+i+" = new Vector3 "+ (x.transform.position-GameObject.Find("block8_3").transform.position).ToString () + ";";
 				}
 			}
 			writetofile.append2File(pointPostions,resultPostion);
-			resultPostion="";
-*/
+			resultPostion="";*/
+			/*
 			Vector3 p = cube.transform.position - GameObject.Find("block8_3").transform.position;
 			resultPostion ="\nstatic Vector3 p"+index+" = new Vector3 "+ p.ToString () + ";";
 			writetofile.append2File(pointPostions,resultPostion);
 			index++;
 			resultPostion="";
-/*
+
+*/
 			string line;
 			string re = "";
-			
+
 			// Read the file and display it line by line.
 			Vector3 p = -GameObject.Find("block8_3").transform.position;// - GameObject.Find("block9_1").transform.position;
 			System.IO.StreamReader file = 
@@ -2256,7 +2456,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			}
 			
 			file.Close();
-			writetofile.write2File("C:\\Users\\Nguyen Phong\\Downloads\\unity\\test2\\building_Data\\data\\re.txt",re);*/
+			writetofile.write2File("C:\\Users\\Nguyen Phong\\Downloads\\unity\\test2\\building_Data\\data\\re.txt",re);
 		}
 
 		if (Input.GetKey (KeyCode.C)) {

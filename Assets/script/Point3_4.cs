@@ -94,14 +94,15 @@ namespace AssemblyCSharp
 		static Vector3[] office20 = new Vector3[] { evalator, start, f20, o20 };
 
 		
-		static Vector3 pos1 = new Vector3 (294.2F, 78.0F, 240.8F);
-		static Vector3 lookat1 = new Vector3 (293.7F, 3.3F, 190.6F);
-		static Vector3 pos2 = new Vector3 (286.8F, 77.6F, 247.7F);
-		static Vector3 lookat2 = new Vector3 (286.4F, -0.6F, 189.6F);
-		static Vector3 pos3 = new Vector3 (295.2F, 82.3F, 240.6F);
-		static Vector3 lookat3 = new Vector3 (294.9F, -6.4F, 184.1F);
-		static Vector3 pos4 = new Vector3 (280.1F, 82.5F, 242.9F);
-		static Vector3 lookat4 = new Vector3 (281.6F, 1.5F, 185.0F);
+		
+		static Vector3 pos1 = new Vector3 (290.7F, 78.0F, 237.8F);
+		static Vector3 lookat1 = new Vector3 (292.8F, 3.3F, 190.6F);
+		static Vector3 pos2 = new Vector3 (295.2F, 77.6F, 237.9F);
+		static Vector3 lookat2 = new Vector3 (296.1F, -0.6F, 189.6F);
+		static Vector3 pos3 = new Vector3 (301.5F, 82.3F, 230.9F);
+		static Vector3 lookat3 = new Vector3 (300.3F, -6.4F, 184.1F);
+		static Vector3 pos4 = new Vector3 (294.8F, 80.7F, 234.0F);
+		static Vector3 lookat4 = new Vector3 (297.1F, -1.9F, 185.0F);
 		static Vector3 pos5 = new Vector3 (283.0F, 83.6F, 232.5F);
 		static Vector3 lookat5 = new Vector3 (286.5F, 3.7F, 185.6F);
 		static Vector3 pos6 = new Vector3 (284.9F, 77.1F, 236.1F);
@@ -110,31 +111,30 @@ namespace AssemblyCSharp
 		static Vector3 lookat7 = new Vector3 (281.4F, -1.4F, 185.6F);
 		static Vector3 pos8 = new Vector3 (291.6F, 74.9F, 238.4F);
 		static Vector3 lookat8 = new Vector3 (290.8F, -1.8F, 185.6F);
-		static Vector3 pos9 = new Vector3 (277.9F, 76.5F, 255.4F);
-		static Vector3 lookat9 = new Vector3 (279.9F, -1.9F, 185.3F);
+		static Vector3 pos9 = new Vector3 (273.7F, 79.1F, 228.2F);
+		static Vector3 lookat9 = new Vector3 (279.9F, 2.5F, 185.3F);
 		static Vector3 pos10 = new Vector3 (279.7F, 89.9F, 233.1F);
 		static Vector3 lookat10 = new Vector3 (287.6F, 10.8F, 184.0F);
-		static Vector3 pos11 = new Vector3 (285.5F, 82.8F, 247.2F);
-		static Vector3 lookat11 = new Vector3 (287.6F, -1.9F, 182.9F);
-		static Vector3 pos12 = new Vector3 (285.9F, 90.3F, 235.0F);
-		static Vector3 lookat12 = new Vector3 (284.3F, -5.1F, 181.7F);
-		static Vector3 pos13 = new Vector3 (278.2F, 96.9F, 231.5F);
-		static Vector3 lookat13 = new Vector3 (280.1F, -8.7F, 181.4F);
-		static Vector3 pos14 = new Vector3 (292.4F, 72.5F, 254.1F);
-		static Vector3 lookat14 = new Vector3 (286.9F, -7.6F, 180.6F);
-		static Vector3 pos15 = new Vector3 (290.7F, 70.7F, 253.6F);
-		static Vector3 lookat15 = new Vector3 (291.1F, -6.1F, 180.6F);
-		static Vector3 pos16 = new Vector3 (291.9F, 87.3F, 242.3F);
-		static Vector3 lookat16 = new Vector3 (288.0F, -12.3F, 181.4F);
-		static Vector3 pos18 = new Vector3 (288.8F, 72.2F, 246.6F);
-		static Vector3 lookat18 = new Vector3 (293.7F, -3.7F, 182.9F);
-		static Vector3 pos19 = new Vector3 (278.2F, 75.9F, 240.0F);
-		static Vector3 lookat19 = new Vector3 (290.4F, -1.5F, 184.0F);
-		static Vector3 pos20 = new Vector3 (290.8F, 76.7F, 244.7F);
-		static Vector3 lookat20 = new Vector3 (292.1F, -1.2F, 185.4F);
-		
-		static Vector3 pos17 = new Vector3 (289.2F, 72.9F, 243.6F);
-		static Vector3 lookat17 = new Vector3 (292.0F, -3.2F, 184.0F);
+		static Vector3 pos11 = new Vector3 (285.0F, 79.1F, 235.7F);
+		static Vector3 lookat11 = new Vector3 (287.6F, 7.2F, 182.9F);
+		static Vector3 pos12 = new Vector3 (282.8F, 77.4F, 237.7F);
+		static Vector3 lookat12 = new Vector3 (284.3F, -0.8F, 181.7F);
+		static Vector3 pos13 = new Vector3 (278.8F, 89.3F, 222.9F);
+		static Vector3 lookat13 = new Vector3 (280.1F, -4.5F, 181.4F);
+		static Vector3 pos14 = new Vector3 (275.9F, 74.7F, 231.9F);
+		static Vector3 lookat14 = new Vector3 (286.9F, -5.0F, 180.6F);
+		static Vector3 pos15 = new Vector3 (276.9F, 75.8F, 227.5F);
+		static Vector3 lookat15 = new Vector3 (291.1F, 1.2F, 180.6F);
+		static Vector3 pos16 = new Vector3 (275.0F, 77.6F, 220.4F);
+		static Vector3 lookat16 = new Vector3 (285.9F, 1.3F, 181.4F);
+		static Vector3 pos17 = new Vector3 (270.3F, 77.6F, 227.4F);
+		static Vector3 lookat17 = new Vector3 (288.8F, 4.1F, 184.0F);
+		static Vector3 pos18 = new Vector3 (276.1F, 71.9F, 219.6F);
+		static Vector3 lookat18 = new Vector3 (286.5F, 12.0F, 182.9F);
+		static Vector3 pos19 = new Vector3 (276.6F, 65.1F, 233.2F);
+		static Vector3 lookat19 = new Vector3 (289.6F, 9.2F, 184.0F);
+		static Vector3 pos20 = new Vector3 (278.1F, 76.9F, 217.6F);
+		static Vector3 lookat20 = new Vector3 (286.0F, -1.2F, 185.4F);
 
 		
 		public Dictionary<string, Vector3[]> dictionary = new Dictionary<string, Vector3[]>();

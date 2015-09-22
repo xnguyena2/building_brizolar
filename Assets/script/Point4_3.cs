@@ -50,22 +50,41 @@ namespace AssemblyCSharp
 		static Vector3[] office8 = new Vector3[] { evalator, start, f5, f8, o8 };
 
 		
-		static Vector3 pos1 = new Vector3 (314.4F, 91.4F, 266.3F);
-		static Vector3 pos2 = new Vector3 (320.2F, 95.1F, 261.8F);
-		static Vector3 pos3 = new Vector3 (311.1F, 88.0F, 255.1F);
-		static Vector3 pos4 = new Vector3 (319.4F, 89.6F, 260.4F);
-		static Vector3 pos5 = new Vector3 (296.3F, 79.2F, 264.3F);
-		static Vector3 pos6 = new Vector3 (286.1F, 92.9F, 259.8F);
-		static Vector3 pos7 = new Vector3 (295.2F, 94.4F, 259.5F);
-		static Vector3 pos8 = new Vector3 (272.9F, 87.2F, 271.9F);
+		static Vector3 pos1 = new Vector3 (276.0F, 66.6F, 247.1F);
+		static Vector3 lookat1 = new Vector3 (285.4F, 22.0F, 197.3F);
+		static Vector3 pos2 = new Vector3 (284.2F, 74.7F, 256.3F);
+		static Vector3 lookat2 = new Vector3 (286.4F, 19.8F, 196.1F);
+		static Vector3 pos3 = new Vector3 (319.3F, 81.3F, 250.2F);
+		static Vector3 lookat3 = new Vector3 (302.4F, 8.0F, 191.4F);
+		static Vector3 pos4 = new Vector3 (323.6F, 59.7F, 260.3F);
+		static Vector3 lookat4 = new Vector3 (301.0F, 4.4F, 192.5F);
+		static Vector3 pos5 = new Vector3 (256.4F, 79.3F, 227.5F);
+		static Vector3 lookat5 = new Vector3 (278.9F, 13.2F, 190.1F);
+		static Vector3 pos6 = new Vector3 (266.1F, 89.4F, 229.2F);
+		static Vector3 lookat6 = new Vector3 (275.4F, 8.0F, 189.3F);
+		static Vector3 pos7 = new Vector3 (262.0F, 70.6F, 228.5F);
+		static Vector3 lookat7 = new Vector3 (279.2F, 9.7F, 186.0F);
+		static Vector3 pos8 = new Vector3 (261.6F, 76.2F, 222.3F);
+		static Vector3 lookat8 = new Vector3 (277.5F, 13.4F, 186.7F);
+
 
 		
 		public Dictionary<string, Vector3[]> dictionary = new Dictionary<string, Vector3[]>();
 		public Dictionary<string,Vector3> PositnCamera = new Dictionary<string, Vector3> ();
+		public Dictionary<string,Vector3> LookatCamera = new Dictionary<string, Vector3> ();
 
 		public Point4_3 ()
 		{
 			
+			LookatCamera.Add("office1",lookat1);
+			LookatCamera.Add("office2",lookat2);
+			LookatCamera.Add("office3",lookat3);
+			LookatCamera.Add("office4",lookat4);
+			LookatCamera.Add("office5",lookat5);
+			LookatCamera.Add("office6",lookat6);
+			LookatCamera.Add("office7",lookat7);
+			LookatCamera.Add("office8",lookat8);
+
 			PositnCamera.Add("office1",pos1);
 			PositnCamera.Add("office2",pos2);
 			PositnCamera.Add("office3",pos3);

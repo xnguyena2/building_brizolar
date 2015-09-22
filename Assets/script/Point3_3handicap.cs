@@ -77,7 +77,7 @@ namespace AssemblyCSharp
 		static Vector3[] office1 = new Vector3[] { evalator1, f1, o1 };
 		static Vector3[] office2 = new Vector3[] { evalator1, f2, o2 };
 		static Vector3[] office3 = new Vector3[] { evalator1, f3, o3 };		
-		static Vector3[] office4 = new Vector3[] { evalator2, f4, o4 };		
+		static Vector3[] office4 = new Vector3[] { evalator1, f4, o4 };		
 
 		static Vector3[] office5 = new Vector3[] { evalator2, f5, o5 };
 		static Vector3[] office6 = new Vector3[] { evalator2, f6, o6 };		
