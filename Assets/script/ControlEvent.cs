@@ -427,7 +427,19 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	
 	
 	public void numberSearchPress(){
+		//lastRotate = Camera.main.transform.rotation;
+		madeButtonTransparent (btnLeft);
+		madeButtonTransparent (btnRight);
+		madeButtonTransparent (btnDown);
+		madeButtonTransparent (btnUp);
+		madeButtonTransparent (NextBtn);
+
+		
+		charKeyboard.enabled = false;
+		ContainResult.enabled = false;
+
 		showFullTransparent ();
+
 		showBlockSelector ();
 	}
 	
@@ -451,6 +463,13 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			numSearchBtn.image.sprite = Resources.Load<Sprite> ("numberhandi");
 			segmentSearchBtn.image.sprite = Resources.Load<Sprite> ("segmenthandi");
 			blockSelectorimg.sprite = Resources.Load<Sprite> ("blockselectorhandi");
+			for(int i =1;i<9;i++)
+				GameObject.Find("b"+i).GetComponent<Button>().image.sprite = Resources.Load<Sprite> ("block"+i+"handi");
+			for(int i =101;i<119;i++)
+				GameObject.Find(i.ToString()).GetComponent<Button>().image.sprite = Resources.Load<Sprite> (i+"handi");
+			GameObject.Find("121").GetComponent<Button>().image.sprite = Resources.Load<Sprite> ("121handi");
+			GameObject.Find("pleaseselectyourblock").GetComponent<Image>().sprite = Resources.Load<Sprite> ("selectorblockarrowhandi");
+			GameObject.Find("pleaseselectyournumber").GetComponent<Image>().sprite = Resources.Load<Sprite> ("selectornumberarrowhandi");
 		} else {
 			searchBtn.image.sprite = Resources.Load<Sprite> ("atoz");
 			bathroomSearchBtn.image.sprite = Resources.Load<Sprite> ("bathroom");
@@ -458,6 +477,13 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			numSearchBtn.image.sprite = Resources.Load<Sprite> ("number");
 			segmentSearchBtn.image.sprite = Resources.Load<Sprite> ("segment");
 			blockSelectorimg.sprite = Resources.Load<Sprite> ("blockselector");
+			for(int i =1;i<9;i++)
+				GameObject.Find("b"+i).GetComponent<Button>().image.sprite = Resources.Load<Sprite> ("block"+i);
+			for(int i =101;i<119;i++)
+				GameObject.Find(i.ToString()).GetComponent<Button>().image.sprite = Resources.Load<Sprite> (i.ToString());
+			GameObject.Find("121").GetComponent<Button>().image.sprite = Resources.Load<Sprite> ("121");
+			GameObject.Find("pleaseselectyourblock").GetComponent<Image>().sprite = Resources.Load<Sprite> ("selectorblockarrow");
+			GameObject.Find("pleaseselectyournumber").GetComponent<Image>().sprite = Resources.Load<Sprite> ("selectornumberarrow");
 		}
 		isHandicapMode = !isHandicapMode;
 		handicap = !handicap;
@@ -678,39 +704,11 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		Vector3 postion = PositnBlock [floorName + "h"];
 		GameObject.Find (floorName).transform.position = postion;
 	}
+
+	string nameOfrandSearchBlock = "";
 	
 	public void selectBlock(Button btn){
-		string name = btn.name;
-		switch (name) {
-		case "center":
-			currentBlock = 0;
-			break;
-		case "bl1":
-			currentBlock = 1;
-			break;
-		case "bl2":
-			currentBlock = 2;
-			break;
-		case "bl3":
-			currentBlock = 3;
-			break;
-		case "bl4":
-			currentBlock = 4;
-			break;
-		case "bl5":
-			currentBlock = 5;
-			break;
-		case "bl6":
-			currentBlock = 6;
-			break;
-		case "bl7":
-			currentBlock = 7;
-			break;
-		case "bl8":
-			currentBlock = 8;
-			break;
-			
-		}
+		nameOfrandSearchBlock = btn.name;
 		showRangeNumber ();
 		//blockSelector.enabled = false;
 		hideBlockSelector ();
@@ -782,54 +780,22 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	}
 	
 	public void rangeBtnPress(Button btn){
-		string name = btn.name;
-		int min = 0, max = 0;
-		switch (name) {
-		case "r1":
-			min=0;
-			max=141;
-			break;
-		case "r2":
-			min=142;
-			max=178;
-			break;
-		case "r3":
-			min=201;
-			max=241;
-			break;
-		case "r4":
-			min=242;
-			max=265;
-			break;
-		case "r5":
-			min=301;
-			max=342;
-			break;
-		case "r6":
-			min=343;
-			max=371;
-			break;
-		case "r7":
-			min=401;
-			max=405;
-			break;
-		}
+
 		cancleRangeNumber ();
 		showresult ();
-		searchOfficeInRange (currentBlock, max, min);
+		searchOfficeInRange (btn.name);
 	}
 	
-	public void searchOfficeInRange(int blocknumber,int max, int min){
+	public void searchOfficeInRange(string number){
 		
 		foreach (string x in infomationForSearch) {
 			if(x!=""){
 				string[] info = x.Split(new string[]{" "},System.StringSplitOptions.None);
-				if((blocknumber == int.Parse(info[0][1].ToString())))
+				if(info[0].IndexOf(nameOfrandSearchBlock)>=0)
 				{
-					int number = int.Parse(info[2]);
-					if (number <= max && number >= min) {
+					if (info[2].IndexOf(number)>=0) {
 						//Debug.Log (x);
-						StartCoroutine(loadTexture4Office(info[0],info[1]));
+						StartCoroutine(loadTexture4Office(info[0],info[2]));
 						
 					}
 				}
@@ -852,6 +818,9 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 	public void searchPress(){
 		//lastRotate = Camera.main.transform.rotation;
+		
+		hideBlockSelector ();
+
 		madeButtonTransparent (btnLeft);
 		madeButtonTransparent (btnRight);
 		madeButtonTransparent (btnDown);
@@ -2327,11 +2296,15 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		rightpress = false;
 	}
 	public float transitionDuration = 3.0f;
+
 	bool havenewcameraanimation = false, stillanimation = false;
 
 
 	IEnumerator LerpToPosition(float lerpSpeed, Vector3 newPosition, Vector3 lookat)
 	{   
+		bool hncmr = false;
+		if (havenextcamera)
+			hncmr = true;
 		if (stillanimation)
 			havenewcameraanimation = true;
 		while (havenewcameraanimation) {
@@ -2349,6 +2322,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			Camera.main.transform.rotation = Quaternion.Slerp(Camera.main.transform.rotation, targetRotation, t); 
 
 			yield return 0;
+
 		}
 		t = 0.0f;
 		while (t < 1.0f && !havenewcameraanimation)
@@ -2360,7 +2334,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			
 			yield return 0;
 		}
-		if (havenextcamera) {
+		if (hncmr) {
 			moveNextCamera.Start();
 			havenextcamera = false;
 		}

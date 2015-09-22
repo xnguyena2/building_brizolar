@@ -37,14 +37,16 @@ namespace AssemblyCSharp
 		
 
 
-		static Vector3 pos1 = new Vector3 (289.0F, 87.5F, 245.7F);
+		
+		static Vector3 pos1 = new Vector3 (274.0F, 87.5F, 243.4F);
 		static Vector3 lookat1 = new Vector3 (289.9F, 6.0F, 191.0F);
-		static Vector3 pos2 = new Vector3 (292.0F, 94.1F, 233.9F);
+		static Vector3 pos2 = new Vector3 (304.5F, 69.1F, 234.9F);
 		static Vector3 lookat2 = new Vector3 (291.3F, 2.5F, 190.1F);
-		static Vector3 pos3 = new Vector3 (291.9F, 77.9F, 239.7F);
+		static Vector3 pos3 = new Vector3 (266.9F, 77.9F, 233.2F);
 		static Vector3 lookat3 = new Vector3 (292.6F, -4.1F, 186.0F);
-		static Vector3 pos4 = new Vector3 (291.0F, 82.3F, 243.5F);
+		static Vector3 pos4 = new Vector3 (353.8F, 62.5F, 236.2F);
 		static Vector3 lookat4 = new Vector3 (291.7F, -5.9F, 187.2F);
+
 		
 		public Dictionary<string, Vector3[]> dictionary = new Dictionary<string, Vector3[]>();
 		public Dictionary<string,Vector3> PositnCamera = new Dictionary<string, Vector3> ();
