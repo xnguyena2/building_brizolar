@@ -28,6 +28,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	public Button calcelSearch;
 	public Button NextBtn;
 	public RawImage Videocarosel;
+	public Text showTime;
 
 
 	public Material yellowTarget;
@@ -53,16 +54,9 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	
 	public Color c2 = new Color (137 / 255f, 6 / 255f, 6 / 255f);
 
-
 	float ratetio = 1f;
 
 	private Dictionary<string,Vector3> PositnBlock = new Dictionary<string, Vector3> ();
-
-
-
-
-
-
 
 	Vector3 block9_1 = new Vector3 (310.4033F, 0.5F, 172.7136F);
 	Vector3 block8_1 = new Vector3 (299.8048f, 0.41f, 186.1202f);
@@ -159,7 +153,6 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	Vector3 block1_2transparent = new Vector3 (299.9835f, 1000f, 188f);
 	Vector3 block1_3transparent = new Vector3 (298.9566f, 1000f, 186.9f);
 
-
 	
 	Vector3 routeblock8_2 = new Vector3 (300.5f, 35f, 189.3f);
 
@@ -197,9 +190,6 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 	Point7_1 block7_1Info = new Point7_1();
 	Point7_2 block7_2Info = new Point7_2();
-	
-	//Point7_1 block6_1Info = new Point6_1 ();
-	//Point7_2 block6_2Info = new Point6_2 ();
 
 	Point6_1 block6_1Info = new Point6_1 ();
 	Point6_2 block6_2Info = new Point6_2 ();	
@@ -256,6 +246,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	private System.Timers.Timer aTimer;
 	private System.Timers.Timer carouselTimer;
 	private System.Timers.Timer moveNextCamera;
+	private System.Timers.Timer showTimeTimer;
 	
 	public string IP = "http://localhost:8080/";
 	
@@ -384,7 +375,13 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		
 		hideBlockSelector ();
 		hideRangeNuber ();
-		
+
+		showTimeTimer = new System.Timers.Timer (1000);
+
+		showTimeTimer.Elapsed += OnShowTimedEvent;
+
+		showTimeTimer.Start ();
+
 		aTimer = new System.Timers.Timer(30000);
 		
 		// Hook up the Elapsed event for the timer. 
@@ -470,6 +467,9 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			GameObject.Find("121").GetComponent<Button>().image.sprite = Resources.Load<Sprite> ("121handi");
 			GameObject.Find("pleaseselectyourblock").GetComponent<Image>().sprite = Resources.Load<Sprite> ("selectorblockarrowhandi");
 			GameObject.Find("pleaseselectyournumber").GetComponent<Image>().sprite = Resources.Load<Sprite> ("selectornumberarrowhandi");
+			if(currentBlock>5)
+				GameObject.Find("floorselector").GetComponent<Image>().sprite = Resources.Load<Sprite> (currentBlock+"_"+currentFloor+"handi");
+			else GameObject.Find("floorselector").GetComponent<Image>().sprite = Resources.Load<Sprite> ("3_"+currentFloor+"handi");
 		} else {
 			searchBtn.image.sprite = Resources.Load<Sprite> ("atoz");
 			bathroomSearchBtn.image.sprite = Resources.Load<Sprite> ("bathroom");
@@ -484,15 +484,23 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			GameObject.Find("121").GetComponent<Button>().image.sprite = Resources.Load<Sprite> ("121");
 			GameObject.Find("pleaseselectyourblock").GetComponent<Image>().sprite = Resources.Load<Sprite> ("selectorblockarrow");
 			GameObject.Find("pleaseselectyournumber").GetComponent<Image>().sprite = Resources.Load<Sprite> ("selectornumberarrow");
+			if(currentBlock>5)
+				GameObject.Find("floorselector").GetComponent<Image>().sprite = Resources.Load<Sprite> (currentBlock+"_"+currentFloor);
+			else GameObject.Find("floorselector").GetComponent<Image>().sprite = Resources.Load<Sprite> ("3_"+currentFloor);
 		}
 		isHandicapMode = !isHandicapMode;
 		handicap = !handicap;
 	}
 
 	int currentFloor = 1;
+	string handi = "handi";
 
 	public void gotoFloor1(){
 
+		if (isHandicapMode) {
+			handi = "handi";
+		} else
+			handi = null;
 		
 		/*switch (currentFloor) {
 		case 1:
@@ -512,7 +520,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		fl1.image.sprite = Resources.Load<Sprite> ("1_click");*/
 
 		stopRoute ();
-		string floorName = "block" + currentBlock + "_" + currentFloor;
+		string floorName = currentBlock + "_" + currentFloor+handi;
 
 		hideBlck (currentBlock, currentFloor);
 		currentFloor = 1;
@@ -520,7 +528,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		showBlck (currentBlock,currentFloor);
 
 		if (currentBlock > 0 && currentBlock < 6)
-			floorSelector.sprite = Resources.Load<Sprite> ("block1to5_1");
+			floorSelector.sprite = Resources.Load<Sprite> ("3_1"+handi);
 		else 
 			floorSelector.sprite = Resources.Load<Sprite> (floorName);
 
@@ -530,6 +538,10 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	}
 	public void gotoFloor2(){
 		
+		if (isHandicapMode) {
+			handi = "handi";
+		} else
+			handi = null;
 		/*switch (currentFloor) {
 		case 1:
 			fl1.image.sprite = Resources.Load<Sprite> ("1");
@@ -553,12 +565,12 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 		hideBlck (currentBlock, currentFloor);
 		currentFloor = 2;
-		floorName = "block" + currentBlock + "_" + currentFloor;
+		floorName = currentBlock + "_" + currentFloor+handi;
 
 
 		showBlck (currentBlock,currentFloor);
 		if (currentBlock > 0 && currentBlock < 6)
-			floorSelector.sprite = Resources.Load<Sprite> ("block1to5_2");
+			floorSelector.sprite = Resources.Load<Sprite> ("3_2"+handi);
 		else 
 			floorSelector.sprite = Resources.Load<Sprite> (floorName);
 
@@ -567,6 +579,11 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 	}
 	public void gotoFloor3(){
+		
+		if (isHandicapMode) {
+			handi = "handi";
+		} else
+			handi = null;
 
 		if ( currentBlock != 7) {
 		
@@ -593,12 +610,12 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 			hideBlck (currentBlock, currentFloor);
 			currentFloor = 3;
-			floorName = "block" + currentBlock + "_" + currentFloor;
+			floorName = currentBlock + "_" + currentFloor+handi;
 
 			showBlck (currentBlock,currentFloor);
 
 			if (currentBlock > 0 && currentBlock < 6)
-				floorSelector.sprite = Resources.Load<Sprite> ("block1to5_3");
+				floorSelector.sprite = Resources.Load<Sprite> ("3_3"+handi);
 			else 
 				floorSelector.sprite = Resources.Load<Sprite> (floorName);
 
@@ -606,7 +623,11 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		}
 	}
 	public void gotoFloor4(){
-
+		
+		if (isHandicapMode) {
+			handi = "handi";
+		} else
+			handi = null;
 		if (currentBlock > 0 && currentBlock < 7) {
 			/*switch (currentFloor) {
 		case 1:
@@ -631,12 +652,12 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		
 			hideBlck (currentBlock, currentFloor);
 			currentFloor = 4;
-			floorName = "block" + currentBlock + "_" + currentFloor;
+			floorName = currentBlock + "_" + currentFloor+handi;
 		
 			showBlck (currentBlock,currentFloor);
 
 			if (currentBlock > 0 && currentBlock < 6)
-				floorSelector.sprite = Resources.Load<Sprite> ("block1to5_4");
+				floorSelector.sprite = Resources.Load<Sprite> ("3_4"+handi);
 			else 
 				floorSelector.sprite = Resources.Load<Sprite> (floorName);
 
@@ -802,6 +823,11 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			}
 		}
 	}
+	bool isShowTime = true;
+	private void OnShowTimedEvent(object o, System.Timers.ElapsedEventArgs e)
+	{
+		isShowTime = true;
+	}
 	
 	private void OnTimedEvent(object o, System.Timers.ElapsedEventArgs e)
 	{
@@ -833,8 +859,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		charKeyboard.enabled = true;
 		ContainResult.enabled = false;
 	}
-	
-	bool showSearch = false;
+
 	
 	bool changesize = true;
 	public void resize(){
@@ -1652,12 +1677,12 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		endpoint.transform.position = new Vector3 (listpoint [listpoint.Length - 1].x, listpoint [listpoint.Length - 1].y, listpoint [listpoint.Length - 1].z);
 
 		Vector3 start =listpoint [0]; 
+		startPoint = true;
 		for (int i=1; i<listpoint.Length; i++) {
 			create_vessel (start, listpoint [i], i);
 			start = listpoint [i];
 		}
 		setCamera (cameraPostion, lkk);
-		countdown = 0;
 	}
 	
 	void showTransparent(string name, float height){
@@ -1814,7 +1839,6 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		GameObject.Find ("printpoint").transform.position = new Vector3 (0, 1000, 0);
 		LineRenderer lineRenderer = GetComponent<LineRenderer>();
 		lineRenderer.SetVertexCount(0);
-		showSearch = false;
 		
 		foreach (var gameObj in FindObjectsOfType(typeof(GameObject)) as GameObject[])
 		{
@@ -1830,17 +1854,10 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		stopRoute ();
 		hideSecondBlock ();
 		hideBlck (currentBlock, currentFloor);
-		//showBlck (name);
+
 		currentBlock = int.Parse (name [5].ToString ());
 		currentFloor = int.Parse (name [7].ToString ());
 		gotoFloor1 ();
-		/*floorSelector.sprite = Resources.Load<Sprite> ("block" + currentBlock + "_" + currentFloor);
-		/enableAllfloor ();
-		if (currentBlock == 8)
-			disableFloor (3);
-		else if (currentBlock < 4 || currentBlock == 7) {
-			disableFloor(2);
-		}*/
 	}
 	
 	Button CreateButton(string name,Button buttonPrefab, Canvas canvas, Vector2 cornerTopRight, Vector2 cornerBottomLeft,Vector2 postion)
@@ -2202,12 +2219,8 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 	Quaternion lastRotate;
 
-	// Update is called once per frame
-	
-	int countdown = 0;
 	
 	public void showLine(){
-		showSearch = true;
 		LineRenderer lineRenderer = gameObject.GetComponent<LineRenderer>();
 		//lineRenderer.material = new Material(Shader.Find("Particles/Additive"));
 		lineRenderer.SetColors(c2, c2);
@@ -2224,7 +2237,9 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		charKeyboard.enabled = true;
 	}
 	
-	float distance = 4f,deltad = 0f;
+	public float distance = 4f;
+	float deltad = 0f;
+	bool startPoint = false;
 
 	void create_vessel(Vector3 p1, Vector3 p2, int index) {
 
@@ -2233,18 +2248,19 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		int num = (int)((d + deltad) / distance);
 		for (int i = 1; i<=num; i++) {
 
-			Vector3 start = p1 + (i * distance / (d + deltad)) * v;
+			Vector3 start = p1 + ((i * distance - deltad) / d) * v;
 
 			GameObject ar = GameObject.Instantiate (arrow)as GameObject;
 			ar.name = "arrowsssss";
 			arrow scri = ar.GetComponent<arrow> ();
-			//scri.beginMove(new Vector3(380.287f,0.15f, 80.62f),new Vector3(373.287f, 0.2788003f, 64.50918f));
 			scri.beginMove (listpoint, start, index);
+			if(startPoint){
+				scri.thisIsStartPoint();
+				startPoint = false;
+			}
 
-			//Destroy (ar, 30);
 		}
-		deltad = (deltad + d) % distance;
-		
+		deltad = (d + deltad) - num * distance;
 
 
 		Vector3 pos = Vector3.Lerp (p1, p2, (float)0.5);
@@ -2362,6 +2378,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		}else if (downpress) {
 			arroundDown();
 		}
+
 		
 		if (update) {
 
@@ -2499,7 +2516,11 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			setCamera(posss,lattt);
 			beginmovetonextcamera = false;
 		}
-
+		if (isShowTime) {
+			
+			showTime.text = System.DateTime.Now.ToString ();
+		}
+		/*
 		if (showSearch) {
 			if (countdown < 0) {
 				countdown = 20;
@@ -2512,7 +2533,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 				
 			} else
 				countdown--;
-		}
+		}*/
 	}
 }
 

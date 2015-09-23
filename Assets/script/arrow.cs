@@ -12,6 +12,8 @@ public class arrow : MonoBehaviour {
 	Vector3 currentTarget;
 	int index = 2;
 	float oldD = 10000f;
+	float distance = 4f;
+	bool isend = false;
 	// Use this for initialization
 	void Start () {
 	}
@@ -67,6 +69,10 @@ public class arrow : MonoBehaviour {
 		rb.AddForce ((end - start).normalized * speed);
 
 	}
+
+	public void thisIsStartPoint(){
+		isend = true;
+	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -76,6 +82,19 @@ public class arrow : MonoBehaviour {
 			oldD = 100000f;
 		} else {
 			oldD = dis;
+		}
+
+		if (isend) {
+			if (Vector3.Distance (this.transform.position, listPoint [0]) > distance){
+				GameObject arrowss = GameObject.Find("arrowsssss");
+				isend = false;
+				GameObject ar = GameObject.Instantiate (arrowss) as GameObject;
+				ar.name = "arrowsssss";
+				arrow scri = ar.GetComponent<arrow> ();
+				//scri.beginMove(new Vector3(380.287f, 0.15f, 80.62f),new Vector3(373.287f, 0.2788003f, 64.50918f));
+				scri.beginMove (listPoint);
+				scri.thisIsStartPoint();
+			}
 		}
 	}
 
