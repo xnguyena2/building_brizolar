@@ -29,6 +29,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	public Button NextBtn;
 	public RawImage Videocarosel;
 	public Text showTime;
+	public Text showInfomation;
 
 
 	public Material yellowTarget;
@@ -1702,6 +1703,8 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			blcName = nameOfSearchBlock;
 			madeButtonTransparent(NextBtn);
 		}
+
+		showInfomation.text = blcName;
 
 		hideSearchBlock ();
 
