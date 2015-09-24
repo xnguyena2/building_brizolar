@@ -225,8 +225,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 	
 	public const string imageType = ".png",videoType = ".ogv";
-	public GameObject arrow = null;
-	
+	public GameObject arrow = null;	
 	
 	public GameObject Cylinder = null;
 	
@@ -501,23 +500,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			handi = "handi";
 		} else
 			handi = null;
-		
-		/*switch (currentFloor) {
-		case 1:
-			fl1.image.sprite = Resources.Load<Sprite> ("1");
-			break;
-		case 2:
-			fl2.image.sprite = Resources.Load<Sprite> ("2");
-			break;
-		case 3:
-			fl3.image.sprite = Resources.Load<Sprite> ("3");
-			break;
-		case 4:
-			fl4.image.sprite = Resources.Load<Sprite> ("4");
-			break;
-		}
-		
-		fl1.image.sprite = Resources.Load<Sprite> ("1_click");*/
+
 
 		stopRoute ();
 		string floorName = currentBlock + "_" + currentFloor+handi;
@@ -542,22 +525,6 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			handi = "handi";
 		} else
 			handi = null;
-		/*switch (currentFloor) {
-		case 1:
-			fl1.image.sprite = Resources.Load<Sprite> ("1");
-			break;
-		case 2:
-			fl2.image.sprite = Resources.Load<Sprite> ("2");
-			break;
-		case 3:
-			fl3.image.sprite = Resources.Load<Sprite> ("3");
-			break;
-		case 4:
-			fl4.image.sprite = Resources.Load<Sprite> ("4");
-			break;
-		}
-		
-		fl2.image.sprite = Resources.Load<Sprite> ("2_click");*/
 
 		stopRoute ();
 		string floorName;
@@ -587,22 +554,6 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 		if ( currentBlock != 7) {
 		
-			/*switch (currentFloor) {
-		case 1:
-			fl1.image.sprite = Resources.Load<Sprite> ("1");
-			break;
-		case 2:
-			fl2.image.sprite = Resources.Load<Sprite> ("2");
-			break;
-		case 3:
-			fl3.image.sprite = Resources.Load<Sprite> ("3");
-			break;
-		case 4:
-			fl4.image.sprite = Resources.Load<Sprite> ("4");
-			break;
-		}
-		
-		fl3.image.sprite = Resources.Load<Sprite> ("3_click");*/
 
 			stopRoute ();
 			string floorName;
@@ -629,22 +580,6 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		} else
 			handi = null;
 		if (currentBlock > 0 && currentBlock < 7) {
-			/*switch (currentFloor) {
-		case 1:
-			fl1.image.sprite = Resources.Load<Sprite> ("1");
-			break;
-		case 2:
-			fl2.image.sprite = Resources.Load<Sprite> ("2");
-			break;
-		case 3:
-			fl3.image.sprite = Resources.Load<Sprite> ("3");
-			break;
-		case 4:
-			fl4.image.sprite = Resources.Load<Sprite> ("4");
-			break;
-		}
-		
-		fl4.image.sprite = Resources.Load<Sprite> ("4_click");*/
 
 			stopRoute ();
 
@@ -1697,18 +1632,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		ga.transform.position = new Vector3 (ga.transform.position.x, height, ga.transform.position.z);
 	}
 
-	string nameOfBlockTransparent = null;
-
-	void hideSecondBlock (){
-		if (nameOfBlockTransparent != null) {
-			hideBlck (8,2);
-			nameOfBlockTransparent=null;
-		}
-	}
-
 	void setCamera(Vector3 postion, Vector3 lookAt){
-		/*Camera.main.transform.position = postion;
-		Camera.main.transform.LookAt (lookAt);*/
 		StartCoroutine(LerpToPosition(transitionDuration, postion, lookAt)); 
 		target = lookAt;
 	}
@@ -1819,8 +1743,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		
 		getRoute ("office" + blcName.Substring (3));
 
-		showLine ();
-		//showSearch = true;
+		//showLine ();
 
 		hideFullTransparent ();
 		//int org = currentIndex - maxOffice;
@@ -1852,27 +1775,13 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	
 	public void showBlock(string name){
 		stopRoute ();
-		hideSecondBlock ();
 		hideBlck (currentBlock, currentFloor);
 
 		currentBlock = int.Parse (name [5].ToString ());
 		currentFloor = int.Parse (name [7].ToString ());
 		gotoFloor1 ();
 	}
-	
-	Button CreateButton(string name,Button buttonPrefab, Canvas canvas, Vector2 cornerTopRight, Vector2 cornerBottomLeft,Vector2 postion)
-	{
-		var button = Object.Instantiate(buttonPrefab, Vector3.zero, Quaternion.identity) as Button;
-		button.name = name;
-		var rectTransform = button.GetComponent<RectTransform>();
-		rectTransform.SetParent(canvas.transform);
-		rectTransform.anchorMax = cornerTopRight;
-		rectTransform.anchorMin = cornerBottomLeft;
-		rectTransform.offsetMax = Vector2.zero;
-		rectTransform.offsetMin = Vector2.zero;
-		rectTransform.localPosition = postion;//new Vector3 (100, 100, 100);
-		return button;
-	}
+
 	
 	float indexofbutton = 0f;
 	
@@ -2110,13 +2019,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		cleanAllOffice ();
 		searchOffice (btn.name.ToLower () [0]);
 	}
-	
-	public void changeLevel(){
-		//Application.LoadLevel("block7");
-		//GameObject instance = Instantiate(Resources.Load("block1_2.blend", typeof(GameObject)),new Vector3 (0, 1,0), Quaternion.identity) as GameObject;
-		
-		
-	}
+
 
 	int currentCarousel = 0,timeDisplay = -100;
 	bool shownextCarousel = false,haveVdieonow = false,firstLoadCarousel = true;
@@ -2520,20 +2423,6 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			
 			showTime.text = System.DateTime.Now.ToString ();
 		}
-		/*
-		if (showSearch) {
-			if (countdown < 0) {
-				countdown = 20;
-				GameObject ar = GameObject.Instantiate (arrow)as GameObject;
-				ar.name = "arrowsssss";
-				arrow scri = ar.GetComponent<arrow> ();
-				//scri.beginMove(new Vector3(380.287f, 0.15f, 80.62f),new Vector3(373.287f, 0.2788003f, 64.50918f));
-				scri.beginMove (listpoint);
-				//Destroy (ar, 30);
-				
-			} else
-				countdown--;
-		}*/
 	}
 }
 

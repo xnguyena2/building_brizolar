@@ -7,7 +7,7 @@ public class arrow : MonoBehaviour {
 
 	
 	public float speed = 0.05f;
-	Rigidbody rb;
+	public Rigidbody rb;
 	Vector3[] listPoint;
 	Vector3 currentTarget;
 	int index = 2;
@@ -45,7 +45,7 @@ public class arrow : MonoBehaviour {
 			}else Destroy(this.gameObject);
 		}else Destroy(this.gameObject);
 	}
-
+	bool firstSet = true;
 	public void beginMove(Vector3 start , Vector3 end){
 		//Vector3 start = new Vector3(380.287f, 0.15f, 80.62f);
 		//Vector3 end = new Vector3(373.287f, 0.2788003f, 64.50918f);
@@ -53,7 +53,11 @@ public class arrow : MonoBehaviour {
 
 
 		Vector3 _direction = (end - start).normalized;
-		
+
+
+		/*
+		 * 
+		 * this part for rotation
 		//create the rotation we need to be in to look at the target
 		Quaternion  _lookRotation = Quaternion.LookRotation(_direction);
 		
@@ -62,11 +66,15 @@ public class arrow : MonoBehaviour {
 
 		//this.transform.rotation = Quaternion.Euler (anglex, angley, -anglez);
 
+		 */
 
+		rb.velocity = _direction * Vector3.Distance (rb.velocity, Vector3.zero);//Vector3.zero
 
-		rb = this.GetComponent<Rigidbody>();
-		rb.velocity = Vector3.zero;
-		rb.AddForce ((end - start).normalized * speed);
+		if (firstSet) 
+		{
+			rb.AddForce (_direction * speed);//alway run here
+			firstSet=false;
+		}
 
 	}
 
@@ -91,7 +99,6 @@ public class arrow : MonoBehaviour {
 				GameObject ar = GameObject.Instantiate (arrowss) as GameObject;
 				ar.name = "arrowsssss";
 				arrow scri = ar.GetComponent<arrow> ();
-				//scri.beginMove(new Vector3(380.287f, 0.15f, 80.62f),new Vector3(373.287f, 0.2788003f, 64.50918f));
 				scri.beginMove (listPoint);
 				scri.thisIsStartPoint();
 			}
