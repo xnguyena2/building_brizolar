@@ -1,12 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\script\ControlEvent.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\script\arrow.cs">
     <Files>
-      <File FileName="Assets\script\ControlEvent.cs" Line="1635" Column="50" />
+      <File FileName="Assets\script\ControlEvent.cs" Line="2222" Column="2" />
       <File FileName="Assets\script\Point7_1.cs" Line="1" Column="1" />
       <File FileName="Assets\script\Point7_2.cs" Line="1" Column="1" />
-      <File FileName="Assets\script\arrow.cs" Line="81" Column="33" />
-      <File FileName="Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\RigidbodyFirstPersonController.cs" Line="1" Column="1" />
+      <File FileName="Assets\script\arrow.cs" Line="13" Column="20" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

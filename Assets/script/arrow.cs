@@ -10,10 +10,12 @@ public class arrow : MonoBehaviour {
 	public Rigidbody rb;
 	Vector3[] listPoint;
 	Vector3 currentTarget;
+	Vector3 StartPoint;
 	int index = 2;
 	float oldD = 10000f;
 	float distance = 4f;
-	bool isend = false;
+	bool isend = false,firstCreate = true;
+
 	// Use this for initialization
 	void Start () {
 	}
@@ -21,6 +23,7 @@ public class arrow : MonoBehaviour {
 	public void beginMove(Vector3[] LV){
 		Vector3 be = LV [0];
 		Vector3 en = LV [1];
+		StartPoint = be;
 		beginMove (be, en);
 		currentTarget = en;
 		listPoint = LV;
@@ -28,6 +31,7 @@ public class arrow : MonoBehaviour {
 
 	public void beginMove(Vector3[] LV,Vector3 start, int index){
 		Vector3 end = LV [index];
+		StartPoint = LV [0];
 		beginMove (start, end);
 		currentTarget = end;
 		listPoint = LV;
@@ -49,7 +53,12 @@ public class arrow : MonoBehaviour {
 	public void beginMove(Vector3 start , Vector3 end){
 		//Vector3 start = new Vector3(380.287f, 0.15f, 80.62f);
 		//Vector3 end = new Vector3(373.287f, 0.2788003f, 64.50918f);
-		this.transform.position = start;
+		//this.transform.position = start;
+		if (firstCreate) {
+			this.transform.position = start;
+			firstCreate = false;
+		} else
+			start = this.transform.position;
 
 
 		Vector3 _direction = (end - start).normalized;
@@ -93,7 +102,7 @@ public class arrow : MonoBehaviour {
 		}
 
 		if (isend) {
-			if (Vector3.Distance (this.transform.position, listPoint [0]) > distance){
+			if (Vector3.Distance (this.transform.position, StartPoint) > distance){
 				GameObject arrowss = GameObject.Find("arrowsssss");
 				isend = false;
 				GameObject ar = GameObject.Instantiate (arrowss) as GameObject;

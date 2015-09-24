@@ -2329,6 +2329,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			resultPostion="";
 
 */
+			/*
 			string line;
 			string re = "";
 
@@ -2350,7 +2351,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			}
 			
 			file.Close();
-			writetofile.write2File("C:\\Users\\Nguyen Phong\\Downloads\\unity\\test2\\building_Data\\data\\re.txt",re);
+			writetofile.write2File("C:\\Users\\Nguyen Phong\\Downloads\\unity\\test2\\building_Data\\data\\re.txt",re);*/
 		}
 
 		if (Input.GetKey (KeyCode.C)) {
