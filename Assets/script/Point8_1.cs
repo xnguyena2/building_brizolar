@@ -1244,7 +1244,7 @@ namespace AssemblyCSharp
 		static Vector3[] thangmay1 = new Vector3[] { start, m1, m18, m19, m29, m30, evalator1 };
 		static Vector3[] thangmay2 = new Vector3[] { start, m1, m18, m19, evalator2 };
 		static Vector3[] thangmay3 = new Vector3[] { start, m1, m87, evalator3 };
-		static Vector3[] thangmay4 = new Vector3[] { start, m1, m87, m88, m89, m90, m91, m92, thang4, evalator4 };
+		static Vector3[] thangmay4 = new Vector3[] { start, m1, m87, m92, thang4, evalator4 };
 		
 		
 		public Dictionary<string, Vector3[]> dictionary = new Dictionary<string, Vector3[]>();

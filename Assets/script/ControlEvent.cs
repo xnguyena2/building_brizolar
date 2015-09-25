@@ -31,6 +31,10 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	public Text showTime;
 	public Text showInfomation;
 
+	public GameObject startAnimation;
+	public GameObject endAnimation;
+	public GameObject printPoint;
+
 
 	public Material yellowTarget;
 
@@ -52,8 +56,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	
 	
 	public Canvas ContainResult;
-	
-	public Color c2 = new Color (137 / 255f, 6 / 255f, 6 / 255f);
+
 
 	float ratetio = 1f;
 
@@ -236,8 +239,6 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	
 	
 	public bool update = false;
-		
-	public float widthLinear = 0.1f;
 	
 	public float perspectiveZoomSpeed = 0.5f;        // The rate of change of the field of view in perspective mode.
 	public float orthoZoomSpeed = 0.5f;        // The rate of change of the orthographic size in orthographic mode.
@@ -256,10 +257,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	static Vector3 center = new Vector3 (300.0045f, 0.41f, 183.9f);
 	
 	// Use this for initialization
-	void Start () {
-
-
-			
+	void Start () {			
 		target = center;
 		
 		PositnBlock.Add ("block1_1", block1_1);
@@ -342,12 +340,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		
 		PositnBlock.Add ("routeblock8_2", routeblock8_2);
 		
-		
-		LineRenderer lineRenderer = gameObject.AddComponent<LineRenderer>();
-		//lineRenderer.material = new Material(Shader.Find("Particles/Additive"));
-		lineRenderer.SetColors(c2, c2);
-		lineRenderer.SetWidth(widthLinear, widthLinear);
-		
+				
 		//blockSelector = blockSelector.GetComponent<Canvas> ();
 		fl1 = fl1.GetComponent<Button> ();
 		fl2 = fl2.GetComponent<Button> ();
@@ -395,13 +388,10 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		moveNextCamera.Elapsed += move2NextCamera;
 		
 		moveNextCamera.Stop ();
-
-
-		videoOffice.enabled = false;
-		
-		
+		videoOffice.enabled = false;		
 		StartCoroutine(sysServer());
-		
+
+		setCamera (new Vector3 (345.3173f, 37.8f, 253.3241f), target);
 		
 	}
 
@@ -980,7 +970,6 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 			list = block9_1Info.dictionary [name];
 			listpoint = new Vector3[list.Length];
-			cameraPostion = block9_1Info.PositnCamera [name];
 			orgP = GameObject.Find (namefloor).transform.position;
 			cameraPostion = block9_1Info.PositnCamera [name];
 			lkk = block9_1Info.LookatCamera [name];
@@ -1606,11 +1595,10 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		for (int i = 0; i<(list.Length); i++) {			
 			listpoint [i+list2.Length] = ratetio*(new Vector3 (list [i].x, h, list [i].z)) + orgP;
 		}
-		GameObject.Find ("startPoint").transform.position = listpoint [0];
-		GameObject.Find ("printpoint").transform.position = listpoint [listpoint.Length - 1];
-		GameObject endpoint = GameObject.Find ("containAnimation");
+		startAnimation.transform.position = listpoint [0];
+		printPoint.transform.position = listpoint [listpoint.Length - 1];
 
-		endpoint.transform.position = new Vector3 (listpoint [listpoint.Length - 1].x, listpoint [listpoint.Length - 1].y, listpoint [listpoint.Length - 1].z);
+		endAnimation.transform.position = new Vector3 (listpoint [listpoint.Length - 1].x, listpoint [listpoint.Length - 1].y, listpoint [listpoint.Length - 1].z);
 
 		Vector3 start =listpoint [0]; 
 		startPoint = true;
@@ -1746,7 +1734,6 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		
 		getRoute ("office" + blcName.Substring (3));
 
-		//showLine ();
 
 		hideFullTransparent ();
 		//int org = currentIndex - maxOffice;
@@ -1759,12 +1746,9 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	}
 	
 	void stopRoute(){
-		GameObject.Find ("startPoint").transform.position = hideStartPoint;
-		GameObject endpoint = GameObject.Find ("containAnimation");		
-		endpoint.transform.position = hideEndPoint;
-		GameObject.Find ("printpoint").transform.position = new Vector3 (0, 1000, 0);
-		LineRenderer lineRenderer = GetComponent<LineRenderer>();
-		lineRenderer.SetVertexCount(0);
+		startAnimation.transform.position = hideStartPoint;
+		endAnimation.transform.position = hideEndPoint;
+		printPoint.transform.position = new Vector3 (0, 1000, 0);
 		
 		foreach (var gameObj in FindObjectsOfType(typeof(GameObject)) as GameObject[])
 		{
@@ -2125,19 +2109,6 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 	Quaternion lastRotate;
 
-	
-	public void showLine(){
-		LineRenderer lineRenderer = gameObject.GetComponent<LineRenderer>();
-		//lineRenderer.material = new Material(Shader.Find("Particles/Additive"));
-		lineRenderer.SetColors(c2, c2);
-		lineRenderer.SetWidth(widthLinear, widthLinear);
-		lineRenderer.SetVertexCount(listpoint.Length);
-		for(int i = 0;i<listpoint.Length;i++)
-		{
-			Vector3 pos = listpoint[i];
-			lineRenderer.SetPosition(i, pos);
-		}
-	}
 	
 	public void enterText(){
 		charKeyboard.enabled = true;

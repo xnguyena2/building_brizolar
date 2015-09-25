@@ -21,19 +21,16 @@ public class arrow : MonoBehaviour {
 	}
 
 	public void beginMove(Vector3[] LV){
-		Vector3 be = LV [0];
-		Vector3 en = LV [1];
-		StartPoint = be;
-		beginMove (be, en);
-		currentTarget = en;
+		StartPoint = LV [0];
+		currentTarget = LV [1];
+		beginMove (StartPoint, currentTarget);
 		listPoint = LV;
 	}
 
 	public void beginMove(Vector3[] LV,Vector3 start, int index){
-		Vector3 end = LV [index];
 		StartPoint = LV [0];
-		beginMove (start, end);
-		currentTarget = end;
+		currentTarget = LV [index];
+		beginMove (start, currentTarget);
 		listPoint = LV;
 		this.index = index + 1;
 	}
@@ -51,8 +48,6 @@ public class arrow : MonoBehaviour {
 	}
 	bool firstSet = true;
 	public void beginMove(Vector3 start , Vector3 end){
-		//Vector3 start = new Vector3(380.287f, 0.15f, 80.62f);
-		//Vector3 end = new Vector3(373.287f, 0.2788003f, 64.50918f);
 		//this.transform.position = start;
 		if (firstCreate) {
 			this.transform.position = start;
