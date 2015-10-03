@@ -16,26 +16,26 @@ namespace AssemblyCSharp
 {
 	public class Point4_4
 	{
-		static Vector3 start = new Vector3 (-0.3f, 1.5f, -0.5f);
-		static Vector3 evalator = new Vector3 (-0.3f, 1.5f, -4.5f);
+		static Vector3 start = new Vector3 (-0.3f, 1.0F, -0.5f);
+		static Vector3 evalator = new Vector3 (-0.3f, 1.0F, -4.5f);
 		
-		static Vector3 o1 = new Vector3 (25.2F, 3.9F, 13.4F);
-		static Vector3 o2 = new Vector3 (11.6F, 3.9F, 7.7F);
-		static Vector3 o3 = new Vector3 (17.6F, 3.9F, -4.8F);
-		static Vector3 o4 = new Vector3 (31.2F, 3.9F, 0.7F);
-		static Vector3 o5 = new Vector3 (-17.8F, 3.9F, 3.7F);
-		static Vector3 o6 = new Vector3 (-31.4F, 3.9F, -2.0F);
-		static Vector3 o7 = new Vector3 (-25.4F, 3.9F, -14.5F);
-		static Vector3 o8 = new Vector3 (-11.8F, 3.9F, -9.0F);
+		static Vector3 o1 = new Vector3 (25.2F, 1.0F, 13.4F);
+		static Vector3 o2 = new Vector3 (11.6F, 1.0F, 7.7F);
+		static Vector3 o3 = new Vector3 (17.6F, 1.0F, -4.8F);
+		static Vector3 o4 = new Vector3 (31.2F, 1.0F, 0.7F);
+		static Vector3 o5 = new Vector3 (-17.8F, 1.0F, 3.7F);
+		static Vector3 o6 = new Vector3 (-31.4F, 1.0F, -2.0F);
+		static Vector3 o7 = new Vector3 (-25.4F, 1.0F, -14.5F);
+		static Vector3 o8 = new Vector3 (-11.8F, 1.0F, -9.0F);
 		
-		static Vector3 f1 = new Vector3 (25.2F, 3.9F, 9.0F);
-		static Vector3 f2 = new Vector3 (17.6F, 3.9F, 7.7F);
-		static Vector3 f3 = new Vector3 (17.6F, 3.9F, -0.5F);
-		static Vector3 f4 = new Vector3 (26.9F, 3.9F, -0.5F);
-		static Vector3 f5 = new Vector3 (-16.2F, 3.9F, -0.5F);
-		static Vector3 f6 = new Vector3 (-27.1F, 3.9F, -0.5F);
-		static Vector3 f7 = new Vector3 (-25.4F, 3.9F, -10.2F);
-		static Vector3 f8 = new Vector3 (-16.2F, 3.9F, -9.0F);
+		static Vector3 f1 = new Vector3 (25.2F, 1.0F, 9.0F);
+		static Vector3 f2 = new Vector3 (17.6F, 1.0F, 7.7F);
+		static Vector3 f3 = new Vector3 (17.6F, 1.0F, -0.5F);
+		static Vector3 f4 = new Vector3 (26.9F, 1.0F, -0.5F);
+		static Vector3 f5 = new Vector3 (-16.2F, 1.0F, -0.5F);
+		static Vector3 f6 = new Vector3 (-27.1F, 1.0F, -0.5F);
+		static Vector3 f7 = new Vector3 (-25.4F, 1.0F, -10.2F);
+		static Vector3 f8 = new Vector3 (-16.2F, 1.0F, -9.0F);
 
 		
 		static Vector3[] office1 = new Vector3[] { evalator, start, f3, f1, o1 };

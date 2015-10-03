@@ -17,51 +17,51 @@ namespace AssemblyCSharp
 	public class Point3_4
 	{
 		
-		static Vector3 evalator = new Vector3 (0.0f, 0.0f, -2.6f);
+		static Vector3 evalator = new Vector3 (0.0f, 1.0F, -2.6f);
 
-		static Vector3 start = new Vector3 (0.0f, 0.0f, 0.0f);
+		static Vector3 start = new Vector3 (0.0f, 1.0F, 0.0f);
 		
-		static Vector3 f1 = new Vector3 (25.5F, 3.0F, 9.7F);
-		static Vector3 f2 = new Vector3 (17.9F, 3.0F, 8.5F);
-		static Vector3 f3 = new Vector3 (17.9F, 3.0F, 0.0F);
-		static Vector3 f4 = new Vector3 (27.1F, 3.0F, 0.0F);
-		static Vector3 f5 = new Vector3 (-15.5F, 3.0F, 0.0F);
-		static Vector3 f6 = new Vector3 (-19.4F, 3.0F, 0.0F);
-		static Vector3 f7 = new Vector3 (-23.5F, 3.0F, 0.0F);
-		static Vector3 f8 = new Vector3 (-27.3F, 3.0F, 0.0F);
-		static Vector3 f9 = new Vector3 (-27.3F, 3.0F, 0.0F);
-		static Vector3 f10 = new Vector3 (-27.3F, 3.0F, -2.9F);
-		static Vector3 f11 = new Vector3 (-27.3F, 3.0F, -6.8F);
-		static Vector3 f12 = new Vector3 (-27.3F, 3.0F, -9.7F);
-		static Vector3 f13 = new Vector3 (-27.3F, 3.0F, -9.7F);
-		static Vector3 f14 = new Vector3 (-23.4F, 3.0F, -9.7F);
-		static Vector3 f15 = new Vector3 (-19.4F, 3.0F, -9.7F);
-		static Vector3 f16 = new Vector3 (-15.5F, 3.0F, -9.7F);
-		static Vector3 f17 = new Vector3 (-15.5F, 3.0F, -9.7F);
-		static Vector3 f18 = new Vector3 (-15.59F, 3.0F, -6.8F);
-		static Vector3 f19 = new Vector3 (-15.5F, 3.0F, -2.9F);
-		static Vector3 f20 = new Vector3 (-11.2F, 3.0F, -0.7F);
+		static Vector3 f1 = new Vector3 (25.5F, 1.0F, 9.7F);
+		static Vector3 f2 = new Vector3 (17.9F, 1.0F, 8.5F);
+		static Vector3 f3 = new Vector3 (17.9F, 1.0F, 0.0F);
+		static Vector3 f4 = new Vector3 (27.1F, 1.0F, 0.0F);
+		static Vector3 f5 = new Vector3 (-15.5F, 1.0F, 0.0F);
+		static Vector3 f6 = new Vector3 (-19.4F, 1.0F, 0.0F);
+		static Vector3 f7 = new Vector3 (-23.5F, 1.0F, 0.0F);
+		static Vector3 f8 = new Vector3 (-27.3F, 1.0F, 0.0F);
+		static Vector3 f9 = new Vector3 (-27.3F, 1.0F, 0.0F);
+		static Vector3 f10 = new Vector3 (-27.3F, 1.0F, -2.9F);
+		static Vector3 f11 = new Vector3 (-27.3F, 1.0F, -6.8F);
+		static Vector3 f12 = new Vector3 (-27.3F, 1.0F, -9.7F);
+		static Vector3 f13 = new Vector3 (-27.3F, 1.0F, -9.7F);
+		static Vector3 f14 = new Vector3 (-23.4F, 1.0F, -9.7F);
+		static Vector3 f15 = new Vector3 (-19.4F, 1.0F, -9.7F);
+		static Vector3 f16 = new Vector3 (-15.5F, 1.0F, -9.7F);
+		static Vector3 f17 = new Vector3 (-15.5F, 1.0F, -9.7F);
+		static Vector3 f18 = new Vector3 (-15.59F, 1.0F, -6.8F);
+		static Vector3 f19 = new Vector3 (-15.5F, 1.0F, -2.9F);
+		static Vector3 f20 = new Vector3 (-11.2F, 1.0F, -0.7F);
 		
-		static Vector3 o1 = new Vector3 (25.5F, 3.0F, 14.0F);
-		static Vector3 o2 = new Vector3 (12.0F, 3.0F, 8.5F);
-		static Vector3 o3 = new Vector3 (17.9F, 3.0F, -4.4F);
-		static Vector3 o4 = new Vector3 (31.5F, 3.0F, 1.2F);
-		static Vector3 o5 = new Vector3 (-15.5F, 3.0F, 4.2F);
-		static Vector3 o6 = new Vector3 (-19.4F, 3.0F, 4.2F);
-		static Vector3 o7 = new Vector3 (-23.5F, 3.0F, 4.2F);
-		static Vector3 o8 = new Vector3 (-27.3F, 3.0F, 4.2F);
-		static Vector3 o9 = new Vector3 (-31.6F, 3.0F, 2.6F);
-		static Vector3 o10 = new Vector3 (-31.2F, 3.0F, -2.9F);
-		static Vector3 o11 = new Vector3 (-31.2F, 3.0F, -6.8F);
-		static Vector3 o12 = new Vector3 (-31.7F, 3.0F, -12.4F);
-		static Vector3 o13 = new Vector3 (-27.3F, 3.0F, -14.0F);
-		static Vector3 o14 = new Vector3 (-23.4F, 3.0F, -14.0F);
-		static Vector3 o15 = new Vector3 (-19.4F, 3.0F, -14.0F);
-		static Vector3 o16 = new Vector3 (-15.5F, 3.0F, -14.0F);
-		static Vector3 o17 = new Vector3 (-11.2F, 3.0F, -12.4F);
-		static Vector3 o18 = new Vector3 (-11.6F, 3.0F, -6.8F);
-		static Vector3 o19 = new Vector3 (-11.6F, 3.0F, -2.9F);
-		static Vector3 o20 = new Vector3 (-11.2F, 3.0F, 3.6F);
+		static Vector3 o1 = new Vector3 (25.5F, 1.0F, 14.0F);
+		static Vector3 o2 = new Vector3 (12.0F, 1.0F, 8.5F);
+		static Vector3 o3 = new Vector3 (17.9F, 1.0F, -4.4F);
+		static Vector3 o4 = new Vector3 (31.5F, 1.0F, 1.2F);
+		static Vector3 o5 = new Vector3 (-15.5F, 1.0F, 4.2F);
+		static Vector3 o6 = new Vector3 (-19.4F, 1.0F, 4.2F);
+		static Vector3 o7 = new Vector3 (-23.5F, 1.0F, 4.2F);
+		static Vector3 o8 = new Vector3 (-27.3F, 1.0F, 4.2F);
+		static Vector3 o9 = new Vector3 (-31.6F, 1.0F, 2.6F);
+		static Vector3 o10 = new Vector3 (-31.2F, 1.0F, -2.9F);
+		static Vector3 o11 = new Vector3 (-31.2F, 1.0F, -6.8F);
+		static Vector3 o12 = new Vector3 (-31.7F, 1.0F, -12.4F);
+		static Vector3 o13 = new Vector3 (-27.3F, 1.0F, -14.0F);
+		static Vector3 o14 = new Vector3 (-23.4F, 1.0F, -14.0F);
+		static Vector3 o15 = new Vector3 (-19.4F, 1.0F, -14.0F);
+		static Vector3 o16 = new Vector3 (-15.5F, 1.0F, -14.0F);
+		static Vector3 o17 = new Vector3 (-11.2F, 1.0F, -12.4F);
+		static Vector3 o18 = new Vector3 (-11.6F, 1.0F, -6.8F);
+		static Vector3 o19 = new Vector3 (-11.6F, 1.0F, -2.9F);
+		static Vector3 o20 = new Vector3 (-11.2F, 1.0F, 3.6F);
 
 		
 		static Vector3[] office1 = new Vector3[] { evalator, start, f3, f1, o1 };

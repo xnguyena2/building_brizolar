@@ -47,6 +47,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 	public Image floorSelector;
 	public Image blockSelectorimg;
+	public Image headerImg;
 
 	
 	
@@ -460,6 +461,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			if(currentBlock>5)
 				GameObject.Find("floorselector").GetComponent<Image>().sprite = Resources.Load<Sprite> (currentBlock+"_"+currentFloor+"handi");
 			else GameObject.Find("floorselector").GetComponent<Image>().sprite = Resources.Load<Sprite> ("3_"+currentFloor+"handi");
+			headerImg.color = new Color(21/255f,61/255f,115/255f);
 		} else {
 			searchBtn.image.sprite = Resources.Load<Sprite> ("atoz");
 			bathroomSearchBtn.image.sprite = Resources.Load<Sprite> ("bathroom");
@@ -477,6 +479,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			if(currentBlock>5)
 				GameObject.Find("floorselector").GetComponent<Image>().sprite = Resources.Load<Sprite> (currentBlock+"_"+currentFloor);
 			else GameObject.Find("floorselector").GetComponent<Image>().sprite = Resources.Load<Sprite> ("3_"+currentFloor);
+			headerImg.color = new Color(99/255f,179/255f,188/255f);
 		}
 		isHandicapMode = !isHandicapMode;
 		handicap = !handicap;
@@ -854,7 +857,6 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	public void getRoute(string name){
 
 		havenextcamera = false;
-		float h = 0.5f;
 
 		Vector3 lkk = Vector3.zero;
 
@@ -877,24 +879,24 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			
 			if (list [0] == Point8_2.evalator1) {
 				list2 = block8_1Info.dictionary ["thangmay1"];
-				cameraPostion = block8_1Info.PositnCamera ["office70"];
-				lkk = block8_1Info.LookatCamera ["office70"];
+				cameraPostion = block8_1Info.PositnCamera ["posleft"];
+				lkk = block8_1Info.LookatCamera ["lookatleft"];
 			} else if (list [0] == Point8_2.evalator2) {
 				list2 = block8_1Info.dictionary ["thangmay2"];
-				cameraPostion = block8_1Info.PositnCamera ["office55"];
-				lkk = block8_1Info.LookatCamera ["office55"];
+				cameraPostion = block8_1Info.PositnCamera ["poscenter"];
+				lkk = block8_1Info.LookatCamera ["lookatcenter"];
 			} else if (list [0] == Point8_2.evalator3) {
 				list2 = block8_1Info.dictionary ["thangmay3"];
-				cameraPostion = block8_1Info.PositnCamera ["office164"];
-				lkk = block8_1Info.LookatCamera ["office164"];
+				cameraPostion = block8_1Info.PositnCamera ["poscenter"];
+				lkk = block8_1Info.LookatCamera ["lookatcenter"];
 			} else if (list [0] == Point8_2.evalator4) {
 				list2 = block8_1Info.dictionary ["thangmay4"];
-				cameraPostion = block8_1Info.PositnCamera ["office179"];
-				lkk = block8_1Info.LookatCamera ["office179"];
+				cameraPostion = block8_1Info.PositnCamera ["posright"];
+				lkk = block8_1Info.LookatCamera ["lookatright"];
 			} else {
 				list2 = block8_1Info.dictionary ["cauthang"];
-				cameraPostion = block8_1Info.PositnCamera ["office1"];
-				lkk = block8_1Info.LookatCamera ["office1"];
+				cameraPostion = block8_1Info.PositnCamera ["poscenter"];
+				lkk = block8_1Info.LookatCamera ["lookatcenter"];
 			}
 
 
@@ -903,7 +905,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			orgP = GameObject.Find ("block8_1").transform.position;
 
 			for (int i = 0; i<list2.Length; i++) {
-				listpoint [i] = ratetio * (new Vector3 (list2 [i].x, h, list2 [i].z)) + orgP;
+				listpoint [i] = ratetio * list2 [i] + orgP;
 			}
 
 			orgP = GameObject.Find (namefloor).transform.position;
@@ -923,7 +925,6 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			lkk = block8_1Info.LookatCamera [name];
 
 		} else if (namefloor == "block8_3") {
-			h = 1f;
 
 			if (isHandicapMode)
 				list = block8_3Infohandicap.dictionary [name];
@@ -932,31 +933,31 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 			if (list [0] == Point8_3.evalator1) {
 				list2 = block8_1Info.dictionary ["thangmay1"];
-				cameraPostion = block8_1Info.PositnCamera ["office70"];
-				lkk = block8_1Info.LookatCamera ["office70"];
+				cameraPostion = block8_1Info.PositnCamera ["posleft"];
+				lkk = block8_1Info.LookatCamera ["lookatleft"];
 			} else if (list [0] == Point8_3.evalator2) {
 				list2 = block8_1Info.dictionary ["thangmay2"];
-				cameraPostion = block8_1Info.PositnCamera ["office55"];
-				lkk = block8_1Info.LookatCamera ["office55"];
+				cameraPostion = block8_1Info.PositnCamera ["poscenter"];
+				lkk = block8_1Info.LookatCamera ["lookatcenter"];
 			} else if (list [0] == Point8_3.evalator3) {
 				list2 = block8_1Info.dictionary ["thangmay3"];
-				cameraPostion = block8_1Info.PositnCamera ["office164"];
-				lkk = block8_1Info.LookatCamera ["office164"];
+				cameraPostion = block8_1Info.PositnCamera ["poscenter"];
+				lkk = block8_1Info.LookatCamera ["lookatcenter"];
 			} else if (list [0] == Point8_3.evalator4) {
 				list2 = block8_1Info.dictionary ["thangmay4"];
-				cameraPostion = block8_1Info.PositnCamera ["office179"];
-				lkk = block8_1Info.LookatCamera ["office179"];
+				cameraPostion = block8_1Info.PositnCamera ["posright"];
+				lkk = block8_1Info.LookatCamera ["lookatright"];
 			} else {
 				list2 = block8_1Info.dictionary ["cauthang"];
-				cameraPostion = block8_1Info.PositnCamera ["office1"];
-				lkk = block8_1Info.LookatCamera ["office1"];
+				cameraPostion = block8_1Info.PositnCamera ["poscenter"];
+				lkk = block8_1Info.LookatCamera ["lookatcenter"];
 			}
 
 			listpoint = new Vector3[list.Length + list2.Length];
 			orgP = GameObject.Find ("block8_1").transform.position;
 			
 			for (int i = 0; i<list2.Length; i++) {
-				listpoint [i] = ratetio * (new Vector3 (list2 [i].x, h, list2 [i].z)) + orgP;
+				listpoint [i] = ratetio * list2 [i] + orgP;
 			}
 			
 			orgP = GameObject.Find (namefloor).transform.position;
@@ -1009,7 +1010,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			orgP = GameObject.Find ("block7_1").transform.position;
 			
 			for (int i = 0; i<list2.Length; i++) {
-				listpoint [i] = ratetio * (new Vector3 (list2 [i].x, h, list2 [i].z)) + orgP;
+				listpoint [i] = ratetio * list2 [i] + orgP;
 			}
 
 			orgP = GameObject.Find (namefloor).transform.position;
@@ -1019,7 +1020,6 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			havenextcamera = true;
 
 		} else if (namefloor == "block6_4") {
-			h = 0.5f;
 			
 			if (!isHandicapMode)
 				list = block6_4Infohandicap.dictionary [name];
@@ -1053,7 +1053,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			orgP = GameObject.Find ("block6_1").transform.position;
 
 			for (int i = 0; i<list2.Length; i++) {
-				listpoint [i] = ratetio * (new Vector3 (list2 [i].x, h, list2 [i].z)) + orgP;
+				listpoint [i] = ratetio * list2 [i] + orgP;
 			}
 			
 			orgP = GameObject.Find (namefloor).transform.position;
@@ -1063,7 +1063,6 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			havenextcamera = true;
 
 		} else if (namefloor == "block6_3") {
-			h = 1f;
 			if (!isHandicapMode)
 				list = block6_3Infohandicap.dictionary [name];
 			else
@@ -1100,7 +1099,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			orgP = GameObject.Find ("block6_1").transform.position;
 			
 			for (int i = 0; i<list2.Length; i++) {
-				listpoint [i] = ratetio * (new Vector3 (list2 [i].x, h, list2 [i].z)) + orgP;
+				listpoint [i] = ratetio * list2 [i] + orgP;
 			}
 			
 			orgP = GameObject.Find (namefloor).transform.position;
@@ -1111,7 +1110,6 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 		}
 		else if(namefloor == "block6_2"){
-			h = 0.5f;
 			if(!isHandicapMode)
 				list = block6_2Infohandicap.dictionary [name];
 			else
@@ -1150,7 +1148,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			orgP = GameObject.Find ("block6_1").transform.position;
 			
 			for (int i = 0; i<list2.Length; i++) {
-				listpoint [i] = ratetio * (new Vector3 (list2 [i].x, h, list2 [i].z)) + orgP;
+				listpoint [i] = ratetio * list2 [i] + orgP;
 			}
 			
 			orgP = GameObject.Find (namefloor).transform.position;
@@ -1161,7 +1159,6 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 		}
 		else if(namefloor == "block5_4"){
-			h = 0.5f;
 			if(!isHandicapMode)
 				list = block5_4Infohandicap.dictionary [name];
 			else
@@ -1188,7 +1185,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			orgP = GameObject.Find ("block5_1").transform.position;
 			
 			for (int i = 0; i<list2.Length; i++) {
-				listpoint [i] = ratetio * (new Vector3 (list2 [i].x, h, list2 [i].z)) + orgP;
+				listpoint [i] = ratetio * list2 [i] + orgP;
 			}
 			
 			orgP = GameObject.Find (namefloor).transform.position;
@@ -1199,7 +1196,6 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 		}
 		else if(namefloor == "block5_3"){
-			h = 0.5f;
 			if(!isHandicapMode)
 				list = block5_3Infohandicap.dictionary [name];
 			else
@@ -1226,7 +1222,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			orgP = GameObject.Find ("block5_1").transform.position;
 			
 			for (int i = 0; i<list2.Length; i++) {
-				listpoint [i] = ratetio * (new Vector3 (list2 [i].x, h, list2 [i].z)) + orgP;
+				listpoint [i] = ratetio * list2 [i] + orgP;
 			}
 			
 			orgP = GameObject.Find (namefloor).transform.position;
@@ -1238,7 +1234,6 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 		}
 		else if(namefloor == "block5_2"){
-			h = 0.5f;
 			if(!isHandicapMode)
 				list = block5_2Infohandicap.dictionary [name];
 			else
@@ -1265,7 +1260,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			orgP = GameObject.Find ("block5_1").transform.position;
 			
 			for (int i = 0; i<list2.Length; i++) {
-				listpoint [i] = ratetio * (new Vector3 (list2 [i].x, h, list2 [i].z)) + orgP;
+				listpoint [i] = ratetio * list2 [i] + orgP;
 			}
 			
 			orgP = GameObject.Find (namefloor).transform.position;			
@@ -1276,7 +1271,6 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 		}
 		else if(namefloor == "block4_4"){
-			h = 0.5f;
 			if(!isHandicapMode)
 				list = block4_4Infohandicap.dictionary [name];
 			else
@@ -1304,7 +1298,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			orgP = GameObject.Find ("block4_1").transform.position;
 			
 			for (int i = 0; i<list2.Length; i++) {
-				listpoint [i] = ratetio * (new Vector3 (list2 [i].x, h, list2 [i].z)) + orgP;
+				listpoint [i] = ratetio * list2 [i] + orgP;
 			}
 			
 			orgP = GameObject.Find (namefloor).transform.position;
@@ -1315,7 +1309,6 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 		}
 		else if(namefloor == "block4_3"){
-			h = 0.5f;
 			if(!isHandicapMode)
 				list = block4_3Infohandicap.dictionary [name];
 			else
@@ -1344,7 +1337,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			orgP = GameObject.Find ("block4_1").transform.position;
 			
 			for (int i = 0; i<list2.Length; i++) {
-				listpoint [i] = ratetio * (new Vector3 (list2 [i].x, h, list2 [i].z)) + orgP;
+				listpoint [i] = ratetio * list2 [i] + orgP;
 			}
 			
 			orgP = GameObject.Find (namefloor).transform.position;
@@ -1355,7 +1348,6 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 		}
 		else if(namefloor == "block4_2"){
-			h = 0.5f;
 
 			if(!isHandicapMode)
 				list = block4_2Infohandicap.dictionary [name];
@@ -1384,7 +1376,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			orgP = GameObject.Find ("block4_1").transform.position;
 			
 			for (int i = 0; i<list2.Length; i++) {
-				listpoint [i] = ratetio * (new Vector3 (list2 [i].x, h, list2 [i].z)) + orgP;
+				listpoint [i] = ratetio * list2 [i] + orgP;
 			}
 			
 			orgP = GameObject.Find (namefloor).transform.position;
@@ -1395,7 +1387,6 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			
 		}
 		else if(namefloor == "block3_4" || namefloor == "block1_4"){
-			h = 0.5f;
 
 			if(!isHandicapMode)
 				list = block3_4Infohandicap.dictionary [name];
@@ -1423,7 +1414,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			orgP = GameObject.Find ("block"+namefloor[5]+"_1").transform.position;
 			
 			for (int i = 0; i<list2.Length; i++) {
-				listpoint [i] = ratetio * (new Vector3 (list2 [i].x, h, list2 [i].z)) + orgP;
+				listpoint [i] = ratetio * list2 [i] + orgP;
 			}
 			
 			orgP = GameObject.Find (namefloor).transform.position;
@@ -1435,7 +1426,6 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			
 		}
 		else if(namefloor == "block3_3" || namefloor == "block1_3"){
-			h = 0.5f;
 
 			if(!isHandicapMode)
 				list = block3_3Infohandicap.dictionary [name];
@@ -1463,7 +1453,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			orgP = GameObject.Find ("block"+namefloor[5]+"_1").transform.position;
 			
 			for (int i = 0; i<list2.Length; i++) {
-				listpoint [i] = ratetio * (new Vector3 (list2 [i].x, h, list2 [i].z)) + orgP;
+				listpoint [i] = ratetio * list2 [i] + orgP;
 			}
 			
 			orgP = GameObject.Find (namefloor).transform.position;
@@ -1473,8 +1463,6 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 		}
 		else if(namefloor == "block3_2" || namefloor == "block2_2" || namefloor == "block1_2"){
-
-			h = 0.5f;
 			
 			if(!isHandicapMode)
 				list = block3_2Infohandicap.dictionary [name];
@@ -1502,7 +1490,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			orgP = GameObject.Find ("block"+namefloor[5]+"_1").transform.position;
 			
 			for (int i = 0; i<list2.Length; i++) {
-				listpoint [i] = ratetio * (new Vector3 (list2 [i].x, h, list2 [i].z)) + orgP;
+				listpoint [i] = ratetio * list2 [i] + orgP;
 			}
 			
 			orgP = GameObject.Find (namefloor).transform.position;
@@ -1513,7 +1501,6 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 		}
 		else if(namefloor == "block2_4"){
-			h = 0.5f;
 			if(!isHandicapMode)
 				list = block2_4Infohandicap.dictionary [name];
 			else
@@ -1541,7 +1528,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			orgP = GameObject.Find ("block2_1").transform.position;
 			
 			for (int i = 0; i<list2.Length; i++) {
-				listpoint [i] = ratetio * (new Vector3 (list2 [i].x, h, list2 [i].z)) + orgP;
+				listpoint [i] = ratetio * list2 [i] + orgP;
 			}
 			
 			orgP = GameObject.Find (namefloor).transform.position;
@@ -1552,7 +1539,6 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 		}
 		else if(namefloor == "block2_3"){
-			h = 0.5f;
 			if(!isHandicapMode)
 				list = block2_3Infohandicap.dictionary [name];
 			else
@@ -1580,7 +1566,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			orgP = GameObject.Find ("block2_1").transform.position;
 			
 			for (int i = 0; i<list2.Length; i++) {
-				listpoint [i] = ratetio * (new Vector3 (list2 [i].x, h, list2 [i].z)) + orgP;
+				listpoint [i] = ratetio * list2 [i] + orgP;
 			}
 			
 			orgP = GameObject.Find (namefloor).transform.position;
@@ -1593,7 +1579,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 
 		for (int i = 0; i<(list.Length); i++) {			
-			listpoint [i+list2.Length] = ratetio*(new Vector3 (list [i].x, h, list [i].z)) + orgP;
+			listpoint [i+list2.Length] = ratetio*list [i] + orgP;
 		}
 		startAnimation.transform.position = listpoint [0];
 		printPoint.transform.position = listpoint [listpoint.Length - 1];
@@ -2286,15 +2272,17 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		}
 		
 		if (Input.GetKey (KeyCode.X)) {
-			/*
-			for(int i = 1;i<175;i++){
-				GameObject x = GameObject.Find("b83"+i);
+
+			Vector3 p = GameObject.Find("block8_2").transform.position;
+
+			for(int i = 1;i<218;i++){
+				GameObject x = GameObject.Find("b82"+i);
 				if(x!=null){					
-					resultPostion +="\nstatic Vector3 f"+i+" = new Vector3 "+ (x.transform.position-GameObject.Find("block8_3").transform.position).ToString () + ";";
+					resultPostion +="\nstatic Vector3 f"+i+" = new Vector3 "+ (x.transform.position-p).ToString () + ";";
 				}
 			}
 			writetofile.append2File(pointPostions,resultPostion);
-			resultPostion="";*/
+			resultPostion="";
 			/*
 			Vector3 p = cube.transform.position - GameObject.Find("block8_3").transform.position;
 			resultPostion ="\nstatic Vector3 p"+index+" = new Vector3 "+ p.ToString () + ";";

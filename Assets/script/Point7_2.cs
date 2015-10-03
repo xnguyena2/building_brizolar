@@ -17,18 +17,18 @@ namespace AssemblyCSharp
 	public class Point7_2
 	{
 
-		public static Vector3 f1 = new Vector3 (5.62F, 1.1F, 18.8F);
-		public static Vector3 f2 = new Vector3 (-5.96F, 1.1F, 18.8F);
-		public static Vector3 f3 = new Vector3 (-20.34F, 3.1F, -4.87F);
-		public static Vector3 f4 = new Vector3 (22.94F, 3.1F, -9.53F);
+		public static Vector3 f1 = new Vector3 (5.62F, 1.0F, 18.8F);
+		public static Vector3 f2 = new Vector3 (-5.96F, 1.0F, 18.8F);
+		public static Vector3 f3 = new Vector3 (-20.34F, 1.0F, -4.87F);
+		public static Vector3 f4 = new Vector3 (22.94F, 1.0F, -9.53F);
 		
-		static Vector3 o1 = new Vector3 (5.62F, 3.1F, 10.85F);
-		static Vector3 o2 = new Vector3 (-5.96F, 3.1F, 10.18F);
-		static Vector3 o3 = new Vector3 (-8.66F, 3.1F, -4.87F);
-		static Vector3 o4 = new Vector3 (12.56F, 3.1F, -9.53F);
+		static Vector3 o1 = new Vector3 (5.62F, 1.0F, 10.85F);
+		static Vector3 o2 = new Vector3 (-5.96F, 1.0F, 10.18F);
+		static Vector3 o3 = new Vector3 (-8.66F, 1.0F, -4.87F);
+		static Vector3 o4 = new Vector3 (12.56F, 1.0F, -9.53F);
 
 
-		public static Vector3 p1 = new Vector3 (22.94F, 3.1F, -3.05F);
+		public static Vector3 p1 = new Vector3 (22.94F, 1.0F, -3.05F);
 		
 		static Vector3[] office1 = new Vector3[] { f1, o1 };
 		static Vector3[] office2 = new Vector3[] { f2, o2 };
