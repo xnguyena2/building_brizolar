@@ -372,7 +372,6 @@ namespace AssemblyCSharp
 		static Vector3 l3 = new Vector3 (7.1F, 1.0F, 4.0F);
 		static Vector3 l4 = new Vector3 (15.4F, 1.0F, 11.8F);
 		static Vector3 l5 = new Vector3 (28.4F, 1.0F, 9.0F);
-		static Vector3 l6 = new Vector3 (30.7F, 1.0F, 7.3F);
 		static Vector3 l7 = new Vector3 (27.1F, 1.0F, 0.3F);
 		static Vector3 l9 = new Vector3 (8.7F, 1.0F, -4.9F);
 		static Vector3 l10 = new Vector3 (-0.2F, 1.0F, -6.5F);

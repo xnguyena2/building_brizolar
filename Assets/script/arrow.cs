@@ -13,7 +13,7 @@ public class arrow : MonoBehaviour {
 	Vector3 StartPoint;
 	int index = 2;
 	float oldD = 10000f;
-	float distance = 4f;
+	public float distance = 3f;
 	bool isend = false,firstCreate = true;
 
 	// Use this for initialization

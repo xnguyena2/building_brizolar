@@ -1,5 +1,4 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,12 +11,8 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof (CapsuleCollider))]
 
 public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
-	public Canvas searchMenu;
-	public Canvas charKeyboard;
-	public Canvas blockSelector;
-	public Canvas containBlock;
-	public Canvas containRangeNumber;
-	public Canvas ctnRange;
+	public Image plsSelectBlock;
+	public Image plsSelectNumber;
 	public Button searchBtn;
 	public Button reservedBtn;
 	public Button numSearchBtn;
@@ -31,7 +26,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	public Text showTime;
 	public Text showInfomation;
 
-	public GameObject startAnimation;
+	//public GameObject startAnimation;
 	public GameObject endAnimation;
 	public GameObject printPoint;
 
@@ -49,14 +44,19 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	public Image blockSelectorimg;
 	public Image headerImg;
 
-	
+	string[] segmentNameMasterArray = new string[]{"art","bank","electric","kidfashtion","manfashtion","womenfashtion",
+		"unisexfashtion","gastronomy","home","jewelry","kisoksstore","lingerie","mobile","natural","optical","party","petshop",
+		"shoe","sport","others"};
+	string[] segmentNameNormalArray = new string[]{"admin","aesthencs","archite","bags","brokers",
+		"commer","consur","doctor","energy","events",
+		"financial","gastronomy","import","inst","jewelry",
+		"law","logist","manage","market","mobile",
+		"services","studios","supliers","tech","transp",
+		"travel","others"};
 	
 	public Button fl1, fl2, fl3, fl4;
 	
 	public RawImage videoOffice;
-	
-	
-	public Canvas ContainResult;
 
 
 	float ratetio = 1f;
@@ -64,7 +64,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	private Dictionary<string,Vector3> PositnBlock = new Dictionary<string, Vector3> ();
 
 	Vector3 block9_1 = new Vector3 (310.4033F, 0.5F, 172.7136F);
-	Vector3 block8_1 = new Vector3 (299.8048f, 0.41f, 186.1202f);
+	Vector3 block8_1 = new Vector3 (299.8048f, 0.5f, 186.1202f);
 	Vector3 block8_2 = new Vector3 (300.5f, 0.1926727f, 189.3f);
 	Vector3 block8_3 = new Vector3 (300f, 0.1845566f, 191.9f);
 	
@@ -161,7 +161,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	
 	Vector3 routeblock8_2 = new Vector3 (300.5f, 35f, 189.3f);
 
-	Vector3 hideStartPoint = new Vector3 (200f, 1000f, 200f);
+	//Vector3 hideStartPoint = new Vector3 (200f, 1000f, 200f);
 	Vector3 hideEndPoint = new Vector3 (200f, 1000f, 200f);
 	
 	RouteBettwenBlock block9_1Info = new RouteBettwenBlock ();
@@ -219,10 +219,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	//Point2_1 block2_1Info = new Point6_1 ();
 	//Point2_2 block2_2Info = new Point6_2 ();	
 	Point2_3 block2_3Info = new Point2_3 ();	
-	Point2_4 block2_4Info = new Point2_4 ();
-
-	
-	
+	Point2_4 block2_4Info = new Point2_4 ();	
 	
 	Vector3[] listpoint;
 	
@@ -235,7 +232,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	public GameObject Cylinder = null;
 	
 	
-	public int maxOffice = 25;
+	public int maxOffice = 18;
 	private int currentIndex = 0;
 	
 	
@@ -249,13 +246,16 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	private System.Timers.Timer carouselTimer;
 	private System.Timers.Timer moveNextCamera;
 	private System.Timers.Timer showTimeTimer;
+	private System.Timers.Timer fullScreenTimer;
 	
 	public string IP = "http://localhost:8080/";
 	
 	
-	List<Sprite> TextureBtn =
-		new List<Sprite>();
-	static Vector3 center = new Vector3 (300.0045f, 0.41f, 183.9f);
+	List<string> TextureBtn =
+		new List<string>();
+	List<string> nameOffices =
+		new List<string>();
+	static Vector3 center = new Vector3 (287.1F, 10.0F, 205.0F);
 	
 	// Use this for initialization
 	void Start () {			
@@ -346,35 +346,25 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		fl1 = fl1.GetComponent<Button> ();
 		fl2 = fl2.GetComponent<Button> ();
 		fl3 = fl3.GetComponent<Button> ();
-		containBlock = containBlock.GetComponent<Canvas> ();
-		searchMenu = searchMenu.GetComponent<Canvas> ();
-		charKeyboard = charKeyboard.GetComponent<Canvas> ();
+		//containBlock = containBlock.GetComponent<Canvas> ();
 		searchBtn = searchBtn.GetComponent<Button> ();
 		reservedBtn = reservedBtn.GetComponent<Button> ();
-		ContainResult = ContainResult.GetComponent<Canvas> ();
-		searchMenu.enabled = false;
-		charKeyboard.enabled = false;
 		NextBtn = NextBtn.GetComponent<Button> ();
 		madeButtonTransparent (NextBtn);
-		//m_RigidBody = m_RigidBody.GetComponent<Rigidbody>();
-		//StartCoroutine(loadcrosel());
 		videoOffice = videoOffice.GetComponent<RawImage> ();
 		isShowVideo (false);
-		
-		//StartCoroutine (LoadVideo (IP+"video/sample.ogg"));
-		
-		ContainResult.enabled = false;
-		
-		ctnRange.enabled = false;
-		
-		hideBlockSelector ();
-		hideRangeNuber ();
 
 		showTimeTimer = new System.Timers.Timer (1000);
 
 		showTimeTimer.Elapsed += OnShowTimedEvent;
 
 		showTimeTimer.Start ();
+
+		fullScreenTimer = new System.Timers.Timer (60000);
+
+		fullScreenTimer.Elapsed += OnShowFullScreenEvent;
+		
+		fullScreenTimer.Start ();
 
 		aTimer = new System.Timers.Timer(30000);
 		
@@ -392,8 +382,10 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		videoOffice.enabled = false;		
 		StartCoroutine(sysServer());
 
-		setCamera (new Vector3 (345.3173f, 37.8f, 253.3241f), target);
-		
+		setCamera (new Vector3 (287.6F, 44.0F, 232.9F), target);
+
+		m_OpenParameterId = Animator.StringToHash (k_OpenTransitionName);
+		m_FullScreenParameterId = Animator.StringToHash (k_FullScreenTransitionName);
 	}
 
 	bool beginmovetonextcamera = false;
@@ -403,44 +395,31 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		//Debug.Log("update sence");
 		beginmovetonextcamera = true;
 		moveNextCamera.Stop ();
-	}
-	
-	public void cancleRangeNumber(){
-		hideRangeNuber ();
-	}
-	
-	public void cancleNumberSearch(){
-		hideBlockSelector ();
-	}
-	
+	}	
 	
 	public void numberSearchPress(){
-		//lastRotate = Camera.main.transform.rotation;
 		madeButtonTransparent (btnLeft);
 		madeButtonTransparent (btnRight);
 		madeButtonTransparent (btnDown);
 		madeButtonTransparent (btnUp);
 		madeButtonTransparent (NextBtn);
-
-		
-		charKeyboard.enabled = false;
-		ContainResult.enabled = false;
+		plsSelectBlock.enabled = true;
 
 		showFullTransparent ();
-
-		showBlockSelector ();
+		
+		GameObject.Find ("PanelContainblocks").GetComponent<Animator> ().SetBool (m_OpenParameterId, true);
+		//showBlockSelector ();
 	}
-	
+	/*
 	private void hideBlockSelector(){
 		
 		blockSelector.enabled = false;
 		containBlock.enabled = false;
 	}
-	private void showBlockSelector(){
-		
+	private void showBlockSelector(){		
 		blockSelector.enabled = true;
 		containBlock.enabled = true;
-	}
+	}*/
 
 	private bool handicap = false;
 	public void handicapMode(){
@@ -659,30 +638,33 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	
 	public void selectBlock(Button btn){
 		nameOfrandSearchBlock = btn.name;
-		showRangeNumber ();
-		//blockSelector.enabled = false;
-		hideBlockSelector ();
+		plsSelectBlock.enabled = false;
+		plsSelectNumber.enabled = true;
+		if (nameOfrandSearchBlock == "b8")
+			showRangeNumber ();
+		else {			
+			GameObject.Find ("PanelContainblocks").GetComponent<Animator> ().SetBool (m_OpenParameterId, false);
+			searchOfficeInRange ("anynumber");
+		}
+		//hideBlockSelector ();
 		//Debug.Log (btn.name);
 	}
 	
 	public void showRangeNumber()
 	{
-		containRangeNumber.enabled = true;
-		ctnRange.enabled = true;
+		GameObject.Find ("PanelContainblocks").GetComponent<Animator> ().SetBool (m_OpenParameterId, false);
+		GameObject.Find ("Panelcontainnumber").GetComponent<Animator> ().SetBool (m_OpenParameterId, true);
+		//containRangeNumber.enabled = true;
+		//ctnRange.enabled = true;
 		
 	}
-	
-	public void showresult(){
-		cleanAllOffice ();
-		searchMenu.enabled = true;		
-		charKeyboard.enabled = false;
-		ContainResult.enabled = true;
-	}
+
 	
 	private void hideRangeNuber()
 	{
-		containRangeNumber.enabled = false;
-		ctnRange.enabled = false;
+		GameObject.Find ("Panelcontainnumber").GetComponent<Animator> ().SetBool (m_OpenParameterId, false);
+		//containRangeNumber.enabled = false;
+		//ctnRange.enabled = false;
 	}
 
 	Dictionary<string, MovieTexture> libariVideo = new Dictionary<string, MovieTexture> ();
@@ -717,45 +699,50 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		
 	}
 	
-	public void cacleSearch(){
-		currentIndex = 0;
-		charKeyboard.enabled = false;
-		isShowVideo (false);
-		searchMenu.enabled = false;
-		cleanAllOffice ();
-	}
-	
-	public void showKeyboard(){
-		charKeyboard.enabled = true;
-	}
-	
+	bool searchbynumber = false;
 	public void rangeBtnPress(Button btn){
-
-		cancleRangeNumber ();
-		showresult ();
+		hideRangeNuber ();
 		searchOfficeInRange (btn.name);
 	}
 	
 	public void searchOfficeInRange(string number){
-		
+		bool haveResult = false;
+		cleanTexture ();
 		foreach (string x in infomationForSearch) {
 			if(x!=""){
 				string[] info = x.Split(new string[]{" "},System.StringSplitOptions.None);
 				if(info[0].IndexOf(nameOfrandSearchBlock)>=0)
 				{
-					if (info[2].IndexOf(number)>=0) {
+					if (info[2].IndexOf(number)>=0 || number == "anynumber") {
 						//Debug.Log (x);
+						haveResult=true;
 						StartCoroutine(loadTexture4Office(info[0],info[2]));
 						
 					}
 				}
 			}
 		}
+		if (haveResult) {
+			GameObject.Find ("PanelContainresults").GetComponent<Animator> ().SetBool (m_OpenParameterId, true);
+			searchbynumber = true;
+			cleanAllOffice (currentIndex);
+		} else
+			hideFullTransparent ();
 	}
 	bool isShowTime = true;
 	private void OnShowTimedEvent(object o, System.Timers.ElapsedEventArgs e)
 	{
 		isShowTime = true;
+	}
+
+	
+	bool isShowFullScreen = false,changeStatusScreen = false;
+	private void OnShowFullScreenEvent(object o, System.Timers.ElapsedEventArgs e)
+	{
+		if (!isShowFullScreen) {
+			changeStatusScreen = true;
+			isShowFullScreen = true;
+		}
 	}
 	
 	private void OnTimedEvent(object o, System.Timers.ElapsedEventArgs e)
@@ -772,9 +759,8 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	
 
 	public void searchPress(){
-		//lastRotate = Camera.main.transform.rotation;
 		
-		hideBlockSelector ();
+		//hideBlockSelector ();
 
 		madeButtonTransparent (btnLeft);
 		madeButtonTransparent (btnRight);
@@ -783,10 +769,8 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		madeButtonTransparent (NextBtn);
 		
 		showFullTransparent ();
-		searchMenu.enabled = true;
-		
-		charKeyboard.enabled = true;
-		ContainResult.enabled = false;
+
+		GameObject.Find ("Panelcontainkey").GetComponent<Animator> ().SetBool (m_OpenParameterId, true);
 	}
 
 	
@@ -837,9 +821,10 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		}
 		if (firstLoadCarousel) {
 
+			firstLoadCarousel = false;
+
 			carouselTimer = new System.Timers.Timer();
-			
-			// Hook up the Elapsed event for the timer. 
+
 			carouselTimer.Elapsed += LoadNextCarousel;
 			
 			carouselTimer.Stop ();
@@ -916,8 +901,18 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 
 		} else if (namefloor == "block8_1") {
-			list = block8_1Info.dictionary [name];
+			if (isBathRoomSearch && name == "office82"){
+				list = block8_1Info.dictionary ["bathroom2"];
+			}else if(isBathRoomSearch && name == "office150"){
+				list = block8_1Info.dictionary ["bathroom3"];
+			}
+			else if(isBathRoomSearch && name == "office221"){
+				list = block8_1Info.dictionary ["bathroom4"];			
+			}else
+				list = block8_1Info.dictionary [name];
+
 			listpoint = new Vector3[list.Length];
+
 			orgP = GameObject.Find (namefloor).transform.position;
 
 			cameraPostion = block8_1Info.PositnCamera [name];
@@ -1581,10 +1576,16 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		for (int i = 0; i<(list.Length); i++) {			
 			listpoint [i+list2.Length] = ratetio*list [i] + orgP;
 		}
-		startAnimation.transform.position = listpoint [0];
+		//startAnimation.transform.position = listpoint [0];
 		printPoint.transform.position = listpoint [listpoint.Length - 1];
 
-		endAnimation.transform.position = new Vector3 (listpoint [listpoint.Length - 1].x, listpoint [listpoint.Length - 1].y, listpoint [listpoint.Length - 1].z);
+		if (!isBathRoomSearch)
+			endAnimation.transform.position = listpoint [listpoint.Length - 1];
+		else {
+			GameObject endpathroom = GameObject.Instantiate (endAnimation)as GameObject;
+			endpathroom.name = "endpathroom";
+			endpathroom.transform.position = listpoint [listpoint.Length - 1];
+		}
 
 		Vector3 start =listpoint [0]; 
 		startPoint = true;
@@ -1592,7 +1593,15 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			create_vessel (start, listpoint [i], i);
 			start = listpoint [i];
 		}
-		setCamera (cameraPostion, lkk);
+
+		if (isBathRoomSearch && name == "office221") {
+			cameraPostion = block8_1Info.PositnCamera["posbathroom"];
+			lkk = block8_1Info.LookatCamera["lookatbathroom"];
+			isBathRoomSearch = false;
+		}
+		if (!(isBathRoomSearch && (name == "office82" || name == "office150" || name == "office44"))) {
+			setCamera (cameraPostion, lkk);
+		}
 	}
 	
 	void showTransparent(string name, float height){
@@ -1634,8 +1643,8 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		}
 	}
 	public void cameraForward(){
-		Vector3 forward = new Vector3 (Camera.main.transform.forward.x, Camera.main.transform.forward.y, Camera.main.transform.forward.z);
-		Camera.main.transform.Translate (forward * -5);
+		//Vector3 forward = new Vector3 (Camera.main.transform.forward.x, Camera.main.transform.forward.y, Camera.main.transform.forward.z);
+		Camera.main.transform.Translate (Camera.main.transform.forward * -5);
 	}
 	public void cameraBackward(){
 		Camera.main.transform.RotateAround (target, -Camera.main.transform.right, speedRotate * Time.deltaTime);
@@ -1658,6 +1667,13 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	
 	public void officeClick(Button name){
 		string blcName;
+		if (searchbyname) {			
+			GameObject.Find ("PanelContainresults").GetComponent<Animator> ().SetBool (m_OpenParameterId, false);
+			searchbyname = false;
+		}else if (searchbynumber) {			
+			GameObject.Find ("PanelContainresults").GetComponent<Animator> ().SetBool (m_OpenParameterId, false);
+			searchbynumber = false;
+		}
 
 		if (name != null) {
 			blcName = name.image.sprite.name;
@@ -1711,34 +1727,28 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		}
 
 		showBlck (Block, 1);
-
 		listNameCurrentBlock.Add ("block"+Block + "_1");
-
 		currentBlock = Block;
-		currentFloor = Floor;
-
-		
+		currentFloor = Floor;		
 		getRoute ("office" + blcName.Substring (3));
-
-
-		hideFullTransparent ();
-		//int org = currentIndex - maxOffice;
-		/*if(org<0)
-			org = ((int)TextureBtn.Count / maxOffice) * maxOffice;*/
-		searchMenu.enabled = false;
-		charKeyboard.enabled = false;
 		StartCoroutine (LoadVideo (IP + "/video/" + blcName + videoType));
-		cleanAllOffice ();
+		StartCoroutine (waitforresult());
 	}
-	
+
+	public IEnumerator waitforresult(){
+		yield return new WaitForSeconds(1F);
+		hideFullTransparent ();
+	}
+	Vector3 hidePrintPoint = new Vector3 (0, 1000, 0);
 	void stopRoute(){
-		startAnimation.transform.position = hideStartPoint;
+		//startAnimation.transform.position = hideStartPoint;
 		endAnimation.transform.position = hideEndPoint;
-		printPoint.transform.position = new Vector3 (0, 1000, 0);
+		printPoint.transform.position = hidePrintPoint;
 		
 		foreach (var gameObj in FindObjectsOfType(typeof(GameObject)) as GameObject[])
 		{
-			if(gameObj.name == "lineDirection" || gameObj.name == "arrowsssss")
+			string nameobj = gameObj.name;
+			if(nameobj == "lineDirection" || nameobj == "arrowsssss" || nameobj == "endpathroom")
 			{
 				Destroy(gameObj);
 			}
@@ -1767,11 +1777,9 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		indexofbutton += 1;
 		return new Vector3 (-500 + x * 200, 200 - y * 150, 0);
 	}
-	
-	void cleanAllOffice(){
-		currentIndex = 0;
-		cleanTexture ();
-		for (int i = 0; i<maxOffice; i++) {
+
+	void cleanAllOffice(int begin){
+		for (int i = begin; i<maxOffice; i++) {
 			var plane = GameObject.Find ("Btn" + i).GetComponent<Button> ();
 			Color c = plane.targetGraphic.color;
 			c.a = 0f;
@@ -1802,34 +1810,43 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	}
 	
 	public void searchOffice(char name){
-		charKeyboard.enabled = false;
-		ContainResult.enabled = true;
-		
+		bool haveResult = false;
+		cleanTexture ();
 		foreach (string x in infomationForSearch) {
 			if(x!=""){
 				string[] info = x.Split(new string[]{" "},System.StringSplitOptions.None);
 				if (info[1].ToLower()[0] == name) {
+					haveResult=true;
 					StartCoroutine(loadTexture4Office(info[0],info[1]));
 				}
 			}
 		}
+		if (haveResult) {
+			searchbyname = true;
+			GameObject.Find ("PanelContainresults").GetComponent<Animator> ().SetBool (m_OpenParameterId, true);
+			cleanAllOffice (currentIndex);
+		} else
+			hideFullTransparent ();
 	}
 	
 	private void cleanTexture(){
 		TextureBtn.Clear ();
-		ContainResult.enabled = false;
+		nameOffices.Clear ();
+		currentIndex = 0;
 	}
 
-	string[] listUpdate;
 	bool stillUpdatingLogo = false;
+	string oldUpdate = "";
 
 	public IEnumerator updateLogo(){
 		stillUpdatingLogo = true;
-		if (firstLoad) {
+		if (firstLoad) {			
+			using (var webClient = new System.Net.WebClient()) {
+				oldUpdate = webClient.DownloadString (IP+"/src/update");
+			}
 			foreach (string x in infomationForSearch) {
 				if (x != null) {
 					if (x != "") {
-
 						string filename = x.Substring (0, x.IndexOf (" "));
 						if (GameObject.Find (filename) != null) {
 							StartCoroutine (updateIcon (IP + "src/" + filename + imageType, filename));
@@ -1840,43 +1857,30 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			}
 			firstLoad=false;
 		} else {
+			//Debug.Log ("Update icon for office !!!!");
 			string result;
 			using (var webClient = new System.Net.WebClient()) {
 				result = webClient.DownloadString (IP+"/src/update");
-				string[] listNewUpdate = result.Split(new string[]{":"},System.StringSplitOptions.None);
-				if(listUpdate!=null){
-					int numListUpdate = listUpdate.Length;
-					for(int i=0;i<numListUpdate;i++)
+				if(result != oldUpdate){
+					string[] listNewUpdate = result.Split(new string[]{":"},System.StringSplitOptions.None);
+					for(int j=0;j<listNewUpdate.Length;j++)
 					{
-						string name = listUpdate[i];
-						for(int j=0;j<listNewUpdate.Length;j++)
-						{
-							if(name == listNewUpdate[j]){
-								listNewUpdate[j] = null;
-								break;
+						string x = listNewUpdate[j];
+						//Debug.Log(x);
+						if(x!=null){
+							if (x != "") {
+								//Debug.Log(filename);
+								if (GameObject.Find (x) != null) {
+									StartCoroutine (updateIcon (IP + "src/" + x + imageType, x));
+								}
 							}
 						}
+						yield return new WaitForSeconds(0.1F);
 					}
 				}
-				for(int j=0;j<listNewUpdate.Length;j++)
-				{
-					string x = listNewUpdate[j];
-					//Debug.Log(x);
-					if(x!=null){
-						if (x != "") {
-							string filename = x.Substring (0, x.IndexOf (" "));
-							//Debug.Log(filename);
-							if (GameObject.Find (filename) != null) {
-								StartCoroutine (updateIcon (IP + "src/" + filename + imageType, filename));
-							}
-						}
-					}
-					yield return new WaitForSeconds(0.1F);
-				}
-				listUpdate = result.Split(new string[]{":"},System.StringSplitOptions.None);
+				oldUpdate = result;
 			}
-		}
-		
+		}		
 		stillUpdatingLogo = false;
 		yield return null;
 	}
@@ -1884,6 +1888,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	
 	private IEnumerator updateIcon(string url,string nameobject)
 	{
+		//Debug.Log (nameobject);
 		GameObject plane = GameObject.Find (nameobject);
 		
 		var rend = plane.GetComponent<Renderer>();
@@ -1891,34 +1896,44 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		WWW www = new WWW(url);
 		yield return www;
 		rend.material.mainTexture = www.texture;
-		
+		if(!firstLoad)
+		{
+			Debug.Log(nameobject);
+			if(!spriteSave.ContainsKey(nameobject)){
+				spriteSave.Add(nameobject,Sprite.Create (www.texture, new Rect (0, 0, www.texture.width, www.texture.height), Vector2.zero));
+			}else {
+				spriteSave[nameobject] = Sprite.Create (www.texture, new Rect (0, 0, www.texture.width, www.texture.height), Vector2.zero);
+			}
+		}
 	}
 
 	Dictionary<string,Sprite> spriteSave = new Dictionary<string, Sprite> ();
 
 	private IEnumerator loadTexture4Office(string name,string nameOffice)
 	{
-		GameObject gameobjects = GameObject.Find (name);
-		if (gameObject != null) {
-			Texture2D texture = (Texture2D)gameobjects.GetComponent<Renderer> ().material.mainTexture;
+		//if (gameObject != null) 
+		{
 			Sprite sprite;
 			if(!spriteSave.ContainsKey(name)){
+				GameObject gameobjects = GameObject.Find (name);
+				Texture2D texture = (Texture2D)gameobjects.GetComponent<Renderer> ().material.mainTexture;
 				sprite = Sprite.Create (texture, new Rect (0, 0, texture.width, texture.height), Vector2.zero);
 				spriteSave.Add(name,sprite);
+				//Debug.Log(name+":"+texture.width);
 			}
 			else {
 				sprite = spriteSave[name];
 			}
 			sprite.name = name;
-			//TextureBtn.Add (sprite);
+			TextureBtn.Add (name);
+			nameOffices.Add(nameOffice);
 			if (currentIndex < maxOffice) {
-				//searchMenu.GetComponent<Button>();
 				
-				var img = GameObject.Find ("p" + currentIndex).GetComponent<Image> ();
-				img.enabled = true;
+				GameObject.Find ("p" + currentIndex).GetComponent<Image> ().enabled = true;
 				
 				var t = GameObject.Find ("of" + currentIndex).GetComponent<Text> ();
 				t.enabled = true;
+				t.text = nameOffice;
 				
 				var plane = GameObject.Find ("Btn" + currentIndex).GetComponent<Button> ();
 				plane.enabled = true;
@@ -1926,12 +1941,149 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 				Color c = plane.targetGraphic.color;
 				c.a = 255f;
 				plane.targetGraphic.color = c;
-				var text = GameObject.Find ("of" + currentIndex).GetComponent<Text> ();
-				text.text = nameOffice;
 				currentIndex++;
 			}
 		}
 		yield return null;
+	}
+
+	public void segementSearchPress(){
+		showFullTransparent ();
+		GameObject.Find ("Panelcontainlocation").GetComponent<Animator> ().SetBool (m_OpenParameterId, true);
+	}
+
+	public void selectLocationPress(bool master){
+		GameObject.Find ("Panelcontainlocation").GetComponent<Animator> ().SetBool (m_OpenParameterId, false);
+		GameObject.Find ("Panelcontainsegments").GetComponent<Animator> ().SetBool (m_OpenParameterId, true);
+		StartCoroutine (loadTextureSegment (master));
+	}
+
+	bool isNextSegment = false;
+	bool isMaster = false;
+	private IEnumerator loadTextureSegment(bool master)
+	{
+		isMaster = master;
+		isNextSegment = false;
+		if (master) {
+			for(int i = 0;i<15;i++){
+				Button btn = GameObject.Find("SG"+i).GetComponent<Button>();
+				btn.image.sprite = Resources.Load<Sprite> (segmentNameMasterArray[i]);
+			}
+		} else {
+			for(int i = 0;i<15;i++){
+				Button btn = GameObject.Find("SG"+i).GetComponent<Button>();
+				btn.image.sprite = Resources.Load<Sprite> (segmentNameNormalArray[i]);
+			}
+		}
+		yield return null;
+	}
+
+	public void nextSegment(){
+		StartCoroutine (nextSgm ());
+	}
+	
+	int offset = 0;
+
+	private IEnumerator nextSgm(){
+		isNextSegment = !isNextSegment;
+		if (isNextSegment)
+			offset = 15;
+		else
+			offset = 0;
+		if (isMaster) {
+			for (int i = 0; i<15; i++) {
+				Button btn = GameObject.Find ("SG" + i).GetComponent<Button> ();
+				if ((i + offset) < 20) {
+					btn.enabled = true;
+					Color c = btn.targetGraphic.color;
+					c.a = 255f;
+					btn.targetGraphic.color = c;
+					btn.image.sprite = Resources.Load<Sprite> (segmentNameMasterArray [i + offset]);
+				}else {
+					Color c = btn.targetGraphic.color;
+					c.a = 0f;
+					btn.targetGraphic.color = c;
+					btn.enabled = false;
+				}
+			}
+		} else {
+			for (int i = 0; i<15; i++) {
+				Button btn = GameObject.Find ("SG" + i).GetComponent<Button> ();
+				if ((i + offset) < 27) {
+					btn.enabled = true;
+					Color c = btn.targetGraphic.color;
+					c.a = 255f;
+					btn.targetGraphic.color = c;
+					btn.image.sprite = Resources.Load<Sprite> (segmentNameNormalArray [i + offset]);
+				}else {
+					Color c = btn.targetGraphic.color;
+					c.a = 0f;
+					btn.targetGraphic.color = c;
+					btn.enabled = false;
+				}
+			}
+		}
+		yield return null;
+	}
+
+	public void searchOfficeBySegment(Button btn){
+		string segement;
+		if(isMaster)
+			segement = segmentNameMasterArray [int.Parse (btn.image.name [2].ToString ()) + offset];
+		else segement = segmentNameNormalArray [int.Parse (btn.image.name [2].ToString ()) + offset];
+		StartCoroutine (searchbySegement (segement));
+	}
+
+	private IEnumerator searchbySegement(string segement){
+		bool haveResult = false;
+		cleanTexture ();
+		foreach (string x in infomationForSearch) {
+			if (x != "") {
+				string[] info = x.Split (new string[]{" "}, System.StringSplitOptions.None);
+				if ((isMaster && info [0].ToLower () [1] == '8') || (!isMaster && info [0].ToLower () [1] != '8')) {
+					if (info [3].ToLower ().IndexOf (segement) >= 0) {
+						haveResult = true;
+						StartCoroutine (loadTexture4Office (info [0], info [1]));
+					}
+				}
+			}
+		}
+		
+		GameObject.Find ("Panelcontainsegments").GetComponent<Animator> ().SetBool (m_OpenParameterId, false);
+		
+		if (haveResult) {
+			searchbyname = true;
+			GameObject.Find ("PanelContainresults").GetComponent<Animator> ().SetBool (m_OpenParameterId, true);
+			cleanAllOffice (currentIndex);
+		} else
+			hideFullTransparent ();
+		yield return null;
+	}
+
+	bool isBathRoomSearch = false;
+
+	public void bathRoomPress(){
+
+		isBathRoomSearch = true;
+		string blcName = "b8144";
+		
+		hideSearchBlock ();
+		
+		stopRoute ();
+		
+		hideBlck (currentBlock, currentFloor);
+		
+		int Block = int.Parse (blcName [1].ToString ());
+		int Floor = int.Parse (blcName [2].ToString ());
+				
+		showBlck (Block, 1);
+		listNameCurrentBlock.Add ("block"+Block + "_1");
+		currentBlock = Block;
+		currentFloor = Floor;		
+		getRoute ("office44");
+		getRoute ("office82");
+		getRoute ("office150");
+		getRoute ("office221");
 	}
 	
 	public void next(){
@@ -1939,13 +2091,13 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			for (int i = 0; i<maxOffice; i++) {
 				if (currentIndex < TextureBtn.Count) {
 					
-					var img = GameObject.Find ("p"+currentIndex).GetComponent<Image> ();
-					img.enabled = true;
+					GameObject.Find ("p" + i).GetComponent<Image> ().enabled = true;
 					
-					var t = GameObject.Find ("of"+currentIndex).GetComponent<Text> ();
+					var t = GameObject.Find ("of" + i).GetComponent<Text> ();
 					t.enabled = true;
+					t.text = nameOffices[currentIndex];
 					
-					Sprite sprite = TextureBtn [currentIndex];
+					Sprite sprite = spriteSave[TextureBtn [currentIndex]];
 					var plane = GameObject.Find ("Btn" + i).GetComponent<Button> ();
 					plane.enabled=true;
 					plane.image.sprite = sprite;
@@ -1954,11 +2106,10 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 					plane.targetGraphic.color = c;
 					currentIndex++;
 				} else {
-					var img = GameObject.Find ("p"+currentIndex).GetComponent<Image> ();
-					img.enabled = false;
+
+					GameObject.Find ("p" + i).GetComponent<Image> ().enabled = false;
 					
-					var t = GameObject.Find ("of"+currentIndex).GetComponent<Text> ();
-					t.enabled = false;
+					GameObject.Find ("of" + i).GetComponent<Text> ().enabled = false;
 					
 					var plane = GameObject.Find ("Btn" + i).GetComponent<Button> ();
 					Color c = plane.targetGraphic.color;
@@ -1985,15 +2136,22 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		
 		next ();
 	}
-	
+
+	private int m_OpenParameterId;
+	private int m_FullScreenParameterId;
+	const string k_OpenTransitionName = "Open";
+	const string k_FullScreenTransitionName = "FullScreen";
+	bool searchbyname = false;
 	public void typeButton(Button btn){
-		//input.text += btn.name;
-		
-		cleanAllOffice ();
-		searchOffice (btn.name.ToLower () [0]);
+		StartCoroutine(typeButtonAni (btn.name.ToLower () [0]));
 	}
-
-
+	
+	public IEnumerator typeButtonAni(char name){
+		GameObject.Find ("Panelcontainkey").GetComponent<Animator> ().SetBool (m_OpenParameterId, false);
+		//yield return new WaitForSeconds(1F);
+		searchOffice (name);
+		yield return null;
+	}
 	int currentCarousel = 0,timeDisplay = -100;
 	bool shownextCarousel = false,haveVdieonow = false,firstLoadCarousel = true;
 
@@ -2006,7 +2164,6 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 	
 	private IEnumerator loadcrosel () {
-		firstLoadCarousel = false;
 		
 		if (infomationCarousel [currentCarousel] != "") {
 			carouselTimer.Stop();
@@ -2020,6 +2177,9 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 				Texture imageTexture = null;
 
 				if(!dicImageCarousel.ContainsKey(url)){
+
+					//Debug.Log("down car");
+
 					WWW imageURLWWW = new WWW (url);		
 					yield return imageURLWWW;		
 					if (imageURLWWW.texture != null) {
@@ -2027,6 +2187,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 					}
 					dicImageCarousel.Add(url,imageTexture);
 				}else {
+					//Debug.Log("use old car");
 					imageTexture = dicImageCarousel[url];
 				}
 
@@ -2038,6 +2199,9 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 				var url = IP + "crs/"+filename;
 
 				if(!dicMovieCarousel.ContainsKey(url)){
+
+					//Debug.Log("download video");
+
 					WWW www = new WWW(url);
 					movieTextureCarousel = www.movie;
 					while (!movieTextureCarousel.isReadyToPlay) {
@@ -2045,7 +2209,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 					}
 					dicMovieCarousel.Add(url,movieTextureCarousel);
 				}else {
-
+					//Debug.Log("use old video");
 					movieTextureCarousel = dicMovieCarousel[url];
 					movieTextureCarousel.Stop();
 				}
@@ -2094,13 +2258,8 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	public float TargetFOV = 10f;
 
 	Quaternion lastRotate;
-
 	
-	public void enterText(){
-		charKeyboard.enabled = true;
-	}
-	
-	public float distance = 4f;
+	public float distance = 3f;
 	float deltad = 0f;
 	bool startPoint = false;
 
@@ -2241,7 +2400,34 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		}else if (downpress) {
 			arroundDown();
 		}
-
+		/*
+		if (!stillanimation) {
+			if (Input.GetAxis ("Mouse X") < 0) {
+				//Code for action on mouse moving left
+				//Debug.Log("Mouse moved left");
+				arroundLeft ();
+				changeStatusScreen = true;
+				isShowFullScreen = false;
+			} else if (Input.GetAxis ("Mouse X") > 0) {
+				//Code for action on mouse moving right
+				//Debug.Log("Mouse moved right");
+				arroundRight ();
+				changeStatusScreen = true;
+				isShowFullScreen = false;
+			} else if (Input.GetAxis ("Mouse Y") < 0) {
+				//Code for action on mouse moving left
+				//Debug.Log("Mouse moved DOWN");
+				arroundDown ();
+				changeStatusScreen = true;
+				isShowFullScreen = false;
+			} else if (Input.GetAxis ("Mouse Y") > 0) {
+				//Code for action on mouse moving right
+				//Debug.Log("Mouse moved UP");
+				arroundUp ();
+				changeStatusScreen = true;
+				isShowFullScreen = false;
+			}
+		}*/
 		
 		if (update) {
 
@@ -2252,12 +2438,9 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			StartCoroutine(loadcrosel());
 			shownextCarousel = false;
 		}
-
-		if (haveVdieonow) {
+		else if (haveVdieonow) {
 			if(!movieTextureCarousel.isPlaying){
-
 				StartCoroutine(loadcrosel());
-
 			}
 		}
 
@@ -2273,10 +2456,11 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		
 		if (Input.GetKey (KeyCode.X)) {
 
-			Vector3 p = GameObject.Find("block8_2").transform.position;
+			Vector3 p = GameObject.Find("block8_1").transform.position;
+			//Debug.Log(startAnimation.transform.position-p);
 
-			for(int i = 1;i<218;i++){
-				GameObject x = GameObject.Find("b82"+i);
+			for(int i = 1;i<231;i++){
+				GameObject x = GameObject.Find("b81"+i);
 				if(x!=null){					
 					resultPostion +="\nstatic Vector3 f"+i+" = new Vector3 "+ (x.transform.position-p).ToString () + ";";
 				}
@@ -2386,6 +2570,14 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			
 			showTime.text = System.DateTime.Now.ToString ();
 		}
+		/*
+		if (changeStatusScreen) {
+			changeStatusScreen = false;
+			GameObject.Find ("RawImageCrs").GetComponent<Animator> ().SetBool (m_FullScreenParameterId, isShowFullScreen);
+			/*if(!haveVdieonow && isShowFullScreen)
+				showFullTransparent();
+			else hideFullTransparent();
+		}*/
 	}
 }
 

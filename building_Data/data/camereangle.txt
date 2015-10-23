@@ -1,0 +1,5 @@
+
+static Vector3 8_1office1 = new Vector3 (287.6, 44.0, 232.9);
+static Vector3 8_1lookat1 = new Vector3 (287.1, 10.0, 205.0);
+static Vector3 8_1office221 = new Vector3 (285.8, 52.4, 225.6);
+static Vector3 8_1lookat221 = new Vector3 (284.5, -10.7, 189.0);
