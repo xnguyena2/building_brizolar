@@ -98,13 +98,14 @@ public class arrow : MonoBehaviour {
 
 		if (isend) {
 			if (Vector3.Distance (this.transform.position, StartPoint) > distance){
-				GameObject arrowss = GameObject.Find("arrowsssss");
+				GameObject arrowss = GameObject.Find("arrow");
 				isend = false;
 				GameObject ar = GameObject.Instantiate (arrowss) as GameObject;
 				ar.name = "arrowsssss";
 				arrow scri = ar.GetComponent<arrow> ();
 				scri.beginMove (listPoint);
 				scri.thisIsStartPoint();
+				Destroy(arrowss,60000);
 			}
 		}
 	}
