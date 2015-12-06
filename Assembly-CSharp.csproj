@@ -89,8 +89,10 @@
      <Compile Include="Assets\script\Point8_3.cs" />
      <Compile Include="Assets\script\Point8_3handicap.cs" />
      <Compile Include="Assets\script\RouteBettwenBlock.cs" />
+     <Compile Include="Assets\script\animationEventTrigger.cs" />
      <Compile Include="Assets\script\arrow.cs" />
      <Compile Include="Assets\script\cylinderarrow.cs" />
+     <Compile Include="Assets\script\events.cs" />
      <Compile Include="Assets\script\fixPostion.cs" />
      <Compile Include="Assets\script\route.cs" />
      <Compile Include="Assets\script\writetofile.cs" />

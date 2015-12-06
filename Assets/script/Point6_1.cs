@@ -16,22 +16,24 @@ namespace AssemblyCSharp
 {
 	public class Point6_1
 	{
-		static Vector3 start = new Vector3 (61.15f, 4.0f, 13.29f);
-		static Vector3 p0 = new Vector3 (47.16f, 4.0f, 13.29f);
-		static Vector3 p1 = new Vector3 (47.16f, 4.0f, 4.7f);		
-		static Vector3 p2 = new Vector3 (21.7f, 4.0f, 4.7f);	
-		static Vector3 p3 = new Vector3 (0.24f, 4.0f, 4.7f);
-		static Vector3 p4 = new Vector3 (0.24f, 4.0f, -5.0f);
-		static Vector3 p5 = new Vector3 (-21.4f, 4.0f, -5.0f);
-		static Vector3 p6 = new Vector3 (47.16f, 4.0f, 9.64f);
-		static Vector3 p7 = new Vector3 (0.63f, 4.0f, 4.7f);
-		static Vector3 p8 = new Vector3 (-42.81f, 4.0f, -5.0f);
+		static Vector3 start1 = new Vector3 (32.64f, 1.0f, 8.89f);//
+		static Vector3 start2 = new Vector3 (13.24f, 1.0f, 8.89f);//
+		static Vector3 start3 = new Vector3 (-31.97f, 1.0f, -9.37999f);//
 
-		static Vector3 evaletor1 = new Vector3 (21.7f, 4.0f, 1.31f);
-		static Vector3 evaletor2 = new Vector3 (-21.4f, 4.0f, -8.39f);
-		static Vector3 s1 = new Vector3 (43.37f, 4.0f, 9.64f);
-		static Vector3 s2 = new Vector3 (0.63f, 4.0f, 0.03f);
-		static Vector3 s3 = new Vector3 (-42.81f, 4.0f, -9.79f);
+		static Vector3 p0 = new Vector3 (32.64f, 1.0f, 4.7f);//
+		static Vector3 p1 = new Vector3 (21.7f, 1.0f, 4.7f);//
+		static Vector3 p2 = new Vector3 (13.24f, 1.0f, 4.7f);//
+		static Vector3 p3 = new Vector3 (-31.97f, 1.0f, -5.0f);//
+		static Vector3 p5 = new Vector3 (-21.4f, 1.0f, -5.0f);
+		static Vector3 p6 = new Vector3 (43.37f, 1.0f, 4.7f);//
+		static Vector3 p7 = new Vector3 (0.63f, 1.0f, 4.7f);//
+		static Vector3 p8 = new Vector3 (-42.81f, 1.0f, -5.0f);//
+
+		static Vector3 evaletor1 = new Vector3 (21.7f, 1.0f, 1.31f);
+		static Vector3 evaletor2 = new Vector3 (-21.4f, 1.0f, -8.39f);
+		static Vector3 s1 = new Vector3 (43.37f, 1.0f, 9.64f);
+		static Vector3 s2 = new Vector3 (0.63f, 1.0f, 0.03f);
+		static Vector3 s3 = new Vector3 (-42.81f, 1.0f, -9.79f);
 
 		
 		static Vector3 pos1 = new Vector3 (365.6F, 21.8F, 248.5F);
@@ -45,12 +47,12 @@ namespace AssemblyCSharp
 		static Vector3 pos5 = new Vector3 (313.5F, 36.3F, 236.3F);
 		static Vector3 lookat5 = new Vector3 (312.5F, -22.7F, 190.3F);
 		
-		static Vector3[] thangmay1 = new Vector3[] { start, p0, p1, p2, evaletor1 };	
-		static Vector3[] thangmay2 = new Vector3[] { start, p0, p1, p2, p3, p4, p5, evaletor2 };
+		static Vector3[] thangmay1 = new Vector3[] { start1, p0, p1, evaletor1 };//
+		static Vector3[] thangmay2 = new Vector3[] { start3, p3, p5, evaletor2 };
 
-		static Vector3[] thangkeo1 = new Vector3[] { start, p0, p6, s1 };
-		static Vector3[] thangkeo2 = new Vector3[] { start, p0, p1, p2, p7, s2 };		
-		static Vector3[] thangkeo3 = new Vector3[] { start, p0, p1, p2, p3, p4, p5, p8, s3 };
+		static Vector3[] thangkeo1 = new Vector3[] { start1, p0, p6, s1 };//
+		static Vector3[] thangkeo2 = new Vector3[] { start2, p2, p7, s2 };	//	
+		static Vector3[] thangkeo3 = new Vector3[] { start3, p3, p8, s3 };//
 
 
 		public Dictionary<string, Vector3[]> dictionary = new Dictionary<string, Vector3[]>();

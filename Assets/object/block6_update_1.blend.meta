@@ -20,6 +20,7 @@ ModelImporter:
     100024: Plane_002
     100026: Plane_003
     100028: projecao_001
+    100030: Plane_004
     400000: BL__X218_curve_
     400002: BL__X218_curve__004
     400004: BL__X218_curve__007
@@ -35,6 +36,7 @@ ModelImporter:
     400024: Plane_002
     400026: Plane_003
     400028: projecao_001
+    400030: Plane_004
     2300000: BL__X218_curve_
     2300002: BL__X218_curve__004
     2300004: BL__X218_curve__007
@@ -49,6 +51,7 @@ ModelImporter:
     2300022: Plane_002
     2300024: Plane_003
     2300026: projecao_001
+    2300028: Plane_004
     3300000: BL__X218_curve_
     3300002: BL__X218_curve__004
     3300004: BL__X218_curve__007
@@ -63,6 +66,7 @@ ModelImporter:
     3300022: Plane_002
     3300024: Plane_003
     3300026: projecao_001
+    3300028: Plane_004
     4300000: BL__X218_curve_
     4300002: BL__X218_curve__004
     4300004: BL__X218_curve__007
@@ -77,6 +81,7 @@ ModelImporter:
     4300022: Plane_003
     4300024: block6_1Ground
     4300026: projecao_001
+    4300028: Plane_004
     7400000: Default Take
     9500000: //RootNode
   materials:
