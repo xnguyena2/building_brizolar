@@ -22,7 +22,6 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	public RawImage Videocarosel;
 	public RawImage VideoDirection;
 	public Text showTime;
-	public Text showInfomation;
 	public Text floorOfficeOn;
 	public Text officePhoneNumber;
 	public Text officeShowName;
@@ -40,11 +39,6 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	public Material yellowTarget;
 
 	public GameObject cube;
-
-	public Button btnRight;
-	public Button btnLeft;
-	public Button btnUp;
-	public Button btnDown;
 
 	public Image floorSelector;
 	public Image blockSelectorimg;
@@ -513,11 +507,6 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		hideEventAndInfomation ();
 		exitvideo ();
 		hideOldeScreen ();
-		madeButtonTransparent (btnLeft);
-		madeButtonTransparent (btnRight);
-		madeButtonTransparent (btnDown);
-		madeButtonTransparent (btnUp);
-		madeButtonTransparent (NextBtn);
 
 		showFullTransparent ();
 		
@@ -573,7 +562,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			GameObject.Find("pleaseselectyournumber").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectornumberarrowhandi"];
 			GameObject.Find("pleaseselectyournumber6").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectornumberarrowhandi"];
 			GameObject.Find("pleaseselectyournumber1to5").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectornumberarrowhandi"];
-			if(currentBlock>5)
+			if(currentBlock>5 && currentBlock < 9)
 				GameObject.Find("floorselector").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+currentBlock+"_"+currentFloor+"handi"];
 			else GameObject.Find("floorselector").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"3_"+currentFloor+"handi"];
 			GameObject.Find("borderImg").GetComponent<Image>().sprite = ResourcesDictionary["videoFrameBarhandi"];
@@ -627,7 +616,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			GameObject.Find("pleaseselectyournumber").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectornumberarrow"];
 			GameObject.Find("pleaseselectyournumber6").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectornumberarrow"];
 			GameObject.Find("pleaseselectyournumber1to5").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectornumberarrow"];
-			if(currentBlock>5)
+			if(currentBlock>5 && currentBlock < 9)
 				GameObject.Find("floorselector").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+currentBlock+"_"+currentFloor];
 			else GameObject.Find("floorselector").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"3_"+currentFloor];
 			GameObject.Find("borderImg").GetComponent<Image>().sprite = ResourcesDictionary["videoFrameBar"];
@@ -660,7 +649,6 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 	int currentFloor = 1;
 	string handi = "handi";
-	string currentFloorName = "8_1";
 	bool showAnimatioPressed1 = true;
 	public void gotoFloor1(){		
 		if (!isShowBlock) {
@@ -685,10 +673,8 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 		if (currentBlock > 0 && currentBlock < 6) {
 			floorSelector.sprite = ResourcesDictionary [currentLanguage + "3_1" + handi];
-			currentFloorName = "3_1";
 		} else {
 			floorSelector.sprite = ResourcesDictionary [currentLanguage + floorName];
-			currentFloorName = floorName;
 		}
 
 		target = center;
@@ -717,11 +703,9 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 		showBlck (currentBlock,currentFloor);
 		if (currentBlock > 0 && currentBlock < 6) {
-			currentFloorName = "3_2";
 			floorSelector.sprite = ResourcesDictionary [currentLanguage + "3_2" + handi];
 		} else {
 			floorSelector.sprite = ResourcesDictionary [currentLanguage + floorName];
-			currentFloorName = floorName;
 		}
 
 		target = center;
@@ -753,11 +737,9 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 			if (currentBlock > 0 && currentBlock < 6){
 				floorSelector.sprite = ResourcesDictionary[currentLanguage+"3_3"+handi];
-				currentFloorName = "3_3";
 			}
 			else {
 				floorSelector.sprite = ResourcesDictionary[currentLanguage+floorName];
-				currentFloorName = floorName;
 			}
 
 			target = center;
@@ -787,11 +769,9 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 			if (currentBlock > 0 && currentBlock < 6){
 				floorSelector.sprite = ResourcesDictionary[currentLanguage+"3_4"+handi];
-				currentFloorName = "3_4";
 			}
 			else {
 				floorSelector.sprite = ResourcesDictionary[currentLanguage+floorName];
-				currentFloorName = floorName;
 			}
 
 			target = center;
@@ -865,14 +845,18 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	public void selectBlock(Button btn){
 		nameOfrandSearchBlock = btn.name;
 		if (nameOfrandSearchBlock == "b8") {
+			updateArrow (true);
 			showRangeNumber (8);
 		} else if (nameOfrandSearchBlock == "b6") {
+			updateArrow (false);
 			showRangeNumber (6);
-		} else if (nameOfrandSearchBlock == "b7") {			
+		} else if (nameOfrandSearchBlock == "b7") {	
+			updateArrow (false);
 			GameObject.Find ("PanelContainblocks").GetComponent<Animator> ().SetBool (m_OpenParameterId, false);
 			currentNameLayoutShow = null;
 			searchOfficeInRange ("anynumber");
 		} else {
+			updateArrow (false);
 			showRangeNumber (0);
 		}
 		//hideBlockSelector ();
@@ -1047,19 +1031,29 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		shownextCarousel = true;
 	}
 	
+	private void updateArrow(bool isStore){
+		if (isStore) {			
+			if (!isHandicapMode)
+				GameObject.Find ("pleaseselectyouroffice").GetComponent<Image> ().sprite = ResourcesDictionary [currentLanguage + "selectorstorearrow"];
+			else
+				GameObject.Find ("pleaseselectyouroffice").GetComponent<Image> ().sprite = ResourcesDictionary [currentLanguage + "selectorstorearrowhandi"];
+		} else {			
+			if (!isHandicapMode)
+				GameObject.Find ("pleaseselectyouroffice").GetComponent<Image> ().sprite = ResourcesDictionary [currentLanguage + "selectorofficearrow"];
+			else
+				GameObject.Find ("pleaseselectyouroffice").GetComponent<Image> ().sprite = ResourcesDictionary [currentLanguage + "selectorofficearrowhandi"];
+		}
+	}
 
 	public void searchPress(){
+
+		updateArrow (true);
+
 		hideEventAndInfomation ();
 		//hideBlockSelector ();
 		exitvideo ();
 
 		hideOldeScreen ();
-
-		madeButtonTransparent (btnLeft);
-		madeButtonTransparent (btnRight);
-		madeButtonTransparent (btnDown);
-		madeButtonTransparent (btnUp);
-		madeButtonTransparent (NextBtn);
 		
 		showFullTransparent ();
 
@@ -2050,17 +2044,11 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			madeButtonTransparent(NextBtn);
 		}
 
-		showInfomation.text = blcName;
 
 		hideSearchBlock ();
 
 		stopRoute ();
-		
-		showButton (btnLeft);
-		showButton (btnRight);
-		showButton (btnDown);
-		showButton (btnUp);
-		
+				
 		hideBlck (currentBlock, currentFloor);
 
 		int Block = int.Parse (blcName [1].ToString ());
@@ -2450,6 +2438,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	string currentNameLayoutShow;
 
 	public void segementSearchPress(){
+		offset = 0;
 		hideEventAndInfomation ();
 		exitvideo ();
 		hideOldeScreen ();
@@ -2462,6 +2451,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		GameObject.Find ("Panelcontainlocation").GetComponent<Animator> ().SetBool (m_OpenParameterId, false);
 		GameObject.Find ("Panelcontainsegments").GetComponent<Animator> ().SetBool (m_OpenParameterId, true);
 		currentNameLayoutShow = "Panelcontainsegments";
+		updateArrow (master);
 		StartCoroutine (loadTextureSegment (master));
 	}
 
@@ -2566,6 +2556,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 	void hideOldeScreen(){
 		//Debug.Log ("name of layout:" + currentNameLayoutShow);
+		madeButtonTransparent (NextBtn);
 		if (currentNameLayoutShow != null) {
 			GameObject.Find (currentNameLayoutShow).GetComponent<Animator> ().SetBool (m_OpenParameterId, false);
 			currentNameLayoutShow = null;
@@ -2654,6 +2645,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	public void searchOfficeBySegment(int index){
 		string segement;
 		segement = segmentNameArray [index + offset];
+		//Debug.Log (offset + "," + segement);
 		StartCoroutine (searchbySegement (segement));
 	}
 
@@ -3088,7 +3080,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			} else if (downpress) {
 				arroundDown ();
 			}
-			/*
+
 		if (!stillanimation) {
 			if (Input.GetAxis ("Mouse X") < 0) {
 				//Code for action on mouse moving left
@@ -3115,7 +3107,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 				changeStatusScreen = true;
 				isShowFullScreen = false;
 			}
-		}*/
+		}*
 		
 			if (update) {
 
@@ -3240,14 +3232,15 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 				beginmovetonextcamera = false;
 			}
 			if (isShowTime) {			
-				showTime.text = System.DateTime.Now.ToString ();
+				showTime.text = System.DateTime.Now.ToString ("HH:mm:ss");
 			}
-			/*
+
 			if (changeStatusScreen) {
 				changeStatusScreen = false;
 				GameObject.Find ("RawImageCrs").GetComponent<Animator> ().SetBool (m_FullScreenParameterId, isShowFullScreen);
-			}*/
+			}
 			if(isHideInfomation){
+				madeButtonTransparent(NextBtn);
 				hideEventAndInfomation();
 				isHideInfomation = false;
 				hideInfomationTimer.Stop();
