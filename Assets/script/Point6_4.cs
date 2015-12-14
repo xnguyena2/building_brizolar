@@ -39,7 +39,7 @@ namespace AssemblyCSharp
 		static Vector3 f20 = new Vector3 (-1.7F, 1.0F, 4.8F);
 		static Vector3 f21 = new Vector3 (-5.6F, 1.0F, 4.8F);
 		static Vector3 f22 = new Vector3 (-5.6F, 1.0F, 4.8F);
-		static Vector3 f23 = new Vector3 (-5.2F, 1.0F, -0.1F);
+		static Vector3 f23 = new Vector3 (-5.35F, 1.0F, 1.97F);
 		static Vector3 f24 = new Vector3 (-9.5F, 1.0F, -4.9F);
 		static Vector3 f25 = new Vector3 (-5.6F, 1.0F, -4.9F);
 		static Vector3 f26 = new Vector3 (-1.7F, 1.0F, -4.9F);
@@ -64,6 +64,7 @@ namespace AssemblyCSharp
 		static Vector3 f45 = new Vector3 (-36.9F, 1.0F, -14.5F);
 		static Vector3 f46 = new Vector3 (-37.4F, 1.0F, -11.7F);
 		static Vector3 f47 = new Vector3 (-37.4F, 1.0F, -7.7F);
+		static Vector3 f48 = new Vector3 (-5.31F, 1.0F, -1.96F);
 
 		
 		static Vector3 o1 = new Vector3 (49.3F, 1.0F, 18.9F);
@@ -88,7 +89,7 @@ namespace AssemblyCSharp
 		static Vector3 o20 = new Vector3 (-1.7F, 1.0F, 9.1F);
 		static Vector3 o21 = new Vector3 (-5.6F, 1.0F, 9.1F);
 		static Vector3 o22 = new Vector3 (-9.7F, 1.0F, 7.9F);
-		static Vector3 o23 = new Vector3 (-9.5F, 1.0F, -0.1F);
+		static Vector3 o23 = new Vector3 (-9.470001F, 1.0F, 1.97F);
 		static Vector3 o24 = new Vector3 (-9.5F, 1.0F, -9.2F);
 		static Vector3 o25 = new Vector3 (-5.6F, 1.0F, -9.2F);
 		static Vector3 o26 = new Vector3 (-1.7F, 1.0F, -9.2F);
@@ -113,6 +114,7 @@ namespace AssemblyCSharp
 		static Vector3 o45 = new Vector3 (-32.6F, 1.0F, -18.0F);
 		static Vector3 o46 = new Vector3 (-33.0F, 1.0F, -11.7F);
 		static Vector3 o47 = new Vector3 (-33.0F, 1.0F, -7.7F);
+		static Vector3 o48 = new Vector3 (-9.470001F, 1.0F, -1.96F);
 
 		public static Vector3 start1 = new Vector3 (21.7f, 1.0F, 4.7f);
 
@@ -192,7 +194,8 @@ namespace AssemblyCSharp
 		static Vector3[] office45 = new Vector3[] { evalator2, start2, f33, f45, o45 };
 		static Vector3[] office46 = new Vector3[] { evalator2, start2, f33, f46, o46 };
 		static Vector3[] office47 = new Vector3[] { evalator2, start2, f33, f47, o47 };
-
+		
+		static Vector3[] office48 = new Vector3[] { evalator2, start2, f25, f48, o48 };
 		
 		static Vector3 pos1 = new Vector3 (317.5F, 88.0F, 264.2F);
 		static Vector3 lookat1 = new Vector3 (302.0F, 10.5F, 203.0F);
@@ -286,6 +289,8 @@ namespace AssemblyCSharp
 		static Vector3 lookat46 = new Vector3 (275.2F, 9.8F, 188.7F);
 		static Vector3 pos47 = new Vector3 (265.4F, 73.4F, 248.7F);
 		static Vector3 lookat47 = new Vector3 (281.5F, 9.7F, 189.4F);
+		static Vector3 pos48 = new Vector3 (290.2F, 78.3F, 260.2F);
+		static Vector3 lookat48 = new Vector3 (287.1F, 5.7F, 194.5F);
 		static Vector3 pos13 = new Vector3 (358.1F, 73.4F, 258.6F);
 		static Vector3 lookat13 = new Vector3 (323.7F, 4.1F, 198.8F);
 
@@ -344,6 +349,7 @@ namespace AssemblyCSharp
 			LookatCamera.Add("office45",lookat45);
 			LookatCamera.Add("office46",lookat46);
 			LookatCamera.Add("office47",lookat47);
+			LookatCamera.Add("office48",lookat48);
 
 			PositnCamera.Add("office1",pos1);
 			PositnCamera.Add("office2",pos2);
@@ -392,6 +398,7 @@ namespace AssemblyCSharp
 			PositnCamera.Add("office45",pos45);
 			PositnCamera.Add("office46",pos46);
 			PositnCamera.Add("office47",pos47);
+			PositnCamera.Add("office48",pos48);
 
 			dictionary.Add("office1",office1);
 			dictionary.Add("office2",office2);
@@ -440,6 +447,7 @@ namespace AssemblyCSharp
 			dictionary.Add("office45",office45);
 			dictionary.Add("office46",office46);
 			dictionary.Add("office47",office47);
+			dictionary.Add("office48",office48);
 		}
 	}
 }

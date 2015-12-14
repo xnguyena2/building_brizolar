@@ -39,7 +39,7 @@ namespace AssemblyCSharp
 		static Vector3 f20 = new Vector3 (-1.7F, 1.0F, 4.8F);
 		static Vector3 f21 = new Vector3 (-5.6F, 1.0F, 4.8F);
 		static Vector3 f22 = new Vector3 (-5.6F, 1.0F, 4.8F);
-		static Vector3 f23 = new Vector3 (-5.2F, 1.0F, -0.1F);
+		static Vector3 f23 = new Vector3 (-5.35F, 1.0F, 1.97F);
 		static Vector3 f24 = new Vector3 (-9.5F, 1.0F, -4.9F);
 		static Vector3 f25 = new Vector3 (-5.6F, 1.0F, -4.9F);
 		static Vector3 f26 = new Vector3 (-1.7F, 1.0F, -4.9F);
@@ -64,6 +64,7 @@ namespace AssemblyCSharp
 		static Vector3 f45 = new Vector3 (-36.9F, 1.0F, -14.5F);
 		static Vector3 f46 = new Vector3 (-37.4F, 1.0F, -11.7F);
 		static Vector3 f47 = new Vector3 (-37.4F, 1.0F, -7.7F);
+		static Vector3 f48 = new Vector3 (-5.31F, 1.0F, -1.96F);
 		
 		
 		static Vector3 o1 = new Vector3 (49.3F, 1.0F, 18.9F);
@@ -88,7 +89,7 @@ namespace AssemblyCSharp
 		static Vector3 o20 = new Vector3 (-1.7F, 1.0F, 9.1F);
 		static Vector3 o21 = new Vector3 (-5.6F, 1.0F, 9.1F);
 		static Vector3 o22 = new Vector3 (-9.7F, 1.0F, 7.9F);
-		static Vector3 o23 = new Vector3 (-9.5F, 1.0F, -0.1F);
+		static Vector3 o23 = new Vector3 (-9.470001F, 1.0F, 1.97F);
 		static Vector3 o24 = new Vector3 (-9.5F, 1.0F, -9.2F);
 		static Vector3 o25 = new Vector3 (-5.6F, 1.0F, -9.2F);
 		static Vector3 o26 = new Vector3 (-1.7F, 1.0F, -9.2F);
@@ -113,6 +114,7 @@ namespace AssemblyCSharp
 		static Vector3 o45 = new Vector3 (-32.6F, 1.0F, -18.0F);
 		static Vector3 o46 = new Vector3 (-33.0F, 1.0F, -11.7F);
 		static Vector3 o47 = new Vector3 (-33.0F, 1.0F, -7.7F);
+		static Vector3 o48 = new Vector3 (-9.470001F, 1.0F, -1.96F);
 
 		public static Vector3 evalator1 = new Vector3 (43.37f, 1.0F, 9.64f);
 
@@ -170,6 +172,7 @@ namespace AssemblyCSharp
 		static Vector3[] office45 = new Vector3[] { evalator3, f45, o45 };
 		static Vector3[] office46 = new Vector3[] { evalator3, f46, o46 };
 		static Vector3[] office47 = new Vector3[] { evalator3, f47, o47 };
+		static Vector3[] office48 = new Vector3[] { evalator2, f48, o48 };
 		
 		public Dictionary<string, Vector3[]> dictionary = new Dictionary<string, Vector3[]>();
 
@@ -222,6 +225,7 @@ namespace AssemblyCSharp
 			dictionary.Add("office45",office45);
 			dictionary.Add("office46",office46);
 			dictionary.Add("office47",office47);
+			dictionary.Add("office48",office48);
 		}
 	}
 }
