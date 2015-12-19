@@ -1033,7 +1033,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 	bool isStopApplication = false;
 	private void OnTimedBoomEvent(object o, System.Timers.ElapsedEventArgs e){
-		isStopApplication = true;
+		//isStopApplication = true;
 	}
 
 	private void OnTimedEvent(object o, System.Timers.ElapsedEventArgs e)
@@ -3120,7 +3120,48 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 				arroundDown ();
 			}
 
-		if (!stillanimation) {
+		//if (!stillanimation) 
+			{
+				if (Input.touchCount > 0) {
+
+					if(isShowFullScreen){
+						changeStatusScreen = true;
+						isShowFullScreen = false;
+						fullScreenTimer.Stop();
+					}else resetTimer();
+					/*
+					if(Input.GetTouch(0).phase == TouchPhase.Began){
+						if(isShowFullScreen){
+							changeStatusScreen = true;
+							isShowFullScreen = false;
+							fullScreenTimer.Stop();
+						}else resetTimer();
+					}
+					else */
+					if(Input.GetTouch(0).phase == TouchPhase.Moved){
+						// Get movement of the finger since last frame
+						Vector2 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
+						
+						if(touchDeltaPosition.x < 0){
+							arroundRight ();
+						}
+						else if(touchDeltaPosition.x > 0){
+							arroundLeft ();
+						}
+					}
+					/*else if(Input.GetTouch(0).phase == TouchPhase.Ended){
+						if(isShowFullScreen){
+							changeStatusScreen = true;
+							isShowFullScreen = false;
+							fullScreenTimer.Stop();
+						}else resetTimer();
+					}*/
+
+				}
+
+
+				/*
+
 			if (Input.GetAxis ("Mouse X") < 0) {
 				//Code for action on mouse moving left
 				//Debug.Log("Mouse moved left");
@@ -3139,18 +3180,6 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 						isShowFullScreen = false;
 						fullScreenTimer.Stop();
 					}else resetTimer();
-				} /*else if (Input.GetAxis ("Mouse Y") < 0) {
-				//Code for action on mouse moving left
-				//Debug.Log("Mouse moved DOWN");
-				arroundDown ();
-				changeStatusScreen = true;
-				isShowFullScreen = false;
-				} else if (Input.GetAxis ("Mouse Y") > 0) {
-					//Code for action on mouse moving right
-					//Debug.Log("Mouse moved UP");
-					arroundUp ();
-					changeStatusScreen = true;
-					isShowFullScreen = false;
 				}*/
 			}
 		
