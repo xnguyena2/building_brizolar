@@ -1021,7 +1021,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			tempArray.Sort();
 			foreach(string name in tempArray){
 				string[] info = sortDic[name];				
-				StartCoroutine(loadTexture4Office(info[0], info[2].Replace ("|space|", " "), info[4].Replace ("|space|", " "), currentIndex, convertToUtf8(info[1].Replace ("|space|", " "))));
+				StartCoroutine(loadTexture4Office(info[0], toNormalString(info[2]), toNormalString(info[4]), currentIndex, convertToUtf8(toNormalString(info[1]))));
 				if(currentIndex<maxOffice)
 					currentIndex++;			
 			}
@@ -1079,7 +1079,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	private void OnTimedEvent(object o, System.Timers.ElapsedEventArgs e)
 	{
 		//Debug.Log("update sence");
-		update = true;
+		//update = true;
 	}
 
 	private void LoadNextCarousel(object o, System.Timers.ElapsedEventArgs e)
@@ -1193,8 +1193,8 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			carouselTimer.Elapsed += LoadNextCarousel;
 			
 			carouselTimer.Stop ();
-
-			StartCoroutine (loadcrosel ());
+			if(infomationCarousel.Length>1)
+				StartCoroutine (loadcrosel ());
 		}
 		if (!stillUpdatingLogo)
 			StartCoroutine (updateLogo ());
@@ -2253,7 +2253,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			tempArray.Sort();
 			foreach(string names in tempArray){
 				string[] info = sortDic[names];								
-				StartCoroutine(loadTexture4Office(info[0], convertToUtf8(info[1].Replace ("|space|", " ")), info[4].Replace ("|space|", " "), currentIndex, null));
+				StartCoroutine(loadTexture4Office(info[0], convertToUtf8(toNormalString(info[1])), toNormalString(info[4]), currentIndex, null));
 				if(currentIndex<maxOffice)
 					currentIndex++;	
 			}
@@ -2485,9 +2485,9 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 				sprite = Sprite.Create (texture, new Rect (0, 0, texture.width, texture.height), Vector2.zero);
 				eventInf.Add(id,new events( 
 				                           sprite, 
-				                           convertToUtf8(title.Replace ("|space|", " ").Replace("|dotdot|", ":")), 
-				                           convertToUtf8(dateTime.Replace ("|space|", " ").Replace("|dotdot|", ":")), 
-				                           convertToUtf8(description.Replace ("|enter|", "\r\n").Replace ("|space|", " ").Replace("|dotdot|", ":"))));
+				                           convertToUtf8(toNormalString(title)), 
+				                           convertToUtf8(toNormalString(dateTime)), 
+				                           convertToUtf8(toNormalString(description))));
 			}
 			else {
 				sprite = eventInf[id].sprite;
@@ -2506,11 +2506,11 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 				GameObject.Find ("maineventsImg" + (index+1)).GetComponent<Image> ().sprite = sprite;
 				
-				GameObject.Find ("evntTitle" + (index+1)).GetComponent<Text> ().text = convertToUtf8(title.Replace ("|space|", " ").Replace("|dotdot|", ":"));
+				GameObject.Find ("evntTitle" + (index+1)).GetComponent<Text> ().text = convertToUtf8(toNormalString(title));
 				
-				GameObject.Find ("eventTime" + (index+1)).GetComponent<Text> ().text = convertToUtf8(dateTime.Replace ("|space|", " ").Replace("|dotdot|", ":"));
+				GameObject.Find ("eventTime" + (index+1)).GetComponent<Text> ().text = convertToUtf8(toNormalString(dateTime));
 				
-				GameObject.Find ("eventDescription" + (index+1)).GetComponent<Text> ().text = convertToUtf8(description.Replace ("|enter|", "\r\n").Replace ("|space|", " ").Replace("|dotdot|", ":"));
+				GameObject.Find ("eventDescription" + (index+1)).GetComponent<Text> ().text = convertToUtf8(toNormalString(description));
 				currentEvent++;
 			}
 		}
@@ -2757,7 +2757,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 				if ((isMaster && info [0].ToLower () [1] == '8') || (!isMaster && info [0].ToLower () [1] != '8')) {
 					if (info [3].ToLower ().IndexOf (segement) >= 0 && info [1] != "for_empty_office") {
 						haveResult = true;
-						StartCoroutine (loadTexture4Office (info [0], convertToUtf8(info [1].Replace ("|space|", " ")), info[4].Replace ("|space|", " "), currentIndex, null));
+						StartCoroutine (loadTexture4Office (info [0], convertToUtf8(toNormalString(info [1])), toNormalString(info[4]), currentIndex, null));
 						if(currentIndex<maxOffice)
 							currentIndex++;
 					}
@@ -2895,19 +2895,19 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 	
 	private IEnumerator loadcrosel () {
-		
+
 		if (infomationCarousel [currentCarousel] != "") {
-			carouselTimer.Stop();
+			carouselTimer.Stop ();
 			string[] infos = infomationCarousel [currentCarousel].Split (new string[]{" "}, System.StringSplitOptions.None);
 			string filename = infos [0];
 			timeDisplay = int.Parse (infos [1]);
 			//Debug.Log(filename+timeDisplay);
 			if (timeDisplay > 0) {
 				haveVdieonow = false;
-				var url = IP + "crs/"+filename;
+				var url = IP + "crs/" + filename;
 				Texture imageTexture = null;
 
-				if(!dicImageCarousel.ContainsKey(url)){
+				if (!dicImageCarousel.ContainsKey (url)) {
 
 					//Debug.Log("down car");
 
@@ -2916,42 +2916,43 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 					if (imageURLWWW.texture != null) {
 						imageTexture = (Texture)imageURLWWW.texture;
 					}
-					dicImageCarousel.Add(url,imageTexture);
-				}else {
+					dicImageCarousel.Add (url, imageTexture);
+				} else {
 					//Debug.Log("use old car");
-					imageTexture = dicImageCarousel[url];
+					imageTexture = dicImageCarousel [url];
 				}
 
 				Videocarosel.texture = imageTexture;
-				carouselTimer.Interval = timeDisplay*1000;
-				carouselTimer.Start();
-			}else {
+				carouselTimer.Interval = timeDisplay * 1000;
+				carouselTimer.Start ();
+			} else {
 
-				var url = IP + "crs/"+filename;
+				var url = IP + "crs/" + filename;
+				//Debug.Log(url);
+				if (!dicMovieCarousel.ContainsKey (url)) {
 
-				if(!dicMovieCarousel.ContainsKey(url)){
 
-					//Debug.Log("download video");
-
-					WWW www = new WWW(url);
+					WWW www = new WWW (url);
 					movieTextureCarousel = www.movie;
 					while (!movieTextureCarousel.isReadyToPlay) {
 						yield return null;
 					}
-					dicMovieCarousel.Add(url,movieTextureCarousel);
-				}else {
+					dicMovieCarousel.Add (url, movieTextureCarousel);
+				} else {
 					//Debug.Log("use old video");
-					movieTextureCarousel = dicMovieCarousel[url];
-					movieTextureCarousel.Stop();
+					movieTextureCarousel = dicMovieCarousel [url];
+					movieTextureCarousel.Stop ();
 				}
 				movieTextureCarousel.loop = false;
 				Videocarosel.texture = movieTextureCarousel;
-				movieTextureCarousel.Play();
+				movieTextureCarousel.Play ();
 				haveVdieonow = true;
 			}
+		} else {
+			shownextCarousel = true;
 		}
 		currentCarousel++;
-		currentCarousel = currentCarousel%infomationCarousel.Length;
+		currentCarousel = currentCarousel % (infomationCarousel.Length - 1);
 		yield return null;
 	}
 	MovieTexture movieTextureDirctionStair;
@@ -3170,6 +3171,11 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		fullScreenTimer.Start ();
 	}
 
+	public string toNormalString(string input)
+	{
+		return input.Replace("|enter|", System.Environment.NewLine).Replace("|space|", " ").Replace("|dotdot|", ":");
+	}
+
 	void Update () {
 
 		if (isStopApplication) {
@@ -3256,15 +3262,20 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 				StartCoroutine (sysServer ());
 				update = false;
 			}
-			if (shownextCarousel) {
-				StartCoroutine (loadcrosel ());
-				shownextCarousel = false;
-			} else if (haveVdieonow) {
-				if (!movieTextureCarousel.isPlaying) {
+			if(infomationCarousel.Length>1){
+				if (shownextCarousel) {
+					shownextCarousel = false;
 					StartCoroutine (loadcrosel ());
+				} else if (haveVdieonow) {
+					if (!movieTextureCarousel.isPlaying) {
+						haveVdieonow = false;
+						//Debug.Log ("Load Video");
+						StartCoroutine (loadcrosel ());
+					}
 				}
 			}
 
+			/*
 			if (Input.GetKey (KeyCode.Z)) {
 				Vector3 p = Camera.main.transform.position;
 				result += p.ToString () + ";";
@@ -3287,7 +3298,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 					}
 				}
 				writetofile.append2File (pointPostions, resultPostion);
-				resultPostion = "";
+				resultPostion = "";*/
 				/*
 			Vector3 p = cube.transform.position - GameObject.Find("block8_3").transform.position;
 			resultPostion ="\nstatic Vector3 p"+index+" = new Vector3 "+ p.ToString () + ";";
@@ -3319,8 +3330,8 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			
 			file.Close();
 			writetofile.write2File("C:\\Users\\Nguyen Phong\\Downloads\\unity\\test2\\building_Data\\data\\re.txt",re);*/
-			}
-
+			//}
+			/*
 			if (Input.GetKey (KeyCode.C)) {
 				float delta = 4.31f;
 				for (int i = 1; i<67; i++) {
@@ -3367,7 +3378,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			if (Input.GetKey (KeyCode.UpArrow)) {
 				target += new Vector3 (0, 4 * Time.deltaTime, 0);
 				Camera.main.transform.Translate (new Vector3 (0, 4 * Time.deltaTime, 0));
-			}
+			}*/
 
 			if (beginmovetonextcamera) {
 				setCamera (posss, lattt);

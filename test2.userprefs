@@ -1,8 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\script\ControlEvent.cs">
     <Files>
-      <File FileName="Assets\script\ControlEvent.cs" Line="2761" Column="33" />
+      <File FileName="Assets\script\ControlEvent.cs" Line="130" Column="18" />
       <File FileName="Assets\script\Point5_1.cs" Line="1" Column="1" />
       <File FileName="Assets\script\Point4_1.cs" Line="1" Column="1" />
       <File FileName="Assets\script\Point3_1.cs" Line="1" Column="1" />
