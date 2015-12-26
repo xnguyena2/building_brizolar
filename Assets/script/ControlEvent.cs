@@ -29,6 +29,9 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	public Canvas contain1;
 	public Canvas contain2;
 	public Canvas contain3;
+	public Canvas evnt1;
+	public Canvas evnt2;
+	public Canvas evnt3;
 
 	//public GameObject startAnimation;
 	public GameObject endAnimation;
@@ -63,14 +66,14 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		"311","311handi","312","312handi","313","313handi","314","314handi","315","315handi",
 		"316","316handi","317","317handi","318","318handi","319","319handi","320","320handi","321","321handi",
 		"101-166","101-166handi","201-266","201-266handi","301-348","301-348handi","101-144","101-144handi","201-244","201-244handi",
-		"301-332","301-332handi","handicap",
+		"301-332","301-332handi","handicap","backgroundevnthandi","backgroundevnt","eventDateBackgroundhandi","eventDateBackground",
 		"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z",
 		"Ahandi","Bhandi","Chandi","Dhandi","Ehandi","Fhandi","Ghandi","Hhandi","Ihandi","Jhandi","Khandi","Lhandi","Mhandi","Nhandi",
 		"Ohandi","Phandi","Qhandi","Rhandi","Shandi","Thandi","Uhandi","Vhandi","Whandi","Xhandi","Yhandi","Zhandi",
-		"art","atoz","atozhandi","backgroundevnt","bank","bathroom","bathroomhandi","block1","block1handi",
+		"art","atoz","atozhandi","bank","bathroom","bathroomhandi","block1","block1handi",
 		"block2","block2handi","block3","block3handi","block4","block4handi","block5","block5handi","block6","block6handi",
 		"block7","block7handi","block8","block8handi","blockselector","blockselectorhandi","brokers","close","closehandi","commer",
-		"electric","energy","eventbtn","eventbtnhandi","eventDateBackground","events","financial","gastronomy",
+		"electric","energy","eventbtn","eventbtnhandi","events","financial","gastronomy",
 		"hair","home","import","inst","jewelry","kidfashtion","kisoksstore","law","lingerie","logist",
 		"mainImgex","manage","manfashtion","market","masterbigbutton","masterbigbuttonhandi","mobile","natural","next","nextbackground","nextbackgroundhandi",
 		"nexthandicap","normalbigbutton","normalbigbuttonhandi","number","numberhandi","officeInfomationBackground","officeInfomationBackgroundhandi","optical","others","party","petshop",
@@ -112,7 +115,32 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		"brazillogisthandi","brazilmanagehandi","brazilmarkethandi","brazilmedichandi","brazilmobilehandi",
 		"brazilnaturalhandi","brazilopticalhandi","brazilothershandi","brazilpartyhandi","brazilpetshophandi",
 		"brazilserviceshandi","brazilshoehandi","brazilsporthandi","brazilstudioshandi","brazilsupliershandi",
-		"braziltechhandi","braziltransphandi","braziltravelhandi","braziladminhandi","brazilhandicap"
+		"braziltechhandi","braziltransphandi","braziltravelhandi","braziladminhandi","brazilhandicap","brazilnextbackground","brazilnextbackgroundhandi",
+		"spanish3_1","spanish3_1handi","spanish3_2","spanish3_2handi","spanish3_3","spanish3_3handi","spanish3_4",
+		"spanish3_4handi","spanish6_1","spanish6_1handi","spanish6_2","spanish6_2handi","spanish6_3","spanish6_3handi","spanish6_4","spanish6_4handi","spanish7_1",
+		"spanish7_1handi","spanish7_2","spanish7_2handi","spanish8_1","spanish8_1handi","spanish8_2","spanish8_2handi","spanish8_3","spanish8_3handi",
+		"spanishadmin","spanishaesthencs","spanisharchite",
+		"spanishart","spanishatoz","spanishatozhandi","spanishbank","spanishbathroom","spanishbathroomhandi","spanishblock1","spanishblock1handi",
+		"spanishblock2","spanishblock2handi","spanishblock3","spanishblock3handi","spanishblock4","spanishblock4handi","spanishblock5","spanishblock5handi","spanishblock6","spanishblock6handi",
+		"spanishblock7","spanishblock7handi","spanishblock8","spanishblock8handi","spanishblockselector","spanishblockselectorhandi","spanishbrokers","spanishcommer",
+		"spanishelectric","spanishenergy","spanisheventbtn","spanisheventbtnhandi","spanishevents","spanishfinancial","spanishgastronomy",
+		"spanishhair","spanishhome","spanishimport","spanishinst","spanishjewelry","spanishkidfashtion","spanishkisoksstore","spanishlaw","spanishlingerie","spanishlogist",
+		"spanishmanage","spanishmanfashtion","spanishmarket","spanishmobile","spanishnatural",
+		"spanishnumber","spanishnumberhandi","spanishoptical","spanishothers","spanishparty","spanishpetshop",
+		"spanishsegment","spanishsegmenthandi","spanishselectorletterarrow","spanishselectorletterarrowhandi","spanishselectorblockarrow","spanishselectorblockarrowhandi","spanishselectornumberarrow","spanishselectornumberarrowhandi",
+		"spanishselectorsegmentarrow","spanishselectorsegmentarrowhandi","spanishselectorofficearrow","spanishselectorofficearrowhandi",
+		"spanishselectorstorearrow","spanishselectorstorearrowhandi","spanishservices","spanishshoe",
+		"spanishsport","spanishstudios","spanishsupliers","spanishtech","spanishtransp","spanishtravel","spanishunisexfashtion","spanishwomenfashtion",
+		"spanisheventbtnsmall","spanisheventbtnsmallhandi","spanishconstruct","spanishflonculture","spanishmedic",
+		"spanishaesthencshandi","spanisharthandi","spanisharchitehandi","spanishbankhandi","spanishbrokershandi",
+		"spanishcommerhandi","spanishconstructhandi","spanishelectrichandi","spanishenergyhandi","spanisheventshandi",
+		"spanishwomenfashtionhandi","spanishmanfashtionhandi","spanishkidfashtionhandi","spanishunisexfashtionhandi","spanishfinancialhandi",
+		"spanishflonculturehandi","spanishgastronomyhandi","spanishhairhandi","spanishhomehandi","spanishimporthandi",
+		"spanishinsthandi","spanishjewelryhandi","spanishkisoksstorehandi","spanishlawhandi","spanishlingeriehandi",
+		"spanishlogisthandi","spanishmanagehandi","spanishmarkethandi","spanishmedichandi","spanishmobilehandi",
+		"spanishnaturalhandi","spanishopticalhandi","spanishothershandi","spanishpartyhandi","spanishpetshophandi",
+		"spanishserviceshandi","spanishshoehandi","spanishsporthandi","spanishstudioshandi","spanishsupliershandi",
+		"spanishtechhandi","spanishtransphandi","spanishtravelhandi","spanishadminhandi","spanishhandicap","spanishnextbackground","spanishnextbackgroundhandi"
 	};
 		/*"","","","","","","","","","",
 		"","","","","","","","","","",};*/
@@ -576,7 +604,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 				GameObject.Find("floorselector").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+currentBlock+"_"+currentFloor+"handi"];
 			else GameObject.Find("floorselector").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"3_"+currentFloor+"handi"];
 			GameObject.Find("borderImg").GetComponent<Image>().sprite = ResourcesDictionary["videoFrameBarhandi"];
-			GameObject.Find("NextBtn").GetComponent<Image>().sprite = ResourcesDictionary["nextbackgroundhandi"];
+			GameObject.Find("NextBtn").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"nextbackgroundhandi"];
 			GameObject.Find("containBlockInfomation").GetComponent<Image>().sprite = ResourcesDictionary["officeInfomationBackgroundhandi"];
 			headerImg.color = new Color(21/255f,61/255f,115/255f);
 			GameObject.Find("nextEvent").GetComponent<Image>().sprite = ResourcesDictionary["nexthandicap"];
@@ -598,6 +626,12 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			GameObject.Find("CloseNumber1to5").GetComponent<Image>().sprite = ResourcesDictionary["closehandi"];
 			GameObject.Find("selectblockmaster").GetComponent<Image>().sprite = ResourcesDictionary["masterbigbuttonhandi"];
 			GameObject.Find("selectblocknormal").GetComponent<Image>().sprite = ResourcesDictionary["normalbigbuttonhandi"];
+			evnt1.GetComponent<Image>().sprite = ResourcesDictionary["backgroundevnthandi"];
+			evnt2.GetComponent<Image>().sprite = ResourcesDictionary["backgroundevnthandi"];
+			evnt3.GetComponent<Image>().sprite = ResourcesDictionary["backgroundevnthandi"];
+			GameObject.Find("Imagetime1").GetComponent<Image>().sprite = ResourcesDictionary["eventDateBackgroundhandi"];
+			GameObject.Find("Imagetime2").GetComponent<Image>().sprite = ResourcesDictionary["eventDateBackgroundhandi"];
+			GameObject.Find("Imagetime3").GetComponent<Image>().sprite = ResourcesDictionary["eventDateBackgroundhandi"];
 		} else {
 			VideoDirection.texture = movieTextureDirctionStair;
 			searchBtn.image.sprite = ResourcesDictionary[currentLanguage+"atoz"];
@@ -635,7 +669,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 				GameObject.Find("floorselector").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+currentBlock+"_"+currentFloor];
 			else GameObject.Find("floorselector").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"3_"+currentFloor];
 			GameObject.Find("borderImg").GetComponent<Image>().sprite = ResourcesDictionary["videoFrameBar"];
-			GameObject.Find("NextBtn").GetComponent<Image>().sprite = ResourcesDictionary["nextbackground"];
+			GameObject.Find("NextBtn").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"nextbackground"];
 			GameObject.Find("containBlockInfomation").GetComponent<Image>().sprite = ResourcesDictionary["officeInfomationBackground"];
 			headerImg.color = new Color(99/255f,179/255f,188/255f);
 			GameObject.Find("nextEvent").GetComponent<Image>().sprite = ResourcesDictionary["next"];
@@ -657,6 +691,12 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			GameObject.Find("CloseNumber1to5").GetComponent<Image>().sprite = ResourcesDictionary["close"];
 			GameObject.Find("selectblockmaster").GetComponent<Image>().sprite = ResourcesDictionary["masterbigbutton"];
 			GameObject.Find("selectblocknormal").GetComponent<Image>().sprite = ResourcesDictionary["normalbigbutton"];
+			evnt1.GetComponent<Image>().sprite = ResourcesDictionary["backgroundevnt"];
+			evnt2.GetComponent<Image>().sprite = ResourcesDictionary["backgroundevnt"];
+			evnt3.GetComponent<Image>().sprite = ResourcesDictionary["backgroundevnt"];
+			GameObject.Find("Imagetime1").GetComponent<Image>().sprite = ResourcesDictionary["eventDateBackground"];
+			GameObject.Find("Imagetime2").GetComponent<Image>().sprite = ResourcesDictionary["eventDateBackground"];
+			GameObject.Find("Imagetime3").GetComponent<Image>().sprite = ResourcesDictionary["eventDateBackground"];
 		}
 		isHandicapMode = !isHandicapMode;
 		handicap = !handicap;
@@ -981,7 +1021,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			tempArray.Sort();
 			foreach(string name in tempArray){
 				string[] info = sortDic[name];				
-				StartCoroutine(loadTexture4Office(info[0], info[2], info[4], currentIndex, convertToUtf8(info[1])));
+				StartCoroutine(loadTexture4Office(info[0], info[2].Replace ("|space|", " "), info[4].Replace ("|space|", " "), currentIndex, convertToUtf8(info[1].Replace ("|space|", " "))));
 				if(currentIndex<maxOffice)
 					currentIndex++;			
 			}
@@ -2213,7 +2253,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			tempArray.Sort();
 			foreach(string names in tempArray){
 				string[] info = sortDic[names];								
-				StartCoroutine(loadTexture4Office(info[0], convertToUtf8(info[1]), info[4], currentIndex, null));
+				StartCoroutine(loadTexture4Office(info[0], convertToUtf8(info[1].Replace ("|space|", " ")), info[4].Replace ("|space|", " "), currentIndex, null));
 				if(currentIndex<maxOffice)
 					currentIndex++;	
 			}
@@ -2375,11 +2415,11 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			Button buttons = null;
 			
 			TextureBtn.Add (name);
-			nameOffices.Add (nameOffice.Replace ("|space|", " "));
+			nameOffices.Add (nameOffice);
 			if (subNameOffice != null) {
-				listNameOffie.Add (name, subNameOffice.Replace ("|space|", " "));
+				listNameOffie.Add (name, subNameOffice);
 			} else {
-				listNameOffie.Add (name, nameOffice.Replace ("|space|", " "));
+				listNameOffie.Add (name, nameOffice);
 			}
 			if (index < maxOffice) {
 				
@@ -2405,13 +2445,13 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 				sprite = spriteSave [name];
 			}
 			if (!DicphoneNumber.ContainsKey (name)) {
-				DicphoneNumber.Add (name, phoneNumber.Replace ("|space|", " "));
+				DicphoneNumber.Add (name, phoneNumber);
 			}
 			sprite.name = name;
 			if (buttons != null && texts != null) {
 
 				texts.enabled = true;
-				texts.text = nameOffice.Replace ("|space|", " ");
+				texts.text = nameOffice;
 
 				buttons.enabled = true;
 				buttons.image.sprite = sprite;
@@ -2426,10 +2466,11 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	int maxEvent = 3,currentEvent = 0;
 	Dictionary<string, events> eventInf = new Dictionary<string, events> ();
 	List<string> eventId = new List<string> ();
-	private IEnumerator loadTexture4Event(string id, string title, string dateTime, string description)
+	private IEnumerator loadTexture4Event(string id, string title, string dateTime, string description, int index)
 	{
 		//if (gameObject != null) 
 		{
+			//Debug.Log(title);
 			Sprite sprite;
 			if(!eventInf.ContainsKey(id)){
 				eventId.Add(id);
@@ -2442,22 +2483,34 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 					texture = imageURLWWW.texture;
 				}
 				sprite = Sprite.Create (texture, new Rect (0, 0, texture.width, texture.height), Vector2.zero);
-				eventInf.Add(id,new events( sprite, title, dateTime, description));
+				eventInf.Add(id,new events( 
+				                           sprite, 
+				                           convertToUtf8(title.Replace ("|space|", " ").Replace("|dotdot|", ":")), 
+				                           convertToUtf8(dateTime.Replace ("|space|", " ").Replace("|dotdot|", ":")), 
+				                           convertToUtf8(description.Replace ("|enter|", "\r\n").Replace ("|space|", " ").Replace("|dotdot|", ":"))));
 			}
 			else {
 				sprite = eventInf[id].sprite;
 			}
 
 
-			if (currentEvent < maxEvent) {
+			if (index < maxEvent) {
+
+				if(index == 0){
+					evnt1.enabled = true;
+				}else if(index == 1){
+					evnt2.enabled = true;
+				}else if(index == 2){
+					evnt3.enabled = true;
+				}
+
+				GameObject.Find ("maineventsImg" + (index+1)).GetComponent<Image> ().sprite = sprite;
 				
-				GameObject.Find ("maineventsImg" + (currentEvent+1)).GetComponent<Image> ().sprite = sprite;
+				GameObject.Find ("evntTitle" + (index+1)).GetComponent<Text> ().text = convertToUtf8(title.Replace ("|space|", " ").Replace("|dotdot|", ":"));
 				
-				GameObject.Find ("evntTitle" + (currentEvent+1)).GetComponent<Text> ().text = title;
+				GameObject.Find ("eventTime" + (index+1)).GetComponent<Text> ().text = convertToUtf8(dateTime.Replace ("|space|", " ").Replace("|dotdot|", ":"));
 				
-				GameObject.Find ("eventTime" + (currentEvent+1)).GetComponent<Text> ().text = dateTime;
-				
-				GameObject.Find ("eventDescription" + (currentEvent+1)).GetComponent<Text> ().text = description;
+				GameObject.Find ("eventDescription" + (index+1)).GetComponent<Text> ().text = convertToUtf8(description.Replace ("|enter|", "\r\n").Replace ("|space|", " ").Replace("|dotdot|", ":"));
 				currentEvent++;
 			}
 		}
@@ -2591,6 +2644,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			GameObject.Find (currentNameLayoutShow).GetComponent<Animator> ().SetBool (m_OpenParameterId, false);
 			currentNameLayoutShow = null;
 			hideNumberLayout();
+			hideEventLayout ();
 
 		}
 	}
@@ -2601,6 +2655,12 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		contain3.enabled = false;
 	}
 
+	public void hideEventLayout(){
+		evnt1.enabled = false;
+		evnt2.enabled = false;
+		evnt3.enabled = false;
+	}
+
 	public void EventPress(){
 		resetTimer ();
 		hideEventAndInfomation ();
@@ -2609,10 +2669,12 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			exitvideo ();
 			hideOldeScreen ();
 			showFullTransparent ();
+			int index = 0;
 			foreach (string x in infomationEvents) {
 				if (x != "") {
 					string[] info = x.Split (new string[]{" "}, System.StringSplitOptions.None);
-					StartCoroutine (loadTexture4Event (info [0], info [1], info [2], info [3].Replace ("|enter|", "\r\n")));
+					StartCoroutine (loadTexture4Event (info [0], info [1], info [2], info [3],index));
+					index++;
 				}
 			}
 			GameObject.Find ("Panelcontainevents").GetComponent<Animator> ().SetBool (m_OpenParameterId, true);
@@ -2644,16 +2706,21 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 					GameObject.Find ("eventDescription" + i).GetComponent<Text> ().text = evs.description;
 
 					currentEvent++;
-				} else {
-										
-					GameObject.Find ("maineventsImg" + i).GetComponent<Image> ().sprite = ResourcesDictionary[currentLanguage+"mainImgex"];
-					
-					GameObject.Find ("evntTitle" + i).GetComponent<Text> ().text = null;
-					
-					GameObject.Find ("eventTime" + i).GetComponent<Text> ().text = null;
-					
-					GameObject.Find ("eventDescription" + i).GetComponent<Text> ().text = null;
-
+					if(i == 1){
+						evnt1.enabled = true;
+					}else if(i == 2){
+						evnt2.enabled = true;
+					}else if(i == 3){
+						evnt3.enabled = true;
+					}
+				} else {			
+					if(i == 1){
+						evnt1.enabled = false;
+					}else if(i == 2){
+						evnt2.enabled = false;
+					}else if(i == 3){
+						evnt3.enabled = false;
+					}
 				}
 			}
 			if (currentEvent >= eventId.Count)
@@ -2664,12 +2731,13 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	public void preEvent(){
 		currentEvent = currentEvent - maxEvent;
 		if (currentEvent < 0)
-			currentEvent = ((int)eventId.Count / maxEvent) * maxEvent;
+			currentEvent = ((int)(eventId.Count - 1) / maxEvent) * maxEvent;
 		
 		currentEvent = currentEvent - maxEvent;
 		if (currentEvent < 0)
-			currentEvent = ((int)eventId.Count / maxEvent) * maxEvent;
-		
+			currentEvent = ((int)(eventId.Count - 1) / maxEvent) * maxEvent;
+
+		//Debug.Log (currentEvent);
 		nextEvent ();
 	}
 
@@ -2689,7 +2757,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 				if ((isMaster && info [0].ToLower () [1] == '8') || (!isMaster && info [0].ToLower () [1] != '8')) {
 					if (info [3].ToLower ().IndexOf (segement) >= 0 && info [1] != "for_empty_office") {
 						haveResult = true;
-						StartCoroutine (loadTexture4Office (info [0], convertToUtf8(info [1]), info[4], currentIndex, null));
+						StartCoroutine (loadTexture4Office (info [0], convertToUtf8(info [1].Replace ("|space|", " ")), info[4].Replace ("|space|", " "), currentIndex, null));
 						if(currentIndex<maxOffice)
 							currentIndex++;
 					}
