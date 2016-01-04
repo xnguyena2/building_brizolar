@@ -292,13 +292,13 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	Point4_3handicap block4_3Infohandicap = new Point4_3handicap ();
 	Point4_2handicap block4_2Infohandicap = new Point4_2handicap ();
 	
-	Point3_4handicap block3_4Infohandicap = new Point3_4handicap ();
-	Point3_3handicap block3_3Infohandicap = new Point3_3handicap ();
 	Point3_2handicap block3_2Infohandicap = new Point3_2handicap ();
+	Point2_4handicap block3_4Infohandicap = new Point2_4handicap ();//new Point3_4handicap ();
+	Point2_3handicap block3_3Infohandicap = new Point2_3handicap ();//new Point3_3handicap ();
 
 	
-	Point2_4handicap block2_4Infohandicap = new Point2_4handicap ();
-	Point2_3handicap block2_3Infohandicap = new Point2_3handicap ();
+	Point3_4handicap block2_4Infohandicap = new Point3_4handicap ();//new Point2_4handicap ();
+	Point3_3handicap block2_3Infohandicap = new Point3_3handicap ();//new Point2_3handicap ();
 
 	Point7_1 block7_1Info = new Point7_1();
 	Point7_2 block7_2Info = new Point7_2();
@@ -320,13 +320,13 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 	Point3_1 block3_1Info = new Point3_1 ();
 	Point3_2 block3_2Info = new Point3_2 ();	
-	Point3_3 block3_3Info = new Point3_3 ();	
-	Point3_4 block3_4Info = new Point3_4 ();
+	Point2_3 block3_3Info = new Point2_3 ();//new Point3_3 ();	
+	Point2_4 block3_4Info = new Point2_4 ();//new Point3_4 ();
 
 	//Point2_1 block2_1Info = new Point6_1 ();
 	//Point2_2 block2_2Info = new Point6_2 ();	
-	Point2_3 block2_3Info = new Point2_3 ();	
-	Point2_4 block2_4Info = new Point2_4 ();	
+	Point3_3 block2_3Info = new Point3_3 ();//new Point2_3 ();	
+	Point3_4 block2_4Info = new Point3_4 ();//new Point2_4 ();	
 	
 	Vector3[] listpoint;
 	

@@ -1,16 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\script\ControlEvent.cs">
     <Files>
-      <File FileName="Assets\script\ControlEvent.cs" Line="130" Column="18" />
-      <File FileName="Assets\script\Point5_1.cs" Line="1" Column="1" />
-      <File FileName="Assets\script\Point4_1.cs" Line="1" Column="1" />
-      <File FileName="Assets\script\Point3_1.cs" Line="1" Column="1" />
-      <File FileName="Assets\script\Point2_3.cs" Line="1" Column="1" />
-      <File FileName="Assets\script\Point8_1.cs" Line="1" Column="1" />
-      <File FileName="Assets\script\animationEventTrigger.cs" Line="1" Column="1" />
-      <File FileName="Assets\script\Point6_4.cs" Line="1" Column="1" />
-      <File FileName="Assets\script\Point6_4handicap.cs" Line="1" Column="1" />
+      <File FileName="Assets\script\ControlEvent.cs" Line="296" Column="18" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
