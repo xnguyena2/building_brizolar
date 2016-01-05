@@ -3101,7 +3101,8 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 
 	IEnumerator LerpToPosition(float lerpSpeed, Vector3 newPosition, Vector3 lookat)
-	{   
+	{   fullScreenTimer.Stop ();
+		hideInfomationTimer.Stop ();
 		bool hncmr = false;
 		if (havenextcamera) {
 			hncmr = true;
@@ -3139,7 +3140,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		if (haveShowVideoDirection) {
 			hideVideoDirection ();
 			hideInfomationTimer.Stop();
-			hideInfomationTimer.Start();
+			//hideInfomationTimer.Start();
 			//Debug.Log("start time");
 		}
 		if (hncmr) {
@@ -3150,6 +3151,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		havenewcameraanimation = false;
 		stillanimation = false;
 		resetTimer ();
+		hideInfomationTimer.Start ();
 	}
 
 	public void hideEventAndInfomation(){
@@ -3259,7 +3261,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		
 			if (update) {
 
-				StartCoroutine (sysServer ());
+				//StartCoroutine (sysServer ());
 				update = false;
 			}
 			if(infomationCarousel.Length>1){
