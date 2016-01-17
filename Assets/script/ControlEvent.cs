@@ -40,6 +40,11 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	//public GameObject flatStart;
 
 	public Material yellowTarget;
+	public Material transparentFloor;
+	public Material normalFloor;
+	bool isfloor2Transparent = false;
+
+	public GameObject floor8_2transparent;
 
 	public GameObject cube;
 
@@ -246,7 +251,8 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 	Vector3 block9_1h = new Vector3 (310.4033F, 1000F, 172.7136F);
 
-	
+
+	Vector3 block8_1transparent = new Vector3 (300.5f, 1000f, 189.3f);
 	Vector3 block8_2transparent = new Vector3 (300.5f, 1000f, 189.3f);
 	Vector3 block6_2transparent = new Vector3 (300.1f, 1000f, 188f);
 	Vector3 block6_3transparent = new Vector3 (299.3f, 1000f, 186.8f);
@@ -276,7 +282,8 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	Point8_1 block8_1Info = new Point8_1 ();	
 	Point8_2 block8_2Info = new Point8_2 ();
 	Point8_3 block8_3Info = new Point8_3 ();
-	
+
+	Point8_1handicap block8_1Infohandicap = new Point8_1handicap ();
 	Point8_2handicap block8_2Infohandicap = new Point8_2handicap ();
 	Point8_3handicap block8_3Infohandicap = new Point8_3handicap ();
 
@@ -352,6 +359,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	private System.Timers.Timer aTimer;
 	private System.Timers.Timer carouselTimer;
 	private System.Timers.Timer moveNextCamera;
+	private System.Timers.Timer hideBlock2Timer;
 	private System.Timers.Timer showTimeTimer;
 	private System.Timers.Timer fullScreenTimer;
 	private System.Timers.Timer hideInfomationTimer;
@@ -441,6 +449,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		PositnBlock.Add ("block8_3h", block8_3h);
 		PositnBlock.Add ("block9_1h", block9_1h);
 
+		PositnBlock.Add("block8_1transparenth",block8_1transparent);
 		PositnBlock.Add("block8_2transparenth",block8_2transparent);
 		PositnBlock.Add("block6_3transparenth",block6_3transparent);
 		PositnBlock.Add("block6_2transparenth",block6_2transparent);
@@ -505,6 +514,12 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		timerBoom.Elapsed += OnTimedBoomEvent;		
 		timerBoom.Start ();
 
+		hideBlock2Timer = new System.Timers.Timer(4000);
+		// Hook up the Elapsed event for the timer. 
+		hideBlock2Timer.Elapsed += hideblock2Callback;
+		
+		hideBlock2Timer.Stop ();
+
 		moveNextCamera = new System.Timers.Timer(2000);
 		
 		// Hook up the Elapsed event for the timer. 
@@ -531,8 +546,18 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	private void move2NextCamera(object o, System.Timers.ElapsedEventArgs e)
 	{
 		beginmovetonextcamera = true;
+		if (hideBlock2) {
+			hideBlock2 = false;
+			hideBlock2Timer.Start ();
+		}
 		moveNextCamera.Stop ();
 	}	
+	bool beginHideBlock2 = false;
+
+	private void hideblock2Callback(object o, System.Timers.ElapsedEventArgs e){
+		hideBlock2Timer.Stop ();
+		beginHideBlock2 = true;
+	}
 	
 	public void numberSearchPress(){
 		resetTimer ();
@@ -1049,7 +1074,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		return false;
 	}
 
-	bool isShowTime = true;
+	bool isShowTime = false;
 	private void OnShowTimedEvent(object o, System.Timers.ElapsedEventArgs e)
 	{
 		isShowTime = true;
@@ -1203,6 +1228,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 	List<string> listNameCurrentBlock = new List<string> ();
 	bool isHandicapMode = false,havenextcamera = false;
+	bool hideBlock2 = false;
 
 	public void getRoute(string name){
 
@@ -1220,7 +1246,10 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		//Debug.Log (namefloor);
 		Vector3[] list = null, list2 = new Vector3[0];
 		if (namefloor == "block8_2") {
-
+			if(!isfloor2Transparent){
+				floor8_2transparent.GetComponent<Renderer>().material = transparentFloor;
+				isfloor2Transparent = true;
+			}
 			//Debug.Log (name);
 			if (isHandicapMode)
 				list = block8_2Infohandicap.dictionary [name];
@@ -1229,31 +1258,31 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 			
 			if (list [0] == Point8_2.evalator1) {
-				list2 = block8_1Info.dictionary ["thangmay1"];
-				cameraPostion = block8_1Info.PositnCamera ["posleft"];
-				lkk = block8_1Info.LookatCamera ["lookatleft"];
+				list2 = block8_3Info.dictionary ["thangmay1"];
+				cameraPostion = block8_3Info.PositnCamera ["posleft"];
+				lkk = block8_3Info.LookatCamera ["lookatleft"];
 			} else if (list [0] == Point8_2.evalator2) {
-				list2 = block8_1Info.dictionary ["thangmay2"];
-				cameraPostion = block8_1Info.PositnCamera ["poscenter"];
-				lkk = block8_1Info.LookatCamera ["lookatcenter"];
+				list2 = block8_3Info.dictionary ["thangmay2"];
+				cameraPostion = block8_3Info.PositnCamera ["poscenter"];
+				lkk = block8_3Info.LookatCamera ["lookatcenter"];
 			} else if (list [0] == Point8_2.evalator3) {
-				list2 = block8_1Info.dictionary ["thangmay3"];
-				cameraPostion = block8_1Info.PositnCamera ["poscenter"];
-				lkk = block8_1Info.LookatCamera ["lookatcenter"];
+				list2 = block8_3Info.dictionary ["thangmay3"];
+				cameraPostion = block8_3Info.PositnCamera ["poscenter"];
+				lkk = block8_3Info.LookatCamera ["lookatcenter"];
 			} else if (list [0] == Point8_2.evalator4) {
-				list2 = block8_1Info.dictionary ["thangmay4"];
-				cameraPostion = block8_1Info.PositnCamera ["posright"];
-				lkk = block8_1Info.LookatCamera ["lookatright"];
+				list2 = block8_3Info.dictionary ["thangmay4"];
+				cameraPostion = block8_3Info.PositnCamera ["posright"];
+				lkk = block8_3Info.LookatCamera ["lookatright"];
 			} else {
-				list2 = block8_1Info.dictionary ["cauthang"];
-				cameraPostion = block8_1Info.PositnCamera ["poscenter"];
-				lkk = block8_1Info.LookatCamera ["lookatcenter"];
+				list2 = block8_3Info.dictionary ["cauthang"];
+				cameraPostion = block8_3Info.PositnCamera ["poscenter"];
+				lkk = block8_3Info.LookatCamera ["lookatcenter"];
 			}
 
 
 			listpoint = new Vector3[list.Length + list2.Length];
 
-			orgP = GameObject.Find ("block8_1").transform.position;
+			orgP = GameObject.Find ("block8_3").transform.position;
 
 			for (int i = 0; i<list2.Length; i++) {
 				listpoint [i] = ratetio * list2 [i] + orgP;
@@ -1267,70 +1296,79 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 
 		} else if (namefloor == "block8_1") {
-			if (isBathRoomSearch && name == "office82"){
-				list = block8_1Info.dictionary ["bathroom2"];
-			}else if(isBathRoomSearch && name == "office150"){
-				list = block8_1Info.dictionary ["bathroom3"];
+
+			if(!isfloor2Transparent){
+				floor8_2transparent.GetComponent<Renderer>().material = transparentFloor;
+				isfloor2Transparent = true;
 			}
-			else if(isBathRoomSearch && name == "office221"){
-				list = block8_1Info.dictionary ["bathroom4"];			
-			}else
+			hideBlock2 = true;
+			
+			if (isHandicapMode){
+				list = block8_1Infohandicap.dictionary [name];
+			}
+			else
 				list = block8_1Info.dictionary [name];
+
 			if(name == "office231"){
 				dontStartTimer = true;
 			}
 
-			listpoint = new Vector3[list.Length];
-
-			orgP = GameObject.Find (namefloor).transform.position;
-
-			cameraPostion = block8_1Info.PositnCamera [name];
-
-			lkk = block8_1Info.LookatCamera [name];
-
-		} else if (namefloor == "block8_3") {
-
-			if (isHandicapMode)
-				list = block8_3Infohandicap.dictionary [name];
-			else
-				list = block8_3Info.dictionary [name];
-
-			if (list [0] == Point8_3.evalator1) {
-				list2 = block8_1Info.dictionary ["thangmay1"];
-				cameraPostion = block8_1Info.PositnCamera ["posleft"];
-				lkk = block8_1Info.LookatCamera ["lookatleft"];
-			} else if (list [0] == Point8_3.evalator2) {
-				list2 = block8_1Info.dictionary ["thangmay2"];
-				cameraPostion = block8_1Info.PositnCamera ["poscenter"];
-				lkk = block8_1Info.LookatCamera ["lookatcenter"];
-			} else if (list [0] == Point8_3.evalator3) {
-				list2 = block8_1Info.dictionary ["thangmay3"];
-				cameraPostion = block8_1Info.PositnCamera ["poscenter"];
-				lkk = block8_1Info.LookatCamera ["lookatcenter"];
-			} else if (list [0] == Point8_3.evalator4) {
-				list2 = block8_1Info.dictionary ["thangmay4"];
-				cameraPostion = block8_1Info.PositnCamera ["posright"];
-				lkk = block8_1Info.LookatCamera ["lookatright"];
+			if (list [0] == Point8_1.evalator1) {
+				list2 = block8_3Info.dictionary ["thangmay1"];
+				cameraPostion = block8_3Info.PositnCamera ["posleft"];
+				lkk = block8_3Info.LookatCamera ["lookatleft"];
+			} else if (list [0] == Point8_1.evalator2) {
+				list2 = block8_3Info.dictionary ["thangmay2"];
+				cameraPostion = block8_3Info.PositnCamera ["poscenter"];
+				lkk = block8_3Info.LookatCamera ["lookatcenter"];
+			} else if (list [0] == Point8_1.evalator3) {
+				list2 = block8_3Info.dictionary ["thangmay3"];
+				cameraPostion = block8_3Info.PositnCamera ["poscenter"];
+				lkk = block8_3Info.LookatCamera ["lookatcenter"];
+			} else if (list [0] == Point8_1.evalator4) {
+				list2 = block8_3Info.dictionary ["thangmay4"];
+				cameraPostion = block8_3Info.PositnCamera ["posright"];
+				lkk = block8_3Info.LookatCamera ["lookatright"];
 			} else {
-				list2 = block8_1Info.dictionary ["cauthang"];
-				cameraPostion = block8_1Info.PositnCamera ["poscenter"];
-				lkk = block8_1Info.LookatCamera ["lookatcenter"];
+				list2 = block8_3Info.dictionary ["cauthang"];
+				cameraPostion = block8_3Info.PositnCamera ["poscenter"];
+				lkk = block8_3Info.LookatCamera ["lookatcenter"];
 			}
 
 			listpoint = new Vector3[list.Length + list2.Length];
-			orgP = GameObject.Find ("block8_1").transform.position;
+			
+			orgP = GameObject.Find ("block8_3").transform.position;
 			
 			for (int i = 0; i<list2.Length; i++) {
 				listpoint [i] = ratetio * list2 [i] + orgP;
 			}
+
+			orgP = GameObject.Find (namefloor).transform.position;
+
+			posss = block8_1Info.PositnCamera [name];
+			lattt = block8_1Info.LookatCamera [name];
+			havenextcamera = true;
+
+		} else if (namefloor == "block8_3") {
+			if(isfloor2Transparent){
+				floor8_2transparent.GetComponent<Renderer>().material = normalFloor;
+				isfloor2Transparent = false;
+			}
+			if (isBathRoomSearch && name == "office43"){
+				list = block8_3Info.dictionary ["bathroom2"];
+			}else if(isBathRoomSearch && name == "office120"){
+				list = block8_3Info.dictionary ["bathroom3"];
+			}else
+				list = block8_3Info.dictionary [name];
+
+			listpoint = new Vector3[list.Length];
 			
 			orgP = GameObject.Find (namefloor).transform.position;
 			
 			//if (block8_2Info.LookatCamera.ContainsKey (name)) {
 			
-			posss = block8_3Info.PositnCamera [name];
-			lattt = block8_3Info.LookatCamera [name];
-			havenextcamera = true;
+			cameraPostion = block8_3Info.PositnCamera [name];
+			lkk = block8_3Info.LookatCamera [name];
 		} else if (namefloor == "block9_1") {
 			dontStartTimer = true;
 			list = block9_1Info.dictionary [name];
@@ -1972,12 +2010,12 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			start = listpoint [i];
 		}
 
-		if (isBathRoomSearch && name == "office221") {
-			cameraPostion = block8_1Info.PositnCamera["posbathroom"];
-			lkk = block8_1Info.LookatCamera["lookatbathroom"];
+		if (isBathRoomSearch && name == "office120") {
+			cameraPostion = block8_3Info.PositnCamera["office1"];
+			lkk = block8_3Info.LookatCamera["office1"];
 			isBathRoomSearch = false;
 		}
-		if (!(isBathRoomSearch && (name == "office82" || name == "office150" || name == "office44"))) {
+		if (!(isBathRoomSearch && (name == "office33" || name == "office43"))) {
 			setCamera (cameraPostion, lkk);
 		}
 	}
@@ -2121,7 +2159,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		string nameBlock = "block" + Block + "_" + Floor;
 
 
-		if (Floor > 1) {
+		if (Block != 8 && Floor > 1) {
 			float height = 36 / (Floor - 1);
 			for (int i=2; i<Floor; i++) {
 				string n = "block" + Block + "_" + i + "transparent";
@@ -2133,8 +2171,28 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 				listNameCurrentBlock.Add (nameBlock);
 			}
 		}
-
-		showBlck (Block, 1);
+		//Debug.Log (nameBlock);
+		if (nameBlock == "block8_3") {
+			showBlck (Block, 3);
+		} else {
+			if(nameBlock == "block8_2"){				
+				showFullTransparent ("block8_1transparent", 0.5f);
+				listNameCurrentBlock.Add ("block8_1transparent");
+			}
+			else
+				showBlck (Block, 1);
+		}
+		if (nameBlock == "block8_2") {			
+			showTransparent ("block8_3", 36);
+			listNameCurrentBlock.Add ("block8_3");
+			showFullTransparent ("block8_2", 18);
+			listNameCurrentBlock.Add ("block8_2");
+		}else if(nameBlock == "block8_1") {
+			showTransparent ("block8_3", 36);
+			listNameCurrentBlock.Add ("block8_3");
+			showFullTransparent ("block8_2transparent", 18);
+			listNameCurrentBlock.Add ("block8_2transparent");
+		}
 		listNameCurrentBlock.Add ("block"+Block + "_1");
 		currentBlock = Block;
 		currentFloor = Floor;		
@@ -2786,7 +2844,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		hideOldeScreen ();
 		hideFullTransparent ();
 		isBathRoomSearch = true;
-		string blcName = "b8144";
+		string blcName = "b8333";
 
 		hideSearchBlock ();
 
@@ -2797,14 +2855,13 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		int Block = int.Parse (blcName [1].ToString ());
 		int Floor = int.Parse (blcName [2].ToString ());
 				
-		showBlck (Block, 1);
-		listNameCurrentBlock.Add ("block"+Block + "_1");
+		showBlck (Block, 3);
 		currentBlock = Block;
 		currentFloor = Floor;		
-		getRoute ("office44");
-		getRoute ("office82");
-		getRoute ("office150");
-		getRoute ("office221");
+		getRoute ("office33");
+		getRoute ("office43");
+		getRoute ("office120");
+		//getRoute ("office221");
 	}
 	
 	public void next(){
@@ -2884,7 +2941,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		yield return null;
 	}
 	int currentCarousel = 0,timeDisplay = -100;
-	bool shownextCarousel = false,haveVdieonow = false,firstLoadCarousel = true;
+	bool shownextCarousel = false,firstLoadCarousel = true;
 
 	Dictionary<string, MovieTexture> dicMovieCarousel = new Dictionary<string, MovieTexture> ();
 	Dictionary<string, Texture> dicImageCarousel = new Dictionary<string, Texture> ();
@@ -2896,14 +2953,13 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	
 	private IEnumerator loadcrosel () {
 
-		if (infomationCarousel [currentCarousel] != "") {
+		if (infomationCarousel [currentCarousel] != "" && infomationCarousel [currentCarousel] != null) {
 			carouselTimer.Stop ();
 			string[] infos = infomationCarousel [currentCarousel].Split (new string[]{" "}, System.StringSplitOptions.None);
 			string filename = infos [0];
 			timeDisplay = int.Parse (infos [1]);
 			//Debug.Log(filename+timeDisplay);
 			if (timeDisplay > 0) {
-				haveVdieonow = false;
 				var url = IP + "crs/" + filename;
 				Texture imageTexture = null;
 
@@ -2946,10 +3002,11 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 				movieTextureCarousel.loop = false;
 				Videocarosel.texture = movieTextureCarousel;
 				movieTextureCarousel.Play ();
-				haveVdieonow = true;
+				StartCoroutine(Wait(OnWaitFinished)); 
 			}
 		} else {
-			shownextCarousel = true;
+			if(infomationCarousel.Length>1)
+				shownextCarousel = true;
 		}
 		currentCarousel++;
 		currentCarousel = currentCarousel % (infomationCarousel.Length - 1);
@@ -3101,7 +3158,9 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 
 	IEnumerator LerpToPosition(float lerpSpeed, Vector3 newPosition, Vector3 lookat)
-	{   fullScreenTimer.Stop ();
+	{
+		//Debug.Log ("camerachage!");
+		fullScreenTimer.Stop ();
 		hideInfomationTimer.Stop ();
 		bool hncmr = false;
 		if (havenextcamera) {
@@ -3110,8 +3169,9 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		}
 		if (stillanimation)
 			havenewcameraanimation = true;
+
 		while (havenewcameraanimation) {
-			yield return 0;
+			yield return null;
 		}
 		stillanimation = true;
 
@@ -3124,7 +3184,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			var targetRotation = Quaternion.LookRotation(lookat - Camera.main.transform.position, Vector3.up);
 			Camera.main.transform.rotation = Quaternion.Slerp(Camera.main.transform.rotation, targetRotation, t); 
 
-			yield return 0;
+			yield return null;
 
 		}
 		t = 0.0f;
@@ -3135,7 +3195,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			Camera.main.transform.position = Vector3.Lerp(startingPos, newPosition, t);
 			Camera.main.transform.LookAt(lookat);
 			
-			yield return 0;
+			yield return null;
 		}
 		if (haveShowVideoDirection) {
 			hideVideoDirection ();
@@ -3152,11 +3212,31 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		stillanimation = false;
 		resetTimer ();
 		hideInfomationTimer.Start ();
+		yield return null;
 	}
 
 	public void hideEventAndInfomation(){
 		GameObject.Find ("containBlockInfomation").GetComponent<Animator> ().SetBool (m_showScreenParameterId, false);
 		reservedBtn.GetComponent<Animator> ().SetBool (m_ShowEventParameterId, false);
+	}
+
+	IEnumerator updateTimeLable(){
+		showTime.text = System.DateTime.Now.ToString ("HH:mm:ss");
+		yield return null;
+	}
+
+	private void OnWaitFinished()
+	{
+		//
+		// Add your code here
+		//
+		shownextCarousel = true;
+	}
+	private IEnumerator Wait(System.Action callback)
+	{
+		while(movieTextureCarousel.isPlaying)
+			yield return new WaitForSeconds(1F);
+		if(callback != null) callback();
 	}
 
 
@@ -3190,9 +3270,9 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 				arroundLeft ();
 			} else if (rightpress || Input.GetKey (KeyCode.D)) {
 				arroundRight ();
-			} else if (uppress) {
+			} else if (uppress || Input.GetKey(KeyCode.Q)) {
 				arroundUp ();
-			} else if (downpress) {
+			} else if (downpress || Input.GetKey(KeyCode.E)) {
 				arroundDown ();
 			}
 
@@ -3260,24 +3340,19 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			}
 		
 			if (update) {
-
-				//StartCoroutine (sysServer ());
 				update = false;
+				//StartCoroutine (sysServer ());
 			}
-			if(infomationCarousel.Length>1){
+
+			//if(infomationCarousel.Length>1)
+			{
 				if (shownextCarousel) {
 					shownextCarousel = false;
 					StartCoroutine (loadcrosel ());
-				} else if (haveVdieonow) {
-					if (!movieTextureCarousel.isPlaying) {
-						haveVdieonow = false;
-						//Debug.Log ("Load Video");
-						StartCoroutine (loadcrosel ());
-					}
 				}
 			}
 
-			/*
+
 			if (Input.GetKey (KeyCode.Z)) {
 				Vector3 p = Camera.main.transform.position;
 				result += p.ToString () + ";";
@@ -3287,7 +3362,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 				writetofile.append2File (cameraangle, result);
 				result = "";
 			}
-		
+		/*
 			if (Input.GetKey (KeyCode.X)) {
 
 				Vector3 p = GameObject.Find ("block8_1").transform.position;
@@ -3356,6 +3431,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 				writetofile.append2File (officePostion, resultPostion);
 				writetofile.append2File (pointPostions, frontPoints);
 			}
+			*/
 
 			if (Input.GetKey (KeyCode.S)) {
 				Camera.main.transform.LookAt (target);
@@ -3380,31 +3456,37 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			if (Input.GetKey (KeyCode.UpArrow)) {
 				target += new Vector3 (0, 4 * Time.deltaTime, 0);
 				Camera.main.transform.Translate (new Vector3 (0, 4 * Time.deltaTime, 0));
-			}*/
+			}
 
 			if (beginmovetonextcamera) {
-				setCamera (posss, lattt);
 				beginmovetonextcamera = false;
-			}
-			if (isShowTime) {			
-				showTime.text = System.DateTime.Now.ToString ("HH:mm:ss");
+				setCamera (posss, lattt);
 			}
 
-			if (changeStatusScreen) {
+			if (isShowTime) {			
+				isShowTime = false;
+				StartCoroutine (updateTimeLable ());
+			}
+			if(beginHideBlock2){
+				beginHideBlock2 = false;
+				hideBlck ("block8_2transparent");
+			}
+
+			/*if (changeStatusScreen) {
 				changeStatusScreen = false;
 				GameObject.Find ("RawImageCrs").GetComponent<Animator> ().SetBool (m_FullScreenParameterId, isShowFullScreen);		
 				if(isShowFullScreen)
 					fullScreenTimer.Stop();
 				else fullScreenTimer.Start();
-			}
-			if(isHideInfomation){
+			}*/
+			/*if(isHideInfomation){
 				madeButtonTransparent(NextBtn);
 				hideEventAndInfomation();
 				isHideInfomation = false;
 				hideInfomationTimer.Stop();
 				showBlock(8);
 				//Debug.Log("show Initial");
-			}
+			}*/
 		}
 	}
 }
