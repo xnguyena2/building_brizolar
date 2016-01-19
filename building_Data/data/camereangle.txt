@@ -1,4 +1,4 @@
 
 static Vector3 8_1office2 = new Vector3 (282.9, 44.0, 244.7);
-static Vector3 6_1lookat2 = new Vector3 (287.1, 10.0, 205.0);(282.9, 44.0, 244.7);
 static Vector3 6_1lookat2 = new Vector3 (287.1, 10.0, 205.0);
+static Vector3 6_1lookat2 = new Vector3 

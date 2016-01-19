@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,6 +6,7 @@ using System.IO;
 using AssemblyCSharp;
 using UnityStandardAssets.Characters.FirstPerson;
 using UnityEngine.EventSystems;
+using MP;
 
 [RequireComponent(typeof (Rigidbody))]
 [RequireComponent(typeof (CapsuleCollider))]
@@ -159,9 +160,10 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	
 	public Button fl1, fl2, fl3, fl4;
 	
-	public RawImage videoOffice;
-
-
+	public RawImage containvideoOffice;
+	
+	public MoviePlayer videoOffice;
+	
 	float ratetio = 1f;
 
 	private Dictionary<string,Vector3> PositnBlock = new Dictionary<string, Vector3> ();
@@ -333,7 +335,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	int currentBlock = 8;
 
 	
-	public const string imageType = ".png",videoType = ".ogv";
+	public const string imageType = ".png",videoType = ".avi";
 	public GameObject arrow = null;	
 	
 	public GameObject Cylinder = null;
@@ -367,13 +369,40 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	static Vector3 center = new Vector3 (287.1F, 10.0F, 205.0F);
 	static Vector3 orginalPostion = new Vector3 (287.6F, 44.0F, 232.9F);
 	
+	int screenWidth = -1;
+	int screenHeigh = -1;
+	
+	float crsPosx = -1f;
+	float crsPosy = -1f;
+	private LoadOptions loadOptions = LoadOptions.Default;
+	
+	
+	public MoviePlayer movieCrsPlayer;
+	
+	//height = 768
+	//width = 1366
+	//pos x = 971
+	//pos y = 537
+	
 	// Use this for initialization
 	void Start () {
 		//Screen.SetResolution (2048, 2048, false);
 		Screen.fullScreen = true;
-
+		screenWidth = Screen.width;
+		screenHeigh = Screen.height;
+		crsPosx = Videocarosel.transform.position.x - 192f;
+		crsPosy = screenHeigh - Videocarosel.transform.position.y - 109f;
+		//Debug.Log (screenHeigh +", "+ screenWidth);
+		//Debug.Log (Videocarosel.transform.position);
+		loadOptions.skipAudio = true;
+		loadOptions.videoStreamInfo = new VideoStreamInfo();
+		loadOptions.videoStreamInfo.codecFourCC = MP.Decoder.VideoDecoderMJPEG.FOURCC_MJPG;
+		movieCrsPlayer.loadOptions = loadOptions;
+		movieCrsPlayer.OnStop += OnWaitFinished;
+		resetVideoCrs ();
+				
 		StartCoroutine (loadVideoFromResources ());
-
+		
 		StartCoroutine (loadAllResources ());
 
 		target = center;
@@ -472,7 +501,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		reservedBtn = reservedBtn.GetComponent<Button> ();
 		NextBtn = NextBtn.GetComponent<Button> ();
 		madeButtonTransparent (NextBtn);
-		videoOffice = videoOffice.GetComponent<RawImage> ();
+
 		isShowVideo (false);
 
 		showTimeTimer = new System.Timers.Timer (1000);
@@ -511,7 +540,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		moveNextCamera.Elapsed += move2NextCamera;
 		
 		moveNextCamera.Stop ();
-		videoOffice.enabled = false;		
+		containvideoOffice.enabled = false;  
 		StartCoroutine(sysServer());
 
 		setCamera (orginalPostion, target);
@@ -525,7 +554,14 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		m_showAnimationBlockPressed = Animator.StringToHash (k_buttonBlockPressTransitionName);
 		changeLanguare ("brazil");
 	}
-
+	
+	void resetVideoCrs(){
+		movieCrsPlayer.customScreenRect = new Rect (crsPosx, crsPosy, 384, 218);
+	}
+	void fullScreenVideoCrs(){
+		movieCrsPlayer.customScreenRect = new Rect (0, 0, screenWidth, screenHeigh);
+	}
+	
 	bool beginmovetonextcamera = false;
 	Vector3 lattt,posss;
 	private void move2NextCamera(object o, System.Timers.ElapsedEventArgs e)
@@ -948,10 +984,26 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		//containRangeNumber.enabled = false;
 		//ctnRange.enabled = false;
 	}
-
-	Dictionary<string, MovieTexture> libariVideo = new Dictionary<string, MovieTexture> ();
-	string currentvideo;
 	
+	//Dictionary<string, MovieTexture> libariVideo = new Dictionary<string, MovieTexture> ();
+	public static bool currentvideo;
+	
+	public DragVideo draggggg;
+	
+	private void showOfficeVideo(){
+		//isShowVideo (true);
+		StartCoroutine (playOfficeVideo ());
+	}
+	
+	IEnumerator LoadVideo (string url)
+	{
+		Debug.Log (url);
+		currentvideo = false;
+		draggggg.loadVideoFromUrl (url, showOfficeVideo);
+		yield return 1;
+	}
+	
+	/*
 	private IEnumerator LoadVideo(string url)
 	{
 		currentvideo = url;
@@ -980,7 +1032,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		yield return null;
 		
 	}
-	
+	*/
 	bool searchbynumber = false;
 	public void rangeBtnPress(string number){
 		hideRangeNuber ();
@@ -1048,8 +1100,8 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		}
 		return false;
 	}
-
-	bool isShowTime = true;
+	
+	bool isShowTime = false;
 	private void OnShowTimedEvent(object o, System.Timers.ElapsedEventArgs e)
 	{
 		isShowTime = true;
@@ -1126,25 +1178,30 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	public void resize(){
 		//Debug.Log("resize click!!!!!!!!!!!1");
 		if (changesize) {
-			videoOffice.rectTransform.sizeDelta = bigSize;
-			videoOffice.GetComponent<RectTransform> ().anchoredPosition = vectorResetVideoBig;
+			containvideoOffice.rectTransform.sizeDelta = bigSize;
+			//containvideoOffice.GetComponent<RectTransform> ().anchoredPosition = vectorResetVideoBig;
+			videoOffice.customScreenRect.size = bigSize;
+			draggggg.updateLocationVideo(204,136);
+		} else {
+			containvideoOffice.rectTransform.sizeDelta = normalSize;
+			videoOffice.customScreenRect.size = normalSize;
+			draggggg.updateLocationVideo(167f,101f);
 		}
-		else
-			videoOffice.rectTransform.sizeDelta = normalSize;
 		changesize=!changesize;
 	}
 	Vector2 vectorResetVideoBig = new Vector2(217.55f, 315f);
 	Vector2 vectorResetVideo = new Vector2(180.55f, 271.5f);
 	public void exitvideo(){
 		//videoOffice.texture
-		if (currentvideo != null) {
-			if (libariVideo.ContainsKey (currentvideo)) {
+		if (currentvideo) {
+			/*if (libariVideo.ContainsKey (currentvideo)) {
 				if (libariVideo [currentvideo] != null){
 					libariVideo [currentvideo].Stop ();
 					videoOffice.GetComponent<RectTransform> ().anchoredPosition = vectorResetVideo;
 					//Debug.Log("exit video");
 				}
-			}
+			}*/
+			containvideoOffice.GetComponent<RectTransform> ().anchoredPosition = vectorResetVideo;
 			if (!changesize)
 				resize ();
 			isShowVideo (false);
@@ -1154,12 +1211,14 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	public void isShowVideo(bool isShow){
 		if (isShow) {
 			GameObject.Find("borderImg").GetComponent<Image>().enabled=true;
-			videoOffice.enabled=true;
+			containvideoOffice.enabled=true;
+			videoOffice.drawToScreen = true;
 			exitViedo.gameObject.SetActive(true);
 			resizeVideo.gameObject.SetActive(true);
 		} else {
 			GameObject.Find("borderImg").GetComponent<Image>().enabled=false;
-			videoOffice.enabled=false;
+			containvideoOffice.enabled=false;
+			videoOffice.drawToScreen = false;
 			exitViedo.gameObject.SetActive(false);
 			resizeVideo.gameObject.SetActive(false);
 		}
@@ -2139,7 +2198,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		currentBlock = Block;
 		currentFloor = Floor;		
 		getRoute ("office" + officeIndex.Substring (3));
-		StartCoroutine (LoadVideo (IP + "/video/" + officeIndex + videoType));
+		StartCoroutine (LoadVideo (IP + "video/" + officeIndex + videoType));
 		StartCoroutine (waitforresult());
 	}
 
@@ -2884,35 +2943,58 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		yield return null;
 	}
 	int currentCarousel = 0,timeDisplay = -100;
-	bool shownextCarousel = false,haveVdieonow = false,firstLoadCarousel = true;
+	bool shownextCarousel = false,firstLoadCarousel = true;
 
 	Dictionary<string, MovieTexture> dicMovieCarousel = new Dictionary<string, MovieTexture> ();
 	Dictionary<string, Texture> dicImageCarousel = new Dictionary<string, Texture> ();
-
-
+	
+	
 	MovieTexture movieTextureCarousel;
-
-
+	
+	byte[] bytesNextVideo;
+	bool haveNextData = false;
+	
+	private IEnumerator loadNextVideo(){
+		
+		string[] infos = infomationCarousel [currentCarousel].Split (new string[]{" "}, System.StringSplitOptions.None);
+		string filename = infos [0];
+		int timeDisplay = int.Parse (infos [1]);
+		
+		if (timeDisplay <= 0) {
+			
+			WWW www = new WWW(IP + "crs/" + filename);
+			
+			while(!www.isDone) yield return 1;
+			
+			if (www.bytes.Length > 0) 
+			{
+				bytesNextVideo = www.bytes;
+				haveNextData = true;
+			}
+			
+		}		
+	}
+	
 	
 	private IEnumerator loadcrosel () {
-
-		if (infomationCarousel [currentCarousel] != "") {
+		
+		if (infomationCarousel [currentCarousel] != "" && infomationCarousel [currentCarousel] != null) {
 			carouselTimer.Stop ();
 			string[] infos = infomationCarousel [currentCarousel].Split (new string[]{" "}, System.StringSplitOptions.None);
 			string filename = infos [0];
 			timeDisplay = int.Parse (infos [1]);
+			movieCrsPlayer.drawToScreen = false;
 			//Debug.Log(filename+timeDisplay);
 			if (timeDisplay > 0) {
-				haveVdieonow = false;
 				var url = IP + "crs/" + filename;
 				Texture imageTexture = null;
-
+				
 				if (!dicImageCarousel.ContainsKey (url)) {
-
+					
 					//Debug.Log("down car");
-
-					WWW imageURLWWW = new WWW (url);		
-					yield return imageURLWWW;		
+					
+					WWW imageURLWWW = new WWW (url);        
+					yield return imageURLWWW;       
 					if (imageURLWWW.texture != null) {
 						imageTexture = (Texture)imageURLWWW.texture;
 					}
@@ -2921,38 +3003,74 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 					//Debug.Log("use old car");
 					imageTexture = dicImageCarousel [url];
 				}
-
+				
 				Videocarosel.texture = imageTexture;
 				carouselTimer.Interval = timeDisplay * 1000;
 				carouselTimer.Start ();
 			} else {
-
-				var url = IP + "crs/" + filename;
-				//Debug.Log(url);
-				if (!dicMovieCarousel.ContainsKey (url)) {
-
-
-					WWW www = new WWW (url);
-					movieTextureCarousel = www.movie;
-					while (!movieTextureCarousel.isReadyToPlay) {
-						yield return null;
+				if(Videocarosel.texture!=null)
+					Videocarosel.texture = null;
+				if(haveNextData){
+					haveNextData = false;
+					movieCrsPlayer.loop = true;
+					movieCrsPlayer.Load (bytesNextVideo);
+					//yield return new WaitForSeconds(0.5F);
+					//resetVideoCrs();
+					movieCrsPlayer.play = true;
+					StartCoroutine(Wait(OnPlayCrs));
+				}else {
+					
+					var url = IP + "crs/" + filename;
+					
+					//Debug.Log (url);
+					
+					
+					
+					WWW www = new WWW(url);
+					
+					while(!www.isDone) yield return 1;
+					
+					if (www.bytes.Length > 0) 
+					{
+						movieCrsPlayer.loop = true;
+						movieCrsPlayer.Load (www.bytes);
+						//yield return new WaitForSeconds(0.5F);
+						//resetVideoCrs();
+						movieCrsPlayer.play = true;
+						StartCoroutine(Wait(OnPlayCrs));
+						//yield return new WaitForSeconds(1F);
+						//movieCrsPlayer.drawToScreen = true;
+						//movieCrsPlayer.loop = false;
 					}
-					dicMovieCarousel.Add (url, movieTextureCarousel);
-				} else {
-					//Debug.Log("use old video");
-					movieTextureCarousel = dicMovieCarousel [url];
-					movieTextureCarousel.Stop ();
+					//Debug.Log(url);
+					/*
+                    if (!dicMovieCarousel.ContainsKey (url)) 
+                    {
+                        WWW www = new WWW (url);
+                        movieTextureCarousel = www.movie;
+                        while (!movieTextureCarousel.isReadyToPlay) {
+                            yield return null;
+                        }
+                        dicMovieCarousel.Add (url, movieTextureCarousel);
+                    } else {
+                        //Debug.Log("use old video");
+                        movieTextureCarousel = dicMovieCarousel [url];
+                        movieTextureCarousel.Stop ();
+                    }
+                    movieTextureCarousel.loop = false;
+                    Videocarosel.texture = movieTextureCarousel;
+                    movieTextureCarousel.Play ();
+ 
+                    StartCoroutine(Wait(OnWaitFinished)); */
 				}
-				movieTextureCarousel.loop = false;
-				Videocarosel.texture = movieTextureCarousel;
-				movieTextureCarousel.Play ();
-				haveVdieonow = true;
 			}
 		} else {
-			shownextCarousel = true;
+			if(infomationCarousel.Length>1)
+				shownextCarousel = true;
 		}
 		currentCarousel++;
 		currentCarousel = currentCarousel % (infomationCarousel.Length - 1);
+		StartCoroutine (loadNextVideo ());
 		yield return null;
 	}
 	MovieTexture movieTextureDirctionStair;
@@ -3101,7 +3219,8 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 
 	IEnumerator LerpToPosition(float lerpSpeed, Vector3 newPosition, Vector3 lookat)
-	{   fullScreenTimer.Stop ();
+	{   
+		fullScreenTimer.Stop ();
 		hideInfomationTimer.Stop ();
 		bool hncmr = false;
 		if (havenextcamera) {
@@ -3111,7 +3230,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		if (stillanimation)
 			havenewcameraanimation = true;
 		while (havenewcameraanimation) {
-			yield return 0;
+			yield return null;
 		}
 		stillanimation = true;
 
@@ -3124,7 +3243,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			var targetRotation = Quaternion.LookRotation(lookat - Camera.main.transform.position, Vector3.up);
 			Camera.main.transform.rotation = Quaternion.Slerp(Camera.main.transform.rotation, targetRotation, t); 
 
-			yield return 0;
+			yield return null;
 
 		}
 		t = 0.0f;
@@ -3135,7 +3254,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			Camera.main.transform.position = Vector3.Lerp(startingPos, newPosition, t);
 			Camera.main.transform.LookAt(lookat);
 			
-			yield return 0;
+			yield return null;
 		}
 		if (haveShowVideoDirection) {
 			hideVideoDirection ();
@@ -3152,6 +3271,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		stillanimation = false;
 		resetTimer ();
 		hideInfomationTimer.Start ();
+		yield return null;
 	}
 
 	public void hideEventAndInfomation(){
@@ -3159,6 +3279,43 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		reservedBtn.GetComponent<Animator> ().SetBool (m_ShowEventParameterId, false);
 	}
 
+	
+	IEnumerator updateTimeLable(){
+		showTime.text = System.DateTime.Now.ToString ("HH:mm:ss");
+		yield return null;
+	}
+	
+	bool firsteeeee = true;
+	void OnWaitFinished(MoviePlayerBase caller)
+	{
+		//
+		// Add your code here
+		//
+		Debug.Log ("finished crs");
+		shownextCarousel = true;
+	}
+	
+	void OnPlayCrs()
+	{
+		//
+		// Add your code here
+		//
+		//Debug.Log("finished video");
+		movieCrsPlayer.drawToScreen = true;
+		movieCrsPlayer.loop = false;        
+	}
+	
+	private IEnumerator Wait(System.Action callback)
+	{
+		//while(movieTextureCarousel.isPlaying)
+		yield return new WaitForSeconds(0.1F);
+		if(callback != null) callback();
+	}
+	
+	private IEnumerator playOfficeVideo(){
+		yield return new WaitForSeconds(0.1F);
+		isShowVideo (true);
+	}
 
 	string cameraangle = "building_Data\\data\\camereangle.txt";
 	string pointPostions = "building_Data\\data\\points.txt";
@@ -3185,16 +3342,16 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			Debug.Log ("stop");
 
 		} else {
-
+			/*
 			if (leftpress || Input.GetKey (KeyCode.A)) {
 				arroundLeft ();
 			} else if (rightpress || Input.GetKey (KeyCode.D)) {
 				arroundRight ();
-			} else if (uppress) {
+			} else if (uppress || Input.GetKey(KeyCode.Q)) {
 				arroundUp ();
-			} else if (downpress) {
+			} else if (downpress || Input.GetKey(KeyCode.E)) {
 				arroundDown ();
-			}
+			}*/
 
 		//if (!stillanimation) 
 			{
@@ -3264,17 +3421,9 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 				//StartCoroutine (sysServer ());
 				update = false;
 			}
-			if(infomationCarousel.Length>1){
-				if (shownextCarousel) {
-					shownextCarousel = false;
-					StartCoroutine (loadcrosel ());
-				} else if (haveVdieonow) {
-					if (!movieTextureCarousel.isPlaying) {
-						haveVdieonow = false;
-						//Debug.Log ("Load Video");
-						StartCoroutine (loadcrosel ());
-					}
-				}
+			if (shownextCarousel) {
+				shownextCarousel = false;
+				StartCoroutine (loadcrosel ());
 			}
 
 			/*
@@ -3383,19 +3532,26 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			}*/
 
 			if (beginmovetonextcamera) {
-				setCamera (posss, lattt);
 				beginmovetonextcamera = false;
+				setCamera (posss, lattt);
 			}
+
 			if (isShowTime) {			
-				showTime.text = System.DateTime.Now.ToString ("HH:mm:ss");
+				isShowTime = false;
+				StartCoroutine (updateTimeLable ());
 			}
 
 			if (changeStatusScreen) {
 				changeStatusScreen = false;
 				GameObject.Find ("RawImageCrs").GetComponent<Animator> ().SetBool (m_FullScreenParameterId, isShowFullScreen);		
-				if(isShowFullScreen)
+				if(isShowFullScreen){
+					fullScreenVideoCrs();
 					fullScreenTimer.Stop();
-				else fullScreenTimer.Start();
+				}
+				else{
+					fullScreenTimer.Start();
+					resetVideoCrs();
+				}
 			}
 			if(isHideInfomation){
 				madeButtonTransparent(NextBtn);
