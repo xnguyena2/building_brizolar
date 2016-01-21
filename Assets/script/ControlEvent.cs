@@ -625,7 +625,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	public void handicapMode(){
 		resetTimer ();
 		if (!handicap) {
-			VideoDirection.texture = movieTextureDirctionElevator;
+			//VideoDirection.texture = movieTextureDirctionElevator;
 			searchBtn.image.sprite = ResourcesDictionary[currentLanguage+"atozhandi"];
 			bathroomSearchBtn.image.sprite = ResourcesDictionary[currentLanguage+"bathroomhandi"];
 			if(!dontAddhandi){
@@ -694,7 +694,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			GameObject.Find("Imagetime2").GetComponent<Image>().sprite = ResourcesDictionary["eventDateBackgroundhandi"];
 			GameObject.Find("Imagetime3").GetComponent<Image>().sprite = ResourcesDictionary["eventDateBackgroundhandi"];
 		} else {
-			VideoDirection.texture = movieTextureDirctionStair;
+			//VideoDirection.texture = movieTextureDirctionStair;
 			searchBtn.image.sprite = ResourcesDictionary[currentLanguage+"atoz"];
 			bathroomSearchBtn.image.sprite = ResourcesDictionary[currentLanguage+"bathroom"];
 			if(!dontAddhandi){
@@ -763,7 +763,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		handicap = !handicap;
 	}
 
-	int currentFloor = 1;
+	int currentFloor = 3;
 	string handi = "handi";
 	bool showAnimatioPressed1 = true;
 	public void gotoFloor1(){		
@@ -781,10 +781,10 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 
 		stopRoute ();
-		string floorName = currentBlock + "_" + currentFloor+handi;
 
 		hideBlck (currentBlock, currentFloor);
 		currentFloor = 1;
+		string floorName = currentBlock + "_" + currentFloor+handi;
 
 		showBlck (currentBlock,currentFloor);
 
@@ -2037,7 +2037,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 		}
 		if (list2.Length > 0) {
-			showVideoDireciton ();
+			showVideoDireciton (namefloor);
 		} else {			
 			if(!dontStartTimer){
 				hideInfomationTimer.Stop();
@@ -2078,8 +2078,18 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		}
 	}
 
-	void showVideoDireciton(){
-
+	void showVideoDireciton(string name){
+		if (name.IndexOf ("block8") >= 0) {
+			if(isHandicapMode)
+				VideoDirection.texture = movieTextureElevatorDown;
+			else 
+				VideoDirection.texture = movieTextureStairDown;
+		} else {
+			if(isHandicapMode)
+				VideoDirection.texture = movieTextureDirctionElevator;
+			else 
+				VideoDirection.texture = movieTextureDirctionStair;
+		}
 		((MovieTexture)VideoDirection.texture).Play ();
 		//haveShowVideoDirection = true;
 		GameObject.Find ("containVideoDirction").GetComponent<Animator> ().SetBool (m_showDirctionVideoId, true);
@@ -3128,16 +3138,31 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	}
 	MovieTexture movieTextureDirctionStair;
 	MovieTexture movieTextureDirctionElevator;
+	
+	MovieTexture movieTextureStairDown;
+	MovieTexture movieTextureElevatorDown;
 	private IEnumerator loadVideoFromResources(){
 
 		movieTextureDirctionElevator = Resources.Load<MovieTexture> ("ElevatorUp");
 		while (!movieTextureDirctionElevator.isReadyToPlay) {
 			yield return null;
 		}
-
-
 		movieTextureDirctionElevator.loop = true;
 		movieTextureDirctionElevator.Stop ();
+		
+		movieTextureStairDown = Resources.Load<MovieTexture> ("StairDown");
+		while (!movieTextureStairDown.isReadyToPlay) {
+			yield return null;
+		}
+		movieTextureStairDown.loop = true;
+		movieTextureStairDown.Stop ();
+
+		movieTextureElevatorDown = Resources.Load<MovieTexture> ("ElevatorDown");
+		while (!movieTextureElevatorDown.isReadyToPlay) {
+			yield return null;
+		}
+		movieTextureElevatorDown.loop = true;
+		movieTextureElevatorDown.Stop ();
 
 		movieTextureDirctionStair = (MovieTexture)VideoDirection.texture;
 		movieTextureDirctionStair.loop = true;
@@ -3325,7 +3350,9 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		havenewcameraanimation = false;
 		stillanimation = false;
 		resetTimer ();
-		hideInfomationTimer.Start ();
+		if (humanPress)
+			hideInfomationTimer.Start ();
+		humanPress = true;
 		yield return null;
 	}
 
@@ -3388,6 +3415,8 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	{
 		return input.Replace("|enter|", System.Environment.NewLine).Replace("|space|", " ").Replace("|dotdot|", ":");
 	}
+	
+	bool humanPress = true;
 
 	void Update () {
 
@@ -3396,7 +3425,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			Debug.Log ("stop");
 
 		} else {
-
+			/*
 			if (leftpress || Input.GetKey (KeyCode.A)) {
 				arroundLeft ();
 			} else if (rightpress || Input.GetKey (KeyCode.D)) {
@@ -3406,7 +3435,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			} else if (downpress || Input.GetKey(KeyCode.E)) {
 				arroundDown ();
 			}
-
+*/
 		//if (!stillanimation) 
 			{
 				if (Input.touchCount > 0) {
@@ -3469,12 +3498,12 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 					}else resetTimer();
 				}*/
 			}
-		
+		/*
 			if (update) {
 				update = false;
 				//StartCoroutine (sysServer ());
 			}
-
+			/*
 			//if(infomationCarousel.Length>1)
 			{
 				if (shownextCarousel) {
@@ -3483,7 +3512,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 				}
 			}
 
-
+			/*
 			if (Input.GetKey (KeyCode.Z)) {
 				Vector3 p = Camera.main.transform.position;
 				result += p.ToString () + ";";
@@ -3563,7 +3592,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 				writetofile.append2File (pointPostions, frontPoints);
 			}
 			*/
-
+			/*
 			if (Input.GetKey (KeyCode.S)) {
 				Camera.main.transform.LookAt (target);
 				Camera.main.transform.Translate (Camera.main.transform.forward * 0.75f);
@@ -3587,7 +3616,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			if (Input.GetKey (KeyCode.UpArrow)) {
 				target += new Vector3 (0, 4 * Time.deltaTime, 0);
 				Camera.main.transform.Translate (new Vector3 (0, 4 * Time.deltaTime, 0));
-			}
+			}*/
 
 			if (beginmovetonextcamera) {
 				beginmovetonextcamera = false;
@@ -3602,7 +3631,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 				beginHideBlock2 = false;
 				hideBlck ("block8_2transparent");
 			}
-			/*
+
 			if (changeStatusScreen) {
 				changeStatusScreen = false;
 				GameObject.Find ("RawImageCrs").GetComponent<Animator> ().SetBool (m_FullScreenParameterId, isShowFullScreen);		
@@ -3615,14 +3644,15 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 					resetVideoCrs();
 				}
 			}
-			/*if(isHideInfomation){
+			if(isHideInfomation){
+				humanPress = false;
 				madeButtonTransparent(NextBtn);
 				hideEventAndInfomation();
 				isHideInfomation = false;
 				hideInfomationTimer.Stop();
 				showBlock(8);
 				//Debug.Log("show Initial");
-			}*/
+			}
 		}
 	}
 }

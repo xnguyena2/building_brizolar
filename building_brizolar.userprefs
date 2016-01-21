@@ -1,9 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\script\ControlEvent.cs">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\test2\Assets\script\ControlEvent.cs">
     <Files>
-      <File FileName="Assets\script\ControlEvent.cs" Line="3066" Column="34" />
-      <File FileName="Assets\script\DragVideo.cs" Line="25" Column="5" />
+      <File FileName="..\..\test2\Assets\script\ControlEvent.cs" Line="3262" Column="34" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
