@@ -9,28 +9,38 @@ namespace AssemblyCSharp
 	public class RouteBettwenBlock
 	{
 
-        static Vector3 from8To61 = new Vector3(-3.3F, 1.2F, 24.7F);
-        static Vector3 from8To62 = new Vector3(-6.5F, 1.2F, 27.5F);
-        static Vector3 from8To64 = new Vector3(-9.2F, 1.2F, 23.6F);
-		static Vector3 from8To65 = new Vector3(-13.5F, 1.2F, 24.9F);		
-		static Vector3 from8To71 = new Vector3 (-17.0F, 9.5F, 11.2F);
-		static Vector3 from8To72 = new Vector3 (-21.1F, 9.5F, 13.7F);
-		static Vector3 from8To11 = new Vector3 (-10.2F, 9.5F, 8.7F);
-		static Vector3 from8To12 = new Vector3 (-13.3F, 9.5F, 0.3F);
-		static Vector3 from8To21 = new Vector3 (-12.5F, 9.5F, 15.4F);
-		static Vector3 from8To22 = new Vector3 (-24.9F, 14.5F, 21.4F);
-		static Vector3 from8To23 = new Vector3 (-28.3F, 14.5F, 15.7F);
-		static Vector3 from8To24 = new Vector3 (-33.6F, 14.5F, 18.5F);
-		static Vector3 from8To25 = new Vector3 (-35.8F, 14.5F, 12.6F);
-		static Vector3 from8To31 = new Vector3 (-47.4F, 14.5F, 22.9F);
-		static Vector3 from8To32 = new Vector3 (-55.5F, 14.5F, 20.5F);
-		static Vector3 from8To51 = new Vector3 (-53.0F, 14.5F, 26.1F);
-		static Vector3 from8To41 = new Vector3 (-4.4F, 14.5F, 33.7F);
-		static Vector3 from8To42 = new Vector3 (-29.5F, 14.5F, 39.0F);
-		static Vector3 from8To43 = new Vector3 (-42.0F, 14.5F, 39.9F);
-		static Vector3 from8To44 = new Vector3 (-69.1F, 14.5F, 40.9F);
-		static Vector3 from8To45 = new Vector3 (-77.5F, 14.5F, 40.6F);
-		static Vector3 from8To46 = new Vector3 (-81.3F, 14.5F, 33.2F);
+		static Vector3 startPoint = new Vector3(-9.897F, 1.0F, 24.54F);
+
+		static Vector3 to81 = new Vector3(-5.71F, 1.0F, 20.99F);
+
+		static Vector3 to61 = new Vector3(-7.1F, 1.0F, 30.04F);
+		static Vector3 to62 = new Vector3(-22.02F, 1.0F, 36.61F);
+		static Vector3 to63 = new Vector3(-25.22F, 1.0F, 29.46F);		
+
+		static Vector3 to71 = new Vector3 (-14.71F, 1.0F, 14.11F);
+		static Vector3 to72 = new Vector3 (-21.1F, 1.0F, 13.7F);
+
+		static Vector3 to11 = new Vector3 (-18.85F, 1.0F, 5.97F);
+		static Vector3 to12 = new Vector3 (-19.99F, 1.0F, 0.63F);
+
+		static Vector3 to21 = new Vector3 (-13.88F, 1.0F, 16.53F);
+		static Vector3 to22 = new Vector3 (-23.99F, 1.0F, 20.92F);
+		static Vector3 to23 = new Vector3 (-43.83F, 1.0F, 17F);
+		static Vector3 to24 = new Vector3 (-42.85F, 1.0F, 10.96F);
+		
+		static Vector3 to30 = new Vector3 (-41.28F, 1.0F, 15.71F);
+		static Vector3 to31 = new Vector3 (-63.35F, 1.0F, 26.32F);
+		static Vector3 to32 = new Vector3 (-65.79F, 1.0F, 20.08F);
+
+		static Vector3 to41 = new Vector3 (-4.4F, 1.0F, 33.7F);
+		static Vector3 to42 = new Vector3 (-29.5F, 1.0F, 39.0F);
+		static Vector3 to43 = new Vector3 (-42.0F, 1.0F, 39.9F);
+		static Vector3 to44 = new Vector3 (-69.1F, 1.0F, 40.9F);
+		static Vector3 to45 = new Vector3 (-83.64F, 1.0F, 41.1F);
+		static Vector3 to46 = new Vector3 (-86.81F, 1.0F, 32.7F);
+
+		static Vector3 to55 = new Vector3 (-57.25F, 1.0F, 40.53F);
+		static Vector3 to56 = new Vector3 (-60.24F, 1.0F, 31.36F);
 
 		
 		static Vector3 pos1 = new Vector3 (312.1F, 68.6F, 266.0F);
@@ -49,14 +59,14 @@ namespace AssemblyCSharp
 		static Vector3 lookat7 = new Vector3 (268.5F, -12.9F, 192.0F);
 
 
-		static Vector3[] block6 = new Vector3[] { from8To61, from8To62, from8To64, from8To65 };
-
-		static Vector3[] block7 = new Vector3[] { from8To61, from8To62, from8To71, from8To72 };
-		static Vector3[] block1 = new Vector3[] { from8To61, from8To62, from8To71, from8To11, from8To12 };
-		static Vector3[] block2 = new Vector3[] { from8To61, from8To62,  from8To21, from8To22, from8To23, from8To24, from8To25 };
-		static Vector3[] block3 = new Vector3[] { from8To61, from8To62, from8To21, from8To22, from8To23, from8To24, from8To31, from8To32 };
-		static Vector3[] block5 = new Vector3[] { from8To61, from8To62, from8To21, from8To22, from8To23, from8To31, from8To51 };
-		static Vector3[] block4 = new Vector3[] { from8To61, from8To62, from8To41, from8To42, from8To43, from8To44, from8To45, from8To46 };
+		static Vector3[] block6 = new Vector3[] { startPoint, to61, to62, to63 };
+		static Vector3[] block8 = new Vector3[] { startPoint, to81 };
+		static Vector3[] block7 = new Vector3[] { startPoint, to71, to72 };
+		static Vector3[] block1 = new Vector3[] { startPoint, to11, to12 };
+		static Vector3[] block2 = new Vector3[] { startPoint, to21, to22, to30, to24 };
+		static Vector3[] block3 = new Vector3[] { startPoint, to21, to22, to23, to31, to32 };
+		static Vector3[] block5 = new Vector3[] { startPoint, to41, to42, to43, to55, to56 };
+		static Vector3[] block4 = new Vector3[] { startPoint, to41, to42, to43, to44, to45, to46 };
 		
 		public Dictionary<string, Vector3[]> dictionary = new Dictionary<string, Vector3[]>();
 		public Dictionary<string,Vector3> PositnCamera = new Dictionary<string, Vector3> ();
@@ -71,7 +81,7 @@ namespace AssemblyCSharp
 			dictionary.Add("office5",block5);
 			dictionary.Add("office6",block6);
 			dictionary.Add("office7",block7);
-
+			dictionary.Add("office8",block8);
 
 			
 			PositnCamera.Add("office1",pos1);
@@ -81,6 +91,7 @@ namespace AssemblyCSharp
 			PositnCamera.Add("office5",pos5);
 			PositnCamera.Add("office6",pos6);
 			PositnCamera.Add("office7",pos7);
+			PositnCamera.Add("office8",pos6);
 			
 			LookatCamera.Add("office1",lookat1);
 			LookatCamera.Add("office2",lookat2);
@@ -89,6 +100,7 @@ namespace AssemblyCSharp
 			LookatCamera.Add("office5",lookat5);
 			LookatCamera.Add("office6",lookat6);
 			LookatCamera.Add("office7",lookat7);
+			LookatCamera.Add("office8",lookat7);
 		}
 	}
 }

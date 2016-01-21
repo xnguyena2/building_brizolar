@@ -13,7 +13,7 @@ public class arrow : MonoBehaviour {
 	Vector3 StartPoint;
 	int index = 2;
 	float oldD = 10000f;
-	float distance = 4f;
+	public float distance = 3f;
 	bool isend = false,firstCreate = true;
 
 	// Use this for initialization
@@ -98,13 +98,14 @@ public class arrow : MonoBehaviour {
 
 		if (isend) {
 			if (Vector3.Distance (this.transform.position, StartPoint) > distance){
-				GameObject arrowss = GameObject.Find("arrowsssss");
+				GameObject arrowss = GameObject.Find("arrow");
 				isend = false;
 				GameObject ar = GameObject.Instantiate (arrowss) as GameObject;
 				ar.name = "arrowsssss";
 				arrow scri = ar.GetComponent<arrow> ();
 				scri.beginMove (listPoint);
 				scri.thisIsStartPoint();
+				Destroy(arrowss,60000);
 			}
 		}
 	}
