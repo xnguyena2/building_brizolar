@@ -756,10 +756,10 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 
 		stopRoute ();
-		string floorName = currentBlock + "_" + currentFloor+handi;
 
 		hideBlck (currentBlock, currentFloor);
 		currentFloor = 1;
+		string floorName = currentBlock + "_" + currentFloor+handi;
 
 		showBlck (currentBlock,currentFloor);
 
@@ -770,7 +770,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		}
 
 		target = center;
-
+		Debug.Log ("goto floor 1");
 		
 	}
 	bool showAnimatioPressed2 = true;
@@ -3258,7 +3258,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		}
 		if (haveShowVideoDirection) {
 			hideVideoDirection ();
-			hideInfomationTimer.Stop();
+			//hideInfomationTimer.Stop();
 			//hideInfomationTimer.Start();
 			//Debug.Log("start time");
 		}
@@ -3270,7 +3270,9 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		havenewcameraanimation = false;
 		stillanimation = false;
 		resetTimer ();
-		hideInfomationTimer.Start ();
+		if (humanPress)
+			hideInfomationTimer.Start ();
+		humanPress = true;
 		yield return null;
 	}
 
@@ -3291,7 +3293,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		//
 		// Add your code here
 		//
-		Debug.Log ("finished crs");
+		//Debug.Log ("finished crs");
 		shownextCarousel = true;
 	}
 	
@@ -3334,6 +3336,8 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	{
 		return input.Replace("|enter|", System.Environment.NewLine).Replace("|space|", " ").Replace("|dotdot|", ":");
 	}
+
+	bool humanPress = true;
 
 	void Update () {
 
@@ -3554,6 +3558,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 				}
 			}
 			if(isHideInfomation){
+				humanPress = false;
 				madeButtonTransparent(NextBtn);
 				hideEventAndInfomation();
 				isHideInfomation = false;
