@@ -2306,8 +2306,14 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		hideBlck (currentBlock, currentFloor);
 
 		currentBlock = blockNumber;
-		currentFloor = 1;
-		gotoFloor1 ();
+		if (showFloor3) {
+			currentFloor = 3;
+			gotoFloor3 ();
+			showFloor3 = false;
+		} else {
+			currentFloor = 1;
+			gotoFloor1 ();
+		}
 		isShowBlock = false;
 	}
 
@@ -3416,7 +3422,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		return input.Replace("|enter|", System.Environment.NewLine).Replace("|space|", " ").Replace("|dotdot|", ":");
 	}
 	
-	bool humanPress = true;
+	bool humanPress = true,showFloor3 = false;
 
 	void Update () {
 
@@ -3435,7 +3441,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			} else if (downpress || Input.GetKey(KeyCode.E)) {
 				arroundDown ();
 			}
-*/
+			*/
 		//if (!stillanimation) 
 			{
 				if (Input.touchCount > 0) {
@@ -3503,7 +3509,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 				update = false;
 				//StartCoroutine (sysServer ());
 			}
-			/*
+			*/
 			//if(infomationCarousel.Length>1)
 			{
 				if (shownextCarousel) {
@@ -3645,6 +3651,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 				}
 			}
 			if(isHideInfomation){
+				showFloor3 = true;
 				humanPress = false;
 				madeButtonTransparent(NextBtn);
 				hideEventAndInfomation();

@@ -1,8 +1,8 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\test2\Assets\script\ControlEvent.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\script\ControlEvent.cs">
     <Files>
-      <File FileName="..\..\test2\Assets\script\ControlEvent.cs" Line="3262" Column="34" />
+      <File FileName="Assets\script\ControlEvent.cs" Line="2312" Column="23" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
