@@ -366,8 +366,8 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		new List<string>();
 	List<string> nameOffices =
 		new List<string>();
-	static Vector3 center = new Vector3 (287.1F, 10.0F, 205.0F);
-	static Vector3 orginalPostion = new Vector3 (287.6F, 44.0F, 232.9F);
+	static Vector3 center = new Vector3 (287.2F, 17.4F, 205.0F);
+	static Vector3 orginalPostion = new Vector3 (287.7F, 51.0F, 226.4F);
 	
 	int screenWidth = -1;
 	int screenHeigh = -1;
@@ -529,10 +529,10 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		
 		aTimer.Start ();
 
-		
+		/*
 		timerBoom = new System.Timers.Timer(3600000);
 		timerBoom.Elapsed += OnTimedBoomEvent;		
-		timerBoom.Start ();
+		timerBoom.Start ();*/
 
 		moveNextCamera = new System.Timers.Timer(2000);
 		
@@ -3310,7 +3310,8 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	private IEnumerator Wait(System.Action callback)
 	{
 		//while(movieTextureCarousel.isPlaying)
-		yield return new WaitForSeconds(0.1F);
+		//yield return new WaitForSeconds(0.1F);//for 32bit
+		yield return new WaitForSeconds(0.3F);//for 64bit
 		if(callback != null) callback();
 	}
 	
@@ -3351,12 +3352,12 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 				arroundLeft ();
 			} else if (rightpress || Input.GetKey (KeyCode.D)) {
 				arroundRight ();
-			} else if (uppress || Input.GetKey(KeyCode.Q)) {
+			} else if (uppress || Input.GetKey(KeyCode.W)) {
 				arroundUp ();
-			} else if (downpress || Input.GetKey(KeyCode.E)) {
+			} else if (downpress || Input.GetKey(KeyCode.S)) {
 				arroundDown ();
-			}*/
-
+			}
+			*/
 		//if (!stillanimation) 
 			{
 				if (Input.touchCount > 0) {
@@ -3440,7 +3441,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 				writetofile.append2File (cameraangle, result);
 				result = "";
 			}
-		
+		/*
 			if (Input.GetKey (KeyCode.X)) {
 
 				Vector3 p = GameObject.Find ("block8_1").transform.position;
@@ -3510,10 +3511,10 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 				writetofile.append2File (pointPostions, frontPoints);
 			}
 
-			if (Input.GetKey (KeyCode.S)) {
+			if (Input.GetKey (KeyCode.L)) {
 				Camera.main.transform.LookAt (target);
 				Camera.main.transform.Translate (Camera.main.transform.forward * 0.75f);
-			} else if (Input.GetKey (KeyCode.W)) {
+			} else if (Input.GetKey (KeyCode.P)) {
 				Camera.main.transform.LookAt (target);
 				Camera.main.transform.Translate (Camera.main.transform.forward * -0.75f);
 			}
@@ -3533,8 +3534,8 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			if (Input.GetKey (KeyCode.UpArrow)) {
 				target += new Vector3 (0, 4 * Time.deltaTime, 0);
 				Camera.main.transform.Translate (new Vector3 (0, 4 * Time.deltaTime, 0));
-			}*/
-
+			}
+			*/
 			if (beginmovetonextcamera) {
 				beginmovetonextcamera = false;
 				setCamera (posss, lattt);
