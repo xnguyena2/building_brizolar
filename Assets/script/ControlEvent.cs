@@ -3348,7 +3348,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	private IEnumerator Wait(System.Action callback)
 	{
 		//while(movieTextureCarousel.isPlaying)
-		yield return new WaitForSeconds(0.1F);
+		yield return new WaitForSeconds(0.3F);
 		if(callback != null) callback();
 	}
 	

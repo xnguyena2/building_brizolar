@@ -23,6 +23,7 @@ public class DragVideo : MonoBehaviour ,IBeginDragHandler,IDragHandler,IEndDragH
 		officeVideoPosx = transform.position.x - offsetx;
 		officeVideoPosy = screenHeigh - transform.position.y - offsety;
 		//Debug.Log (System.IO.Directory.GetCurrentDirectory());
+		loadOptions.skipAudio = true;
 		loadOptions.videoStreamInfo = new VideoStreamInfo();
 		loadOptions.videoStreamInfo.codecFourCC = MP.Decoder.VideoDecoderMJPEG.FOURCC_MJPG;
 		movieShow.loadOptions = loadOptions;
