@@ -92,6 +92,20 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		"naturalhandi","opticalhandi","othershandi","partyhandi","petshophandi",
 		"serviceshandi","shoehandi","sporthandi","studioshandi","supliershandi",
 		"techhandi","transphandi","travelhandi","adminhandi",
+		"media", "barber", "baza", "beachw", "cowork",
+		"consul","course", "digit", "podia", "xerox",
+		"telecom", "appli", "adult",
+		"mediahandi", "barberhandi", "bazahandi", "beachwhandi", "coworkhandi", "consulhandi",
+		"coursehandi", "digithandi", "podiahandi", "xeroxhandi", "telecomhandi",
+		"applihandi", "adulthandi",
+		"submedicacup", "submedicangi", "submediccard", "submedicplas", "submedicdoct",
+		"submedicdema", "submedicspee", "submedichome", "submedicneur", "submedicnutr",
+		"submedicobst", "submedicdent", "submedicopht", "submedicorto", "submedicorth",
+		"submedicotor", "submedicpulm", "submedicpsyc",
+		"submedicacuphandi", "submedicangihandi", "submediccardhandi", "submedicplashandi", "submedicdocthandi",
+		"submedicdemahandi", "submedicspeehandi", "submedichomehandi", "submedicneurhandi", "submedicnutrhandi",
+		"submedicobsthandi", "submedicdenthandi", "submedicophthandi", "submedicortohandi", "submedicorthhandi",
+		"submedicotorhandi", "submedicpulmhandi", "submedicpsychandi",
 		"brazil3_1","brazil3_1handi","brazil3_2","brazil3_2handi","brazil3_3","brazil3_3handi","brazil3_4",
 		"brazil3_4handi","brazil6_1","brazil6_1handi","brazil6_2","brazil6_2handi","brazil6_3","brazil6_3handi","brazil6_4","brazil6_4handi","brazil7_1",
 		"brazil7_1handi","brazil7_2","brazil7_2handi","brazil8_1","brazil8_1handi","brazil8_2","brazil8_2handi","brazil8_3","brazil8_3handi",
@@ -117,6 +131,20 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		"brazilnaturalhandi","brazilopticalhandi","brazilothershandi","brazilpartyhandi","brazilpetshophandi",
 		"brazilserviceshandi","brazilshoehandi","brazilsporthandi","brazilstudioshandi","brazilsupliershandi",
 		"braziltechhandi","braziltransphandi","braziltravelhandi","braziladminhandi","brazilhandicap","brazilnextbackground","brazilnextbackgroundhandi",
+		"brazilmedia", "brazilbarber", "brazilbaza", "brazilbeachw", "brazilcowork", "brazilconsul",
+		"brazilcourse", "brazildigit", "brazilpodia", "brazilxerox", "braziltelecom",
+		"brazilappli", "braziladult",
+		"brazilmediahandi", "brazilbarberhandi", "brazilbazahandi", "brazilbeachwhandi", "brazilcoworkhandi", "brazilconsulhandi",
+		"brazilcoursehandi", "brazildigithandi", "brazilpodiahandi", "brazilxeroxhandi", "braziltelecomhandi",
+		"brazilapplihandi", "braziladulthandi",
+		"brazilsubmedicacup", "brazilsubmedicangi", "brazilsubmediccard", "brazilsubmedicplas", "brazilsubmedicdoct",
+		"brazilsubmedicdema", "brazilsubmedicspee", "brazilsubmedichome", "brazilsubmedicneur", "brazilsubmedicnutr",
+		"brazilsubmedicobst", "brazilsubmedicdent", "brazilsubmedicopht", "brazilsubmedicorto", "brazilsubmedicorth",
+		"brazilsubmedicotor", "brazilsubmedicpulm", "brazilsubmedicpsyc",
+		"brazilsubmedicacuphandi", "brazilsubmedicangihandi", "brazilsubmediccardhandi", "brazilsubmedicplashandi", "brazilsubmedicdocthandi",
+		"brazilsubmedicdemahandi", "brazilsubmedicspeehandi", "brazilsubmedichomehandi", "brazilsubmedicneurhandi", "brazilsubmedicnutrhandi",
+		"brazilsubmedicobsthandi", "brazilsubmedicdenthandi", "brazilsubmedicophthandi", "brazilsubmedicortohandi", "brazilsubmedicorthhandi",
+		"brazilsubmedicotorhandi", "brazilsubmedicpulmhandi", "brazilsubmedicpsychandi",
 		"spanish3_1","spanish3_1handi","spanish3_2","spanish3_2handi","spanish3_3","spanish3_3handi","spanish3_4",
 		"spanish3_4handi","spanish6_1","spanish6_1handi","spanish6_2","spanish6_2handi","spanish6_3","spanish6_3handi","spanish6_4","spanish6_4handi","spanish7_1",
 		"spanish7_1handi","spanish7_2","spanish7_2handi","spanish8_1","spanish8_1handi","spanish8_2","spanish8_2handi","spanish8_3","spanish8_3handi",
@@ -141,21 +169,48 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		"spanishlogisthandi","spanishmanagehandi","spanishmarkethandi","spanishmedichandi","spanishmobilehandi",
 		"spanishnaturalhandi","spanishopticalhandi","spanishothershandi","spanishpartyhandi","spanishpetshophandi",
 		"spanishserviceshandi","spanishshoehandi","spanishsporthandi","spanishstudioshandi","spanishsupliershandi",
-		"spanishtechhandi","spanishtransphandi","spanishtravelhandi","spanishadminhandi","spanishhandicap","spanishnextbackground","spanishnextbackgroundhandi"
+		"spanishtechhandi","spanishtransphandi","spanishtravelhandi","spanishadminhandi","spanishhandicap","spanishnextbackground","spanishnextbackgroundhandi",
+		"spanishmedia", "spanishbarber", "spanishbaza", "spanishbeachw", "spanishcowork", "spanishconsul",
+		"spanishcourse", "spanishdigit", "spanishpodia", "spanishxerox", "spanishtelecom",
+		"spanishappli", "spanishadult",
+		"spanishmediahandi", "spanishbarberhandi", "spanishbazahandi", "spanishbeachwhandi", "spanishcoworkhandi", "spanishconsulhandi",
+		"spanishcoursehandi", "spanishdigithandi", "spanishpodiahandi", "spanishxeroxhandi", "spanishtelecomhandi",
+		"spanishapplihandi", "spanishadulthandi",
+		"spanishsubmedicacuphandi", "spanishsubmedicangihandi", "spanishsubmediccardhandi", "spanishsubmedicplashandi", "spanishsubmedicdocthandi",
+		"spanishsubmedicdemahandi", "spanishsubmedicspeehandi", "spanishsubmedichomehandi", "spanishsubmedicneurhandi", "spanishsubmedicnutrhandi",
+		"spanishsubmedicobsthandi", "spanishsubmedicdenthandi", "spanishsubmedicophthandi", "spanishsubmedicortohandi", "spanishsubmedicorthhandi",
+		"spanishsubmedicotorhandi", "spanishsubmedicpulmhandi", "spanishsubmedicpsychandi",
+		"spanishsubmedicacup", "spanishsubmedicangi", "spanishsubmediccard", "spanishsubmedicplas", "spanishsubmedicdoct",
+		"spanishsubmedicdema", "spanishsubmedicspee", "spanishsubmedichome", "spanishsubmedicneur", "spanishsubmedicnutr",
+		"spanishsubmedicobst", "spanishsubmedicdent", "spanishsubmedicopht", "spanishsubmedicorto", "spanishsubmedicorth",
+		"spanishsubmedicotor", "spanishsubmedicpulm", "spanishsubmedicpsyc"
 	};
 		/*"","","","","","","","","","",
 		"","","","","","","","","","",};*/
 
 	string[] segmentNameArray = new string[]{
-		"aesthencs","art","archite","bank","brokers",
-		"commer","construct","electric","energy","events",
-		"womenfashtion","manfashtion","kidfashtion","unisexfashtion","financial",
-		"flonculture","gastronomy","hair","home","import",
-		"inst","jewelry","kisoksstore","law","lingerie",
-		"logist","manage","market","medic","mobile",
-		"natural","optical","others","party","petshop",
-		"services","shoe","sport","studios","supliers",
-		"tech","transp","travel","admin",
+		"aesthencs","art","archite","media","bank",
+		"barber", "baza", "beachw", "brokers","cowork", 
+		"commer","construct","consul","course", "digit", 
+
+		"electric","energy","events","womenfashtion","manfashtion",
+		"kidfashtion","unisexfashtion","financial","flonculture","gastronomy",
+		"hair","home","import","inst","jewelry",
+
+		"kisoksstore","law","lingerie","logist","manage",
+		"market","medic","mobile","natural","optical",
+		"others","party","petshop","podia","services",
+
+		"shoe","sport","xerox","studios","supliers",
+		"tech","transp","travel","telecom","appli", 
+		"adult", "admin"
+	};
+
+	string[] subSegmentMedic = new string[]{
+		"submedicacup", "submedicangi", "submediccard", "submedicplas", "submedicdoct",
+		"submedicdema", "submedicspee", "submedichome", "submedicneur", "submedicnutr",
+		"submedicobst", "submedicdent", "submedicopht", "submedicorto", "submedicorth",
+		"submedicotor", "submedicpulm", "submedicpsyc"
 	};
 	
 	public Button fl1, fl2, fl3, fl4;
@@ -2618,6 +2673,26 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		yield return null;
 	}
 
+	
+	private IEnumerator loadTextureSubSegment()
+	{
+		string handi = null;
+		if (isHandicapMode)
+			handi = "handi";
+		
+		{
+			for(int i = 0;i<15;i++){
+				Button btn = GameObject.Find("SSG"+i).GetComponent<Button>();
+				btn.enabled = true;
+				Color c = btn.targetGraphic.color;
+				c.a = 255f;
+				btn.targetGraphic.color = c;
+				btn.image.sprite = ResourcesDictionary[currentLanguage+ subSegmentMedic[i]+handi];
+			}
+		}
+		yield return null;
+	}
+
 	int currentNumberIndex = 0;
 	public void nextNumber(){
 		currentNumberIndex = (currentNumberIndex + 1)%3;
@@ -2657,18 +2732,23 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		StartCoroutine (nextSgm ());
 	}
 
+	
+	public void nextSubSegment(){
+		StartCoroutine (nextSubSgm ());
+	}
+		
+	public void previosSubSegment(){
+		StartCoroutine (nextSubSgm ());
+	}
+
 	public void previosSegment(){
-		if (offset >= 30)
-			offset = 0;
-		else
-			offset += 15;
-		StartCoroutine (nextSgm ());
+		StartCoroutine (previSgm ());
 	}
 	
 	int offset = 0;
 
 	private IEnumerator nextSgm(){
-		if (offset >= 30)
+		if (offset >= 45)
 			offset = 0;
 		else
 			offset += 15;
@@ -2679,12 +2759,71 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 				handi = "handi";
 			for (int i = 0; i<15; i++) {
 				Button btn = GameObject.Find ("SG" + i).GetComponent<Button> ();
-				if ((i + offset) < 44) {
+				if ((i + offset) < 57) {
 					btn.enabled = true;
 					Color c = btn.targetGraphic.color;
 					c.a = 255f;
 					btn.targetGraphic.color = c;
 					btn.image.sprite = ResourcesDictionary[currentLanguage+segmentNameArray [i + offset]+handi];
+				}else {
+					Color c = btn.targetGraphic.color;
+					c.a = 0f;
+					btn.targetGraphic.color = c;
+					btn.enabled = false;
+				}
+			}
+		}
+		yield return null;
+	}
+
+	private IEnumerator previSgm(){
+		if (offset == 0)
+			offset = 45;
+		else
+			offset -= 15;
+		
+		{
+			string handi = null;
+			if(isHandicapMode)
+				handi = "handi";
+			for (int i = 0; i<15; i++) {
+				Button btn = GameObject.Find ("SG" + i).GetComponent<Button> ();
+				if ((i + offset) < 57) {
+					btn.enabled = true;
+					Color c = btn.targetGraphic.color;
+					c.a = 255f;
+					btn.targetGraphic.color = c;
+					btn.image.sprite = ResourcesDictionary[currentLanguage+segmentNameArray [i + offset]+handi];
+				}else {
+					Color c = btn.targetGraphic.color;
+					c.a = 0f;
+					btn.targetGraphic.color = c;
+					btn.enabled = false;
+				}
+			}
+		}
+		yield return null;
+	}
+
+	int subOffset = 0;
+	private IEnumerator nextSubSgm(){
+		if (subOffset >= 15)
+			subOffset = 0;
+		else
+			subOffset += 15;
+		
+		{
+			string handi = null;
+			if(isHandicapMode)
+				handi = "handi";
+			for (int i = 0; i<15; i++) {
+				Button btn = GameObject.Find ("SSG" + i).GetComponent<Button> ();
+				if ((i + subOffset) < 18) {
+					btn.enabled = true;
+					Color c = btn.targetGraphic.color;
+					c.a = 255f;
+					btn.targetGraphic.color = c;
+					btn.image.sprite = ResourcesDictionary[currentLanguage+subSegmentMedic [i + subOffset]+handi];
 				}else {
 					Color c = btn.targetGraphic.color;
 					c.a = 0f;
@@ -2800,14 +2939,34 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		nextEvent ();
 	}
 
+	bool searchInsub = false;
 	public void searchOfficeBySegment(int index){
-		string segement;
-		segement = segmentNameArray [index + offset];
-		//Debug.Log (offset + "," + segement);
-		StartCoroutine (searchbySegement (segement));
+		string segement,nameOfContainPanel = "Panelcontainsegments";
+		if (searchInsub) {
+			segement = subSegmentMedic [index + subOffset];
+			searchInsub = false;
+		}
+		else
+			segement = segmentNameArray [index + offset];
+		if (segement.IndexOf ("submedic") == 0)
+			nameOfContainPanel = "Panelcontainsubsegments";
+		Debug.Log (offset + "," + segement);
+		if (segement == "medic") {			
+			subOffset = 0;
+			searchInsub = true;
+			StartCoroutine (loadTextureSubSegment ());
+			resetTimer ();
+			hideEventAndInfomation ();
+			exitvideo ();
+			hideOldeScreen ();
+			showFullTransparent ();
+			GameObject.Find ("Panelcontainsubsegments").GetComponent<Animator> ().SetBool (m_OpenParameterId, true);
+			currentNameLayoutShow = "Panelcontainsubsegments";
+		} else
+			StartCoroutine (searchbySegement (segement,nameOfContainPanel));
 	}
 
-	private IEnumerator searchbySegement(string segement){
+	private IEnumerator searchbySegement(string segement,string nameOfContainPanel){
 		bool haveResult = false;
 		cleanTexture ();
 		foreach (string x in infomationForSearch) {
@@ -2824,7 +2983,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			}
 		}
 		
-		GameObject.Find ("Panelcontainsegments").GetComponent<Animator> ().SetBool (m_OpenParameterId, false);
+		GameObject.Find (nameOfContainPanel).GetComponent<Animator> ().SetBool (m_OpenParameterId, false);
 		
 		if (haveResult) {
 			searchbyname = true;
