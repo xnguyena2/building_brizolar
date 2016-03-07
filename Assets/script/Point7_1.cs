@@ -16,15 +16,15 @@ namespace AssemblyCSharp
 {
 	public class Point7_1
 	{
-		public static Vector3 f1 = new Vector3 (5.62F, 1.1F, 18.8F);
-		public static Vector3 f2 = new Vector3 (-5.96F, 1.1F, 18.8F);
-		public static Vector3 f3 = new Vector3 (-20.34F, 3.1F, -4.87F);
-		public static Vector3 f4 = new Vector3 (20.91F, 3.1F, -3.05F);
+		public static Vector3 f1 = new Vector3 (5.62F, 1.0F, 18.8F);
+		public static Vector3 f2 = new Vector3 (-5.96F, 1.0F, 18.8F);
+		public static Vector3 f3 = new Vector3 (-20.34F, 1.0F, -4.87F);
+		public static Vector3 f4 = new Vector3 (20.91F, 1.0F, -3.05F);
 		
-		static Vector3 o1 = new Vector3 (5.62F, 3.1F, 10.85F);
-		static Vector3 o2 = new Vector3 (-5.96F, 3.1F, 10.18F);
-		static Vector3 o3 = new Vector3 (-8.66F, 3.1F, -4.87F);
-		static Vector3 o4 = new Vector3 (12.88F, 3.1F, -3.05F);
+		static Vector3 o1 = new Vector3 (5.62F, 1.0F, 10.85F);
+		static Vector3 o2 = new Vector3 (-5.96F, 1.0F, 10.18F);
+		static Vector3 o3 = new Vector3 (-8.66F, 1.0F, -4.87F);
+		static Vector3 o4 = new Vector3 (12.88F, 1.0F, -3.05F);
 		
 		static Vector3[] office1 = new Vector3[] { f1, o1 };
 		static Vector3[] office2 = new Vector3[] { f2, o2 };
@@ -32,13 +32,13 @@ namespace AssemblyCSharp
 		static Vector3[] office4 = new Vector3[] { f4, o4 };
 
 
-		static Vector3 pos1 = new Vector3 (289.0F, 87.5F, 245.7F);
-		static Vector3 lookat1 = new Vector3 (289.9F, 6.0F, 191.0F);
-		static Vector3 pos2 = new Vector3 (292.0F, 94.1F, 233.9F);
+		static Vector3 pos1 = new Vector3 (290.1F, 29.6F, 238.6F);
+		static Vector3 lookat1 = new Vector3 (289.9F, -1.1F, 191.0F);
+		static Vector3 pos2 = new Vector3 (275.2F, 27.7F, 247.4F);
 		static Vector3 lookat2 = new Vector3 (291.3F, 2.5F, 190.1F);
-		static Vector3 pos3 = new Vector3 (291.9F, 77.9F, 239.7F);
+		static Vector3 pos3 = new Vector3 (248.7F, 22.3F, 208.4F);
 		static Vector3 lookat3 = new Vector3 (292.6F, -4.1F, 186.0F);
-		static Vector3 pos4 = new Vector3 (291.0F, 82.3F, 243.5F);
+		static Vector3 pos4 = new Vector3 (336.1F, 22.3F, 231.3F);
 		static Vector3 lookat4 = new Vector3 (291.7F, -5.9F, 187.2F);
 
 		
@@ -46,6 +46,7 @@ namespace AssemblyCSharp
 		static Vector3[] thangmay2 = new Vector3[] { f2 };
 		static Vector3[] thangmay3 = new Vector3[] { f3 };
 		static Vector3[] thangmay4 = new Vector3[] { f4 };
+
 		
 		public Dictionary<string, Vector3[]> dictionary = new Dictionary<string, Vector3[]>();
 		public Dictionary<string,Vector3> PositnCamera = new Dictionary<string, Vector3> ();

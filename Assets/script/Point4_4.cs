@@ -16,26 +16,26 @@ namespace AssemblyCSharp
 {
 	public class Point4_4
 	{
-		static Vector3 start = new Vector3 (-0.3f, 1.5f, -0.5f);
-		static Vector3 evalator = new Vector3 (-0.3f, 1.5f, -4.5f);
+		static Vector3 start = new Vector3 (-0.3f, 1.0F, -0.5f);
+		static Vector3 evalator = new Vector3 (-0.3f, 1.0F, -4.5f);
 		
-		static Vector3 o1 = new Vector3 (25.2F, 3.9F, 13.4F);
-		static Vector3 o2 = new Vector3 (11.6F, 3.9F, 7.7F);
-		static Vector3 o3 = new Vector3 (17.6F, 3.9F, -4.8F);
-		static Vector3 o4 = new Vector3 (31.2F, 3.9F, 0.7F);
-		static Vector3 o5 = new Vector3 (-17.8F, 3.9F, 3.7F);
-		static Vector3 o6 = new Vector3 (-31.4F, 3.9F, -2.0F);
-		static Vector3 o7 = new Vector3 (-25.4F, 3.9F, -14.5F);
-		static Vector3 o8 = new Vector3 (-11.8F, 3.9F, -9.0F);
+		static Vector3 o1 = new Vector3 (25.2F, 1.0F, 13.4F);
+		static Vector3 o2 = new Vector3 (11.6F, 1.0F, 7.7F);
+		static Vector3 o3 = new Vector3 (17.6F, 1.0F, -4.8F);
+		static Vector3 o4 = new Vector3 (31.2F, 1.0F, 0.7F);
+		static Vector3 o5 = new Vector3 (-17.8F, 1.0F, 3.7F);
+		static Vector3 o6 = new Vector3 (-31.4F, 1.0F, -2.0F);
+		static Vector3 o7 = new Vector3 (-25.4F, 1.0F, -14.5F);
+		static Vector3 o8 = new Vector3 (-11.8F, 1.0F, -9.0F);
 		
-		static Vector3 f1 = new Vector3 (25.2F, 3.9F, 9.0F);
-		static Vector3 f2 = new Vector3 (17.6F, 3.9F, 7.7F);
-		static Vector3 f3 = new Vector3 (17.6F, 3.9F, -0.5F);
-		static Vector3 f4 = new Vector3 (26.9F, 3.9F, -0.5F);
-		static Vector3 f5 = new Vector3 (-16.2F, 3.9F, -0.5F);
-		static Vector3 f6 = new Vector3 (-27.1F, 3.9F, -0.5F);
-		static Vector3 f7 = new Vector3 (-25.4F, 3.9F, -10.2F);
-		static Vector3 f8 = new Vector3 (-16.2F, 3.9F, -9.0F);
+		static Vector3 f1 = new Vector3 (25.2F, 1.0F, 9.0F);
+		static Vector3 f2 = new Vector3 (17.6F, 1.0F, 7.7F);
+		static Vector3 f3 = new Vector3 (17.6F, 1.0F, -0.5F);
+		static Vector3 f4 = new Vector3 (26.9F, 1.0F, -0.5F);
+		static Vector3 f5 = new Vector3 (-16.2F, 1.0F, -0.5F);
+		static Vector3 f6 = new Vector3 (-27.1F, 1.0F, -0.5F);
+		static Vector3 f7 = new Vector3 (-25.4F, 1.0F, -10.2F);
+		static Vector3 f8 = new Vector3 (-16.2F, 1.0F, -9.0F);
 
 		
 		static Vector3[] office1 = new Vector3[] { evalator, start, f3, f1, o1 };
@@ -51,23 +51,44 @@ namespace AssemblyCSharp
 		static Vector3[] office8 = new Vector3[] { evalator, start, f5, f8, o8 };
 
 		
-		static Vector3 pos1 = new Vector3 (314.4F, 91.4F, 266.3F);
-		static Vector3 pos2 = new Vector3 (320.2F, 95.1F, 261.8F);
-		static Vector3 pos3 = new Vector3 (311.1F, 88.0F, 255.1F);
-		static Vector3 pos4 = new Vector3 (319.4F, 89.6F, 260.4F);
-		static Vector3 pos5 = new Vector3 (296.3F, 79.2F, 264.3F);
-		static Vector3 pos6 = new Vector3 (286.1F, 92.9F, 259.8F);
-		static Vector3 pos7 = new Vector3 (295.2F, 94.4F, 259.5F);
-		static Vector3 pos8 = new Vector3 (272.9F, 87.2F, 271.9F);
+		static Vector3 pos1 = new Vector3 (292.8F, 76.0F, 253.6F);
+		static Vector3 lookat1 = new Vector3 (294.5F, 5.3F, 197.3F);
+		static Vector3 pos2 = new Vector3 (299.5F, 69.3F, 246.2F);
+		static Vector3 lookat2 = new Vector3 (299.7F, 10.8F, 196.4F);
+		static Vector3 pos3 = new Vector3 (294.2F, 70.7F, 248.5F);
+		static Vector3 lookat3 = new Vector3 (294.6F, 7.4F, 192.9F);
+		static Vector3 pos4 = new Vector3 (285.8F, 84.9F, 232.8F);
+		static Vector3 lookat4 = new Vector3 (287.6F, 11.2F, 193.8F);
+		static Vector3 pos5 = new Vector3 (286.2F, 74.5F, 231.9F);
+		static Vector3 lookat5 = new Vector3 (287.4F, 6.9F, 190.5F);
+		static Vector3 pos6 = new Vector3 (271.6F, 73.6F, 225.2F);
+		static Vector3 lookat6 = new Vector3 (278.7F, 11.3F, 189.8F);
+		static Vector3 pos7 = new Vector3 (276.2F, 74.9F, 225.2F);
+		static Vector3 lookat7 = new Vector3 (285.0F, 8.4F, 187.0F);
+		static Vector3 pos8 = new Vector3 (264.0F, 76.9F, 227.0F);
+		static Vector3 lookat8 = new Vector3 (278.7F, 9.0F, 187.9F);
+		
+
 
 		
 		public Dictionary<string, Vector3[]> dictionary = new Dictionary<string, Vector3[]>();
 		public Dictionary<string,Vector3> PositnCamera = new Dictionary<string, Vector3> ();
+		public Dictionary<string,Vector3> LookatCamera = new Dictionary<string, Vector3> ();
 
 		public Point4_4 ()
 		{
 
 			
+			
+			LookatCamera.Add("office1",lookat1);
+			LookatCamera.Add("office2",lookat2);
+			LookatCamera.Add("office3",lookat3);
+			LookatCamera.Add("office4",lookat4);
+			LookatCamera.Add("office5",lookat5);
+			LookatCamera.Add("office6",lookat6);
+			LookatCamera.Add("office7",lookat7);
+			LookatCamera.Add("office8",lookat8);
+
 			PositnCamera.Add("office1",pos1);
 			PositnCamera.Add("office2",pos2);
 			PositnCamera.Add("office3",pos3);

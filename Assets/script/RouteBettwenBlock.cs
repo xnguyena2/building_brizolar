@@ -9,28 +9,30 @@ namespace AssemblyCSharp
 	public class RouteBettwenBlock
 	{
 
-        static Vector3 from8To61 = new Vector3(-3.3F, 1.2F, 24.7F);
-        static Vector3 from8To62 = new Vector3(-6.5F, 1.2F, 27.5F);
-        static Vector3 from8To64 = new Vector3(-9.2F, 1.2F, 23.6F);
-		static Vector3 from8To65 = new Vector3(-13.5F, 1.2F, 24.9F);		
-		static Vector3 from8To71 = new Vector3 (-17.0F, 9.5F, 11.2F);
-		static Vector3 from8To72 = new Vector3 (-21.1F, 9.5F, 13.7F);
-		static Vector3 from8To11 = new Vector3 (-10.2F, 9.5F, 8.7F);
-		static Vector3 from8To12 = new Vector3 (-13.3F, 9.5F, 0.3F);
-		static Vector3 from8To21 = new Vector3 (-12.5F, 9.5F, 15.4F);
-		static Vector3 from8To22 = new Vector3 (-24.9F, 14.5F, 21.4F);
-		static Vector3 from8To23 = new Vector3 (-28.3F, 14.5F, 15.7F);
-		static Vector3 from8To24 = new Vector3 (-33.6F, 14.5F, 18.5F);
-		static Vector3 from8To25 = new Vector3 (-35.8F, 14.5F, 12.6F);
-		static Vector3 from8To31 = new Vector3 (-47.4F, 14.5F, 22.9F);
-		static Vector3 from8To32 = new Vector3 (-55.5F, 14.5F, 20.5F);
-		static Vector3 from8To51 = new Vector3 (-53.0F, 14.5F, 26.1F);
-		static Vector3 from8To41 = new Vector3 (-4.4F, 14.5F, 33.7F);
-		static Vector3 from8To42 = new Vector3 (-29.5F, 14.5F, 39.0F);
-		static Vector3 from8To43 = new Vector3 (-42.0F, 14.5F, 39.9F);
-		static Vector3 from8To44 = new Vector3 (-69.1F, 14.5F, 40.9F);
-		static Vector3 from8To45 = new Vector3 (-77.5F, 14.5F, 40.6F);
-		static Vector3 from8To46 = new Vector3 (-81.3F, 14.5F, 33.2F);
+		static Vector3 from8To61 = new Vector3(-3.05F, 1.0F, 25.43F);
+		static Vector3 from8To62 = new Vector3(-22.55F, 1.0F, 35.42F);
+		static Vector3 from8To64 = new Vector3(-6.32F, 1.0F, 27.43F);
+		static Vector3 from8To65 = new Vector3(-25.22F, 1.0F, 29.46F);		
+		static Vector3 from8To71 = new Vector3 (-17.0F, 1.0F, 11.2F);
+		static Vector3 from8To72 = new Vector3 (-21.1F, 1.0F, 13.7F);
+		static Vector3 from8To12 = new Vector3 (-19.99F, 1.0F, 0.63F);
+		static Vector3 from8To21 = new Vector3 (-12.5F, 1.0F, 15.4F);
+		static Vector3 from8To22 = new Vector3 (-24.9F, 1.0F, 21.4F);
+		static Vector3 from8To23 = new Vector3 (-28.3F, 1.0F, 15.7F);
+		static Vector3 from8To24 = new Vector3 (-38.95F, 1.0F, 20.73F);
+		static Vector3 from8To25 = new Vector3 (-42.85F, 1.0F, 10.96F);
+		static Vector3 from8To31 = new Vector3 (-47.4F, 1.0F, 22.9F);
+		static Vector3 from8To32 = new Vector3 (-53.29F, 1.0F, 21.7F);
+		static Vector3 from8To33 = new Vector3 (-62.9F, 1.0F, 26.02F);
+		static Vector3 from8To34 = new Vector3 (-65.79F, 1.0F, 20.08F);
+		static Vector3 from8To41 = new Vector3 (-4.4F, 1.0F, 33.7F);
+		static Vector3 from8To42 = new Vector3 (-29.5F, 1.0F, 39.0F);
+		static Vector3 from8To43 = new Vector3 (-42.0F, 1.0F, 39.9F);
+		static Vector3 from8To44 = new Vector3 (-69.1F, 1.0F, 40.9F);
+		static Vector3 from8To45 = new Vector3 (-83.64F, 1.0F, 41.1F);
+		static Vector3 from8To46 = new Vector3 (-86.81F, 1.0F, 32.7F);
+		static Vector3 from8To55 = new Vector3 (-57.25F, 1.0F, 40.53F);
+		static Vector3 from8To56 = new Vector3 (-60.24F, 1.0F, 31.36F);
 
 		
 		static Vector3 pos1 = new Vector3 (312.1F, 68.6F, 266.0F);
@@ -49,14 +51,14 @@ namespace AssemblyCSharp
 		static Vector3 lookat7 = new Vector3 (268.5F, -12.9F, 192.0F);
 
 
-		static Vector3[] block6 = new Vector3[] { from8To61, from8To62, from8To64, from8To65 };
+		static Vector3[] block6 = new Vector3[] { from8To61, from8To62, from8To65 };
 
-		static Vector3[] block7 = new Vector3[] { from8To61, from8To62, from8To71, from8To72 };
-		static Vector3[] block1 = new Vector3[] { from8To61, from8To62, from8To71, from8To11, from8To12 };
-		static Vector3[] block2 = new Vector3[] { from8To61, from8To62,  from8To21, from8To22, from8To23, from8To24, from8To25 };
-		static Vector3[] block3 = new Vector3[] { from8To61, from8To62, from8To21, from8To22, from8To23, from8To24, from8To31, from8To32 };
-		static Vector3[] block5 = new Vector3[] { from8To61, from8To62, from8To21, from8To22, from8To23, from8To31, from8To51 };
-		static Vector3[] block4 = new Vector3[] { from8To61, from8To62, from8To41, from8To42, from8To43, from8To44, from8To45, from8To46 };
+		static Vector3[] block7 = new Vector3[] { from8To61, from8To64, from8To71, from8To72 };
+		static Vector3[] block1 = new Vector3[] { from8To61, from8To64, from8To12 };
+		static Vector3[] block2 = new Vector3[] { from8To61, from8To64, from8To21, from8To22, from8To23, from8To24, from8To25 };
+		static Vector3[] block3 = new Vector3[] { from8To61, from8To64, from8To21, from8To22, from8To23, from8To24, from8To31, from8To32, from8To33, from8To34 };
+		static Vector3[] block5 = new Vector3[] { from8To61, from8To64, from8To41, from8To42, from8To43, from8To55, from8To56 };
+		static Vector3[] block4 = new Vector3[] { from8To61, from8To64, from8To41, from8To42, from8To43, from8To44, from8To45, from8To46 };
 		
 		public Dictionary<string, Vector3[]> dictionary = new Dictionary<string, Vector3[]>();
 		public Dictionary<string,Vector3> PositnCamera = new Dictionary<string, Vector3> ();

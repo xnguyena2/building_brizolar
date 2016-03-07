@@ -7,42 +7,61 @@ public class arrow : MonoBehaviour {
 
 	
 	public float speed = 0.05f;
-	Rigidbody rb;
+	public Rigidbody rb;
 	Vector3[] listPoint;
 	Vector3 currentTarget;
+	Vector3 StartPoint;
 	int index = 2;
 	float oldD = 10000f;
+	public float distance = 3f;
+	bool isend = false,firstCreate = true;
+
 	// Use this for initialization
 	void Start () {
 	}
 
 	public void beginMove(Vector3[] LV){
-		Vector3 be = LV [0];
-		Vector3 en = LV [1];
-		beginMove (be, en);
-		currentTarget = en;
+		StartPoint = LV [0];
+		currentTarget = LV [1];
+		beginMove (StartPoint, currentTarget);
 		listPoint = LV;
+	}
+
+	public void beginMove(Vector3[] LV,Vector3 start, int index){
+		StartPoint = LV [0];
+		currentTarget = LV [index];
+		beginMove (start, currentTarget);
+		listPoint = LV;
+		this.index = index + 1;
 	}
 	
 
 	public void moveNext(){
-		if(listPoint!=null)
-		if (listPoint.Length > index) {
-			Vector3 end = listPoint[index];
-			beginMove (currentTarget, end);
-			currentTarget = end;
-			index++;
-		}
+		if (listPoint != null) {
+			if (listPoint.Length > index) {
+				Vector3 end = listPoint [index];
+				beginMove (currentTarget, end);
+				currentTarget = end;
+				index++;
+			}else Destroy(this.gameObject);
+		}else Destroy(this.gameObject);
 	}
-
+	bool firstSet = true;
 	public void beginMove(Vector3 start , Vector3 end){
-		//Vector3 start = new Vector3(380.287f, 0.15f, 80.62f);
-		//Vector3 end = new Vector3(373.287f, 0.2788003f, 64.50918f);
-		this.transform.position = start;
+		//this.transform.position = start;
+		if (firstCreate) {
+			this.transform.position = start;
+			firstCreate = false;
+		} else
+			start = this.transform.position;
 
 
 		Vector3 _direction = (end - start).normalized;
-		
+
+
+		/*
+		 * 
+		 * this part for rotation
 		//create the rotation we need to be in to look at the target
 		Quaternion  _lookRotation = Quaternion.LookRotation(_direction);
 		
@@ -51,22 +70,43 @@ public class arrow : MonoBehaviour {
 
 		//this.transform.rotation = Quaternion.Euler (anglex, angley, -anglez);
 
+		 */
 
+		rb.velocity = _direction * Vector3.Distance (rb.velocity, Vector3.zero);//Vector3.zero
 
-		rb = this.GetComponent<Rigidbody>();
-		rb.velocity = Vector3.zero;
-		rb.AddForce ((end - start).normalized * speed);
+		if (firstSet) 
+		{
+			rb.AddForce (_direction * speed);//alway run here
+			firstSet=false;
+		}
 
+	}
+
+	public void thisIsStartPoint(){
+		isend = true;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		float dis = Vector3.Distance (this.transform.position, currentTarget);
-		if (dis > oldD) {
+		if (dis > oldD || dis == 0.0f) {
 			moveNext ();
 			oldD = 100000f;
 		} else {
 			oldD = dis;
+		}
+
+		if (isend) {
+			if (Vector3.Distance (this.transform.position, StartPoint) > distance){
+				GameObject arrowss = GameObject.Find("arrow");
+				isend = false;
+				GameObject ar = GameObject.Instantiate (arrowss) as GameObject;
+				ar.name = "arrowsssss";
+				arrow scri = ar.GetComponent<arrow> ();
+				scri.beginMove (listPoint);
+				scri.thisIsStartPoint();
+				Destroy(arrowss,60000);
+			}
 		}
 	}
 

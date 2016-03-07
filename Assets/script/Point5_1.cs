@@ -16,25 +16,45 @@ namespace AssemblyCSharp
 {
 	public class Point5_1
 	{
-		public static Vector3 begin = new Vector3 (38.7f, 1.5f, 10.34f);
-		public static Vector3 start = new Vector3 (-0.4f, 1.5f, -0.1f);
-		public static Vector3 evalator = new Vector3 (-0.4f, 1.5f, -2.99f);
+		public static Vector3 begin1 = new Vector3 (9.89f, 1.0F, 3.81f);//
+		public static Vector3 begin2 = new Vector3 (-10.41f, 1.0F, -4.81F);
+		public static Vector3 start = new Vector3 (-0.4f, 1.0F, -0.1f);
+		public static Vector3 evalator = new Vector3 (-0.4f, 1.0F, -2.99f);
 		
-		public static Vector3 evalator1 = new Vector3 (21.79f, 1.5f, 4.18f);
-		public static Vector3 evalator2 = new Vector3 (-20.63f, 1.5f, -5.13f);
+		public static Vector3 evalator1 = new Vector3 (21.79f, 1.0F, 4.18f);
+		public static Vector3 evalator2 = new Vector3 (-20.63f, 1.0F, -5.13f);
 
-		public static Vector3 p2 = new Vector3 (25.83f, 1.5f, -0.1f);
-		public static Vector3 p1 = new Vector3 (25.83f, 1.5f, 10.34f);
-		public static Vector3 p3 = new Vector3 (-20.63f, 1.5f, -0.1f);
+		public static Vector3 p2 = new Vector3 (-10.41f, 1.0F, -0.1f);
+		public static Vector3 p1 = new Vector3 (9.89f, 1.0F, -0.1f);
+		public static Vector3 p3 = new Vector3 (-20.63f, 1.0F, -0.1f);
+		public static Vector3 p4 = new Vector3 (21.79f, 1.0F, -0.1f);
+		
+		static Vector3[] thangmay = new Vector3[] { begin1, p1, start, evalator };	//
+		static Vector3[] thangmay1 = new Vector3[] { begin1, p1, p4, evalator1 };//
+		static Vector3[] thangmay2 = new Vector3[] { begin2, p2, p3, evalator2 };	
+		
+		static Vector3 pos1 = new Vector3 (323.4F, 29.7F, 237.5F);
+		static Vector3 lookat1 = new Vector3 (319.0F, -6.5F, 197.3F);
+		static Vector3 pos2 = new Vector3 (289.4F, 23.4F, 244.2F);
+		static Vector3 lookat2 = new Vector3 (290.2F, -7.7F, 197.5F);
+		static Vector3 pos3 = new Vector3 (288.6F, 29.8F, 249.9F);
+		static Vector3 lookat3 = new Vector3 (293.3F, 5.1F, 189.8F);
 
-		static Vector3[] thangmay = new Vector3[] { begin, p1, p2, start, evalator };	
-		static Vector3[] thangmay1 = new Vector3[] { begin, p1, evalator1 };	
-		static Vector3[] thangmay2 = new Vector3[] { begin, p1, p2, p3, evalator2 };	
 
 		public Dictionary<string, Vector3[]> dictionary = new Dictionary<string, Vector3[]>();
+		public Dictionary<string,Vector3> PositnCamera = new Dictionary<string, Vector3> ();
+		public Dictionary<string,Vector3> LookatCamera = new Dictionary<string, Vector3> ();
 
 		public Point5_1 ()
 		{
+			PositnCamera.Add("thangkeo1",pos1);
+			PositnCamera.Add("thangkeo2",pos2);
+			PositnCamera.Add("thangmay",pos3);
+			
+			LookatCamera.Add("thangkeo1",lookat1);
+			LookatCamera.Add("thangkeo2",lookat2);
+			LookatCamera.Add("thangmay",lookat3);
+
 			dictionary.Add ("thangmay", thangmay);
 			dictionary.Add ("thangkeo1", thangmay1);
 			dictionary.Add ("thangkeo2", thangmay2);
