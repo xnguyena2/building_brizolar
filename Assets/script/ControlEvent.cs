@@ -101,11 +101,13 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		"submedicacup", "submedicangi", "submediccard", "submedicplas", "submedicdoct",
 		"submedicdema", "submedicspee", "submedichome", "submedicneur", "submedicnutr",
 		"submedicobst", "submedicdent", "submedicopht", "submedicorto", "submedicorth",
-		"submedicotor", "submedicpulm", "submedicpsyc",
+		"submedicotor", "submedicpulm", "submedicpsyc", "submedicpendia", "submedicsurge",
+		"submedicexams",
 		"submedicacuphandi", "submedicangihandi", "submediccardhandi", "submedicplashandi", "submedicdocthandi",
 		"submedicdemahandi", "submedicspeehandi", "submedichomehandi", "submedicneurhandi", "submedicnutrhandi",
 		"submedicobsthandi", "submedicdenthandi", "submedicophthandi", "submedicortohandi", "submedicorthhandi",
-		"submedicotorhandi", "submedicpulmhandi", "submedicpsychandi",
+		"submedicotorhandi", "submedicpulmhandi", "submedicpsychandi", "submedicpendiahandi", "submedicsurgehandi",
+		"submedicexamshandi",
 		"brazil3_1","brazil3_1handi","brazil3_2","brazil3_2handi","brazil3_3","brazil3_3handi","brazil3_4",
 		"brazil3_4handi","brazil6_1","brazil6_1handi","brazil6_2","brazil6_2handi","brazil6_3","brazil6_3handi","brazil6_4","brazil6_4handi","brazil7_1",
 		"brazil7_1handi","brazil7_2","brazil7_2handi","brazil8_1","brazil8_1handi","brazil8_2","brazil8_2handi","brazil8_3","brazil8_3handi",
@@ -140,11 +142,13 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		"brazilsubmedicacup", "brazilsubmedicangi", "brazilsubmediccard", "brazilsubmedicplas", "brazilsubmedicdoct",
 		"brazilsubmedicdema", "brazilsubmedicspee", "brazilsubmedichome", "brazilsubmedicneur", "brazilsubmedicnutr",
 		"brazilsubmedicobst", "brazilsubmedicdent", "brazilsubmedicopht", "brazilsubmedicorto", "brazilsubmedicorth",
-		"brazilsubmedicotor", "brazilsubmedicpulm", "brazilsubmedicpsyc",
+		"brazilsubmedicotor", "brazilsubmedicpulm", "brazilsubmedicpsyc", "brazilsubmedicpendia", "brazilsubmedicsurge",
+		"brazilsubmedicexams",
 		"brazilsubmedicacuphandi", "brazilsubmedicangihandi", "brazilsubmediccardhandi", "brazilsubmedicplashandi", "brazilsubmedicdocthandi",
 		"brazilsubmedicdemahandi", "brazilsubmedicspeehandi", "brazilsubmedichomehandi", "brazilsubmedicneurhandi", "brazilsubmedicnutrhandi",
 		"brazilsubmedicobsthandi", "brazilsubmedicdenthandi", "brazilsubmedicophthandi", "brazilsubmedicortohandi", "brazilsubmedicorthhandi",
-		"brazilsubmedicotorhandi", "brazilsubmedicpulmhandi", "brazilsubmedicpsychandi",
+		"brazilsubmedicotorhandi", "brazilsubmedicpulmhandi", "brazilsubmedicpsychandi", "brazilsubmedicpendiahandi", "brazilsubmedicsurgehandi",
+		"brazilsubmedicexamshandi",
 		"spanish3_1","spanish3_1handi","spanish3_2","spanish3_2handi","spanish3_3","spanish3_3handi","spanish3_4",
 		"spanish3_4handi","spanish6_1","spanish6_1handi","spanish6_2","spanish6_2handi","spanish6_3","spanish6_3handi","spanish6_4","spanish6_4handi","spanish7_1",
 		"spanish7_1handi","spanish7_2","spanish7_2handi","spanish8_1","spanish8_1handi","spanish8_2","spanish8_2handi","spanish8_3","spanish8_3handi",
@@ -179,11 +183,13 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		"spanishsubmedicacuphandi", "spanishsubmedicangihandi", "spanishsubmediccardhandi", "spanishsubmedicplashandi", "spanishsubmedicdocthandi",
 		"spanishsubmedicdemahandi", "spanishsubmedicspeehandi", "spanishsubmedichomehandi", "spanishsubmedicneurhandi", "spanishsubmedicnutrhandi",
 		"spanishsubmedicobsthandi", "spanishsubmedicdenthandi", "spanishsubmedicophthandi", "spanishsubmedicortohandi", "spanishsubmedicorthhandi",
-		"spanishsubmedicotorhandi", "spanishsubmedicpulmhandi", "spanishsubmedicpsychandi",
+		"spanishsubmedicotorhandi", "spanishsubmedicpulmhandi", "spanishsubmedicpsychandi", "spanishsubmedicpendiahandi", "spanishsubmedicsurgehandi",
+		"spanishsubmedicexamshandi",
 		"spanishsubmedicacup", "spanishsubmedicangi", "spanishsubmediccard", "spanishsubmedicplas", "spanishsubmedicdoct",
 		"spanishsubmedicdema", "spanishsubmedicspee", "spanishsubmedichome", "spanishsubmedicneur", "spanishsubmedicnutr",
 		"spanishsubmedicobst", "spanishsubmedicdent", "spanishsubmedicopht", "spanishsubmedicorto", "spanishsubmedicorth",
-		"spanishsubmedicotor", "spanishsubmedicpulm", "spanishsubmedicpsyc"
+		"spanishsubmedicotor", "spanishsubmedicpulm", "spanishsubmedicpsyc", "spanishsubmedicpendia", "spanishsubmedicsurge",
+		"spanishsubmedicexams"
 	};
 		/*"","","","","","","","","","",
 		"","","","","","","","","","",};*/
@@ -210,7 +216,8 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		"submedicacup", "submedicangi", "submediccard", "submedicplas", "submedicdoct",
 		"submedicdema", "submedicspee", "submedichome", "submedicneur", "submedicnutr",
 		"submedicobst", "submedicdent", "submedicopht", "submedicorto", "submedicorth",
-		"submedicotor", "submedicpulm", "submedicpsyc"
+		"submedicotor", "submedicpulm", "submedicpsyc", "submedicpendia", "submedicsurge",
+		"submedicexams"
 	};
 	
 	public Button fl1, fl2, fl3, fl4;
@@ -2818,7 +2825,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 				handi = "handi";
 			for (int i = 0; i<15; i++) {
 				Button btn = GameObject.Find ("SSG" + i).GetComponent<Button> ();
-				if ((i + subOffset) < 18) {
+				if ((i + subOffset) < 21) {
 					btn.enabled = true;
 					Color c = btn.targetGraphic.color;
 					c.a = 255f;
@@ -2837,6 +2844,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 	void hideOldeScreen(){
 		//Debug.Log ("name of layout:" + currentNameLayoutShow);
+		searchInsub = false;
 		madeButtonTransparent (NextBtn);
 		if (currentNameLayoutShow != null) {
 			GameObject.Find (currentNameLayoutShow).GetComponent<Animator> ().SetBool (m_OpenParameterId, false);
@@ -2953,7 +2961,6 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		Debug.Log (offset + "," + segement);
 		if (segement == "medic") {			
 			subOffset = 0;
-			searchInsub = true;
 			StartCoroutine (loadTextureSubSegment ());
 			resetTimer ();
 			hideEventAndInfomation ();
@@ -2962,6 +2969,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			showFullTransparent ();
 			GameObject.Find ("Panelcontainsubsegments").GetComponent<Animator> ().SetBool (m_OpenParameterId, true);
 			currentNameLayoutShow = "Panelcontainsubsegments";
+			searchInsub = true;
 		} else
 			StartCoroutine (searchbySegement (segement,nameOfContainPanel));
 	}
