@@ -1054,7 +1054,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	
 	IEnumerator LoadVideo (string url)
 	{
-		Debug.Log (url);
+		//Debug.Log (url);
 		currentvideo = false;
 		draggggg.loadVideoFromUrl (fullPathVideoFolder + "video/" + url, showOfficeVideo);
 		yield return 1;
@@ -1130,7 +1130,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			tempArray.Sort();
 			foreach(string name in tempArray){
 				string[] info = sortDic[name];				
-				StartCoroutine(loadTexture4Office(info[0], toNormalString(info[2]), toNormalString(info[4]), currentIndex, convertToUtf8(toNormalString(info[1]))));
+				StartCoroutine(loadTexture4Office(info[0], toNormalString(info[2]), toNormalString(info[4]), currentIndex, convertToUtf8(toNormalString(info[1])),toNormalString(info[2])));
 				if(currentIndex<maxOffice)
 					currentIndex++;			
 			}
@@ -1249,6 +1249,9 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	Vector2 vectorResetVideo = new Vector2(180.55f, 271.5f);
 	public void exitvideo(){
 		//videoOffice.texture
+		if (stillShowVideoDirection) {			
+			hideVideoDirection (false);
+		}
 		if (currentvideo) {
 			draggggg.exitVideo();
 			/*if (libariVideo.ContainsKey (currentvideo)) {
@@ -2064,6 +2067,8 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 				hideInfomationTimer.Start();
 				//Debug.Log("start time");
 			}
+			//StartCoroutine (LoadVideo (currentOfficeVideoIndex + videoType));
+			StartCoroutine(Wait(loadOfficeVideoByPath));
 		}
 
 		for (int i = 0; i<(list.Length); i++) {			
@@ -2098,19 +2103,28 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		}
 	}
 
+	bool stillShowVideoDirection = false;
 	void showVideoDireciton(){
-
+		
+		stillShowVideoDirection = true;
 		((MovieTexture)VideoDirection.texture).Play ();
-		//haveShowVideoDirection = true;
 		GameObject.Find ("containVideoDirction").GetComponent<Animator> ().SetBool (m_showDirctionVideoId, true);
 		//currentNameLayoutShow = "containVideoDirction";
 	}
 	bool haveShowVideoDirection = false;
-	void hideVideoDirection(){
+	void hideVideoDirection(bool loadOfficeVideo){
+		stillShowVideoDirection = false;
 		haveShowVideoDirection = false;
 		((MovieTexture)VideoDirection.texture).Stop ();
-		GameObject.Find ("containVideoDirction").GetComponent<Animator> ().SetBool (m_showDirctionVideoId, false);
+		GameObject.Find ("containVideoDirction").GetComponent<Animator> ().SetBool (m_showDirctionVideoId, false);		
+		if (loadOfficeVideo) {
+			StartCoroutine(Wait(loadOfficeVideoByPath));
+		}
 		//currentNameLayoutShow = null;
+	}
+
+	void loadOfficeVideoByPath(){
+		StartCoroutine (LoadVideo (currentOfficeVideoIndex + videoType));
 	}
 	
 	void showTransparent(string name, float height){
@@ -2200,14 +2214,19 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			blcName = name.image.sprite.name;
 			officeIndex = blcName.Split(new string[]{"+"},System.StringSplitOptions.None)[0];
 
-			//Debug.Log(DicphoneNumber[blcName]);
+			//Debug.Log(blcName);
 			
 			GameObject.Find ("containBlockInfomation").GetComponent<Animator> ().SetBool (m_showScreenParameterId, true);
 			reservedBtn.GetComponent<Animator> ().SetBool (m_ShowEventParameterId, true);
 
+			string numberOfFloor = officeIndex[2].ToString();
+			//Debug.Log(officeIndex[1]);
+			if(officeIndex[1] != '8' && officeIndex[1] != '7'){
+				numberOfFloor = (int.Parse(numberOfFloor) - 1).ToString();
+			}
 			if(currentLanguage == null || currentLanguage == "")
-				floorOfficeOn.text = "Floor "+officeIndex[2];
-			else floorOfficeOn.text = "Andar "+officeIndex[2];
+				floorOfficeOn.text = "Floor "+numberOfFloor + "(" + DicNumberOffice[blcName] + ")";
+			else floorOfficeOn.text = "Andar "+numberOfFloor + "(" + DicNumberOffice[blcName] + ")";
 			officePhoneNumber.text = DicphoneNumber[blcName];
 			officeLogo.sprite = name.image.sprite;
 			officeShowName.text = listNameOffie[blcName];
@@ -2258,11 +2277,14 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		listNameCurrentBlock.Add ("block"+Block + "_1");
 		currentBlock = Block;
 		currentFloor = Floor;		
+		currentOfficeVideoIndex = officeIndex;
 		getRoute ("office" + officeIndex.Substring (3));
-		StartCoroutine (LoadVideo (officeIndex + videoType));
+		//StartCoroutine (LoadVideo (officeIndex + videoType));
 		StartCoroutine (waitforresult());
 		yield return null;
 	}
+
+	string currentOfficeVideoIndex = null;
 
 	public IEnumerator waitforresult(){
 		yield return new WaitForSeconds(1F);
@@ -2374,7 +2396,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			tempArray.Sort();
 			foreach(string names in tempArray){
 				string[] info = sortDic[names];								
-				StartCoroutine(loadTexture4Office(info[0], convertToUtf8(toNormalString(info[1])), toNormalString(info[4]), currentIndex, null));
+				StartCoroutine(loadTexture4Office(info[0], convertToUtf8(toNormalString(info[1])), toNormalString(info[4]), currentIndex, null, toNormalString(info[2])));
 				if(currentIndex<maxOffice)
 					currentIndex++;	
 			}
@@ -2517,9 +2539,10 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 	Dictionary<string,Sprite> spriteSave = new Dictionary<string, Sprite> ();
 	Dictionary<string, string> DicphoneNumber = new Dictionary<string, string> ();
+	Dictionary<string, string> DicNumberOffice = new Dictionary<string, string> ();
 	Dictionary<string, string> listNameOffie = new Dictionary<string, string> ();
 
-	private IEnumerator loadTexture4Office(string name, string nameOffice, string phoneNumber, int index,string subNameOffice)
+	private IEnumerator loadTexture4Office(string name, string nameOffice, string phoneNumber, int index,string subNameOffice, string officeNumber)
 	{
 		//if (gameObject != null) 
 		{
@@ -2565,6 +2588,9 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			}
 			if (!DicphoneNumber.ContainsKey (name)) {
 				DicphoneNumber.Add (name, phoneNumber);
+			}
+			if(!DicNumberOffice.ContainsKey(name)){
+				DicNumberOffice.Add(name, officeNumber);
 			}
 			sprite.name = name;
 			if (buttons != null && texts != null) {
@@ -2981,7 +3007,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 				if ((isMaster && info [0].ToLower () [1] == '8') || (!isMaster && info [0].ToLower () [1] != '8')) {
 					if (info [3].ToLower ().IndexOf (segement) >= 0 && info [1] != "for_empty_office") {
 						haveResult = true;
-						StartCoroutine (loadTexture4Office (info [0], convertToUtf8(toNormalString(info [1])), toNormalString(info[4]), currentIndex, null));
+						StartCoroutine (loadTexture4Office (info [0], convertToUtf8(toNormalString(info [1])), toNormalString(info[4]), currentIndex, null, toNormalString(info[2])));
 						if(currentIndex<maxOffice)
 							currentIndex++;
 					}
@@ -3385,7 +3411,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			yield return null;
 		}
 		if (haveShowVideoDirection) {
-			hideVideoDirection ();
+			hideVideoDirection (true);
 			//hideInfomationTimer.Stop();
 			//hideInfomationTimer.Start();
 			//Debug.Log("start time");
@@ -3393,7 +3419,8 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		if (hncmr) {
 			moveNextCamera.Start();
 			havenextcamera = false;
-			haveShowVideoDirection = true;
+			if(stillShowVideoDirection)
+				haveShowVideoDirection = true;
 		}
 		havenewcameraanimation = false;
 		stillanimation = false;
@@ -3419,7 +3446,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	{
 		//while(movieTextureCarousel.isPlaying)
 		//yield return new WaitForSeconds(0.1F);//for 32bit
-		yield return new WaitForSeconds(0.3F);//for 64bit
+		yield return new WaitForSeconds(1.0F);//for 64bit
 		if(callback != null) callback();
 	}
 	

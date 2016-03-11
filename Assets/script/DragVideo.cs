@@ -46,17 +46,18 @@ public class DragVideo : MonoBehaviour ,IBeginDragHandler,IDragHandler,IEndDragH
 	
 	IEnumerator loadvideoUrl (string url, System.Action callback)
 	{
-		// download		
-		offsetx = 167f;
-		offsety = 101f;
+		if (movieShow.playVideoFromFile (url) > 0) {
+			// download		
+			offsetx = 167f;
+			offsety = 101f;
 		
-		// load and play
-		{
-			ControlEvent.currentvideo = true;
-			movieShow.playVideoFromFile(url);
-			movieShow.setRectVideo (officeVideoPosx, officeVideoPosy, 332, 202);
-			if(callback!=null)
-				callback();
+			// load and play
+			{
+				ControlEvent.currentvideo = true;
+				movieShow.setRectVideo (officeVideoPosx, officeVideoPosy, 332, 202);
+				if (callback != null)
+					callback ();
+			}
 		}
 		yield return null;
 	}

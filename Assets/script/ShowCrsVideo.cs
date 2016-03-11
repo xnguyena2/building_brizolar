@@ -38,7 +38,10 @@ public class ShowCrsVideo : FullScreenMovie {
 		this.UnloadMovie ();
 		this._filename = fileName;
 		this.LoadMovie (true);
-		return this._moviePlayer.DurationSeconds;
+		if (this._moviePlayer == null)
+			return 0;
+		else
+			return this._moviePlayer.DurationSeconds;
 	}
 	
 	public new void OnGUI()
