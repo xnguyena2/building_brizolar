@@ -1,15 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
-using MP;
 using UnityEngine.EventSystems;
 using System.IO;
 
 public class DragVideo : MonoBehaviour ,IBeginDragHandler,IDragHandler,IEndDragHandler{
 	public static GameObject video;
-	public MoviePlayer movieShow;
+	public ShowCrsVideo movieShow ;
 	Vector3 postion;
 	Vector3 ofset;
-	private LoadOptions loadOptions = LoadOptions.Default;
 	int screenWidth;
 	int screenHeigh;
 	float offsetx,offsety;
@@ -23,51 +21,43 @@ public class DragVideo : MonoBehaviour ,IBeginDragHandler,IDragHandler,IEndDragH
 		officeVideoPosx = transform.position.x - offsetx;
 		officeVideoPosy = screenHeigh - transform.position.y - offsety;
 		//Debug.Log (System.IO.Directory.GetCurrentDirectory());
-		loadOptions.skipAudio = true;
-		loadOptions.videoStreamInfo = new VideoStreamInfo();
-		loadOptions.videoStreamInfo.codecFourCC = MP.Decoder.VideoDecoderMJPEG.FOURCC_MJPG;
-		movieShow.loadOptions = loadOptions;
-		movieShow.loop = true;
-		//movieShow.audioSource = null;
 		//StartCoroutine (loadvideo ());
 	}
 	
-	public void loadVideoFromUrl(string url,System.Action callback){
+	public void loadVideoFromUrl(string url, System.Action callback){
 		//return loadvideoPath ("C:\\Users\\Nguyen Phong\\Documents\\Visual Studio 2013\\Projects\\Admin Manager\\Server\\bin\\Release\\video\\a.avi", callback);
 		StartCoroutine( loadvideoUrl (url, callback));
 	}
 	
-	public void updateLocationVideo(float x, float y){
-		StartCoroutine (updatelocationVideo (x,y));
+	public void updateLocationVideo(float x, float y, Vector2 size){
+		StartCoroutine (updatelocationVideo (x,y, size));
 	}
 	
-	IEnumerator updatelocationVideo(float x, float y){
+	public void exitVideo(){
+		movieShow.UnloadMovie ();
+	}
+	
+	IEnumerator updatelocationVideo(float x, float y, Vector2 size){
 		offsetx = x;
 		offsety = y;
-		movieShow.customScreenRect.x = transform.position.x - offsetx;// = new Rect (postion.x, postion.y, 200, 200);
-		movieShow.customScreenRect.y = screenHeigh - transform.position.y - offsety;
+		movieShow.setRectVideo (transform.position.x - offsetx, screenHeigh - transform.position.y - offsety, size.x, size.y);
 		yield return null;
 	}
 	
 	IEnumerator loadvideoUrl (string url, System.Action callback)
 	{
-		// download		
-		offsetx = 167f;
-		offsety = 101f;
-		WWW www = new WWW(url);
-		
-		while(!www.isDone) yield return 1;
-		
-		// load and play
-		if (www.bytes.Length > 0) 
-		{
-			ControlEvent.currentvideo = true;
-			movieShow.Load (www.bytes);
-			//movieShow.drawToScreen = true;
-			movieShow.customScreenRect = new Rect (officeVideoPosx, officeVideoPosy, 332, 202);
-			movieShow.play = true;
-			//movieShow.loop = true;
-			if(callback != null) callback();
+		if (movieShow.playVideoFromFile (url) > 0) {
+			// download		
+			offsetx = 167f;
+			offsety = 101f;
+			
+			// load and play
+			{
+				ControlEvent.currentvideo = true;
+				movieShow.setRectVideo (officeVideoPosx, officeVideoPosy, 332, 202);
+				if (callback != null)
+					callback ();
+			}
 		}
 		yield return null;
 	}
@@ -81,11 +71,7 @@ public class DragVideo : MonoBehaviour ,IBeginDragHandler,IDragHandler,IEndDragH
 		offsety = 101f;
 		if (System.IO.File.Exists (path)) {
 			ControlEvent.currentvideo = true;
-			movieShow.Load (path);
-			//movieShow.drawToScreen = true;
-			movieShow.customScreenRect = new Rect (officeVideoPosx, officeVideoPosy, 332, 202);
-			movieShow.play = true;
-			//movieShow.loop = true;
+			movieShow.setRectVideo (officeVideoPosx, officeVideoPosy, 332, 202);
 			if(callback != null) callback();
 		}
 		yield return null;
@@ -99,8 +85,7 @@ public class DragVideo : MonoBehaviour ,IBeginDragHandler,IDragHandler,IEndDragH
 		video = gameObject;
 		postion = transform.position;
 		ofset = postion - Input.mousePosition;
-		movieShow.customScreenRect.x = transform.position.x - offsetx;// = new Rect (postion.x, postion.y, 200, 200);
-		movieShow.customScreenRect.y = screenHeigh - transform.position.y - offsety;
+		movieShow.setPostion (transform.position.x - offsetx, screenHeigh - transform.position.y - offsety);
 	}
 	
 	#endregion
@@ -111,8 +96,7 @@ public class DragVideo : MonoBehaviour ,IBeginDragHandler,IDragHandler,IEndDragH
 	public void OnDrag (PointerEventData eventData)
 	{
 		transform.position = Input.mousePosition + ofset;
-		movieShow.customScreenRect.x = transform.position.x - offsetx;// = new Rect (postion.x, postion.y, 200, 200);
-		movieShow.customScreenRect.y = screenHeigh - transform.position.y - offsety;
+		movieShow.setPostion (transform.position.x - offsetx, screenHeigh - transform.position.y - offsety);
 	}
 	#endregion
 	
