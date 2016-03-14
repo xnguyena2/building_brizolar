@@ -223,7 +223,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	
 	public RawImage containvideoOffice;
 	
-	public MoviePlayer videoOffice;
+	//public MoviePlayer videoOffice;
 	
 	float ratetio = 1f;
 
@@ -690,6 +690,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			GameObject.Find("pleaseselectyouroffice").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectorofficearrowhandi"];
 			GameObject.Find("pleaseselectyourlocation").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectorblockarrowhandi"];
 			GameObject.Find("pleaseselectyoursegment").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectorsegmentarrowhandi"];
+			GameObject.Find("pleaseselectyoursubsegment").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectorsegmentarrowhandi"];
 			GameObject.Find("pleaseselectyournumber").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectornumberarrowhandi"];
 			GameObject.Find("pleaseselectyournumber6").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectornumberarrowhandi"];
 			GameObject.Find("pleaseselectyournumber1to5").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectornumberarrowhandi"];
@@ -755,6 +756,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			GameObject.Find("pleaseselectyouroffice").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectorofficearrow"];
 			GameObject.Find("pleaseselectyourlocation").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectorblockarrow"];
 			GameObject.Find("pleaseselectyoursegment").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectorsegmentarrow"];
+			GameObject.Find("pleaseselectyoursubsegment").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectorsegmentarrow"];
 			GameObject.Find("pleaseselectyournumber").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectornumberarrow"];
 			GameObject.Find("pleaseselectyournumber6").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectornumberarrow"];
 			GameObject.Find("pleaseselectyournumber1to5").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectornumberarrow"];
@@ -1254,6 +1256,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		}
 		if (currentvideo) {
 			draggggg.exitVideo();
+			currentOfficeVideoIndex = null;
 			/*if (libariVideo.ContainsKey (currentvideo)) {
 				if (libariVideo [currentvideo] != null){
 					libariVideo [currentvideo].Stop ();
@@ -2225,8 +2228,8 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 				numberOfFloor = (int.Parse(numberOfFloor) - 1).ToString();
 			}
 			if(currentLanguage == null || currentLanguage == "")
-				floorOfficeOn.text = "Floor "+numberOfFloor + "(" + DicNumberOffice[blcName] + ")";
-			else floorOfficeOn.text = "Andar "+numberOfFloor + "(" + DicNumberOffice[blcName] + ")";
+				floorOfficeOn.text = "Floor "+numberOfFloor + " - " + DicNumberOffice[blcName];
+			else floorOfficeOn.text = "Andar "+numberOfFloor + " - " + DicNumberOffice[blcName];
 			officePhoneNumber.text = DicphoneNumber[blcName];
 			officeLogo.sprite = name.image.sprite;
 			officeShowName.text = listNameOffie[blcName];
