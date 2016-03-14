@@ -6,7 +6,6 @@ using System.IO;
 using AssemblyCSharp;
 using UnityStandardAssets.Characters.FirstPerson;
 using UnityEngine.EventSystems;
-using MP;
 
 [RequireComponent(typeof (Rigidbody))]
 [RequireComponent(typeof (CapsuleCollider))]
@@ -97,6 +96,22 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		"naturalhandi","opticalhandi","othershandi","partyhandi","petshophandi",
 		"serviceshandi","shoehandi","sporthandi","studioshandi","supliershandi",
 		"techhandi","transphandi","travelhandi","adminhandi",
+		"media", "barber", "baza", "beachw", "cowork",
+		"consul","course", "digit", "podia", "xerox",
+		"telecom", "appli", "adult",
+		"mediahandi", "barberhandi", "bazahandi", "beachwhandi", "coworkhandi", "consulhandi",
+		"coursehandi", "digithandi", "podiahandi", "xeroxhandi", "telecomhandi",
+		"applihandi", "adulthandi",
+		"submedicacup", "submedicangi", "submediccard", "submedicplas", "submedicdoct",
+		"submedicdema", "submedicspee", "submedichome", "submedicneur", "submedicnutr",
+		"submedicobst", "submedicdent", "submedicopht", "submedicorto", "submedicorth",
+		"submedicotor", "submedicpulm", "submedicpsyc", "submedicpendia", "submedicsurge",
+		"submedicexams",
+		"submedicacuphandi", "submedicangihandi", "submediccardhandi", "submedicplashandi", "submedicdocthandi",
+		"submedicdemahandi", "submedicspeehandi", "submedichomehandi", "submedicneurhandi", "submedicnutrhandi",
+		"submedicobsthandi", "submedicdenthandi", "submedicophthandi", "submedicortohandi", "submedicorthhandi",
+		"submedicotorhandi", "submedicpulmhandi", "submedicpsychandi", "submedicpendiahandi", "submedicsurgehandi",
+		"submedicexamshandi",
 		"brazil3_1","brazil3_1handi","brazil3_2","brazil3_2handi","brazil3_3","brazil3_3handi","brazil3_4",
 		"brazil3_4handi","brazil6_1","brazil6_1handi","brazil6_2","brazil6_2handi","brazil6_3","brazil6_3handi","brazil6_4","brazil6_4handi","brazil7_1",
 		"brazil7_1handi","brazil7_2","brazil7_2handi","brazil8_1","brazil8_1handi","brazil8_2","brazil8_2handi","brazil8_3","brazil8_3handi",
@@ -122,6 +137,22 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		"brazilnaturalhandi","brazilopticalhandi","brazilothershandi","brazilpartyhandi","brazilpetshophandi",
 		"brazilserviceshandi","brazilshoehandi","brazilsporthandi","brazilstudioshandi","brazilsupliershandi",
 		"braziltechhandi","braziltransphandi","braziltravelhandi","braziladminhandi","brazilhandicap","brazilnextbackground","brazilnextbackgroundhandi",
+		"brazilmedia", "brazilbarber", "brazilbaza", "brazilbeachw", "brazilcowork", "brazilconsul",
+		"brazilcourse", "brazildigit", "brazilpodia", "brazilxerox", "braziltelecom",
+		"brazilappli", "braziladult",
+		"brazilmediahandi", "brazilbarberhandi", "brazilbazahandi", "brazilbeachwhandi", "brazilcoworkhandi", "brazilconsulhandi",
+		"brazilcoursehandi", "brazildigithandi", "brazilpodiahandi", "brazilxeroxhandi", "braziltelecomhandi",
+		"brazilapplihandi", "braziladulthandi",
+		"brazilsubmedicacup", "brazilsubmedicangi", "brazilsubmediccard", "brazilsubmedicplas", "brazilsubmedicdoct",
+		"brazilsubmedicdema", "brazilsubmedicspee", "brazilsubmedichome", "brazilsubmedicneur", "brazilsubmedicnutr",
+		"brazilsubmedicobst", "brazilsubmedicdent", "brazilsubmedicopht", "brazilsubmedicorto", "brazilsubmedicorth",
+		"brazilsubmedicotor", "brazilsubmedicpulm", "brazilsubmedicpsyc", "brazilsubmedicpendia", "brazilsubmedicsurge",
+		"brazilsubmedicexams",
+		"brazilsubmedicacuphandi", "brazilsubmedicangihandi", "brazilsubmediccardhandi", "brazilsubmedicplashandi", "brazilsubmedicdocthandi",
+		"brazilsubmedicdemahandi", "brazilsubmedicspeehandi", "brazilsubmedichomehandi", "brazilsubmedicneurhandi", "brazilsubmedicnutrhandi",
+		"brazilsubmedicobsthandi", "brazilsubmedicdenthandi", "brazilsubmedicophthandi", "brazilsubmedicortohandi", "brazilsubmedicorthhandi",
+		"brazilsubmedicotorhandi", "brazilsubmedicpulmhandi", "brazilsubmedicpsychandi", "brazilsubmedicpendiahandi", "brazilsubmedicsurgehandi",
+		"brazilsubmedicexamshandi",
 		"spanish3_1","spanish3_1handi","spanish3_2","spanish3_2handi","spanish3_3","spanish3_3handi","spanish3_4",
 		"spanish3_4handi","spanish6_1","spanish6_1handi","spanish6_2","spanish6_2handi","spanish6_3","spanish6_3handi","spanish6_4","spanish6_4handi","spanish7_1",
 		"spanish7_1handi","spanish7_2","spanish7_2handi","spanish8_1","spanish8_1handi","spanish8_2","spanish8_2handi","spanish8_3","spanish8_3handi",
@@ -146,34 +177,64 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		"spanishlogisthandi","spanishmanagehandi","spanishmarkethandi","spanishmedichandi","spanishmobilehandi",
 		"spanishnaturalhandi","spanishopticalhandi","spanishothershandi","spanishpartyhandi","spanishpetshophandi",
 		"spanishserviceshandi","spanishshoehandi","spanishsporthandi","spanishstudioshandi","spanishsupliershandi",
-		"spanishtechhandi","spanishtransphandi","spanishtravelhandi","spanishadminhandi","spanishhandicap","spanishnextbackground","spanishnextbackgroundhandi"
+		"spanishtechhandi","spanishtransphandi","spanishtravelhandi","spanishadminhandi","spanishhandicap","spanishnextbackground","spanishnextbackgroundhandi",
+		"spanishmedia", "spanishbarber", "spanishbaza", "spanishbeachw", "spanishcowork", "spanishconsul",
+		"spanishcourse", "spanishdigit", "spanishpodia", "spanishxerox", "spanishtelecom",
+		"spanishappli", "spanishadult",
+		"spanishmediahandi", "spanishbarberhandi", "spanishbazahandi", "spanishbeachwhandi", "spanishcoworkhandi", "spanishconsulhandi",
+		"spanishcoursehandi", "spanishdigithandi", "spanishpodiahandi", "spanishxeroxhandi", "spanishtelecomhandi",
+		"spanishapplihandi", "spanishadulthandi",
+		"spanishsubmedicacuphandi", "spanishsubmedicangihandi", "spanishsubmediccardhandi", "spanishsubmedicplashandi", "spanishsubmedicdocthandi",
+		"spanishsubmedicdemahandi", "spanishsubmedicspeehandi", "spanishsubmedichomehandi", "spanishsubmedicneurhandi", "spanishsubmedicnutrhandi",
+		"spanishsubmedicobsthandi", "spanishsubmedicdenthandi", "spanishsubmedicophthandi", "spanishsubmedicortohandi", "spanishsubmedicorthhandi",
+		"spanishsubmedicotorhandi", "spanishsubmedicpulmhandi", "spanishsubmedicpsychandi", "spanishsubmedicpendiahandi", "spanishsubmedicsurgehandi",
+		"spanishsubmedicexamshandi",
+		"spanishsubmedicacup", "spanishsubmedicangi", "spanishsubmediccard", "spanishsubmedicplas", "spanishsubmedicdoct",
+		"spanishsubmedicdema", "spanishsubmedicspee", "spanishsubmedichome", "spanishsubmedicneur", "spanishsubmedicnutr",
+		"spanishsubmedicobst", "spanishsubmedicdent", "spanishsubmedicopht", "spanishsubmedicorto", "spanishsubmedicorth",
+		"spanishsubmedicotor", "spanishsubmedicpulm", "spanishsubmedicpsyc", "spanishsubmedicpendia", "spanishsubmedicsurge",
+		"spanishsubmedicexams"
 	};
-		/*"","","","","","","","","","",
-		"","","","","","","","","","",};*/
-
+	/*"","","","","","","","","","",
+        "","","","","","","","","","",};*/
+	
 	string[] segmentNameArray = new string[]{
-		"aesthencs","art","archite","bank","brokers",
-		"commer","construct","electric","energy","events",
-		"womenfashtion","manfashtion","kidfashtion","unisexfashtion","financial",
-		"flonculture","gastronomy","hair","home","import",
-		"inst","jewelry","kisoksstore","law","lingerie",
-		"logist","manage","market","medic","mobile",
-		"natural","optical","others","party","petshop",
-		"services","shoe","sport","studios","supliers",
-		"tech","transp","travel","admin",
+		"aesthencs","art","archite","media","bank",
+		"barber", "baza", "beachw", "brokers","cowork", 
+		"commer","construct","consul","course", "digit", 
+		
+		"electric","energy","events","womenfashtion","manfashtion",
+		"kidfashtion","unisexfashtion","financial","flonculture","gastronomy",
+		"hair","home","import","inst","jewelry",
+		
+		"kisoksstore","law","lingerie","logist","manage",
+		"market","medic","mobile","natural","optical",
+		"others","party","petshop","podia","services",
+		
+		"shoe","sport","xerox","studios","supliers",
+		"tech","transp","travel","telecom","appli", 
+		"adult", "admin"
 	};
 	
+	string[] subSegmentMedic = new string[]{
+		"submedicacup", "submedicangi", "submediccard", "submedicplas", "submedicdoct",
+		"submedicdema", "submedicspee", "submedichome", "submedicneur", "submedicnutr",
+		"submedicobst", "submedicdent", "submedicopht", "submedicorto", "submedicorth",
+		"submedicotor", "submedicpulm", "submedicpsyc", "submedicpendia", "submedicsurge",
+		"submedicexams"
+	};
+
 	public Button fl1, fl2, fl3, fl4;
 	
 	public RawImage containvideoOffice;
-
-	public MoviePlayer videoOffice;
-
-
+	
+	//public MoviePlayer videoOffice;
+	
+	
 	float ratetio = 1f;
-
+	
 	private Dictionary<string,Vector3> PositnBlock = new Dictionary<string, Vector3> ();
-
+	
 	Vector3 block9_1 = new Vector3 (310.4033F, 0.5F, 172.7136F);
 	Vector3 block8_1 = new Vector3 (299.8048f, 0.5f, 186.1202f);
 	Vector3 block8_2 = new Vector3 (300.5f, 0.5f, 189.3f);
@@ -383,10 +444,9 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 	float crsPosx = -1f;
 	float crsPosy = -1f;
-	private LoadOptions loadOptions = LoadOptions.Default;
 
 
-	public MoviePlayer movieCrsPlayer;
+	public ShowCrsVideo movieCrsPlayer;
 
 	//height = 768
 	//width = 1366
@@ -401,13 +461,6 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		screenHeigh = Screen.height;
 		crsPosx = Videocarosel.transform.position.x - 192f;
 		crsPosy = screenHeigh - Videocarosel.transform.position.y - 109f;
-		//Debug.Log (screenHeigh +", "+ screenWidth);
-		//Debug.Log (Videocarosel.transform.position);
-		loadOptions.skipAudio = true;
-		loadOptions.videoStreamInfo = new VideoStreamInfo();
-		loadOptions.videoStreamInfo.codecFourCC = MP.Decoder.VideoDecoderMJPEG.FOURCC_MJPG;
-		movieCrsPlayer.loadOptions = loadOptions;
-		movieCrsPlayer.OnStop += OnWaitFinished;
 		resetVideoCrs ();
 
 		StartCoroutine (loadVideoFromResources ());
@@ -537,11 +590,11 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		aTimer.Elapsed += OnTimedEvent;
 		
 		aTimer.Start ();
-
+		/*
 		
 		timerBoom = new System.Timers.Timer(3600000);
 		timerBoom.Elapsed += OnTimedBoomEvent;		
-		timerBoom.Start ();
+		timerBoom.Start ();*/
 
 		hideBlock2Timer = new System.Timers.Timer(4000);
 		// Hook up the Elapsed event for the timer. 
@@ -569,14 +622,16 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		m_showAnimationBlockPressed = Animator.StringToHash (k_buttonBlockPressTransitionName);
 		changeLanguare ("brazil");
 	}
+	
+	public static string fullPathVideoFolder = "C:/server/";
 
 	void resetVideoCrs(){
-		movieCrsPlayer.customScreenRect = new Rect (crsPosx, crsPosy, 384, 218);
+		movieCrsPlayer.setRectVideo (crsPosx, crsPosy, 384, 218);
 	}
 	void fullScreenVideoCrs(){
-		movieCrsPlayer.customScreenRect = new Rect (0, 0, screenWidth, screenHeigh);
+		movieCrsPlayer.setRectVideo (0, 0, screenWidth, screenHeigh);
 	}
-
+	
 	bool beginmovetonextcamera = false;
 	Vector3 lattt,posss;
 	private void move2NextCamera(object o, System.Timers.ElapsedEventArgs e)
@@ -625,7 +680,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	public void handicapMode(){
 		resetTimer ();
 		if (!handicap) {
-			//VideoDirection.texture = movieTextureDirctionElevator;
+			VideoDirection.texture = movieTextureDirctionElevator;
 			searchBtn.image.sprite = ResourcesDictionary[currentLanguage+"atozhandi"];
 			bathroomSearchBtn.image.sprite = ResourcesDictionary[currentLanguage+"bathroomhandi"];
 			if(!dontAddhandi){
@@ -658,12 +713,13 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			GameObject.Find("pleaseselectyouroffice").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectorofficearrowhandi"];
 			GameObject.Find("pleaseselectyourlocation").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectorblockarrowhandi"];
 			GameObject.Find("pleaseselectyoursegment").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectorsegmentarrowhandi"];
+			GameObject.Find("pleaseselectyoursubsegment").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectorsegmentarrowhandi"];
 			GameObject.Find("pleaseselectyournumber").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectornumberarrowhandi"];
 			GameObject.Find("pleaseselectyournumber6").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectornumberarrowhandi"];
 			GameObject.Find("pleaseselectyournumber1to5").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectornumberarrowhandi"];
 			if(currentBlock>5 && currentBlock < 9)
-				GameObject.Find("floorselector").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+currentBlock+"_"+currentFloor+"handi"];
-			else GameObject.Find("floorselector").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"3_"+currentFloor+"handi"];
+				floorSelector.sprite = ResourcesDictionary[currentLanguage+currentBlock+"_"+currentFloor+"handi"];
+			else floorSelector.sprite = ResourcesDictionary[currentLanguage+"3_"+currentFloor+"handi"];
 			GameObject.Find("borderImg").GetComponent<Image>().sprite = ResourcesDictionary["videoFrameBarhandi"];
 			GameObject.Find("NextBtn").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"nextbackgroundhandi"];
 			GameObject.Find("containBlockInfomation").GetComponent<Image>().sprite = ResourcesDictionary["officeInfomationBackgroundhandi"];
@@ -723,12 +779,13 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			GameObject.Find("pleaseselectyouroffice").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectorofficearrow"];
 			GameObject.Find("pleaseselectyourlocation").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectorblockarrow"];
 			GameObject.Find("pleaseselectyoursegment").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectorsegmentarrow"];
+			GameObject.Find("pleaseselectyoursubsegment").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectorsegmentarrow"];
 			GameObject.Find("pleaseselectyournumber").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectornumberarrow"];
 			GameObject.Find("pleaseselectyournumber6").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectornumberarrow"];
 			GameObject.Find("pleaseselectyournumber1to5").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectornumberarrow"];
 			if(currentBlock>5 && currentBlock < 9)
-				GameObject.Find("floorselector").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+currentBlock+"_"+currentFloor];
-			else GameObject.Find("floorselector").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"3_"+currentFloor];
+				floorSelector.sprite = ResourcesDictionary[currentLanguage+currentBlock+"_"+currentFloor];
+			else floorSelector.sprite = ResourcesDictionary[currentLanguage+"3_"+currentFloor];
 			GameObject.Find("borderImg").GetComponent<Image>().sprite = ResourcesDictionary["videoFrameBar"];
 			GameObject.Find("NextBtn").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"nextbackground"];
 			GameObject.Find("containBlockInfomation").GetComponent<Image>().sprite = ResourcesDictionary["officeInfomationBackground"];
@@ -1022,12 +1079,12 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	
 	IEnumerator LoadVideo (string url)
 	{
-		Debug.Log (url);
+		//Debug.Log (url);
 		currentvideo = false;
-		draggggg.loadVideoFromUrl (url, showOfficeVideo);
+		draggggg.loadVideoFromUrl (fullPathVideoFolder + "video/" + url, showOfficeVideo);
 		yield return 1;
 	}
-
+	
 	/*
 	private IEnumerator LoadVideo(string url)
 	{
@@ -1098,7 +1155,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			tempArray.Sort();
 			foreach(string name in tempArray){
 				string[] info = sortDic[name];				
-				StartCoroutine(loadTexture4Office(info[0], toNormalString(info[2]), toNormalString(info[4]), currentIndex, convertToUtf8(toNormalString(info[1]))));
+				StartCoroutine(loadTexture4Office(info[0], toNormalString(info[2]), toNormalString(info[4]), currentIndex, convertToUtf8(toNormalString(info[1])),toNormalString(info[2])));
 				if(currentIndex<maxOffice)
 					currentIndex++;			
 			}
@@ -1205,26 +1262,33 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		if (changesize) {
 			containvideoOffice.rectTransform.sizeDelta = bigSize;
 			//containvideoOffice.GetComponent<RectTransform> ().anchoredPosition = vectorResetVideoBig;
-			videoOffice.customScreenRect.size = bigSize;
-			draggggg.updateLocationVideo(204,136);
+			//videoOffice.customScreenRect.size = bigSize;
+			draggggg.updateLocationVideo(204,136, bigSize);
 		} else {
 			containvideoOffice.rectTransform.sizeDelta = normalSize;
-			videoOffice.customScreenRect.size = normalSize;
-			draggggg.updateLocationVideo(167f,101f);
+			//videoOffice.customScreenRect.size = normalSize;
+			draggggg.updateLocationVideo(167f,101f, normalSize);
 		}
 		changesize=!changesize;
 	}
-	Vector2 vectorResetVideoBig = new Vector2(217.55f, 315f);
+	//Vector2 vectorResetVideoBig = new Vector2(217.55f, 315f);
 	Vector2 vectorResetVideo = new Vector2(180.55f, 271.5f);
 	public void exitvideo(){
-
+		//videoOffice.texture
+		if (stillShowVideoDirection) {          
+			hideVideoDirection (false);
+		}
+		
 		if (currentvideo) {
+			draggggg.exitVideo();
+			currentOfficeVideoIndex = null;
 			/*if (libariVideo.ContainsKey (currentvideo)) {
-				if (libariVideo [currentvideo] != null){
-					libariVideo [currentvideo].Stop ();
-					//Debug.Log("exit video");
-				}
-			}*/
+                if (libariVideo [currentvideo] != null){
+                    libariVideo [currentvideo].Stop ();
+                    videoOffice.GetComponent<RectTransform> ().anchoredPosition = vectorResetVideo;
+                    //Debug.Log("exit video");
+                }
+            }*/
 			containvideoOffice.GetComponent<RectTransform> ().anchoredPosition = vectorResetVideo;
 			if (!changesize)
 				resize ();
@@ -1236,13 +1300,13 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		if (isShow) {
 			GameObject.Find("borderImg").GetComponent<Image>().enabled=true;
 			containvideoOffice.enabled=true;
-			videoOffice.drawToScreen = true;
+			//videoOffice.drawToScreen = true;
 			exitViedo.gameObject.SetActive(true);
 			resizeVideo.gameObject.SetActive(true);
 		} else {
 			GameObject.Find("borderImg").GetComponent<Image>().enabled=false;
 			containvideoOffice.enabled=false;
-			videoOffice.drawToScreen = false;
+			//videoOffice.drawToScreen = false;
 			exitViedo.gameObject.SetActive(false);
 			resizeVideo.gameObject.SetActive(false);
 		}
@@ -2077,8 +2141,10 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			setCamera (cameraPostion, lkk);
 		}
 	}
-
+	
+	bool stillShowVideoDirection = false;
 	void showVideoDireciton(string name){
+		stillShowVideoDirection = true;
 		if (name.IndexOf ("block8") >= 0) {
 			if(isHandicapMode)
 				VideoDirection.texture = movieTextureElevatorDown;
@@ -2096,15 +2162,23 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		//currentNameLayoutShow = "containVideoDirction";
 	}
 	bool haveShowVideoDirection = false;
-	void hideVideoDirection(){
+	void hideVideoDirection(bool loadOfficeVideo){
+		stillShowVideoDirection = false;
 		haveShowVideoDirection = false;
 		((MovieTexture)VideoDirection.texture).Stop ();
-		GameObject.Find ("containVideoDirction").GetComponent<Animator> ().SetBool (m_showDirctionVideoId, false);
+		GameObject.Find ("containVideoDirction").GetComponent<Animator> ().SetBool (m_showDirctionVideoId, false);      
+		if (loadOfficeVideo) {
+			StartCoroutine(Wait(loadOfficeVideoByPath));
+		}
 		//currentNameLayoutShow = null;
 	}
 	
+	void loadOfficeVideoByPath(){
+		StartCoroutine (LoadVideo (currentOfficeVideoIndex + videoType));
+	}
+	
 	void showTransparent(string name, float height){
-
+		
 		GameObject ga = GameObject.Find (name);
 		ga.transform.position = new Vector3 (ga.transform.position.x, height, ga.transform.position.z);
 
@@ -2163,13 +2237,17 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 	public void OnNextButtonEvent(){
 		resetTimer ();
-		officeClick (null);
+		StartCoroutine (officeClick (null));
 	}
 
     bool showRouteBettwenBlock = false;
     string nameOfSearchBlock,routeBettwenBlock;
 	
-	public void officeClick(Button name){
+	public void officeClickEvent(Button name){
+		StartCoroutine (officeClick (name));
+	}
+	
+	private IEnumerator officeClick(Button name){
 		string blcName;
 		string officeIndex;
 		if (searchbyname) {			
@@ -2190,10 +2268,16 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			
 			GameObject.Find ("containBlockInfomation").GetComponent<Animator> ().SetBool (m_showScreenParameterId, true);
 			reservedBtn.GetComponent<Animator> ().SetBool (m_ShowEventParameterId, true);
-
+			
+			string numberOfFloor = officeIndex[2].ToString();
+			//Debug.Log(officeIndex[1]);
+			if(officeIndex[1] != '8' && officeIndex[1] != '7'){
+				numberOfFloor = (int.Parse(numberOfFloor) - 1).ToString();
+			}
+			
 			if(currentLanguage == null || currentLanguage == "")
-				floorOfficeOn.text = "Floor "+officeIndex[2];
-			else floorOfficeOn.text = "Andar "+officeIndex[2];
+				floorOfficeOn.text = "Floor "+numberOfFloor + " - " + DicNumberOffice[blcName];
+			else floorOfficeOn.text = "Andar "+numberOfFloor + " - " + DicNumberOffice[blcName];
 			officePhoneNumber.text = DicphoneNumber[blcName];
 			officeLogo.sprite = name.image.sprite;
 			officeShowName.text = listNameOffie[blcName];
@@ -2264,11 +2348,15 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		listNameCurrentBlock.Add ("block"+Block + "_1");
 		currentBlock = Block;
 		currentFloor = Floor;		
+		currentOfficeVideoIndex = officeIndex;
 		getRoute ("office" + officeIndex.Substring (3));
-		StartCoroutine (LoadVideo (IP + "video/" + officeIndex + videoType));
+		//StartCoroutine (LoadVideo (IP + "video/" + officeIndex + videoType));
 		StartCoroutine (waitforresult());
+		yield return null;
 	}
-
+	
+	string currentOfficeVideoIndex = null;
+	
 	public IEnumerator waitforresult(){
 		yield return new WaitForSeconds(1F);
 		hideFullTransparent ();
@@ -2385,7 +2473,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			tempArray.Sort();
 			foreach(string names in tempArray){
 				string[] info = sortDic[names];								
-				StartCoroutine(loadTexture4Office(info[0], convertToUtf8(toNormalString(info[1])), toNormalString(info[4]), currentIndex, null));
+				StartCoroutine(loadTexture4Office(info[0], convertToUtf8(toNormalString(info[1])), toNormalString(info[4]), currentIndex, null, toNormalString(info[2])));
 				if(currentIndex<maxOffice)
 					currentIndex++;	
 			}
@@ -2523,23 +2611,15 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		WWW www = new WWW(url);
 		yield return www;
 		rend.material.mainTexture = www.texture;
-		/*if(!firstLoad)
-		{
-			Debug.Log(nameobject);
-			if(!spriteSave.ContainsKey(nameobject)){
-				spriteSave.Add(nameobject,Sprite.Create (www.texture, new Rect (0, 0, www.texture.width, www.texture.height), Vector2.zero));
-			}else {
-				spriteSave[nameobject] = Sprite.Create (www.texture, new Rect (0, 0, www.texture.width, www.texture.height), Vector2.zero);
-			}
-		}*/
 		countDown--;
 	}
 
 	Dictionary<string,Sprite> spriteSave = new Dictionary<string, Sprite> ();
 	Dictionary<string, string> DicphoneNumber = new Dictionary<string, string> ();
+	Dictionary<string, string> DicNumberOffice = new Dictionary<string, string> ();
 	Dictionary<string, string> listNameOffie = new Dictionary<string, string> ();
 
-	private IEnumerator loadTexture4Office(string name, string nameOffice, string phoneNumber, int index,string subNameOffice)
+	private IEnumerator loadTexture4Office(string name, string nameOffice, string phoneNumber, int index,string subNameOffice, string officeNumber)
 	{
 		//if (gameObject != null) 
 		{
@@ -2563,13 +2643,19 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			if (!spriteSave.ContainsKey (name)) {
 				/*GameObject gameobjects = GameObject.Find (name);
 				Texture2D texture = (Texture2D)gameobjects.GetComponent<Renderer> ().material.mainTexture;*/
-				string url = IP + "logo/" + name + imageType;
-				Texture2D texture = null;
-				WWW imageURLWWW = new WWW (url);		
-				yield return imageURLWWW;		
-				if (imageURLWWW.texture != null) {
-					texture = imageURLWWW.texture;
-				}
+				/*string url = IP + "logo/" + name + imageType;
+                Texture2D texture = null;
+                WWW imageURLWWW = new WWW (url);        
+                yield return imageURLWWW;       
+                if (imageURLWWW.texture != null) {
+                    texture = imageURLWWW.texture;
+                }*/
+				
+				string fullPathFile = "C:/server/logo/"+name+imageType;
+				byte[] data = File.ReadAllBytes(fullPathFile);
+				Texture2D texture = new Texture2D(87, 87, TextureFormat.ARGB32, false);
+				texture.LoadImage(data);
+
 				sprite = Sprite.Create (texture, new Rect (0, 0, texture.width, texture.height), Vector2.zero);
 				spriteSave.Add (name, sprite);
 				//Debug.Log(name+":"+texture.width);
@@ -2578,6 +2664,9 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			}
 			if (!DicphoneNumber.ContainsKey (name)) {
 				DicphoneNumber.Add (name, phoneNumber);
+			}
+			if(!DicNumberOffice.ContainsKey(name)){
+				DicNumberOffice.Add(name, officeNumber);
 			}
 			sprite.name = name;
 			if (buttons != null && texts != null) {
@@ -2690,7 +2779,26 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		}
 		yield return null;
 	}
-
+	
+	private IEnumerator loadTextureSubSegment()
+	{
+		string handi = null;
+		if (isHandicapMode)
+			handi = "handi";
+		
+		{
+			for(int i = 0;i<15;i++){
+				Button btn = GameObject.Find("SSG"+i).GetComponent<Button>();
+				btn.enabled = true;
+				Color c = btn.targetGraphic.color;
+				c.a = 255f;
+				btn.targetGraphic.color = c;
+				btn.image.sprite = ResourcesDictionary[currentLanguage+ subSegmentMedic[i]+handi];
+			}
+		}
+		yield return null;
+	}
+	
 	int currentNumberIndex = 0;
 	public void nextNumber(){
 		currentNumberIndex = (currentNumberIndex + 1)%3;
@@ -2729,30 +2837,33 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	public void nextSegment(){
 		StartCoroutine (nextSgm ());
 	}
-
-	public void previosSegment(){
-		if (offset >= 30)
-			offset = 0;
-		else
-			offset += 15;
-		StartCoroutine (nextSgm ());
+	
+	public void nextSubSegment(){
+		StartCoroutine (nextSubSgm ());
+	}
+	
+	public void previosSubSegment(){
+		StartCoroutine (nextSubSgm ());
+	}
+	
+	public void previosSegment(){		
+		StartCoroutine (previSgm ());
 	}
 	
 	int offset = 0;
-
 	private IEnumerator nextSgm(){
-		if (offset >= 30)
+		if (offset >= 45)
 			offset = 0;
 		else
 			offset += 15;
-
+		
 		{
 			string handi = null;
 			if(isHandicapMode)
 				handi = "handi";
 			for (int i = 0; i<15; i++) {
 				Button btn = GameObject.Find ("SG" + i).GetComponent<Button> ();
-				if ((i + offset) < 44) {
+				if ((i + offset) < 57) {
 					btn.enabled = true;
 					Color c = btn.targetGraphic.color;
 					c.a = 255f;
@@ -2768,31 +2879,90 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		}
 		yield return null;
 	}
-
+	
+	private IEnumerator previSgm(){
+		if (offset == 0)
+			offset = 45;
+		else
+			offset -= 15;
+		
+		{
+			string handi = null;
+			if(isHandicapMode)
+				handi = "handi";
+			for (int i = 0; i<15; i++) {
+				Button btn = GameObject.Find ("SG" + i).GetComponent<Button> ();
+				if ((i + offset) < 57) {
+					btn.enabled = true;
+					Color c = btn.targetGraphic.color;
+					c.a = 255f;
+					btn.targetGraphic.color = c;
+					btn.image.sprite = ResourcesDictionary[currentLanguage+segmentNameArray [i + offset]+handi];
+				}else {
+					Color c = btn.targetGraphic.color;
+					c.a = 0f;
+					btn.targetGraphic.color = c;
+					btn.enabled = false;
+				}
+			}
+		}
+		yield return null;
+	}
+	
+	int subOffset = 0;
+	private IEnumerator nextSubSgm(){
+		if (subOffset >= 15)
+			subOffset = 0;
+		else
+			subOffset += 15;
+		
+		{
+			string handi = null;
+			if(isHandicapMode)
+				handi = "handi";
+			for (int i = 0; i<15; i++) {
+				Button btn = GameObject.Find ("SSG" + i).GetComponent<Button> ();
+				if ((i + subOffset) < 21) {
+					btn.enabled = true;
+					Color c = btn.targetGraphic.color;
+					c.a = 255f;
+					btn.targetGraphic.color = c;
+					btn.image.sprite = ResourcesDictionary[currentLanguage+subSegmentMedic [i + subOffset]+handi];
+				}else {
+					Color c = btn.targetGraphic.color;
+					c.a = 0f;
+					btn.targetGraphic.color = c;
+					btn.enabled = false;
+				}
+			}
+		}
+		yield return null;
+	}
 	void hideOldeScreen(){
 		//Debug.Log ("name of layout:" + currentNameLayoutShow);
+		searchInsub = false;
 		madeButtonTransparent (NextBtn);
 		if (currentNameLayoutShow != null) {
 			GameObject.Find (currentNameLayoutShow).GetComponent<Animator> ().SetBool (m_OpenParameterId, false);
 			currentNameLayoutShow = null;
 			hideNumberLayout();
 			hideEventLayout ();
-
+			
 		}
 	}
-
+	
 	public void hideNumberLayout(){
 		contain1.enabled = false;
 		contain2.enabled = false;
 		contain3.enabled = false;
 	}
-
+	
 	public void hideEventLayout(){
 		evnt1.enabled = false;
 		evnt2.enabled = false;
 		evnt3.enabled = false;
 	}
-
+	
 	public void EventPress(){
 		resetTimer ();
 		hideEventAndInfomation ();
@@ -2872,15 +3042,36 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		//Debug.Log (currentEvent);
 		nextEvent ();
 	}
-
+	
+	bool searchInsub = false;
+	
 	public void searchOfficeBySegment(int index){
-		string segement;
-		segement = segmentNameArray [index + offset];
-		//Debug.Log (offset + "," + segement);
-		StartCoroutine (searchbySegement (segement));
+		string segement,nameOfContainPanel = "Panelcontainsegments";
+		if (searchInsub) {
+			segement = subSegmentMedic [index + subOffset];
+			searchInsub = false;
+		}
+		else
+			segement = segmentNameArray [index + offset];
+		if (segement.IndexOf ("submedic") == 0)
+			nameOfContainPanel = "Panelcontainsubsegments";
+		Debug.Log (offset + "," + segement);
+		if (segement == "medic") {            
+			subOffset = 0;
+			StartCoroutine (loadTextureSubSegment ());
+			resetTimer ();
+			hideEventAndInfomation ();
+			exitvideo ();
+			hideOldeScreen ();
+			showFullTransparent ();
+			GameObject.Find ("Panelcontainsubsegments").GetComponent<Animator> ().SetBool (m_OpenParameterId, true);
+			currentNameLayoutShow = "Panelcontainsubsegments";
+			searchInsub = true;
+		} else
+			StartCoroutine (searchbySegement (segement,nameOfContainPanel));
 	}
-
-	private IEnumerator searchbySegement(string segement){
+	
+	private IEnumerator searchbySegement(string segement,string nameOfContainPanel){
 		bool haveResult = false;
 		cleanTexture ();
 		foreach (string x in infomationForSearch) {
@@ -2889,7 +3080,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 				if ((isMaster && info [0].ToLower () [1] == '8') || (!isMaster && info [0].ToLower () [1] != '8')) {
 					if (info [3].ToLower ().IndexOf (segement) >= 0 && info [1] != "for_empty_office") {
 						haveResult = true;
-						StartCoroutine (loadTexture4Office (info [0], convertToUtf8(toNormalString(info [1])), toNormalString(info[4]), currentIndex, null));
+						StartCoroutine (loadTexture4Office (info [0], convertToUtf8(toNormalString(info [1])), toNormalString(info[4]), currentIndex, null, toNormalString(info[2])));
 						if(currentIndex<maxOffice)
 							currentIndex++;
 					}
@@ -2897,7 +3088,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			}
 		}
 		
-		GameObject.Find ("Panelcontainsegments").GetComponent<Animator> ().SetBool (m_OpenParameterId, false);
+		GameObject.Find (nameOfContainPanel).GetComponent<Animator> ().SetBool (m_OpenParameterId, false);
 		
 		if (haveResult) {
 			searchbyname = true;
@@ -3017,7 +3208,6 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	int currentCarousel = 0,timeDisplay = -100;
 	bool shownextCarousel = false,firstLoadCarousel = true;
 
-	Dictionary<string, MovieTexture> dicMovieCarousel = new Dictionary<string, MovieTexture> ();
 	Dictionary<string, Texture> dicImageCarousel = new Dictionary<string, Texture> ();
 
 
@@ -3040,31 +3230,33 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			
 			if (www.bytes.Length > 0) 
 			{
-				bytesNextVideo = www.bytes;
-				haveNextData = true;
+				string fullPath = fullPathVideoFolder + "crs/" + filename;
+				Debug.Log (fullPath + "finished download!!!");
+				File.WriteAllBytes (fullPath, www.bytes);
 			}
-		}
+			
+		}       
 	}
 	
 	private IEnumerator loadcrosel () {
-
+		
 		if (infomationCarousel [currentCarousel] != "" && infomationCarousel [currentCarousel] != null) {
 			carouselTimer.Stop ();
 			string[] infos = infomationCarousel [currentCarousel].Split (new string[]{" "}, System.StringSplitOptions.None);
 			string filename = infos [0];
 			timeDisplay = int.Parse (infos [1]);
-			movieCrsPlayer.drawToScreen = false;
+			
 			//Debug.Log(filename+timeDisplay);
 			if (timeDisplay > 0) {
 				var url = IP + "crs/" + filename;
 				Texture imageTexture = null;
-
+				
 				if (!dicImageCarousel.ContainsKey (url)) {
-
+					
 					//Debug.Log("down car");
-
-					WWW imageURLWWW = new WWW (url);		
-					yield return imageURLWWW;		
+					
+					WWW imageURLWWW = new WWW (url);        
+					yield return imageURLWWW;       
 					if (imageURLWWW.texture != null) {
 						imageTexture = (Texture)imageURLWWW.texture;
 					}
@@ -3073,73 +3265,44 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 					//Debug.Log("use old car");
 					imageTexture = dicImageCarousel [url];
 				}
-
+				movieCrsPlayer.UnloadMovie();
+				
 				Videocarosel.texture = imageTexture;
 				carouselTimer.Interval = timeDisplay * 1000;
 				carouselTimer.Start ();
 			} else {
 				if(Videocarosel.texture!=null)
 					Videocarosel.texture = null;
-				if(haveNextData){
-					haveNextData = false;
-					movieCrsPlayer.loop = true;
-					movieCrsPlayer.Load (bytesNextVideo);
-					//yield return new WaitForSeconds(0.5F);
-					//resetVideoCrs();
-					movieCrsPlayer.play = true;
-					StartCoroutine(Wait(OnPlayCrs));
-				}else {
-					var url = IP + "crs/" + filename;
-
-					//Debug.Log (url);
-					
-					WWW www = new WWW(url);
-					
-					while(!www.isDone) yield return 1;
-
-					if (www.bytes.Length > 0) 
-					{
-						movieCrsPlayer.loop = true;
-						movieCrsPlayer.Load (www.bytes);
-						//yield return new WaitForSeconds(0.5F);
-						//resetVideoCrs();
-						movieCrsPlayer.play = true;
-						StartCoroutine(Wait(OnPlayCrs));
-						//yield return new WaitForSeconds(1F);
-						//movieCrsPlayer.drawToScreen = true;
-						//movieCrsPlayer.loop = false;
-					}
-					//Debug.Log(url);
-					/*
-					if (!dicMovieCarousel.ContainsKey (url)) 
-					{
-
-
-						WWW www = new WWW (url);
-						movieTextureCarousel = www.movie;
-						while (!movieTextureCarousel.isReadyToPlay) {
-							yield return null;
-						}
-						dicMovieCarousel.Add (url, movieTextureCarousel);
-					} else {
-						//Debug.Log("use old video");
-						movieTextureCarousel = dicMovieCarousel [url];
-						movieTextureCarousel.Stop ();
-					}
-					movieTextureCarousel.loop = false;
-					Videocarosel.texture = movieTextureCarousel;
-					movieTextureCarousel.Play ();
-
-					StartCoroutine(Wait(OnWaitFinished)); */
-				}
+				/*if(haveNextData){
+                    haveNextData = false;
+                }else {
+                    /*
+                    var url = IP + "crs/" + filename;                 
+ 
+                    //Debug.Log (url);                  
+                    
+                    WWW www = new WWW(url);
+                    
+                    while(!www.isDone) yield return 1;
+                    
+                    if (www.bytes.Length > 0) 
+                    {                       
+                        string fullPath = fullPathVideoFolder + "/" + filename;
+                        File.WriteAllBytes (fullPath, www.bytes);
+                    }
+                }*/
+				//Debug.Log(fullPathVideoFolder + filename);
+				carouselTimer.Interval = movieCrsPlayer.playVideoFromFile(fullPathVideoFolder + "crs/" + filename) * 1000;
+				carouselTimer.Start ();
 			}
+			
 		} else {
 			if(infomationCarousel.Length>1)
 				shownextCarousel = true;
 		}
 		currentCarousel++;
 		currentCarousel = currentCarousel % (infomationCarousel.Length - 1);
-		StartCoroutine (loadNextVideo ());
+		//StartCoroutine (loadNextVideo ());
 		yield return null;
 	}
 	MovieTexture movieTextureDirctionStair;
@@ -3148,7 +3311,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	MovieTexture movieTextureStairDown;
 	MovieTexture movieTextureElevatorDown;
 	private IEnumerator loadVideoFromResources(){
-
+		
 		movieTextureDirctionElevator = Resources.Load<MovieTexture> ("ElevatorUp");
 		while (!movieTextureDirctionElevator.isReadyToPlay) {
 			yield return null;
@@ -3343,15 +3506,16 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			yield return null;
 		}
 		if (haveShowVideoDirection) {
-			hideVideoDirection ();
-			hideInfomationTimer.Stop();
+			hideVideoDirection (true);
+			//hideInfomationTimer.Stop();
 			//hideInfomationTimer.Start();
 			//Debug.Log("start time");
 		}
 		if (hncmr) {
 			moveNextCamera.Start();
 			havenextcamera = false;
-			haveShowVideoDirection = true;
+			if(stillShowVideoDirection)
+				haveShowVideoDirection = true;
 		}
 		havenewcameraanimation = false;
 		stillanimation = false;
@@ -3371,39 +3535,23 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		showTime.text = System.DateTime.Now.ToString ("HH:mm:ss");
 		yield return null;
 	}
-	bool firsteeeee = true;
-	void OnWaitFinished(MoviePlayerBase caller)
-	{
-		//
-		// Add your code here
-		//
-		Debug.Log ("finished crs");
-		shownextCarousel = true;
-	}
 
-	void OnPlayCrs()
-	{
-		//
-		// Add your code here
-		//
-		//Debug.Log("finished video");
-		movieCrsPlayer.drawToScreen = true;
-		movieCrsPlayer.loop = false;		
-	}
 	
 	private IEnumerator Wait(System.Action callback)
 	{
 		//while(movieTextureCarousel.isPlaying)
-		yield return new WaitForSeconds(0.3F);
+		//yield return new WaitForSeconds(0.1F);//for 32bit
+		yield return new WaitForSeconds(1.0F);//for 64bit
 		if(callback != null) callback();
 	}
-
+	
 	private IEnumerator playOfficeVideo(){
-		yield return new WaitForSeconds(0.1F);
+		//yield return new WaitForSeconds(0.1F);
 		isShowVideo (true);
+		yield return null;
 	}
-
-
+	
+	
 	string cameraangle = "building_Data\\data\\camereangle.txt";
 	string pointPostions = "building_Data\\data\\points.txt";
 	string officePostion = "building_Data\\data\\officePostion.txt";
@@ -3436,9 +3584,9 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 				arroundLeft ();
 			} else if (rightpress || Input.GetKey (KeyCode.D)) {
 				arroundRight ();
-			} else if (uppress || Input.GetKey(KeyCode.Q)) {
+			} else if (uppress || Input.GetKey(KeyCode.W)) {
 				arroundUp ();
-			} else if (downpress || Input.GetKey(KeyCode.E)) {
+			} else if (downpress || Input.GetKey(KeyCode.S)) {
 				arroundDown ();
 			}
 			*/
