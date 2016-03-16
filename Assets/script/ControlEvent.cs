@@ -695,8 +695,8 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			GameObject.Find("pleaseselectyournumber6").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectornumberarrowhandi"];
 			GameObject.Find("pleaseselectyournumber1to5").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectornumberarrowhandi"];
 			if(currentBlock>5 && currentBlock < 9)
-				GameObject.Find("floorselector").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+currentBlock+"_"+currentFloor+"handi"];
-			else GameObject.Find("floorselector").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"3_"+currentFloor+"handi"];
+				floorSelector.sprite = ResourcesDictionary[currentLanguage+currentBlock+"_"+currentFloor+"handi"];
+			else floorSelector.sprite = ResourcesDictionary[currentLanguage+"3_"+currentFloor+"handi"];
 			GameObject.Find("borderImg").GetComponent<Image>().sprite = ResourcesDictionary["videoFrameBarhandi"];
 			GameObject.Find("NextBtn").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"nextbackgroundhandi"];
 			GameObject.Find("containBlockInfomation").GetComponent<Image>().sprite = ResourcesDictionary["officeInfomationBackgroundhandi"];
@@ -704,15 +704,18 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			GameObject.Find("nextEvent").GetComponent<Image>().sprite = ResourcesDictionary["nexthandicap"];
 			GameObject.Find("nextResult").GetComponent<Image>().sprite = ResourcesDictionary["nexthandicap"];
 			GameObject.Find("nextSeg").GetComponent<Image>().sprite = ResourcesDictionary["nexthandicap"];
+			GameObject.Find("nextsubSeg").GetComponent<Image>().sprite = ResourcesDictionary["nexthandicap"];
 			GameObject.Find("nextNum").GetComponent<Image>().sprite = ResourcesDictionary["nexthandicap"];
 			GameObject.Find("previousEvent").GetComponent<Image>().sprite = ResourcesDictionary["previoushandicap"];
 			GameObject.Find("previousResult").GetComponent<Image>().sprite = ResourcesDictionary["previoushandicap"];
 			GameObject.Find("previousSeg").GetComponent<Image>().sprite = ResourcesDictionary["previoushandicap"];
+			GameObject.Find("previoussubSeg").GetComponent<Image>().sprite = ResourcesDictionary["previoushandicap"];
 			GameObject.Find("previousNum").GetComponent<Image>().sprite = ResourcesDictionary["previoushandicap"];
 			GameObject.Find("CloseEvent").GetComponent<Image>().sprite = ResourcesDictionary["closehandi"];
 			GameObject.Find("CloseResult").GetComponent<Image>().sprite = ResourcesDictionary["closehandi"];
 			GameObject.Find("CloseLocation").GetComponent<Image>().sprite = ResourcesDictionary["closehandi"];
 			GameObject.Find("CloseSegment").GetComponent<Image>().sprite = ResourcesDictionary["closehandi"];
+			GameObject.Find("ClosesubSegment").GetComponent<Image>().sprite = ResourcesDictionary["closehandi"];
 			GameObject.Find("CloseKeyboard").GetComponent<Image>().sprite = ResourcesDictionary["closehandi"];
 			GameObject.Find("CloseBlock").GetComponent<Image>().sprite = ResourcesDictionary["closehandi"];
 			GameObject.Find("CloseNumber").GetComponent<Image>().sprite = ResourcesDictionary["closehandi"];
@@ -761,8 +764,8 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			GameObject.Find("pleaseselectyournumber6").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectornumberarrow"];
 			GameObject.Find("pleaseselectyournumber1to5").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectornumberarrow"];
 			if(currentBlock>5 && currentBlock < 9)
-				GameObject.Find("floorselector").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+currentBlock+"_"+currentFloor];
-			else GameObject.Find("floorselector").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"3_"+currentFloor];
+				floorSelector.sprite = ResourcesDictionary[currentLanguage+currentBlock+"_"+currentFloor];
+			else floorSelector.sprite = ResourcesDictionary[currentLanguage+"3_"+currentFloor];
 			GameObject.Find("borderImg").GetComponent<Image>().sprite = ResourcesDictionary["videoFrameBar"];
 			GameObject.Find("NextBtn").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"nextbackground"];
 			GameObject.Find("containBlockInfomation").GetComponent<Image>().sprite = ResourcesDictionary["officeInfomationBackground"];
@@ -770,15 +773,18 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			GameObject.Find("nextEvent").GetComponent<Image>().sprite = ResourcesDictionary["next"];
 			GameObject.Find("nextResult").GetComponent<Image>().sprite = ResourcesDictionary["next"];
 			GameObject.Find("nextSeg").GetComponent<Image>().sprite = ResourcesDictionary["next"];
+			GameObject.Find("nextsubSeg").GetComponent<Image>().sprite = ResourcesDictionary["next"];
 			GameObject.Find("nextNum").GetComponent<Image>().sprite = ResourcesDictionary["next"];
 			GameObject.Find("previousEvent").GetComponent<Image>().sprite = ResourcesDictionary["previous"];
 			GameObject.Find("previousResult").GetComponent<Image>().sprite = ResourcesDictionary["previous"];
 			GameObject.Find("previousSeg").GetComponent<Image>().sprite = ResourcesDictionary["previous"];
+			GameObject.Find("previoussubSeg").GetComponent<Image>().sprite = ResourcesDictionary["previous"];
 			GameObject.Find("previousNum").GetComponent<Image>().sprite = ResourcesDictionary["previous"];
 			GameObject.Find("CloseEvent").GetComponent<Image>().sprite = ResourcesDictionary["close"];
 			GameObject.Find("CloseResult").GetComponent<Image>().sprite = ResourcesDictionary["close"];
 			GameObject.Find("CloseLocation").GetComponent<Image>().sprite = ResourcesDictionary["close"];
 			GameObject.Find("CloseSegment").GetComponent<Image>().sprite = ResourcesDictionary["close"];
+			GameObject.Find("ClosesubSegment").GetComponent<Image>().sprite = ResourcesDictionary["close"];
 			GameObject.Find("CloseKeyboard").GetComponent<Image>().sprite = ResourcesDictionary["close"];
 			GameObject.Find("CloseBlock").GetComponent<Image>().sprite = ResourcesDictionary["close"];
 			GameObject.Find("CloseNumber").GetComponent<Image>().sprite = ResourcesDictionary["close"];
