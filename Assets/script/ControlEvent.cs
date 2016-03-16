@@ -3517,11 +3517,13 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			//hideInfomationTimer.Start();
 			//Debug.Log("start time");
 		}
-		if (hncmr) {
-			moveNextCamera.Start();
+		if (hncmr && !havenewcameraanimation) {
+			moveNextCamera.Start ();
 			havenextcamera = false;
-			if(stillShowVideoDirection)
+			if (stillShowVideoDirection)
 				haveShowVideoDirection = true;
+		} else if(hncmr){			
+			hideVideoDirection (true);
 		}
 		havenewcameraanimation = false;
 		stillanimation = false;
