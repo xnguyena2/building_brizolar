@@ -27,6 +27,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	public Text officePhoneNumber;
 	public Text officeShowName;
 	public Image officeLogo;
+	public Text officeFliter;
 	public Canvas contain1;
 	public Canvas contain2;
 	public Canvas contain3;
@@ -51,7 +52,12 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 	static public string eventSpriteName = "eventbtn";
 
-	string[] nameOfAllResource = new string[]{"3_1","3_1handi","3_2","3_2handi","3_3","3_3handi","3_4",
+	string[] nameOfAllResource = new string[]{
+		"0","1","2","3","4","5","6","7","8","9",
+		"0handi","1handi","2handi","3handi","4handi","5handi","6handi","7handi","8handi","9handi",
+		"backspace","backspacehandi","space","spacehandi","textboxbackground","textboxbackgroundhandi",
+		"officebackground","officebackgroundhandi",
+		"3_1","3_1handi","3_2","3_2handi","3_3","3_3handi","3_4",
 		"3_4handi","6_1","6_1handi","6_2","6_2handi","6_3","6_3handi","6_4","6_4handi","7_1",
 		"7_1handi","7_2","7_2handi","8_1","8_1handi","8_2","8_2handi","8_3","8_3handi","101",
 		"9_1","9_1handi","spanish9_1","spanish9_1handi","brazil9_1","brazil9_1handi",
@@ -103,12 +109,13 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		"submedicdema", "submedicspee", "submedichome", "submedicneur", "submedicnutr",
 		"submedicobst", "submedicdent", "submedicopht", "submedicorto", "submedicorth",
 		"submedicotor", "submedicpulm", "submedicpsyc", "submedicpendia", "submedicsurge",
-		"submedicexams",
+		"submedicexams","ortho","phys",
 		"submedicacuphandi", "submedicangihandi", "submediccardhandi", "submedicplashandi", "submedicdocthandi",
 		"submedicdemahandi", "submedicspeehandi", "submedichomehandi", "submedicneurhandi", "submedicnutrhandi",
 		"submedicobsthandi", "submedicdenthandi", "submedicophthandi", "submedicortohandi", "submedicorthhandi",
 		"submedicotorhandi", "submedicpulmhandi", "submedicpsychandi", "submedicpendiahandi", "submedicsurgehandi",
-		"submedicexamshandi",
+		"submedicexamshandi","orthohandi","physhandi",
+		"brazilbackspace","brazilbackspacehandi","brazilspace","brazilspacehandi",
 		"brazil3_1","brazil3_1handi","brazil3_2","brazil3_2handi","brazil3_3","brazil3_3handi","brazil3_4",
 		"brazil3_4handi","brazil6_1","brazil6_1handi","brazil6_2","brazil6_2handi","brazil6_3","brazil6_3handi","brazil6_4","brazil6_4handi","brazil7_1",
 		"brazil7_1handi","brazil7_2","brazil7_2handi","brazil8_1","brazil8_1handi","brazil8_2","brazil8_2handi","brazil8_3","brazil8_3handi",
@@ -144,12 +151,13 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		"brazilsubmedicdema", "brazilsubmedicspee", "brazilsubmedichome", "brazilsubmedicneur", "brazilsubmedicnutr",
 		"brazilsubmedicobst", "brazilsubmedicdent", "brazilsubmedicopht", "brazilsubmedicorto", "brazilsubmedicorth",
 		"brazilsubmedicotor", "brazilsubmedicpulm", "brazilsubmedicpsyc", "brazilsubmedicpendia", "brazilsubmedicsurge",
-		"brazilsubmedicexams",
+		"brazilsubmedicexams","brazilortho","brazilphys",
 		"brazilsubmedicacuphandi", "brazilsubmedicangihandi", "brazilsubmediccardhandi", "brazilsubmedicplashandi", "brazilsubmedicdocthandi",
 		"brazilsubmedicdemahandi", "brazilsubmedicspeehandi", "brazilsubmedichomehandi", "brazilsubmedicneurhandi", "brazilsubmedicnutrhandi",
 		"brazilsubmedicobsthandi", "brazilsubmedicdenthandi", "brazilsubmedicophthandi", "brazilsubmedicortohandi", "brazilsubmedicorthhandi",
 		"brazilsubmedicotorhandi", "brazilsubmedicpulmhandi", "brazilsubmedicpsychandi", "brazilsubmedicpendiahandi", "brazilsubmedicsurgehandi",
-		"brazilsubmedicexamshandi",
+		"brazilsubmedicexamshandi","brazilorthohandi","brazilphyshandi",
+		"spanishbackspace","spanishbackspacehandi","spanishspace","spanishspacehandi",
 		"spanish3_1","spanish3_1handi","spanish3_2","spanish3_2handi","spanish3_3","spanish3_3handi","spanish3_4",
 		"spanish3_4handi","spanish6_1","spanish6_1handi","spanish6_2","spanish6_2handi","spanish6_3","spanish6_3handi","spanish6_4","spanish6_4handi","spanish7_1",
 		"spanish7_1handi","spanish7_2","spanish7_2handi","spanish8_1","spanish8_1handi","spanish8_2","spanish8_2handi","spanish8_3","spanish8_3handi",
@@ -185,40 +193,39 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		"spanishsubmedicdemahandi", "spanishsubmedicspeehandi", "spanishsubmedichomehandi", "spanishsubmedicneurhandi", "spanishsubmedicnutrhandi",
 		"spanishsubmedicobsthandi", "spanishsubmedicdenthandi", "spanishsubmedicophthandi", "spanishsubmedicortohandi", "spanishsubmedicorthhandi",
 		"spanishsubmedicotorhandi", "spanishsubmedicpulmhandi", "spanishsubmedicpsychandi", "spanishsubmedicpendiahandi", "spanishsubmedicsurgehandi",
-		"spanishsubmedicexamshandi",
+		"spanishsubmedicexamshandi","spanishorthohandi","spanishphyshandi",
 		"spanishsubmedicacup", "spanishsubmedicangi", "spanishsubmediccard", "spanishsubmedicplas", "spanishsubmedicdoct",
 		"spanishsubmedicdema", "spanishsubmedicspee", "spanishsubmedichome", "spanishsubmedicneur", "spanishsubmedicnutr",
 		"spanishsubmedicobst", "spanishsubmedicdent", "spanishsubmedicopht", "spanishsubmedicorto", "spanishsubmedicorth",
 		"spanishsubmedicotor", "spanishsubmedicpulm", "spanishsubmedicpsyc", "spanishsubmedicpendia", "spanishsubmedicsurge",
-		"spanishsubmedicexams"
+		"spanishsubmedicexams","spanishortho","spanishphys"
 	};
-		/*"","","","","","","","","","",
+	/*"","","","","","","","","","",
 		"","","","","","","","","","",};*/
-
-	string[] segmentNameArray = new string[]{
-		"aesthencs","art","archite","media","bank",
-		"barber", "baza", "beachw", "brokers","cowork", 
-		"commer","construct","consul","course", "digit", 
-		
-		"electric","energy","events","womenfashtion","manfashtion",
-		"kidfashtion","unisexfashtion","financial","flonculture","gastronomy",
-		"hair","home","import","inst","jewelry",
-		
-		"kisoksstore","law","lingerie","logist","manage",
-		"market","medic","mobile","natural","optical",
-		"others","party","petshop","podia","services",
-		
-		"shoe","sport","xerox","studios","supliers",
-		"tech","transp","travel","telecom","appli", 
-		"adult", "admin"
-	};
 	
-	string[] subSegmentMedic = new string[]{
-		"submedicacup", "submedicangi", "submediccard", "submedicplas", "submedicdoct",
-		"submedicdema", "submedicspee", "submedichome", "submedicneur", "submedicnutr",
-		"submedicobst", "submedicdent", "submedicopht", "submedicorto", "submedicorth",
-		"submedicotor", "submedicpulm", "submedicpsyc", "submedicpendia", "submedicsurge",
-		"submedicexams"
+	string[] segmentNameArray = new string[]{
+		
+		"art","archite","media","submedicacup", "submedicangi",
+		"adult", "admin","bank", "barber", "baza", "beachw", 
+		"brokers","cowork", "commer","construct","consul",
+		
+		"course", "submediccard", "submedicplas", "submedicdoct","home",
+		"submedicsurge","submedicdema","law","supliers","aesthencs", 
+		"electric", "energy", "events","submedicexams",  "flonculture",
+		
+		"submedicspee", "phys", "party", "gastronomy","manage", 
+		"studios", "submedichome", "import", "inst", "jewelry", 
+		"logist", "womenfashtion","manfashtion", "kidfashtion", 
+		
+		"unisexfashtion", "lingerie", "market","medic", "natural", 
+		"submedicneur", "submedicnutr","optical", "others", "submedicobst", 
+		"submedicdent", "submedicopht","submedicorto", "ortho", "submedicotor",
+		
+		"petshop","podia","submedicpulm", "submedicpsyc", "submedicpendia", 
+		"xerox","kisoksstore","digit", "financial","hair", 
+		"services", "shoe", "sport","mobile", "tech",
+		
+		"transp","telecom","appli","travel"
 	};
 	
 	public Button fl1, fl2, fl3, fl4;
@@ -671,6 +678,12 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			numSearchBtn.image.sprite = ResourcesDictionary[currentLanguage+"numberhandi"];
 			segmentSearchBtn.image.sprite = ResourcesDictionary[currentLanguage+"segmenthandi"];
 			blockSelectorimg.sprite = ResourcesDictionary[currentLanguage+"blockselectorhandi"];
+			GameObject.Find("containresultoffice").GetComponent<Image>().sprite = ResourcesDictionary["officebackgroundhandi"];
+			GameObject.Find("Imagetextboxbackground").GetComponent<Image>().sprite = ResourcesDictionary["textboxbackgroundhandi"];
+			GameObject.Find("space").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"spacehandi"];
+			GameObject.Find("backspace").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"backspacehandi"];
+			for(int i = 0;i<10;i++)
+				GameObject.Find(i.ToString()).GetComponent<Image>().sprite = ResourcesDictionary[i+"handi"];
 			for(int i =1;i<9;i++)
 				GameObject.Find("b"+i).GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"block"+i+"handi"];
 			for(int i =101;i<119;i++)
@@ -691,7 +704,6 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			GameObject.Find("pleaseselectyouroffice").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectorofficearrowhandi"];
 			GameObject.Find("pleaseselectyourlocation").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectorblockarrowhandi"];
 			GameObject.Find("pleaseselectyoursegment").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectorsegmentarrowhandi"];
-			GameObject.Find("pleaseselectyoursubsegment").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectorsegmentarrowhandi"];
 			GameObject.Find("pleaseselectyournumber").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectornumberarrowhandi"];
 			GameObject.Find("pleaseselectyournumber6").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectornumberarrowhandi"];
 			GameObject.Find("pleaseselectyournumber1to5").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectornumberarrowhandi"];
@@ -705,18 +717,15 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			GameObject.Find("nextEvent").GetComponent<Image>().sprite = ResourcesDictionary["nexthandicap"];
 			GameObject.Find("nextResult").GetComponent<Image>().sprite = ResourcesDictionary["nexthandicap"];
 			GameObject.Find("nextSeg").GetComponent<Image>().sprite = ResourcesDictionary["nexthandicap"];
-			GameObject.Find("nextsubSeg").GetComponent<Image>().sprite = ResourcesDictionary["nexthandicap"];
 			GameObject.Find("nextNum").GetComponent<Image>().sprite = ResourcesDictionary["nexthandicap"];
 			GameObject.Find("previousEvent").GetComponent<Image>().sprite = ResourcesDictionary["previoushandicap"];
 			GameObject.Find("previousResult").GetComponent<Image>().sprite = ResourcesDictionary["previoushandicap"];
 			GameObject.Find("previousSeg").GetComponent<Image>().sprite = ResourcesDictionary["previoushandicap"];
-			GameObject.Find("previoussubSeg").GetComponent<Image>().sprite = ResourcesDictionary["previoushandicap"];
 			GameObject.Find("previousNum").GetComponent<Image>().sprite = ResourcesDictionary["previoushandicap"];
 			GameObject.Find("CloseEvent").GetComponent<Image>().sprite = ResourcesDictionary["closehandi"];
 			GameObject.Find("CloseResult").GetComponent<Image>().sprite = ResourcesDictionary["closehandi"];
 			GameObject.Find("CloseLocation").GetComponent<Image>().sprite = ResourcesDictionary["closehandi"];
 			GameObject.Find("CloseSegment").GetComponent<Image>().sprite = ResourcesDictionary["closehandi"];
-			GameObject.Find("ClosesubSegment").GetComponent<Image>().sprite = ResourcesDictionary["closehandi"];
 			GameObject.Find("CloseKeyboard").GetComponent<Image>().sprite = ResourcesDictionary["closehandi"];
 			GameObject.Find("CloseBlock").GetComponent<Image>().sprite = ResourcesDictionary["closehandi"];
 			GameObject.Find("CloseNumber").GetComponent<Image>().sprite = ResourcesDictionary["closehandi"];
@@ -744,6 +753,12 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			numSearchBtn.image.sprite = ResourcesDictionary[currentLanguage+"number"];
 			segmentSearchBtn.image.sprite = ResourcesDictionary[currentLanguage+"segment"];
 			blockSelectorimg.sprite = ResourcesDictionary[currentLanguage+"blockselector"];
+			GameObject.Find("containresultoffice").GetComponent<Image>().sprite = ResourcesDictionary["officebackground"];
+			GameObject.Find("Imagetextboxbackground").GetComponent<Image>().sprite = ResourcesDictionary["textboxbackground"];
+			GameObject.Find("space").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"space"];
+			GameObject.Find("backspace").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"backspace"];
+			for(int i = 0;i<10;i++)
+				GameObject.Find(i.ToString()).GetComponent<Image>().sprite = ResourcesDictionary[i.ToString()];
 			for(int i =1;i<9;i++)
 				GameObject.Find("b"+i).GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"block"+i];
 			for(int i =101;i<119;i++)
@@ -760,10 +775,11 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			GameObject.Find("pleaseselectyouroffice").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectorofficearrow"];
 			GameObject.Find("pleaseselectyourlocation").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectorblockarrow"];
 			GameObject.Find("pleaseselectyoursegment").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectorsegmentarrow"];
-			GameObject.Find("pleaseselectyoursubsegment").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectorsegmentarrow"];
 			GameObject.Find("pleaseselectyournumber").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectornumberarrow"];
 			GameObject.Find("pleaseselectyournumber6").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectornumberarrow"];
 			GameObject.Find("pleaseselectyournumber1to5").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"selectornumberarrow"];
+			Debug.Log ("finished!!!!" + currentLanguage+currentBlock+"_"+currentFloor);
+
 			if(currentBlock>5 && currentBlock <= 9)
 				floorSelector.sprite = ResourcesDictionary[currentLanguage+currentBlock+"_"+currentFloor];
 			else floorSelector.sprite = ResourcesDictionary[currentLanguage+"3_"+currentFloor];
@@ -774,18 +790,15 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			GameObject.Find("nextEvent").GetComponent<Image>().sprite = ResourcesDictionary["next"];
 			GameObject.Find("nextResult").GetComponent<Image>().sprite = ResourcesDictionary["next"];
 			GameObject.Find("nextSeg").GetComponent<Image>().sprite = ResourcesDictionary["next"];
-			GameObject.Find("nextsubSeg").GetComponent<Image>().sprite = ResourcesDictionary["next"];
 			GameObject.Find("nextNum").GetComponent<Image>().sprite = ResourcesDictionary["next"];
 			GameObject.Find("previousEvent").GetComponent<Image>().sprite = ResourcesDictionary["previous"];
 			GameObject.Find("previousResult").GetComponent<Image>().sprite = ResourcesDictionary["previous"];
 			GameObject.Find("previousSeg").GetComponent<Image>().sprite = ResourcesDictionary["previous"];
-			GameObject.Find("previoussubSeg").GetComponent<Image>().sprite = ResourcesDictionary["previous"];
 			GameObject.Find("previousNum").GetComponent<Image>().sprite = ResourcesDictionary["previous"];
 			GameObject.Find("CloseEvent").GetComponent<Image>().sprite = ResourcesDictionary["close"];
 			GameObject.Find("CloseResult").GetComponent<Image>().sprite = ResourcesDictionary["close"];
 			GameObject.Find("CloseLocation").GetComponent<Image>().sprite = ResourcesDictionary["close"];
 			GameObject.Find("CloseSegment").GetComponent<Image>().sprite = ResourcesDictionary["close"];
-			GameObject.Find("ClosesubSegment").GetComponent<Image>().sprite = ResourcesDictionary["close"];
 			GameObject.Find("CloseKeyboard").GetComponent<Image>().sprite = ResourcesDictionary["close"];
 			GameObject.Find("CloseBlock").GetComponent<Image>().sprite = ResourcesDictionary["close"];
 			GameObject.Find("CloseNumber").GetComponent<Image>().sprite = ResourcesDictionary["close"];
@@ -1107,7 +1120,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		
 	}
 	*/
-	bool searchbynumber = false;
+
 	public void rangeBtnPress(string number){
 		hideRangeNuber ();
 		searchOfficeInRange (number);
@@ -1153,7 +1166,6 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			}
 			GameObject.Find ("PanelContainresults").GetComponent<Animator> ().SetBool (m_OpenParameterId, true);
 			currentNameLayoutShow = "PanelContainresults";
-			searchbynumber = true;
 			cleanAllOffice (currentIndex);
 		} else
 			hideFullTransparent ();
@@ -1230,17 +1242,19 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 	public void searchPress(){
 		resetTimer ();
-
+		
 		updateArrow (true);
-
+		
 		hideEventAndInfomation ();
 		//hideBlockSelector ();
 		exitvideo ();
-
+		
 		hideOldeScreen ();
 		
 		showFullTransparent ();
-
+		officeFliter.text = null;
+		KeycleanAllOffice (0);
+		
 		GameObject.Find ("Panelcontainkey").GetComponent<Animator> ().SetBool (m_OpenParameterId, true);
 		currentNameLayoutShow = "Panelcontainkey";
 	}
@@ -1303,6 +1317,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		}
 	}
 	
+	string[] infomationOfName;
 	string [] infomationForSearch;
 	string[] infomationCarousel;
 	string[] infomationEvents;
@@ -1313,6 +1328,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		using (var webClient = new System.Net.WebClient()) {
 			result = webClient.DownloadString (IP+"/src/infomation");
 			infomationForSearch = result.Split(new string[]{":"},System.StringSplitOptions.None);
+			StartCoroutine (repareNameForSearch ());
 		}
 		using (var webClient = new System.Net.WebClient()) {
 			result = webClient.DownloadString (IP+"/crs/infomation");
@@ -1336,6 +1352,24 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		}
 		if (!stillUpdatingLogo)
 			StartCoroutine (updateLogo ());
+		yield return null;
+	}
+
+	public IEnumerator repareNameForSearch(){
+		infomationOfName = new string[infomationForSearch.Length];
+		string temp;
+		for (int i = 0; i < infomationForSearch.Length; i++) {
+			string x = infomationForSearch [i];
+			if (x != "") {
+				temp = "";
+				string name = convertToUtf8(x.Split (new string[]{" "}, System.StringSplitOptions.None) [1].ToLower ());
+				foreach (char ch in name) {
+					temp += getChar (ch);
+				}
+				infomationOfName [i] = temp;
+			}
+		}
+		Debug.Log ("finished!!!!" + infomationOfName.Length);
 		yield return null;
 	}
 
@@ -2223,14 +2257,9 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	private IEnumerator officeClick(Button name){
 		string blcName;
 		string officeIndex;
-		if (searchbyname) {
-			GameObject.Find ("PanelContainresults").GetComponent<Animator> ().SetBool (m_OpenParameterId, false);
+		if (currentNameLayoutShow != null && name!=null) {
+			GameObject.Find (currentNameLayoutShow).GetComponent<Animator> ().SetBool (m_OpenParameterId, false);
 			currentNameLayoutShow = null;
-			searchbyname = false;
-		}else if (searchbynumber) {
-			GameObject.Find ("PanelContainresults").GetComponent<Animator> ().SetBool (m_OpenParameterId, false);
-			currentNameLayoutShow = null;
-			searchbynumber = false;
 		}
 
 		if (name != null) {
@@ -2396,75 +2425,127 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		GameObject.Find ("leftImg").GetComponent<Image> ().enabled = true;
 	}
 	
-	public void searchOffice(char name){
-		bool haveResult = false;
+	int keycurrentIndex = 0,keymaxOffice = 6;
+	public IEnumerator searchOffice(string name){
+		yield return new WaitForSeconds(0.5F);		
+		keycurrentIndex = 0;
 		cleanTexture ();
 		tempArray.Clear ();
 		sortDic.Clear ();
 		int index = 0;
-		foreach (string x in infomationForSearch) {
-			if(x!=""){
-				string[] info = x.Split(new string[]{" "},System.StringSplitOptions.None);
-				//Debug.Log(convertToUtf8(info[1])[0]);
-				if (checkCompare(name, convertToUtf8(info[1])[0]) && info[1] != "for_empty_office") {					
+		for (int i = 0;i < infomationOfName.Length; i++) {
+			string x = infomationOfName[i];
+			if(x!="" && x!=null){
+				if (x.IndexOf(name)>=0 && x != "for_empty_office") {
+					string[] info = infomationForSearch[i].Split (new string[]{" "}, System.StringSplitOptions.None);
 					index++;
-					haveResult=true;
+					//haveResult=true;
 					tempArray.Add(info[1]+"_"+index);
 					sortDic.Add(info[1]+"_"+index,info);			
-
+					//Debug.Log(info[1]);
 				}
 			}
 		}
-		if (haveResult) {
-
+		//if (haveResult) 
+		{
 			tempArray.Sort();
 			foreach(string names in tempArray){
-				string[] info = sortDic[names];	                            
-				StartCoroutine(loadTexture4Office(info[0], convertToUtf8(toNormalString(info[1])), toNormalString(info[4]), currentIndex, null, toNormalString(info[2])));
-				if(currentIndex<maxOffice)
-					currentIndex++;	
+				string[] info = sortDic[names];								
+				StartCoroutine(loadTexttureforOfficeKeyboard(info[0], convertToUtf8(toNormalString(info[1])), toNormalString(info[4]), keycurrentIndex, null, toNormalString(info[2])));
+				if(keycurrentIndex<keymaxOffice)
+					keycurrentIndex++;	
 			}
-
-			searchbyname = true;
-			GameObject.Find ("PanelContainresults").GetComponent<Animator> ().SetBool (m_OpenParameterId, true);
-			currentNameLayoutShow = "PanelContainresults";
-			cleanAllOffice (currentIndex);
-		} else
-			hideFullTransparent ();
-	}
-
-	private bool checkCompare(char c1, char c2){
-		switch (c1) {
-		case 'a':
-			if("a á ắ ấ à ằ ầ ặ ậ A Á Ắ Ấ À Ằ Ầ Ặ Ậ".IndexOf(c2)>=0)
-				return true;
-			else return false;
-			break;
-		case 'e':
-			if("e é ế è ề ẹ ệ E É Ế È Ề Ẹ".IndexOf(c2)>=0)
-				return true;
-			else return false;
-			break;
-		case 'i':
-			if("i í ì ị I Í Ì Ị".IndexOf(c2)>=0)
-				return true;
-			else return false;
-			break;
-		case 'o':
-			if("o ò ồ ố ó ọ ộ O Ò Ồ Ố Ó Ọ Ộ".IndexOf(c2)>=0)
-				return true;
-			else return false;
-			break;
-		case 'u':
-			if("u ú ù ụ U Ú Ù Ụ".IndexOf(c2)>=0)
-				return true;
-			else return false;
-			break;
-		default:
-			if(c1 == c2.ToString().ToLower()[0])return true;
-			else return false;
-			break;
+			//Debug.Log(keycurrentIndex);
+			KeycleanAllOffice (keycurrentIndex);
 		}
+		yield return null;
+	}
+	
+	void KeycleanAllOffice(int begin){
+		for (int i = begin; i<keymaxOffice; i++) {
+			var plane = GameObject.Find ("kBtn" + i).GetComponent<Button> ();
+			Color c = plane.targetGraphic.color;
+			c.a = 0f;
+			plane.targetGraphic.color = c;			
+			plane.enabled=false;
+			
+			
+			var img = GameObject.Find ("kp"+i).GetComponent<Image> ();
+			img.enabled = false;
+			
+			var t = GameObject.Find ("kof"+i).GetComponent<Text> ();
+			t.enabled = false;
+		}
+	}
+	
+	public IEnumerator loadTexttureforOfficeKeyboard(string name, string nameOffice, string phoneNumber, int index,string subNameOffice, string officeNumber)
+	{
+		//if (gameObject != null) 
+		{
+			Text texts = null;
+			Button buttons = null;
+			
+			TextureBtn.Add (name);
+			nameOffices.Add (nameOffice);
+			if (subNameOffice != null) {
+				listNameOffie.Add (name, subNameOffice);
+			} else {
+				listNameOffie.Add (name, nameOffice);
+			}
+			if (index < keymaxOffice) {
+				
+				GameObject.Find ("kp" + index).GetComponent<Image> ().enabled = true;				
+				texts = GameObject.Find ("kof" + index).GetComponent<Text> ();
+				buttons = GameObject.Find ("kBtn" + index).GetComponent<Button> ();
+			}
+			Sprite sprite;
+			if (!spriteSave.ContainsKey (name)) {				
+				string fullPathFile = "C:/server/logo/"+name+imageType;
+				byte[] data = File.ReadAllBytes(fullPathFile);
+				Texture2D texture = new Texture2D(87, 87, TextureFormat.ARGB32, false);
+				texture.LoadImage(data);
+				
+				sprite = Sprite.Create (texture, new Rect (0, 0, texture.width, texture.height), Vector2.zero);
+				spriteSave.Add (name, sprite);
+				//Debug.Log(name+":"+texture.width);
+			} else {
+				sprite = spriteSave [name];
+			}
+			if (!DicphoneNumber.ContainsKey (name)) {
+				DicphoneNumber.Add (name, phoneNumber);
+			}
+			if(!DicNumberOffice.ContainsKey(name)){
+				DicNumberOffice.Add(name, officeNumber);
+			}
+			sprite.name = name;
+			if (buttons != null && texts != null) {
+				
+				texts.enabled = true;
+				texts.text = nameOffice;
+				
+				buttons.enabled = true;
+				buttons.image.sprite = sprite;
+				Color c = buttons.targetGraphic.color;
+				c.a = 255f;
+				buttons.targetGraphic.color = c;
+			}
+		}
+		yield return null;
+	}
+	
+	private char getChar(char c){
+		if("a ă á ắ ấ à ằ ầ ặ â ậ A Ă Á Ắ Ấ Â À Ằ Ầ Ặ Ậ".IndexOf(c)>=0)
+			return 'a';
+		else if("e é ế è ề ê ẹ ệ E É Ê Ế È Ề Ẹ".IndexOf(c)>=0)
+			return 'e';
+		else if("i í ì ị I Í Ì Ị".IndexOf(c)>=0)
+			return 'i';
+		else if("o ò ồ ố ô ó ọ ộ O Ò Ồ Ố Ô Ó Ọ Ộ".IndexOf(c)>=0)
+			return 'o';
+		else if("u ú ù ụ U Ú Ù Ụ".IndexOf(c)>=0)
+			return 'u';
+		else return c;
+		
 	}
 	
 	private void cleanTexture(){
@@ -2729,25 +2810,6 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		}
 		yield return null;
 	}
-
-	private IEnumerator loadTextureSubSegment()
-	{
-		string handi = null;
-		if (isHandicapMode)
-			handi = "handi";
-		
-		{
-			for(int i = 0;i<15;i++){
-				Button btn = GameObject.Find("SSG"+i).GetComponent<Button>();
-				btn.enabled = true;
-				Color c = btn.targetGraphic.color;
-				c.a = 255f;
-				btn.targetGraphic.color = c;
-				btn.image.sprite = ResourcesDictionary[currentLanguage+ subSegmentMedic[i]+handi];
-			}
-		}
-		yield return null;
-	}
 		
 	int currentNumberIndex = 0;
 	public void nextNumber(){
@@ -2786,16 +2848,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 	public void nextSegment(){
 		StartCoroutine (nextSgm ());
-	}	
-	
-	public void nextSubSegment(){
-		StartCoroutine (nextSubSgm ());
 	}
-	
-	public void previosSubSegment(){
-		StartCoroutine (nextSubSgm ());
-	}
-
 	
 	public void previosSegment(){
 		StartCoroutine (previSgm ());
@@ -2804,7 +2857,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	int offset = 0;
 
 	private IEnumerator nextSgm(){
-		if (offset >= 45)
+		if (offset >= 75)
 			offset = 0;
 		else
 			offset += 15;
@@ -2815,7 +2868,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 				handi = "handi";
 			for (int i = 0; i<15; i++) {
 				Button btn = GameObject.Find ("SG" + i).GetComponent<Button> ();
-				if ((i + offset) < 57) {
+				if ((i + offset) < 79) {
 					btn.enabled = true;
 					Color c = btn.targetGraphic.color;
 					c.a = 255f;
@@ -2834,7 +2887,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	
 	private IEnumerator previSgm(){
 		if (offset == 0)
-			offset = 45;
+			offset = 75;
 		else
 			offset -= 15;
 		
@@ -2844,7 +2897,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 				handi = "handi";
 			for (int i = 0; i<15; i++) {
 				Button btn = GameObject.Find ("SG" + i).GetComponent<Button> ();
-				if ((i + offset) < 57) {
+				if ((i + offset) < 79) {
 					btn.enabled = true;
 					Color c = btn.targetGraphic.color;
 					c.a = 255f;
@@ -2860,39 +2913,8 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		}
 		yield return null;
 	}
-	int subOffset = 0;
-	private IEnumerator nextSubSgm(){
-		if (subOffset >= 15)
-			subOffset = 0;
-		else
-			subOffset += 15;
-		
-		{
-			string handi = null;
-			if(isHandicapMode)
-				handi = "handi";
-			for (int i = 0; i<15; i++) {
-				Button btn = GameObject.Find ("SSG" + i).GetComponent<Button> ();
-				if ((i + subOffset) < 21) {
-					btn.enabled = true;
-					Color c = btn.targetGraphic.color;
-					c.a = 255f;
-					btn.targetGraphic.color = c;
-					btn.image.sprite = ResourcesDictionary[currentLanguage+subSegmentMedic [i + subOffset]+handi];
-				}else {
-					Color c = btn.targetGraphic.color;
-					c.a = 0f;
-					btn.targetGraphic.color = c;
-					btn.enabled = false;
-				}
-			}
-		}
-		yield return null;
-	}
 	
 	void hideOldeScreen(){
-		//Debug.Log ("name of layout:" + currentNameLayoutShow);
-		searchInsub = false;
 		madeButtonTransparent (NextBtn);
 		if (currentNameLayoutShow != null) {
 			GameObject.Find (currentNameLayoutShow).GetComponent<Animator> ().SetBool (m_OpenParameterId, false);
@@ -2995,33 +3017,12 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		nextEvent ();
 	}
 	
-	
-	bool searchInsub = false;
-	
+		
 	public void searchOfficeBySegment(int index){
 		string segement,nameOfContainPanel = "Panelcontainsegments";
-		if (searchInsub) {
-			segement = subSegmentMedic [index + subOffset];
-			searchInsub = false;
-		}
-		else
-			segement = segmentNameArray [index + offset];
-		if (segement.IndexOf ("submedic") == 0)
-			nameOfContainPanel = "Panelcontainsubsegments";
+		segement = segmentNameArray [index + offset];
 		Debug.Log (offset + "," + segement);
-		if (segement == "medic") {            
-			subOffset = 0;
-			StartCoroutine (loadTextureSubSegment ());
-			resetTimer ();
-			hideEventAndInfomation ();
-			exitvideo ();
-			hideOldeScreen ();
-			showFullTransparent ();
-			GameObject.Find ("Panelcontainsubsegments").GetComponent<Animator> ().SetBool (m_OpenParameterId, true);
-			currentNameLayoutShow = "Panelcontainsubsegments";
-			searchInsub = true;
-		} else
-			StartCoroutine (searchbySegement (segement,nameOfContainPanel));
+		StartCoroutine (searchbySegement (segement,nameOfContainPanel));
 	}
 	
 	
@@ -3045,7 +3046,6 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		GameObject.Find (nameOfContainPanel).GetComponent<Animator> ().SetBool (m_OpenParameterId, false);
 		
 		if (haveResult) {
-			searchbyname = true;
 			GameObject.Find ("PanelContainresults").GetComponent<Animator> ().SetBool (m_OpenParameterId, true);
 			currentNameLayoutShow = "PanelContainresults";
 			cleanAllOffice (currentIndex);
@@ -3175,16 +3175,35 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	const string k_showDirctionVideoTransitionName = "ShowVideoDirction";
 	const string k_buttonPressTransitionName = "Pressed";
 	const string k_buttonBlockPressTransitionName = "BlockClick";
-	bool searchbyname = false;
-	public void typeButton(Button btn){
-		StartCoroutine(typeButtonAni (btn.name.ToLower () [0]));
+
+	public void typeButton(string chara){
+		StartCoroutine(typeButtonAni (chara));
 	}
 	
-	public IEnumerator typeButtonAni(char name){
-		GameObject.Find ("Panelcontainkey").GetComponent<Animator> ().SetBool (m_OpenParameterId, false);
+	public IEnumerator typeButtonAni(string name){
+		//GameObject.Find ("Panelcontainkey").GetComponent<Animator> ().SetBool (m_OpenParameterId, false);
 		//yield return new WaitForSeconds(1F);
-		searchOffice (name);
+		string texxx = officeFliter.text;
+		if (name == "backspace") {
+			if (texxx.Length > 0)
+				officeFliter.text = texxx.Substring (0, texxx.Length - 1);
+		} else {
+			officeFliter.text = texxx + name;
+		}
+		if (officeFliter.text.Length > 3) {
+			StartCoroutine (searchOffice (officeFliter.text));
+		} else if(keycurrentIndex > 0){
+			Debug.Log("clear all office in fliter!!");
+			StartCoroutine(clearallFliter());
+		}
+		
 		yield return null;
+	}
+	
+	public IEnumerator clearallFliter(){
+		yield return new WaitForSeconds(0.5F);		
+		keycurrentIndex = 0;
+		KeycleanAllOffice (keycurrentIndex);
 	}
 	int currentCarousel = 0,timeDisplay = -100;
 	bool shownextCarousel = false,firstLoadCarousel = true;
