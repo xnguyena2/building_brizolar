@@ -208,27 +208,27 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	
 	string[] segmentNameArray = new string[]{
 		
-		"art","archite","media","submedicacup", "submedicangi",
-		"adult", "admin","bank", "barber", "baza", "beachw", 
-		"brokers","cowork", "commer","construct","consul",
+		"submedicacup", "admin","adult", "submedicangi", "art",
+		"archite","media","bank", "barber", "baza", 
+		"beachw", "submediccard", "home", "submedicsurge","submedicplas", 
 		
-		"course", "submediccard", "submedicplas", "submedicdoct","home",
-		"submedicsurge","submedicdema","law","supliers","aesthencs", 
-		"electric", "energy", "events","submedicexams",  "flonculture",
+		"submedicdoct", "cowork", "commer","construct", "consul", 
+		"brokers", "course", "submedicdema","law","supliers",
+		"electric", "energy", "aesthencs", "events","submedicexams",  
 		
-		"submedicspee", "phys", "party", "gastronomy","manage", 
-		"studios", "submedichome", "import", "inst", "jewelry", 
-		"logist", "womenfashtion","manfashtion", "kidfashtion", 
+		"party", "phys", "flonculture","submedicspee", "gastronomy",
+		"manage", "studios", "submedichome", "import", "inst", 
+		"jewelry", "logist", "market","medic", "womenfashtion",
 		
-		"unisexfashtion", "lingerie", "market","medic", "natural", 
-		"submedicneur", "submedicnutr","optical", "others", "submedicobst", 
-		"submedicdent", "submedicopht","submedicorto", "ortho", "submedicotor",
+		"kidfashtion",  "lingerie","manfashtion","unisexfashtion","natural", 
+		"submedicneur", "submedicnutr", "submedicobst", "submedicdent", "submedicopht",
+		"submedicorto", "ortho", "optical", "submedicotor", "others",
 		
-		"petshop","podia","submedicpulm", "submedicpsyc", "submedicpendia", 
-		"xerox","kisoksstore","digit", "financial","hair", 
-		"services", "shoe", "sport","mobile", "tech",
+		"xerox", "submedicpendia", "petshop","submedicpulm", "podia",
+		"submedicpsyc", "kisoksstore","digit", "hair", "shoe", 
+		"services","financial","sport", "tech","telecom",
 		
-		"transp","telecom","appli","travel"
+		"mobile","transp","appli","travel"
 	};
 
 	public Button fl1, fl2, fl3, fl4;
@@ -775,6 +775,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			numSearchBtn.image.sprite = ResourcesDictionary[currentLanguage+"number"];
 			segmentSearchBtn.image.sprite = ResourcesDictionary[currentLanguage+"segment"];
 			blockSelectorimg.sprite = ResourcesDictionary[currentLanguage+"blockselector"];
+			GameObject.Find("containresultoffice").GetComponent<Image>().sprite = ResourcesDictionary["officebackground"];
 			GameObject.Find("Imagetextboxbackground").GetComponent<Image>().sprite = ResourcesDictionary["textboxbackground"];
 			GameObject.Find("space").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"space"];
 			GameObject.Find("backspace").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"backspace"];
@@ -1378,7 +1379,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 				foreach (char ch in name) {
 					temp += getChar (ch);
 				}
-				infomationOfName [i] = temp;
+				infomationOfName [i] = toNormalString( temp);
 			}
 		}
 		Debug.Log ("finished!!!!" + infomationOfName.Length);
@@ -2592,7 +2593,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	private char getChar(char c){
 		if("a ă á ắ ấ à ằ ầ ặ â ậ A Ă Á Ắ Ấ Â À Ằ Ầ Ặ Ậ".IndexOf(c)>=0)
 			return 'a';
-		else if("e é ế è ề ê ẹ ệ E É Ê Ế È Ề Ẹ".IndexOf(c)>=0)
+		else if("e é ế è ề ê ẹ ệ E É Ê Ế È Ề Ẹ &".IndexOf(c)>=0)
 			return 'e';
 		else if("i í ì ị I Í Ì Ị".IndexOf(c)>=0)
 			return 'i';
