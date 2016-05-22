@@ -18,7 +18,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	public Button segmentSearchBtn;
 	public Button resizeVideo;
 	public Button exitViedo;
-	public Button NextBtn;
+	//public Button NextBtn;
 	public RawImage Videocarosel;
 	public RawImage VideoDirection;
 	public Text showTime;
@@ -434,7 +434,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	private System.Timers.Timer showTimeTimer;
 	private System.Timers.Timer fullScreenTimer;
 	private System.Timers.Timer hideInfomationTimer;
-	private System.Timers.Timer timerBoom;
+	private System.Timers.Timer nextBtnTimer;
 	
 	public string IP = "http://localhost:8080/";
 	
@@ -569,8 +569,8 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		//containBlock = containBlock.GetComponent<Canvas> ();
 		searchBtn = searchBtn.GetComponent<Button> ();
 		reservedBtn = reservedBtn.GetComponent<Button> ();
-		NextBtn = NextBtn.GetComponent<Button> ();
-		madeButtonTransparent (NextBtn);
+		//NextBtn = NextBtn.GetComponent<Button> ();
+		//madeButtonTransparent (NextBtn);
 		isShowVideo (false);
 
 		showTimeTimer = new System.Timers.Timer (1000);
@@ -597,11 +597,11 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		aTimer.Elapsed += OnTimedEvent;
 		
 		aTimer.Start ();
-		/*
+
 		
-		timerBoom = new System.Timers.Timer(3600000);
-		timerBoom.Elapsed += OnTimedBoomEvent;		
-		timerBoom.Start ();*/
+		nextBtnTimer = new System.Timers.Timer(7000);
+		nextBtnTimer.Elapsed += OnTimedBoomEvent;		
+		nextBtnTimer.Stop ();
 
 		hideBlock2Timer = new System.Timers.Timer(4000);
 		// Hook up the Elapsed event for the timer. 
@@ -733,7 +733,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 				floorSelector.sprite = ResourcesDictionary[currentLanguage+currentBlock+"_"+currentFloor+"handi"];
 			else floorSelector.sprite = ResourcesDictionary[currentLanguage+"3_"+currentFloor+"handi"];
 			GameObject.Find("borderImg").GetComponent<Image>().sprite = ResourcesDictionary["videoFrameBarhandi"];
-			GameObject.Find("NextBtn").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"nextbackgroundhandi"];
+			//GameObject.Find("NextBtn").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"nextbackgroundhandi"];
 			GameObject.Find("containBlockInfomation").GetComponent<Image>().sprite = ResourcesDictionary["officeInfomationBackgroundhandi"];
 			headerImg.color = new Color(21/255f,61/255f,115/255f);
 			GameObject.Find("nextEvent").GetComponent<Image>().sprite = ResourcesDictionary["nexthandicap"];
@@ -804,7 +804,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 				floorSelector.sprite = ResourcesDictionary[currentLanguage+currentBlock+"_"+currentFloor];
 			else floorSelector.sprite = ResourcesDictionary[currentLanguage+"3_"+currentFloor];
 			GameObject.Find("borderImg").GetComponent<Image>().sprite = ResourcesDictionary["videoFrameBar"];
-			GameObject.Find("NextBtn").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"nextbackground"];
+			//GameObject.Find("NextBtn").GetComponent<Image>().sprite = ResourcesDictionary[currentLanguage+"nextbackground"];
 			GameObject.Find("containBlockInfomation").GetComponent<Image>().sprite = ResourcesDictionary["officeInfomationBackground"];
 			headerImg.color = new Color(99/255f,179/255f,188/255f);
 			GameObject.Find("nextEvent").GetComponent<Image>().sprite = ResourcesDictionary["next"];
@@ -1221,9 +1221,9 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		isHideInfomation = true;
 	}
 
-	bool isStopApplication = false;
+	bool isNextBtnPress = false;
 	private void OnTimedBoomEvent(object o, System.Timers.ElapsedEventArgs e){
-		//isStopApplication = true;
+		isNextBtnPress = true;
 	}
 
 	private void OnTimedEvent(object o, System.Timers.ElapsedEventArgs e)
@@ -2317,7 +2317,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 			if(officeIndex.IndexOf("b8")<0)
 			{
-				showButton(NextBtn);
+				//showButton(NextBtn);
 				nameOfSearchBlock = officeIndex;
 				officeIndex = "b81231";
 				showRouteBettwenBlock = true;
@@ -2326,9 +2326,10 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		}else if(showRouteBettwenBlock){
 			officeIndex = routeBettwenBlock;
 			showRouteBettwenBlock = false;
+			nextBtnTimer.Start();
 		}else {
 			officeIndex = nameOfSearchBlock;
-			madeButtonTransparent(NextBtn);
+			//madeButtonTransparent(NextBtn);
 		}
 
 
@@ -2968,7 +2969,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	}
 
 	void hideOldeScreen(){
-		madeButtonTransparent (NextBtn);
+		//madeButtonTransparent (NextBtn);
 		if (currentNameLayoutShow != null) {
 			GameObject.Find (currentNameLayoutShow).GetComponent<Animator> ().SetBool (m_OpenParameterId, false);
 			currentNameLayoutShow = null;
@@ -3497,6 +3498,11 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		fullScreenTimer.Stop ();
 		hideInfomationTimer.Stop ();
 		bool hncmr = false;
+		if (currentOfficeVideoIndex != null && !havenextcamera) {
+			if (currentOfficeVideoIndex.IndexOf ("b81231") == 0) {
+				nextBtnTimer.Start ();
+			}
+		}
 		if (havenextcamera) {
 			hncmr = true;
 			//Debug.Log("hhhhhhhhhhh");
@@ -3544,6 +3550,14 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 				haveShowVideoDirection = true;
 		} else if(hncmr){			
 			hideVideoDirection (true);
+		}
+		if (!haveShowVideoDirection) 
+		{
+			if (currentOfficeVideoIndex != null) {
+				if (currentOfficeVideoIndex.IndexOf ("b83") == 0) {
+					StartCoroutine(Wait(loadOfficeVideoByPath));
+				}
+			}
 		}
 		havenewcameraanimation = false;
 		stillanimation = false;
@@ -3602,11 +3616,13 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 
 	void Update () {
 
-		if (isStopApplication) {
-
-			Debug.Log ("stop");
-
-		} else {
+		if (isNextBtnPress) {
+			//Debug.Log("ddddddddddddddddddddd");
+			isNextBtnPress = false;
+			nextBtnTimer.Stop();
+			OnNextButtonEvent();
+		}
+		{
 			/*
 			if (leftpress || Input.GetKey (KeyCode.A)) {
 				arroundLeft ();
@@ -3829,7 +3845,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			if(isHideInfomation){
 				showFloor3 = true;
 				humanPress = false;
-				madeButtonTransparent(NextBtn);
+				//madeButtonTransparent(NextBtn);
 				hideEventAndInfomation();
 				isHideInfomation = false;
 				hideInfomationTimer.Stop();
