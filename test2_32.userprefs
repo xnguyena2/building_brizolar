@@ -1,8 +1,8 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\newbuilding_32\newbuilding_32\Assets\script\ControlEvent.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\script\arrow.cs">
     <Files>
-      <File FileName="..\newbuilding_32\newbuilding_32\Assets\script\ControlEvent.cs" Line="2766" Column="2" />
+      <File FileName="Assets\script\arrow.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
