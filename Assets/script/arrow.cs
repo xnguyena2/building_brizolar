@@ -105,7 +105,7 @@ public class arrow : MonoBehaviour {
 				arrow scri = ar.GetComponent<arrow> ();
 				scri.beginMove (listPoint);
 				scri.thisIsStartPoint();
-				Destroy(arrowss,60000);
+				//Destroy(arrowss,60000);
 			}
 		}
 	}
