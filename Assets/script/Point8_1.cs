@@ -1232,11 +1232,11 @@ namespace AssemblyCSharp
 		static Vector3[] office199 = new Vector3[] { start2, f207, f201, f200, f199, p145 };
 		static Vector3[] office200 = new Vector3[] { start2, f207, f201, f200, p146 };
 		static Vector3[] office201 = new Vector3[] { start2, f207, f201, p147 };
-		static Vector3[] office202 = new Vector3[] { start2, f207, f201, f202, p148 };
-		static Vector3[] office203 = new Vector3[] { start2, f207, f201, f203, p149 };
-		static Vector3[] office204 = new Vector3[] { start2, f207, f201, f204, p150 };
-		static Vector3[] office205 = new Vector3[] { start2, f207, f201, f205, p151 };
-		static Vector3[] office206 = new Vector3[] { start2, f207, f201, f206, p152 };
+		static Vector3[] office202 = new Vector3[] { start2, f207, f202, p148 };
+		static Vector3[] office203 = new Vector3[] { start2, f207, f203, p149 };
+		static Vector3[] office204 = new Vector3[] { start2, f207, f204, p150 };
+		static Vector3[] office205 = new Vector3[] { start2, f207, f205, p151 };
+		static Vector3[] office206 = new Vector3[] { start2, f207, f206, p152 };
 		static Vector3[] office207 = new Vector3[] { start2, f207, p153 };
 		static Vector3[] office208 = new Vector3[] { start2, f208, p154 };
 		static Vector3[] office209 = new Vector3[] { start2, f209, p155 };
