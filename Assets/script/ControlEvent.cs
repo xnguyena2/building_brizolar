@@ -2239,7 +2239,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	}
 	
 	private IEnumerator officeClick(Button name){
-		string blcName;
+		string blcName = null;
 		string officeIndex;
 		if (currentNameLayoutShow != null && name != null) {
 			GameObject.Find (currentNameLayoutShow).GetComponent<Animator> ().SetBool (m_OpenParameterId, false);
@@ -2316,7 +2316,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		listNameCurrentBlock.Add ("block"+Block + "_1");
 		currentBlock = Block;
 		currentFloor = Floor;		
-		currentOfficeVideoIndex = officeIndex;
+		currentOfficeVideoIndex = blcName;
 		getRoute ("office" + officeIndex.Substring (3));
 		//StartCoroutine (LoadVideo (officeIndex + videoType));
 		StartCoroutine (waitforresult());
