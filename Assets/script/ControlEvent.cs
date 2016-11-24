@@ -662,6 +662,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	private bool handicap = false;
 	private string[] arrayCharacter = new string[]{"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
 	public void handicapMode(){
+		oldMovieTexture = null;
 		resetTimer ();
 		if (!handicap) {
 			VideoDirection.texture = movieTextureDirctionElevator;
@@ -2114,7 +2115,12 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 			havenextcamera = true;
 			
 		}
-		if (list2.Length > 0) {
+		if (name == "office400" || name == "office401" || name == "office402") {
+			showBasementStair = true;
+			showVideoDireciton ();
+		}
+		else if (list2.Length > 0) {
+			showBasementStair = false;
 			showVideoDireciton ();
 		} else {			
 			if(!dontStartTimer){
@@ -2156,10 +2162,22 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		}
 	}
 	
+	bool showBasementStair = false;
 	bool stillShowVideoDirection = false;
+	MovieTexture oldMovieTexture = null;
 	void showVideoDireciton(){
 		
 		stillShowVideoDirection = true;
+		if (showBasementStair) {
+			if(oldMovieTexture == null)
+				oldMovieTexture = (MovieTexture)VideoDirection.texture;
+			VideoDirection.texture = movieTextureDirctionStairDown;
+		}
+		
+		if (oldMovieTexture != null && !showBasementStair) {
+			VideoDirection.texture = oldMovieTexture;
+			oldMovieTexture = null;
+		}
 		((MovieTexture)VideoDirection.texture).Play ();
 		
 		GameObject.Find ("containVideoDirction").GetComponent<Animator> ().SetBool (m_showDirctionVideoId, true);
@@ -3313,6 +3331,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		yield return null;
 	}
 	MovieTexture movieTextureDirctionStair;
+	MovieTexture movieTextureDirctionStairDown;
 	MovieTexture movieTextureDirctionElevator;
 	private IEnumerator loadVideoFromResources(){
 		
@@ -3324,6 +3343,17 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		
 		movieTextureDirctionElevator.loop = true;
 		movieTextureDirctionElevator.Stop ();
+		
+		movieTextureDirctionStairDown = Resources.Load<MovieTexture> ("StairDown");
+		while (!movieTextureDirctionStairDown.isReadyToPlay) {
+			yield return null;
+		}
+		
+		
+		movieTextureDirctionStairDown.loop = true;
+		movieTextureDirctionStairDown.Stop ();
+		
+
 		
 		movieTextureDirctionStair = (MovieTexture)VideoDirection.texture;
 		movieTextureDirctionStair.loop = true;

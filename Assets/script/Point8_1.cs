@@ -26,7 +26,19 @@ namespace AssemblyCSharp
 		static Vector3 e1 = new Vector3(-0.09997559F, 0.5F, 12.25F);
 		static Vector3 e6 = new Vector3(-0.0499974F, 0.5F, 0.53F);
 
-
+		
+		
+		static Vector3 thang4 = new Vector3(-28.85F, 0.5F, 3.08F);
+		
+		static Vector3 l5 = new Vector3 (2.0f, 0.5F, 12.0f);
+		static Vector3 l6 = new Vector3 (3.7f, 0.5F, 11.3f);
+		static Vector3 l7 = new Vector3 (5.2f, 0.5F, 9.9f);
+		static Vector3 l9 = new Vector3 (6.2f, 0.5F, 7.9f);
+		static Vector3 l10 = new Vector3 (6.2f, 0.5F, 4.2f);
+		static Vector3 l11 = new Vector3 (5.5f, 0.5F, 2.9f);
+		static Vector3 l12 = new Vector3 (4.3f, 0.5F, 1.8f);
+		static Vector3 l13 = new Vector3 (3.1f, 0.5F, 0.9f);
+		static Vector3 l14 = new Vector3 (2.0f, 0.5F, 0.7f);
 		
 		static Vector3 l551 = new Vector3(1.51F, 0.5F, 13.21F);
 		static Vector3 l552 = new Vector3(2.39F, 0.5F, 12.95F);
@@ -1261,6 +1273,9 @@ namespace AssemblyCSharp
 		static Vector3[] office228 = new Vector3[] { start2, f207, f201, f200, ex4, ex5, ex6, f228, o228 };
 		static Vector3[] office229 = new Vector3[] { start2, f207, f201, f200, ex4, f229, o229 };
         static Vector3[] office230 = new Vector3[] { start2, f207, f201, f200, ex4, ex5, ex6, f230, o230 };
+		static Vector3[] office400 = new Vector3[] { start2, f207, f201, f200, e6, l14, l13, l12, l11, l10, evalator2 };
+		static Vector3[] office401 = new Vector3[] { start2, f207, f201, f200, e6, l14, l13, l12, l11, l10, evalator2 };
+		static Vector3[] office402 = new Vector3[] { start2, f207, f201, f200, e6, l14, l13, l12, l11, l10, evalator2 };
 		static Vector3[] rightOutPoint = new Vector3[] { start, mm3, m87, m1, m87, m88, f165, ex3, m108, start };
 
 		static Vector3 startbt2 = new Vector3(-37.38F,1.0F,-10.78F);
@@ -1269,18 +1284,6 @@ namespace AssemblyCSharp
 		static Vector3[] bathroom3 = new Vector3[] { f150, p107 };
 		static Vector3[] bathroom4 = new Vector3[] { start2, f221, p165 };
 
-
-		static Vector3 thang4 = new Vector3(-28.85F, 0.5F, 3.08F);
-
-		static Vector3 l5 = new Vector3 (2.0f, 0.5F, 12.0f);
-		static Vector3 l6 = new Vector3 (3.7f, 0.5F, 11.3f);
-		static Vector3 l7 = new Vector3 (5.2f, 0.5F, 9.9f);
-		static Vector3 l9 = new Vector3 (6.2f, 0.5F, 7.9f);
-		static Vector3 l10 = new Vector3 (6.2f, 0.5F, 4.2f);
-		static Vector3 l11 = new Vector3 (5.5f, 0.5F, 2.9f);
-		static Vector3 l12 = new Vector3 (4.3f, 0.5F, 1.8f);
-		static Vector3 l13 = new Vector3 (3.1f, 0.5F, 0.9f);
-		static Vector3 l14 = new Vector3 (2.0f, 0.5F, 0.7f);
 
 		static Vector3[] cauthang = new Vector3[] { start2, f207, f201, f200, e6 };
 
@@ -1530,6 +1533,9 @@ namespace AssemblyCSharp
 			LookatCamera.Add("office228",lookat228);
 			LookatCamera.Add("office229",lookat229);
 			LookatCamera.Add("office230",lookat230);
+			LookatCamera.Add("office400",lookat1);
+			LookatCamera.Add("office401",lookat1);
+			LookatCamera.Add("office402",lookat1);
 			LookatCamera.Add("office231", lookat150);
 			LookatCamera.Add("lookatleft", lookatleft);
 			LookatCamera.Add("lookatcenter", lookatcenter);
@@ -1767,6 +1773,9 @@ namespace AssemblyCSharp
 			PositnCamera.Add("office228",pos228);
 			PositnCamera.Add("office229",pos229);
 			PositnCamera.Add("office230",pos230);
+			PositnCamera.Add("office400",pos1);
+			PositnCamera.Add("office401",pos1);
+			PositnCamera.Add("office402",pos1);
 			PositnCamera.Add("office231", pos150);
 			PositnCamera.Add("posleft", posleft);
 			PositnCamera.Add("poscenter", poscenter);
@@ -2003,6 +2012,9 @@ namespace AssemblyCSharp
 			dictionary.Add("office228",office228);
 			dictionary.Add("office229",office229);
 			dictionary.Add("office230",office230);
+			dictionary.Add("office400",office400);
+			dictionary.Add("office401",office401);
+			dictionary.Add("office402",office402);
 
 			dictionary.Add("cauthang", cauthang);
 			dictionary.Add("thangmay1", thangmay1);
