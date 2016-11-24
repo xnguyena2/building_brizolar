@@ -1265,6 +1265,9 @@ namespace AssemblyCSharp
 		static Vector3[] office228 = new Vector3[] { start, m1, m18, l551, l552, l553, l554, l555, l556, l558, l2880, l2881, l2882, l2883, l2884, l2885, ex4, ex5, ex6, f228, o228 };
 		static Vector3[] office229 = new Vector3[] { start, m1, m18, l551, l552, l553, l554, l555, l556, l558, l2880, l2881, l2882, l2883, l2884, l2885, ex4, f229, o229 };
         static Vector3[] office230 = new Vector3[] { start, m1, m18, l551, l552, l553, l554, l555, l556, l558, l2880, l2881, l2882, l2883, l2884, l2885, ex4, ex5, ex6, f230, o230 };
+		static Vector3[] office400 = new Vector3[] { start, m1, m18, m19, evalator2 };
+		static Vector3[] office401 = new Vector3[] { start, m1, m18, m19, evalator2 };
+		static Vector3[] office402 = new Vector3[] { start, m1, m18, m19, evalator2 };
 		static Vector3[] rightOutPoint = new Vector3[] { start, m1, m87, m88, f165, ex3, m108, outPoint };
 		
 		static Vector3[] bathroom2 = new Vector3[] { startb1, m39, f100, f97, f94, f82, p74 };
@@ -1533,6 +1536,9 @@ namespace AssemblyCSharp
 			LookatCamera.Add("office229",lookat229);
 			LookatCamera.Add("office230",lookat230);
 			LookatCamera.Add("office231", lookat150);
+			LookatCamera.Add("office400",lookat1);
+			LookatCamera.Add("office401",lookat1);
+			LookatCamera.Add("office402",lookat1);
 			LookatCamera.Add("lookatleft", lookatleft);
 			LookatCamera.Add("lookatcenter", lookatcenter);
 			LookatCamera.Add("lookatright", lookatright);
@@ -1770,6 +1776,9 @@ namespace AssemblyCSharp
 			PositnCamera.Add("office229",pos229);
 			PositnCamera.Add("office230",pos230);
 			PositnCamera.Add("office231", pos150);
+			PositnCamera.Add("office400",pos1);
+			PositnCamera.Add("office401",pos1);
+			PositnCamera.Add("office402",pos1);
 			PositnCamera.Add("posleft", posleft);
 			PositnCamera.Add("poscenter", poscenter);
 			PositnCamera.Add("posright", posright);
@@ -2005,6 +2014,9 @@ namespace AssemblyCSharp
 			dictionary.Add("office228",office228);
 			dictionary.Add("office229",office229);
 			dictionary.Add("office230",office230);
+			dictionary.Add("office400",office400);
+			dictionary.Add("office401",office401);
+			dictionary.Add("office402",office402);
 
 			dictionary.Add("cauthang", cauthang);
 			dictionary.Add("thangmay1", thangmay1);
