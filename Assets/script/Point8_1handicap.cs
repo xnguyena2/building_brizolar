@@ -808,6 +808,9 @@ namespace AssemblyCSharp
 		static Vector3[] office228 = new Vector3[] { evalator, ex5, ex6, f228, o228 };
 		static Vector3[] office229 = new Vector3[] { evalator, f229, o229 };
 		static Vector3[] office230 = new Vector3[] { evalator, ex5, ex6, f230, o230 };
+		static Vector3[] office400 = new Vector3[] { evalator, l14, l13, l12, l11, evalator2 };
+		static Vector3[] office401 = new Vector3[] { evalator, l14, l13, l12, l11, evalator2 };
+		static Vector3[] office402 = new Vector3[] { evalator, l14, l13, l12, l11, evalator2 };
 		static Vector3[] rightOutPoint = new Vector3[] { evalator, _l14, _l13, _l12, _l11, _l10, m88, f165, f170, k6, m108, outPoint };
 		
 		static Vector3[] bathroom2 = new Vector3[] { startb1, m39, f100, f97, f94, f82, p74 };
@@ -1059,6 +1062,9 @@ namespace AssemblyCSharp
 			dictionary.Add("office228",office228);
 			dictionary.Add("office229",office229);
 			dictionary.Add("office230",office230);
+			dictionary.Add("office400",office400);
+			dictionary.Add("office401",office401);
+			dictionary.Add("office402",office402);
 			
 			dictionary.Add("cauthang", cauthang);
 			dictionary.Add("thangmay1", thangmay1);
