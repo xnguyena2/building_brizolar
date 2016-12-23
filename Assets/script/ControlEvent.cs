@@ -2595,7 +2595,9 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 	}
 
 	private char getChar(char c){
-		if("a ã ă á ắ ấ à ằ ầ ặ â ậ A Ă Á Ắ Ấ Â À Ằ Ầ Ặ Ậ".IndexOf(c)>=0)
+		if(c == ' ')
+			return c;
+		else if("a ã ă á ắ ấ à ằ ầ ặ â ậ A Ă Á Ắ Ấ Â À Ằ Ầ Ặ Ậ".IndexOf(c)>=0)
 			return 'a';
 		else if("e é ế è ề ê ẹ ệ E É Ê Ế È Ề Ẹ &".IndexOf(c)>=0)
 			return 'e';
@@ -3221,7 +3223,7 @@ public class ControlEvent : MonoBehaviour ,IEventSystemHandler {
 		} else {
 			officeFliter.text = texxx + name;
 		}
-		if (officeFliter.text.Length > 3) {
+		if (officeFliter.text.Length > 2) {
 			StartCoroutine (searchOffice (officeFliter.text));
 		} else if(keycurrentIndex > 0){
 			Debug.Log("clear all office in fliter!!");
